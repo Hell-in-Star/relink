@@ -282,6 +282,82 @@ section { min-height: 100vh; padding: 72px 64px; display: flex; flex-direction: 
 .share-btn:hover { background: var(--navy-mid); }
 .share-btn svg { width: 16px; height: 16px; stroke: var(--muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  :root { --nav: 0px; }
+
+  #nav {
+    position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
+    transition: left .25s ease; z-index: 200;
+  }
+  #nav.open { left: 0; }
+
+  .mob-menu-btn {
+    display: flex; position: fixed; top: 12px; left: 12px; z-index: 300;
+    width: 40px; height: 40px; background: var(--navy);
+    border: 1px solid rgba(255,255,255,.1);
+    align-items: center; justify-content: center; cursor: pointer;
+  }
+  .mob-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.5); z-index: 150;
+  }
+  .mob-overlay.open { display: block; }
+
+  main { margin-left: 0; }
+
+  section {
+    min-height: auto;
+    padding: 56px 20px 48px;
+  }
+
+  #cover { padding: 72px 20px 48px; }
+  #cover::before { display: none; }
+  .cover-inner { max-width: 100%; }
+  .cover-stats {
+    grid-template-columns: 1fr 1fr;
+    display: grid; gap: 1px; width: 100%;
+  }
+  .cs { padding: 16px; }
+  .cs-n { font-size: 26px; }
+
+  .sec-title { font-size: 24px; }
+
+  .goal-grid { grid-template-columns: 1fr; }
+  .aud-grid { grid-template-columns: 1fr; }
+
+  .phases-timeline { grid-template-columns: 1fr; }
+  .phase-card { padding: 24px 20px; }
+
+  .ch-grid { grid-template-columns: 1fr; }
+  .b2c-grid { grid-template-columns: 1fr; }
+  .tf-grid { grid-template-columns: 1fr 1fr; }
+
+  .budget-cards { grid-template-columns: 1fr; }
+  .bc { padding: 24px 20px; }
+
+  .tg-grid { grid-template-columns: 1fr; }
+  .tg-weeks { margin-top: 24px; }
+
+  .results-table { font-size: 12px; }
+  .results-table th, .results-table td { padding: 10px 8px; }
+  .kpi-val { font-size: 18px; }
+
+  .steps-grid { grid-template-columns: 1fr; }
+
+  .share-bar { bottom: 16px; right: 12px; }
+
+  #contact-cta { padding: 56px 20px; }
+}
+
+@media (max-width: 480px) {
+  .tf-grid { grid-template-columns: 1fr; }
+  .cover-stats { grid-template-columns: 1fr 1fr; }
+  .ph-items li { font-size: 11px; }
+}
+
+.mob-menu-btn { display: none; }
+
 @media print {
   #nav, #progress, .share-bar { display: none; }
   main { margin-left: 0; }
@@ -292,6 +368,11 @@ section { min-height: 100vh; padding: 72px 64px; display: flex; flex-direction: 
 <body>
 
 <div id="progress"></div>
+
+<div class="mob-overlay" id="mob-overlay" onclick="closeNav()"></div>
+<button class="mob-menu-btn" id="mob-btn" onclick="toggleNav()" aria-label="Меню">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5C800" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
 
 <!-- NAV -->
 <nav id="nav">
@@ -876,6 +957,20 @@ section { min-height: 100vh; padding: 72px 64px; display: flex; flex-direction: 
 </div>
 
 <script>
+// Mobile nav
+function toggleNav() {
+  document.getElementById('nav').classList.toggle('open');
+  document.getElementById('mob-overlay').classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('nav').classList.remove('open');
+  document.getElementById('mob-overlay').classList.remove('open');
+}
+// Close nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', closeNav);
+});
+
 // Progress bar
 const prog = document.getElementById('progress');
 window.addEventListener('scroll', () => {
