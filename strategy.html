@@ -3,704 +3,701 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RELINK — Маркетингова стратегія 2025</title>
+<title>RELINK — Маркетингова стратегія 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --navy: #0B1724; --navy-mid: #132035; --navy-light: #1C2E47;
-  --yellow: #F5C800; --yellow-dk: #D4AC00;
-  --white: #FFFFFF; --off: #F4F6F9; --gray: #E8EBF0;
-  --muted: #8B9AB0; --dark: #4A5568;
-  --b2b: #378ADD; --b2b-light: #E6F1FB; --b2b-dark: #0C447C;
-  --b2c: #3B6D11; --b2c-light: #EAF3DE; --b2c-dark: #27500A;
-  --fh: 'Oswald', sans-serif; --fb: 'IBM Plex Sans', sans-serif;
-  --nav: 260px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1724;--navy2:#132035;--navy3:#1C2E47;
+  --yellow:#F5C800;--yellow2:#D4AC00;
+  --white:#FFFFFF;--off:#F4F6F9;--gray:#E8EBF0;
+  --muted:#8B9AB0;--dark:#4A5568;
+  --b2b:#378ADD;--b2b-l:#E6F1FB;--b2b-d:#0C447C;
+  --b2c:#3B6D11;--b2c-l:#EAF3DE;--b2c-d:#27500A;
+  --green:#2D7D46;
+  --fh:'Oswald',sans-serif;--fb:'IBM Plex Sans',sans-serif;
+  --nav:260px;
 }
-html { scroll-behavior: smooth; }
-body { font-family: var(--fb); background: var(--off); color: var(--navy); overflow-x: hidden; }
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--off);color:var(--navy);overflow-x:hidden}
 
-/* ── NAV ── */
-#nav {
-  position: fixed; top: 0; left: 0; width: var(--nav); height: 100vh;
-  background: var(--navy); border-right: 1px solid rgba(255,255,255,.05);
-  display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+/* NAV */
+#nav{position:fixed;top:0;left:0;width:var(--nav);height:100vh;background:var(--navy);border-right:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.nav-logo{padding:24px 20px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px}
+.nav-logo-box{width:36px;height:36px;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;font-size:13px;color:var(--navy);flex-shrink:0}
+.nav-logo-text{font-family:var(--fh);font-size:18px;font-weight:600;color:var(--white);letter-spacing:.06em}
+.nav-sub{font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin:14px 0 6px 20px}
+.nav-links{list-style:none;padding:0 10px;flex:1}
+.nav-links li{margin-bottom:2px}
+.nav-links a{display:flex;align-items:center;gap:10px;padding:8px 12px;font-size:12px;color:var(--muted);text-decoration:none;border-radius:5px;transition:all .15s}
+.nav-links a:hover{background:rgba(255,255,255,.04);color:var(--white)}
+.nav-links a.active{background:rgba(245,200,0,.1);color:var(--yellow)}
+.nav-num{font-family:var(--fh);font-size:11px;color:rgba(255,255,255,.2);min-width:20px}
+.nav-links a.active .nav-num{color:rgba(245,200,0,.4)}
+.nav-bot{padding:14px 20px;border-top:1px solid rgba(255,255,255,.06);font-size:10px;color:rgba(139,154,176,.4);line-height:1.6}
+
+/* MAIN */
+main{margin-left:var(--nav)}
+section{padding:64px 56px;scroll-margin-top:0}
+.dark-sec{background:var(--navy)}
+.yellow-sec{background:var(--yellow)}
+.white-sec{background:var(--white)}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--yellow);z-index:200;transition:width .1s}
+
+/* GENERIC */
+.lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow2);margin-bottom:8px}
+.dark-sec .lbl{color:rgba(245,200,0,.6)}
+.yellow-sec .lbl{color:rgba(11,23,36,.45)}
+.stitle{font-family:var(--fh);font-size:clamp(24px,3vw,38px);font-weight:700;text-transform:uppercase;color:var(--navy);line-height:1.1;margin-bottom:12px}
+.dark-sec .stitle{color:#fff}
+.yellow-sec .stitle{color:var(--navy)}
+.ssub{font-size:14px;color:var(--dark);line-height:1.65;max-width:580px;margin-bottom:40px;font-weight:300}
+.dark-sec .ssub{color:rgba(255,255,255,.55)}
+.sep{width:44px;height:3px;background:var(--yellow);margin-bottom:20px}
+
+/* COVER */
+#cover{background:var(--navy);min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+#cover::before{content:'';position:absolute;top:0;right:0;width:35%;height:100%;background:rgba(19,32,53,.5);clip-path:polygon(18% 0,100% 0,100% 100%,0 100%);pointer-events:none}
+.cover-inner{position:relative;z-index:1;max-width:640px}
+.cover-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,0,.12);border:1px solid rgba(245,200,0,.25);color:#F5C800;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;margin-bottom:28px}
+.cover-tag::before{content:'';width:6px;height:6px;background:#F5C800;border-radius:50%}
+.cover h1{font-family:var(--fh);font-size:clamp(38px,5vw,64px);font-weight:700;color:#FFFFFF;text-transform:uppercase;line-height:1.05;letter-spacing:.02em;margin-bottom:16px;max-width:560px}
+.cover h1 span{color:#F5C800;display:block}
+.cover-sub{font-size:15px;color:rgba(255,255,255,.62);line-height:1.65;max-width:500px;margin-bottom:44px;font-weight:300}
+.cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.05);max-width:600px}
+.cs{padding:18px 16px;background:rgba(255,255,255,.03)}
+.cs-n{font-family:var(--fh);font-size:28px;font-weight:700;color:#F5C800;line-height:1}
+.cs-l{font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.04em;line-height:1.4;margin-top:4px}
+.cover-date{margin-top:40px;font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.05em;text-transform:uppercase}
+
+/* INSIGHT BOX */
+.insight{background:var(--navy);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;margin-top:24px}
+.dark-sec .insight{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.insight-icon{width:36px;height:36px;background:rgba(245,200,0,.12);border:1px solid rgba(245,200,0,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.insight-text{font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;font-style:italic}
+.insight-text strong{color:#F5C800;font-style:normal;font-weight:500}
+.white-sec .insight{background:var(--off);border:1px solid var(--gray)}
+.white-sec .insight-text{color:var(--dark)}
+.white-sec .insight-text strong{color:var(--navy)}
+
+/* GOAL GRID */
+.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--gray)}
+.gc{background:var(--white);padding:24px}
+.gc.dark{background:var(--navy)}
+.gc-lbl{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.gc.dark .gc-lbl{color:rgba(245,200,0,.4)}
+.gc-num{font-family:var(--fh);font-size:36px;font-weight:700;color:var(--yellow);line-height:1;margin-bottom:6px}
+.gc-title{font-family:var(--fh);font-size:15px;font-weight:600;color:var(--navy);text-transform:uppercase;margin-bottom:6px}
+.gc.dark .gc-title{color:#fff}
+.gc-text{font-size:12px;color:var(--dark);line-height:1.6}
+.gc.dark .gc-text{color:var(--muted)}
+
+/* AUDIENCE */
+.aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.aud{border:1px solid var(--gray);padding:28px;position:relative}
+.aud::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+.aud.b2b::before{background:var(--b2b)}
+.aud.b2c::before{background:var(--b2c)}
+.aud-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;margin-bottom:14px}
+.aud.b2b .aud-badge{background:var(--b2b-l);color:var(--b2b-d)}
+.aud.b2c .aud-badge{background:var(--b2c-l);color:var(--b2c-d)}
+.aud-title{font-family:var(--fh);font-size:18px;font-weight:700;color:var(--navy);text-transform:uppercase;margin-bottom:6px}
+.aud-segs{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.aud-seg{background:var(--off);padding:10px 12px;border-left:3px solid}
+.aud.b2b .aud-seg{border-color:var(--b2b)}
+.aud.b2c .aud-seg{border-color:var(--b2c)}
+.aud-seg-t{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.aud-seg-d{font-size:11px;color:var(--dark);line-height:1.4}
+.aud-pain{background:var(--navy);padding:12px;font-size:12px;color:var(--muted);line-height:1.5;font-style:italic}
+.aud-pain strong{color:var(--yellow);font-style:normal}
+
+/* LINKEDIN SECTION */
+.li-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--gray)}
+.li-card{background:var(--white);padding:24px}
+.li-card.accent{background:var(--navy)}
+.li-num{font-family:var(--fh);font-size:32px;font-weight:700;color:var(--yellow);line-height:1;margin-bottom:6px}
+.li-title{font-family:var(--fh);font-size:14px;font-weight:600;color:var(--navy);text-transform:uppercase;margin-bottom:8px}
+.li-card.accent .li-title{color:#fff}
+.li-desc{font-size:12px;color:var(--dark);line-height:1.6}
+.li-card.accent .li-desc{color:var(--muted)}
+.li-flow{display:flex;flex-direction:column;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--gray)}
+.li-card.accent .li-flow{border-color:rgba(255,255,255,.08)}
+.li-step{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--dark);line-height:1.4}
+.li-card.accent .li-step{color:rgba(255,255,255,.55)}
+.li-step::before{content:'→';color:var(--muted);flex-shrink:0;font-size:10px;margin-top:1px}
+
+/* CANDIDATE FUNNEL */
+.funnel-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+.funnel-channel{background:var(--white);border:1px solid var(--gray);padding:20px}
+.fc-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.fc-title{font-family:var(--fh);font-size:14px;font-weight:600;color:var(--navy);text-transform:uppercase}
+.fc-phase{font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px}
+.ph1-badge{background:var(--off);color:var(--dark)}
+.ph2-badge{background:#FAEEDA;color:#633806}
+.ph3-badge{background:var(--b2b-l);color:var(--b2b-d)}
+.fc-nums{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.fc-num-box{background:var(--off);padding:8px 10px}
+.fc-n{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--navy);line-height:1}
+.fc-nl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.fc-why{font-size:11px;color:var(--dark);line-height:1.55;font-style:italic;border-left:2px solid var(--yellow);padding-left:8px}
+.funnel-total{background:var(--navy);padding:20px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px}
+.ft-item{background:rgba(255,255,255,.03);padding:16px}
+.ft-n{font-family:var(--fh);font-size:28px;font-weight:700;color:var(--yellow);line-height:1}
+.ft-l{font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.04em;line-height:1.4;margin-top:4px}
+.ft-note{font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-style:italic}
+
+/* PHASES */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.05)}
+.ph{background:var(--navy2);padding:28px 24px;position:relative}
+.ph.current{background:var(--navy3);border-top:3px solid var(--yellow)}
+.ph-bg-n{font-family:var(--fh);font-size:60px;font-weight:700;color:rgba(255,255,255,.04);position:absolute;top:16px;right:16px;line-height:1}
+.ph-period{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ph-name{font-family:var(--fh);font-size:20px;font-weight:700;color:#fff;text-transform:uppercase;margin-bottom:4px}
+.ph-budget{font-family:var(--fh);font-size:26px;font-weight:700;color:var(--yellow);margin-bottom:16px}
+.ph-budget span{font-size:13px;color:var(--muted);font-family:var(--fb);font-weight:300}
+
+.ph-deliverables{margin-bottom:16px}
+.ph-del-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:rgba(245,200,0,.5);margin-bottom:8px}
+.ph-del-item{display:flex;gap:8px;font-size:12px;color:rgba(255,255,255,.7);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.4}
+.ph-del-item:last-child{border-bottom:none}
+.ph-del-item::before{content:'';width:14px;height:14px;background:rgba(245,200,0,.1);border:1px solid rgba(245,200,0,.2);flex-shrink:0;margin-top:1px}
+
+.ph-result{background:rgba(245,200,0,.08);border:1px solid rgba(245,200,0,.15);padding:12px}
+.ph-res-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:rgba(245,200,0,.5);margin-bottom:6px;font-weight:600}
+.ph-res-val{font-size:12px;color:rgba(255,255,255,.6);line-height:1.6}
+.ph-res-val strong{color:var(--yellow);font-weight:500}
+
+.ph-why{background:rgba(255,255,255,.03);padding:10px 12px;margin-top:10px;font-size:11px;color:rgba(255,255,255,.4);line-height:1.55;font-style:italic}
+
+/* CHANNELS */
+.ch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--gray)}
+.ch{background:var(--white);padding:22px}
+.ch.dark{background:var(--navy)}
+.ch-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;margin-bottom:12px}
+.b2b-b{background:var(--b2b-l);color:var(--b2b-d)}
+.b2c-b{background:var(--b2c-l);color:var(--b2c-d)}
+.both-b{background:#FAEEDA;color:#633806}
+.free-b{background:var(--b2c-l);color:var(--b2c-d)}
+.paid-b{background:var(--b2b-l);color:var(--b2b-d)}
+.later-b{background:var(--off);color:var(--dark)}
+.ch.dark .ch-badge{background:rgba(245,200,0,.15);color:var(--yellow)}
+.ch-title{font-family:var(--fh);font-size:14px;font-weight:600;color:var(--navy);text-transform:uppercase;margin-bottom:6px}
+.ch.dark .ch-title{color:#fff}
+.ch-desc{font-size:12px;color:var(--dark);line-height:1.6;margin-bottom:10px}
+.ch.dark .ch-desc{color:var(--muted)}
+.ch-action{font-size:11px;color:var(--muted);border-top:1px solid var(--gray);padding-top:10px;line-height:1.5}
+.ch.dark .ch-action{border-color:rgba(255,255,255,.06)}
+.ch-bud{font-size:12px;font-weight:600;color:var(--yellow);margin-top:6px}
+
+/* BUDGET */
+.bud-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(11,23,36,.1)}
+.bc{background:var(--yellow);padding:24px}
+.bc.main{background:var(--navy)}
+.bc-ph{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(11,23,36,.4);margin-bottom:6px}
+.bc.main .bc-ph{color:rgba(245,200,0,.4)}
+.bc-total{font-family:var(--fh);font-size:32px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.bc.main .bc-total{color:var(--yellow)}
+.bc-usd{font-size:12px;color:rgba(11,23,36,.45);margin-bottom:14px}
+.bc.main .bc-usd{color:var(--muted)}
+.bc-rows{display:flex;flex-direction:column;gap:5px;border-top:1px solid rgba(11,23,36,.1);padding-top:12px}
+.bc.main .bc-rows{border-color:rgba(255,255,255,.08)}
+.bc-row{display:flex;justify-content:space-between;font-size:11px}
+.bc-row span:first-child{color:rgba(11,23,36,.55)}
+.bc.main .bc-row span:first-child{color:var(--muted)}
+.bc-row span:last-child{font-weight:500;color:var(--navy)}
+.bc.main .bc-row span:last-child{color:#fff}
+.bc-sep{border-top:1px solid rgba(11,23,36,.1);padding-top:5px;margin-top:3px}
+.bc.main .bc-sep{border-color:rgba(255,255,255,.08)}
+.bc-exp{background:rgba(11,23,36,.06);padding:10px;margin-top:10px;font-size:11px;color:rgba(11,23,36,.6);line-height:1.5}
+.bc.main .bc-exp{background:rgba(245,200,0,.08);color:var(--muted)}
+
+/* KPI TABLE */
+.kpi-table{width:100%;border-collapse:collapse;margin-top:28px}
+.kpi-table th{text-align:left;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.4);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+.kpi-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px;color:rgba(255,255,255,.75);vertical-align:top}
+.kpi-table tr:last-child td{border-bottom:none}
+.kpi-table td:first-child{color:rgba(255,255,255,.4);font-size:11px}
+.kv{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--yellow);display:block;line-height:1}
+.kl{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
+.kw{font-size:11px;color:rgba(255,255,255,.35);font-style:italic;margin-top:4px;line-height:1.4}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.step{background:var(--white);border:1px solid var(--gray);padding:20px;display:flex;gap:14px}
+.step-n{font-family:var(--fh);font-size:26px;font-weight:700;color:var(--gray);min-width:36px;line-height:1}
+.step-t{font-family:var(--fh);font-size:13px;font-weight:600;color:var(--navy);text-transform:uppercase;margin-bottom:4px}
+.step-d{font-size:12px;color:var(--dark);line-height:1.6}
+.step-w{font-size:11px;color:var(--yellow2);margin-top:5px;font-weight:500}
+
+/* CTA */
+.cta-inner{text-align:center}
+.cta-inner h2{font-family:var(--fh);font-size:clamp(26px,4vw,46px);font-weight:700;color:var(--navy);text-transform:uppercase;margin-bottom:10px}
+.cta-inner p{font-size:15px;color:rgba(11,23,36,.55);margin-bottom:28px;font-weight:300}
+.cta-btn{display:inline-block;background:var(--navy);color:var(--yellow);font-family:var(--fb);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:14px 36px;text-decoration:none}
+
+/* SLOT */
+.slot{border:2px dashed var(--gray);padding:20px;text-align:center;margin-top:20px}
+.slot p:first-child{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:4px}
+.slot p:last-child{font-size:13px;font-weight:500;color:var(--dark)}
+
+/* SHARE */
+.share-bar{position:fixed;bottom:20px;right:20px;z-index:100}
+.share-btn{width:40px;height:40px;background:var(--navy);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.share-btn:hover{background:var(--navy2)}
+
+/* MOBILE */
+.mob-btn{display:none;position:fixed;top:12px;left:12px;z-index:300;width:40px;height:40px;background:var(--navy);border:1px solid rgba(255,255,255,.1);align-items:center;justify-content:center;cursor:pointer}
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:150}
+.mob-overlay.open{display:block}
+
+@media(max-width:768px){
+  :root{--nav:0px}
+  #nav{position:fixed;top:0;left:-280px;width:280px;transition:left .25s;z-index:200}
+  #nav.open{left:0}
+  .mob-btn{display:flex}
+  main{margin-left:0}
+  section{padding:56px 20px 44px}
+  #cover{min-height:auto;padding:72px 20px 48px}
+  #cover::before{display:none}
+  .cover-stats{grid-template-columns:1fr 1fr}
+  .stitle{font-size:22px}
+  .goal-grid,.aud-grid,.li-grid,.funnel-grid,.phases,.ch-grid,.bud-cards,.steps{grid-template-columns:1fr}
+  .funnel-total{grid-template-columns:1fr 1fr}
+  .kpi-table th,.kpi-table td{padding:8px}
 }
-.nav-logo { padding: 28px 24px 24px; border-bottom: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; gap: 10px; }
-.nav-logo-box { width: 36px; height: 36px; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-weight: 700; font-size: 13px; color: var(--navy); flex-shrink: 0; }
-.nav-logo-text { font-family: var(--fh); font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: .06em; }
-.nav-subtitle { font-size: 10px; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; margin-top: 14px; margin-left: 24px; margin-bottom: 8px; }
-.nav-links { list-style: none; padding: 0 12px; flex: 1; }
-.nav-links li { margin-bottom: 2px; }
-.nav-links a {
-  display: flex; align-items: center; gap: 10px; padding: 9px 12px;
-  font-size: 13px; color: var(--muted); text-decoration: none;
-  border-radius: 6px; transition: background .15s, color .15s; font-weight: 400;
-}
-.nav-links a:hover { background: rgba(255,255,255,.04); color: var(--white); }
-.nav-links a.active { background: rgba(245,200,0,.1); color: var(--yellow); }
-.nav-links a .nav-num { font-family: var(--fh); font-size: 11px; color: rgba(255,255,255,.2); min-width: 20px; }
-.nav-links a.active .nav-num { color: rgba(245,200,0,.5); }
-.nav-bottom { padding: 16px 24px; border-top: 1px solid rgba(255,255,255,.06); font-size: 11px; color: rgba(139,154,176,.4); line-height: 1.6; }
-
-/* ── MAIN ── */
-main { margin-left: var(--nav); }
-section { min-height: 100vh; padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; position: relative; scroll-margin-top: 0; }
-
-/* ── COVER ── */
-#cover { background: var(--navy); padding: 80px 64px; overflow: hidden; }
-#cover::before { content: ''; position: absolute; top: 0; right: 0; width: 35%; height: 100%; background: rgba(19,32,53,0.6); clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%); z-index: 0; pointer-events: none; }
-.cover-inner { position: relative; z-index: 1; max-width: 680px; }
-.cover-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(245,200,0,.12); border: 1px solid rgba(245,200,0,.25); color: #F5C800; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; padding: 6px 14px; margin-bottom: 28px; }
-.cover-tag::before { content: ''; width: 6px; height: 6px; background: #F5C800; border-radius: 50%; }
-.cover h1 { font-family: var(--fh); font-size: clamp(40px, 5vw, 68px); font-weight: 700; color: #FFFFFF; text-transform: uppercase; line-height: 1.05; letter-spacing: .02em; margin-bottom: 16px; max-width: 560px; }
-.cover h1 span { color: #F5C800; display: block; line-height: 1.05; }
-.cover-sub { font-size: 16px; color: rgba(255,255,255,0.62); line-height: 1.65; max-width: 500px; margin-bottom: 48px; font-weight: 300; }
-.cover-stats { display: flex; gap: 2px; background: rgba(255,255,255,.04); width: fit-content; }
-.cs { padding: 20px 28px; background: rgba(255,255,255,.03); }
-.cs-n { font-family: var(--fh); font-size: 32px; font-weight: 700; color: #F5C800; }
-.cs-l { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: .04em; line-height: 1.4; margin-top: 4px; }
-.cover-date { margin-top: 48px; font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: .05em; text-transform: uppercase; }
-
-/* ── GENERIC ── */
-.sec-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--yellow-dk); margin-bottom: 10px; }
-.sec-title { font-family: var(--fh); font-size: clamp(26px, 3vw, 42px); font-weight: 700; text-transform: uppercase; color: var(--navy); line-height: 1.1; margin-bottom: 14px; }
-.sec-sub { font-size: 15px; color: var(--dark); line-height: 1.65; max-width: 600px; margin-bottom: 48px; font-weight: 300; }
-.separator { width: 48px; height: 3px; background: var(--yellow); margin-bottom: 20px; }
-
-/* ── DARK SECTION ── */
-.dark-sec { background: var(--navy); }
-.dark-sec .sec-label { color: rgba(245,200,0,0.6); }
-.dark-sec .sec-title { color: #FFFFFF; }
-.dark-sec .sec-sub { color: rgba(255,255,255,0.55); }
-
-/* ── YELLOW SECTION ── */
-.yellow-sec { background: var(--yellow); }
-.yellow-sec .sec-label { color: rgba(11,23,36,.5); }
-.yellow-sec .sec-title { color: var(--navy); }
-.yellow-sec .sec-sub { color: rgba(11,23,36,.6); }
-
-/* ── GOAL ── */
-#goal { background: var(--off); }
-.goal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--gray); margin-bottom: 32px; }
-.goal-card { background: var(--white); padding: 28px; }
-.goal-card.accent { background: var(--navy); }
-.goal-card.accent .gc-title { color: var(--white); }
-.goal-card.accent .gc-text { color: var(--muted); }
-.gc-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-.goal-card.accent .gc-label { color: rgba(245,200,0,.5); }
-.gc-num { font-family: var(--fh); font-size: 40px; font-weight: 700; color: var(--yellow); line-height: 1; margin-bottom: 8px; }
-.gc-title { font-family: var(--fh); font-size: 16px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 8px; }
-.gc-text { font-size: 13px; color: var(--dark); line-height: 1.6; }
-.goal-insight { background: var(--navy); padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; }
-.gi-icon { width: 40px; height: 40px; background: rgba(245,200,0,.12); border: 1px solid rgba(245,200,0,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.gi-text { font-size: 14px; color: var(--muted); line-height: 1.65; font-style: italic; }
-.gi-text strong { color: var(--yellow); font-style: normal; font-weight: 500; }
-
-/* ── AUDIENCES ── */
-#audiences { background: var(--white); }
-.aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.aud-card { border: 1px solid var(--gray); padding: 32px; position: relative; overflow: hidden; }
-.aud-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
-.aud-card.b2b::before { background: var(--b2b); }
-.aud-card.b2c::before { background: var(--b2c); }
-.aud-badge { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 16px; }
-.aud-card.b2b .aud-badge { background: var(--b2b-light); color: var(--b2b-dark); }
-.aud-card.b2c .aud-badge { background: var(--b2c-light); color: var(--b2c-dark); }
-.aud-title { font-family: var(--fh); font-size: 20px; font-weight: 700; color: var(--navy); text-transform: uppercase; margin-bottom: 6px; }
-.aud-sub { font-size: 12px; color: var(--dark); margin-bottom: 20px; line-height: 1.5; }
-.aud-segs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.aud-seg { background: var(--off); padding: 12px 14px; border-left: 3px solid; }
-.aud-card.b2b .aud-seg { border-color: var(--b2b); }
-.aud-card.b2c .aud-seg { border-color: var(--b2c); }
-.aud-seg-title { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
-.aud-seg-text { font-size: 11px; color: var(--dark); line-height: 1.4; }
-.aud-pain { background: var(--navy); padding: 14px; font-size: 12px; color: var(--muted); line-height: 1.5; font-style: italic; }
-.aud-pain strong { color: var(--yellow); font-style: normal; }
-
-/* ── PHASES ── */
-#phases { background: var(--navy); min-height: auto; padding: 72px 64px; }
-.phases-timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,.04); margin-top: 40px; }
-.phase-card { background: var(--navy-mid); padding: 32px 28px; position: relative; }
-.phase-card.active-phase { background: var(--navy-light); border-top: 3px solid var(--yellow); }
-.ph-num { font-family: var(--fh); font-size: 48px; font-weight: 700; color: rgba(255,255,255,.06); position: absolute; top: 20px; right: 20px; line-height: 1; }
-.ph-period { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-.ph-name { font-family: var(--fh); font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }
-.ph-budget { font-family: var(--fh); font-size: 28px; font-weight: 700; color: var(--yellow); margin-bottom: 16px; }
-.ph-budget span { font-size: 14px; color: var(--muted); font-family: var(--fb); font-weight: 300; }
-.ph-items { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 20px; }
-.ph-items li { font-size: 12px; color: var(--muted); display: flex; gap: 8px; line-height: 1.45; }
-.ph-items li::before { content: ''; width: 16px; height: 16px; background: rgba(245,200,0,.15); border: 1px solid rgba(245,200,0,.2); flex-shrink: 0; display: flex; margin-top: 1px; }
-.ph-result { background: rgba(245,200,0,.08); border: 1px solid rgba(245,200,0,.15); padding: 12px 14px; }
-.ph-result-label { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: rgba(245,200,0,.5); margin-bottom: 6px; font-weight: 600; }
-.ph-result-items { font-size: 12px; color: rgba(255,255,255,.6); line-height: 1.6; }
-
-/* ── CHANNELS B2B ── */
-#channels-b2b { background: var(--white); min-height: auto; padding: 72px 64px; }
-.ch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--gray); }
-.ch-card { background: var(--white); padding: 24px; }
-.ch-card.highlight { background: var(--navy); }
-.ch-badge { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; margin-bottom: 14px; }
-.b2b-badge { background: var(--b2b-light); color: var(--b2b-dark); }
-.b2c-badge { background: var(--b2c-light); color: var(--b2c-dark); }
-.both-badge { background: #FAEEDA; color: #633806; }
-.free-badge { background: #EAF3DE; color: #27500A; }
-.paid-badge { background: #E6F1FB; color: #0C447C; }
-.later-badge { background: var(--off); color: var(--dark); }
-.ch-card.highlight .ch-badge { background: rgba(245,200,0,.15); color: var(--yellow); }
-.ch-icon { width: 40px; height: 40px; background: var(--off); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-.ch-card.highlight .ch-icon { background: rgba(255,255,255,.06); }
-.ch-title { font-family: var(--fh); font-size: 15px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 8px; }
-.ch-card.highlight .ch-title { color: var(--white); }
-.ch-desc { font-size: 12px; color: var(--dark); line-height: 1.6; margin-bottom: 12px; }
-.ch-card.highlight .ch-desc { color: var(--muted); }
-.ch-action { font-size: 11px; color: var(--muted); border-top: 1px solid var(--gray); padding-top: 12px; line-height: 1.5; }
-.ch-card.highlight .ch-action { border-color: rgba(255,255,255,.06); }
-.ch-budget { font-size: 12px; font-weight: 600; color: var(--yellow); margin-top: 6px; }
-
-/* ── CHANNELS B2C ── */
-#channels-b2c { background: var(--off); min-height: auto; padding: 72px 64px; }
-.b2c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.b2c-seg { background: var(--white); border: 1px solid var(--gray); padding: 28px; }
-.b2c-seg-title { font-family: var(--fh); font-size: 16px; font-weight: 700; color: var(--navy); text-transform: uppercase; margin-bottom: 4px; }
-.b2c-seg-sub { font-size: 12px; color: var(--dark); margin-bottom: 16px; }
-.b2c-channels { display: flex; flex-direction: column; gap: 8px; }
-.b2c-ch { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; background: var(--off); }
-.b2c-ch-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--b2c); flex-shrink: 0; margin-top: 4px; }
-.b2c-ch-body {}
-.b2c-ch-name { font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
-.b2c-ch-desc { font-size: 11px; color: var(--dark); line-height: 1.4; }
-.trust-factors { background: var(--navy); padding: 28px; margin-top: 24px; }
-.tf-title { font-family: var(--fh); font-size: 16px; color: var(--white); text-transform: uppercase; margin-bottom: 16px; }
-.tf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(255,255,255,.04); }
-.tf-item { background: var(--navy-mid); padding: 14px; }
-.tf-icon { font-size: 18px; margin-bottom: 6px; }
-.tf-name { font-size: 11px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
-.tf-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
-
-/* ── BUDGET ── */
-#budget { background: var(--yellow); min-height: auto; padding: 72px 64px; }
-.budget-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(11,23,36,.1); margin-bottom: 32px; }
-.bc { background: var(--yellow); padding: 28px 24px; }
-.bc.main { background: var(--navy); }
-.bc-phase { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(11,23,36,.4); margin-bottom: 8px; }
-.bc.main .bc-phase { color: rgba(245,200,0,.5); }
-.bc-total { font-family: var(--fh); font-size: 36px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
-.bc.main .bc-total { color: var(--yellow); }
-.bc-usd { font-size: 13px; color: rgba(11,23,36,.5); margin-bottom: 16px; }
-.bc.main .bc-usd { color: var(--muted); }
-.bc-rows { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid rgba(11,23,36,.1); padding-top: 14px; }
-.bc.main .bc-rows { border-color: rgba(255,255,255,.08); }
-.bc-row { display: flex; justify-content: space-between; font-size: 12px; }
-.bc-row span:first-child { color: rgba(11,23,36,.6); }
-.bc.main .bc-row span:first-child { color: var(--muted); }
-.bc-row span:last-child { font-weight: 500; color: var(--navy); }
-.bc.main .bc-row span:last-child { color: var(--white); }
-.bc-sep { border-top: 1px solid rgba(11,23,36,.1); padding-top: 6px; margin-top: 4px; }
-.bc.main .bc-sep { border-color: rgba(255,255,255,.08); }
-.bc-sep span:first-child { font-weight: 600 !important; color: var(--navy) !important; }
-.bc.main .bc-sep span:first-child { color: var(--yellow) !important; }
-.bc-result { background: rgba(11,23,36,.08); padding: 12px; margin-top: 12px; font-size: 12px; color: rgba(11,23,36,.7); line-height: 1.5; }
-.bc.main .bc-result { background: rgba(245,200,0,.1); color: var(--muted); }
-.budget-rule { background: var(--navy); padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; }
-.br-icon { width: 40px; height: 40px; background: rgba(245,200,0,.12); border: 1px solid rgba(245,200,0,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--fh); font-weight: 700; color: var(--yellow); }
-.br-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.br-text strong { color: var(--white); font-weight: 500; }
-
-/* ── TELEGRAM ── */
-#telegram { background: var(--white); min-height: auto; padding: 72px 64px; }
-.tg-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: start; }
-.tg-mix { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-.tg-mix-item { display: flex; align-items: center; gap: 0; overflow: hidden; border-radius: 4px; }
-.tg-mix-bar { height: 44px; display: flex; align-items: center; padding: 0 14px; font-size: 12px; font-weight: 600; }
-.tg-vac { background: var(--b2b); color: var(--white); flex: 7; }
-.tg-tip { background: var(--b2c); color: var(--white); flex: 2; }
-.tg-case { background: var(--yellow-dk); color: var(--navy); flex: 1; }
-.tg-legend { display: flex; flex-direction: column; gap: 6px; }
-.tg-leg { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--dark); }
-.tg-leg-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
-.tg-weeks { display: flex; flex-direction: column; gap: 8px; }
-.tg-week { border: 1px solid var(--gray); padding: 14px 16px; }
-.tw-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.tw-name { font-family: var(--fh); font-size: 13px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: .03em; }
-.tw-focus { font-size: 11px; color: var(--dark); }
-.tw-posts { display: flex; gap: 4px; flex-wrap: wrap; }
-.tw-post { font-size: 10px; padding: 3px 8px; font-weight: 500; }
-.tw-post.v { background: var(--b2b-light); color: var(--b2b-dark); }
-.tw-post.t { background: var(--b2c-light); color: var(--b2c-dark); }
-.tw-post.c { background: #FAEEDA; color: #633806; }
-.tw-post.vet { background: #FCEBEB; color: #A32D2D; }
-
-/* ── RESULTS ── */
-#results { background: var(--navy); min-height: auto; padding: 72px 64px; }
-.results-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
-.results-table th { text-align: left; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,.06); }
-.results-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,.04); font-size: 13px; color: var(--white); vertical-align: top; }
-.results-table tr:last-child td { border-bottom: none; }
-.results-table td:first-child { color: var(--muted); font-size: 12px; }
-.kpi-val { font-family: var(--fh); font-size: 22px; font-weight: 700; color: var(--yellow); display: block; line-height: 1; }
-.kpi-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
-.ph-tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; }
-.ph-tag-1 { background: rgba(255,255,255,.06); color: var(--muted); }
-.ph-tag-2 { background: rgba(245,200,0,.1); color: var(--yellow); }
-.ph-tag-3 { background: rgba(245,200,0,.2); color: var(--yellow); }
-
-/* ── NEXT STEPS ── */
-#next { background: var(--off); min-height: auto; padding: 72px 64px; }
-.steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 32px; }
-.step-card { background: var(--white); border: 1px solid var(--gray); padding: 24px; display: flex; gap: 16px; }
-.step-num { font-family: var(--fh); font-size: 28px; font-weight: 700; color: var(--gray); min-width: 40px; line-height: 1; }
-.step-body {}
-.step-title { font-family: var(--fh); font-size: 14px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 6px; }
-.step-text { font-size: 12px; color: var(--dark); line-height: 1.6; }
-.step-when { font-size: 11px; color: var(--yellow-dk); margin-top: 6px; font-weight: 500; }
-
-/* ── SLOTS ── */
-.slot { border: 2px dashed var(--gray); padding: 24px; text-align: center; background: rgba(245,200,0,.02); }
-.slot-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; font-style: italic; }
-.slot-title { font-size: 14px; font-weight: 500; color: var(--dark); }
-
-/* ── CONTACT ── */
-#contact-cta { background: var(--yellow); padding: 72px 64px; min-height: auto; }
-.cta-inner { text-align: center; }
-.cta-title { font-family: var(--fh); font-size: clamp(28px, 4vw, 52px); font-weight: 700; color: var(--navy); text-transform: uppercase; margin-bottom: 12px; }
-.cta-sub { font-size: 16px; color: rgba(11,23,36,.6); margin-bottom: 32px; font-weight: 300; }
-.cta-btn { display: inline-block; background: var(--navy); color: var(--yellow); font-family: var(--fb); font-weight: 600; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 16px 40px; text-decoration: none; transition: background .2s; }
-.cta-btn:hover { background: var(--navy-mid); }
-
-/* ── PROGRESS BAR ── */
-#progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--yellow); z-index: 200; transition: width .1s; }
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(245,200,0,.3); }
-
-/* ── PRINT / SHARE ── */
-.share-bar { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 8px; z-index: 100; }
-.share-btn { width: 40px; height: 40px; background: var(--navy); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; cursor: pointer; title: ''; transition: background .2s; }
-.share-btn:hover { background: var(--navy-mid); }
-.share-btn svg { width: 16px; height: 16px; stroke: var(--muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-/* ── MOBILE ── */
-@media (max-width: 768px) {
-  :root { --nav: 0px; }
-
-  #nav {
-    position: fixed; top: 0; left: -280px; width: 280px; height: 100vh;
-    transition: left .25s ease; z-index: 200;
-  }
-  #nav.open { left: 0; }
-
-  .mob-menu-btn {
-    display: flex; position: fixed; top: 12px; left: 12px; z-index: 300;
-    width: 40px; height: 40px; background: var(--navy);
-    border: 1px solid rgba(255,255,255,.1);
-    align-items: center; justify-content: center; cursor: pointer;
-  }
-  .mob-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,.5); z-index: 150;
-  }
-  .mob-overlay.open { display: block; }
-
-  main { margin-left: 0; }
-
-  section {
-    min-height: auto;
-    padding: 56px 20px 48px;
-  }
-
-  #cover { padding: 72px 20px 48px; }
-  #cover::before { display: none; }
-  .cover-inner { max-width: 100%; }
-  .cover-stats {
-    grid-template-columns: 1fr 1fr;
-    display: grid; gap: 1px; width: 100%;
-  }
-  .cs { padding: 16px; }
-  .cs-n { font-size: 26px; }
-
-  .sec-title { font-size: 24px; }
-
-  .goal-grid { grid-template-columns: 1fr; }
-  .aud-grid { grid-template-columns: 1fr; }
-
-  .phases-timeline { grid-template-columns: 1fr; }
-  .phase-card { padding: 24px 20px; }
-
-  .ch-grid { grid-template-columns: 1fr; }
-  .b2c-grid { grid-template-columns: 1fr; }
-  .tf-grid { grid-template-columns: 1fr 1fr; }
-
-  .budget-cards { grid-template-columns: 1fr; }
-  .bc { padding: 24px 20px; }
-
-  .tg-grid { grid-template-columns: 1fr; }
-  .tg-weeks { margin-top: 24px; }
-
-  .results-table { font-size: 12px; }
-  .results-table th, .results-table td { padding: 10px 8px; }
-  .kpi-val { font-size: 18px; }
-
-  .steps-grid { grid-template-columns: 1fr; }
-
-  .share-bar { bottom: 16px; right: 12px; }
-
-  #contact-cta { padding: 56px 20px; }
-}
-
-@media (max-width: 480px) {
-  .tf-grid { grid-template-columns: 1fr; }
-  .cover-stats { grid-template-columns: 1fr 1fr; }
-  .ph-items li { font-size: 11px; }
-}
-
-.mob-menu-btn { display: none; }
-
-@media print {
-  #nav, #progress, .share-bar { display: none; }
-  main { margin-left: 0; }
-  section { page-break-before: always; }
+@media print{
+  #nav,.mob-btn,.share-bar{display:none}
+  main{margin-left:0}
+  section{page-break-inside:avoid}
 }
 </style>
 </head>
 <body>
 
-<div id="progress"></div>
-
-<div class="mob-overlay" id="mob-overlay" onclick="closeNav()"></div>
-<button class="mob-menu-btn" id="mob-btn" onclick="toggleNav()" aria-label="Меню">
+<div id="prog"></div>
+<div class="mob-overlay" id="mob-ov" onclick="closeNav()"></div>
+<button class="mob-btn" onclick="toggleNav()">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5C800" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
 </button>
 
-<!-- NAV -->
 <nav id="nav">
   <div class="nav-logo">
     <div class="nav-logo-box">RE</div>
     <span class="nav-logo-text">RELINK</span>
   </div>
-  <div class="nav-subtitle">Зміст</div>
+  <div class="nav-sub">Зміст</div>
   <ul class="nav-links">
     <li><a href="#cover" class="active"><span class="nav-num">00</span>Обкладинка</a></li>
-    <li><a href="#goal"><span class="nav-num">01</span>Цілі і ситуація</a></li>
-    <li><a href="#audiences"><span class="nav-num">02</span>Аудиторії B2B / B2C</a></li>
-    <li><a href="#phases"><span class="nav-num">03</span>3 фази стратегії</a></li>
-    <li><a href="#channels-b2b"><span class="nav-num">04</span>Канали B2B</a></li>
-    <li><a href="#channels-b2c"><span class="nav-num">05</span>Канали B2C</a></li>
-    <li><a href="#budget"><span class="nav-num">06</span>Зведений бюджет</a></li>
-    <li><a href="#telegram"><span class="nav-num">07</span>Telegram-стратегія</a></li>
-    <li><a href="#results"><span class="nav-num">08</span>Очікувані результати</a></li>
+    <li><a href="#goal"><span class="nav-num">01</span>Ціль</a></li>
+    <li><a href="#audiences"><span class="nav-num">02</span>B2B і B2C аудиторії</a></li>
+    <li><a href="#linkedin"><span class="nav-num">03</span>LinkedIn стратегія</a></li>
+    <li><a href="#candidates"><span class="nav-num">04</span>База кандидатів</a></li>
+    <li><a href="#phases"><span class="nav-num">05</span>3 фази — що і коли</a></li>
+    <li><a href="#channels"><span class="nav-num">06</span>Канали</a></li>
+    <li><a href="#budget"><span class="nav-num">07</span>Бюджет</a></li>
+    <li><a href="#kpi"><span class="nav-num">08</span>KPI і обґрунтування</a></li>
     <li><a href="#next"><span class="nav-num">09</span>Наступні кроки</a></li>
   </ul>
-  <div class="nav-bottom">Маркетингова стратегія RELINK<br>Травень 2025 · Конфіденційно</div>
+  <div class="nav-bot">RELINK · Маркетингова стратегія<br>Травень 2026 · Конфіденційно</div>
 </nav>
 
-<!-- MAIN -->
 <main>
 
 <!-- 00 COVER -->
 <section id="cover">
   <div class="cover-inner">
-    <div class="cover-tag">Маркетингова стратегія · 2025</div>
-    <h1 style="color:#FFFFFF;font-family:Oswald,Impact,sans-serif;font-size:clamp(40px,5vw,68px);font-weight:700;text-transform:uppercase;line-height:1.05;letter-spacing:.02em;margin-bottom:16px;max-width:560px;">Стратегія<br><span style="color:#F5C800;display:block;line-height:1.1;">Зростання<br>RELINK</span></h1>
-    <p style="font-size:16px;color:rgba(255,255,255,0.7);line-height:1.65;max-width:500px;margin-bottom:48px;font-weight:300;">Зведений план залучення B2B-клієнтів і B2C-кандидатів. Три фази з нульовим стартовим бюджетом і поступовим масштабуванням на основі доказових даних.</p>
+    <div class="cover-tag">Маркетингова стратегія · 2026</div>
+    <h1 style="color:#FFFFFF;font-family:'Oswald',Impact,sans-serif;font-size:clamp(38px,5vw,64px);font-weight:700;text-transform:uppercase;line-height:1.05;letter-spacing:.02em;margin-bottom:16px;max-width:560px;">
+      Стратегія<br>
+      <span style="color:#F5C800;display:block;line-height:1.1;">Зростання<br>RELINK</span>
+    </h1>
+    <p class="cover-sub">Покроковий план залучення B2B-клієнтів і побудови бази кандидатів. Три фази з нульовим стартовим бюджетом, обґрунтованими цифрами і конкретними продуктами на кожному етапі.</p>
     <div class="cover-stats">
-      <div class="cs"><div style="font-size:32px;font-weight:700;color:#F5C800;line-height:1;">3</div><div style="font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:.04em;line-height:1.4;margin-top:4px;">Фази<br>стратегії</div></div>
-      <div class="cs"><div style="font-size:32px;font-weight:700;color:#F5C800;line-height:1;">0→22K</div><div style="font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:.04em;line-height:1.4;margin-top:4px;">Бюджет грн<br>по місяцях</div></div>
-      <div class="cs"><div style="font-size:32px;font-weight:700;color:#F5C800;line-height:1;">6</div><div style="font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:.04em;line-height:1.4;margin-top:4px;">Місяців до<br>стабільного потоку</div></div>
-      <div class="cs"><div style="font-size:32px;font-weight:700;color:#F5C800;line-height:1;">10×</div><div style="font-size:11px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:.04em;line-height:1.4;margin-top:4px;">ROI від<br>першого клієнта</div></div>
+      <div class="cs"><div class="cs-n">3</div><div class="cs-l">Фази<br>стратегії</div></div>
+      <div class="cs"><div class="cs-n">0→22K</div><div class="cs-l">Бюджет грн<br>по місяцях</div></div>
+      <div class="cs"><div class="cs-n">6</div><div class="cs-l">Місяців до<br>стабільного потоку</div></div>
+      <div class="cs"><div class="cs-n">10×</div><div class="cs-l">ROI з<br>першого клієнта</div></div>
     </div>
-    <div style="margin-top:48px;font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:.05em;text-transform:uppercase;">Підготовлено для презентації замовникам · RELINK 2025</div>
+    <div class="cover-date">Підготовлено для RELINK · Травень 2026</div>
   </div>
 </section>
 
 <!-- 01 GOAL -->
-<section id="goal">
-  <div class="sec-label">01 · Ціль</div>
-  <h2 class="sec-title">Де ми зараз<br>і куди йдемо</h2>
-  <div class="separator"></div>
+<section id="goal" class="white-sec">
+  <div class="lbl">01 · Ціль</div>
+  <h2 class="stitle">Де зараз і куди йдемо</h2>
+  <div class="sep"></div>
   <div class="goal-grid">
-    <div class="goal-card">
-      <div class="gc-label">Поточна ситуація</div>
-      <div class="gc-title">Залежність від одного клієнта</div>
-      <div class="gc-text">RELINK має підтверджений досвід масового підбору, розуміння Defense / MilTech специфіки і реальні кейси. Але основний обсяг — один клієнт (BTRY.ENERGY). Завдання: диверсифікувати базу і вийти на стабільний потік нових замовників.</div>
+    <div class="gc">
+      <div class="gc-lbl">Поточна ситуація</div>
+      <div class="gc-title">Один клієнт — один ризик</div>
+      <div class="gc-text">RELINK має підтверджений досвід масового підбору і розуміння Defense / MilTech специфіки. Але основний обсяг роботи — один клієнт. Завдання: диверсифікувати базу і вийти на стабільний потік нових замовників.</div>
     </div>
-    <div class="goal-card">
-      <div class="gc-label">Мета на 6–12 місяців</div>
+    <div class="gc">
+      <div class="gc-lbl">Мета на 6 місяців</div>
       <div class="gc-title">10–15 активних клієнтів</div>
-      <div class="gc-text">Залучити 10 нових зовнішніх B2B-клієнтів, вийти на 15 активних, зменшити залежність від одного джерела доходу. Паралельно сформувати стабільну базу кандидатів що скорочує час закриття вакансій.</div>
+      <div class="gc-text">Залучити 10 нових зовнішніх B2B-клієнтів, зменшити залежність від одного джерела доходу. Паралельно сформувати базу кандидатів що скорочує терміни закриття вакансій.</div>
     </div>
-    <div class="goal-card accent">
-      <div class="gc-label">B2B пріоритет</div>
+    <div class="gc dark">
+      <div class="gc-lbl">B2B пріоритет</div>
       <div class="gc-num">50–500</div>
       <div class="gc-title">Компанії зі штатом</div>
-      <div class="gc-text">Defense / MilTech, виробництво, логістика, МСБ. З регулярною або критичною потребою в наймі де HR перевантажений або відсутній.</div>
+      <div class="gc-text">Defense / MilTech, виробництво, логістика, МСБ. З регулярною потребою в наймі де HR перевантажений або відсутній.</div>
     </div>
-    <div class="goal-card accent">
-      <div class="gc-label">B2C пріоритет</div>
+    <div class="gc dark">
+      <div class="gc-lbl">B2C пріоритет</div>
       <div class="gc-num">3</div>
       <div class="gc-title">Групи кандидатів</div>
-      <div class="gc-text">Робітничі спеціалісти (монтажники, пайщики) — найбільший оборот. Інженерно-технічні — найвища маржа. Ветерани — унікальна ніша де RELINK має природну перевагу.</div>
+      <div class="gc-text">Робітничі спеціалісти — найбільший оборот. Інженерно-технічні — найвища маржа. Ветерани — унікальна ніша де RELINK має природну перевагу через досвід засновників.</div>
     </div>
   </div>
-  <div class="goal-insight">
-    <div class="gi-icon">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5C800" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-    </div>
-    <div class="gi-text">Ключовий інсайт: <strong>кандидати — це продукт для B2B-клієнтів.</strong> Без бази кандидатів немає що запропонувати замовнику. Тому обидва напрями запускаються паралельно з першого дня — і підсилюють одне одного.</div>
+  <div class="insight">
+    <div class="insight-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5C800" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <div class="insight-text">Ключова логіка: <strong>кандидати — це продукт для B2B-клієнтів.</strong> Без бази кандидатів немає що запропонувати замовнику. Тому обидва напрями запускаються паралельно з першого дня і підсилюють одне одного.</div>
   </div>
 </section>
 
 <!-- 02 AUDIENCES -->
 <section id="audiences">
-  <div class="sec-label">02 · Аудиторії</div>
-  <h2 class="sec-title">B2B і B2C —<br>різна логіка, одна мета</h2>
-  <div class="separator"></div>
+  <div class="lbl">02 · Аудиторії</div>
+  <h2 class="stitle">B2B і B2C — різна логіка</h2>
+  <p class="ssub">Клієнт приймає рішення 2–8 тижнів і потребує довіри. Кандидат вирішує за годину і потребує конкретики.</p>
   <div class="aud-grid">
-    <div class="aud-card b2b">
+    <div class="aud b2b">
       <div class="aud-badge">B2B — клієнти</div>
-      <div class="aud-title">HR-директори та власники бізнесу</div>
-      <div class="aud-sub">Цикл рішення 2–8 тижнів. Потрібна довіра, кейси з цифрами і гарантія в договорі.</div>
+      <div class="aud-title">HR-директори та власники</div>
       <div class="aud-segs">
-        <div class="aud-seg">
-          <div class="aud-seg-title">ICP 1 — Defense / MilTech (основний)</div>
-          <div class="aud-seg-text">50–500 осіб. Складний відбір, перевірки, специфічні ролі. RELINK має досвід і розуміння специфіки.</div>
-        </div>
-        <div class="aud-seg">
-          <div class="aud-seg-title">ICP 2 — МСБ у виробництві та логістиці</div>
-          <div class="aud-seg-text">30–200 осіб. Власник хоче зняти найм з себе. Один підрядник для всіх типів вакансій.</div>
-        </div>
-        <div class="aud-seg">
-          <div class="aud-seg-title">ICP 3 — Вакансії 30+ днів без результату</div>
-          <div class="aud-seg-text">Найтепліша аудиторія. Вже усвідомили проблему. Потрібне конкретне рішення, а не переконання.</div>
-        </div>
+        <div class="aud-seg"><div class="aud-seg-t">ICP 1 — Defense / MilTech (основний)</div><div class="aud-seg-d">50–500 осіб. Складний відбір, перевірки, специфічні ролі. RELINK має досвід.</div></div>
+        <div class="aud-seg"><div class="aud-seg-t">ICP 2 — МСБ виробництво / логістика</div><div class="aud-seg-d">30–200 осіб. Власник хоче зняти найм з себе. Один підрядник для всіх вакансій.</div></div>
+        <div class="aud-seg"><div class="aud-seg-t">ICP 3 — Вакансії 30+ днів без результату</div><div class="aud-seg-d">Найтепліша аудиторія. Вже усвідомили проблему — потрібне рішення, а не переконання.</div></div>
       </div>
-      <div class="aud-pain">"Вакансія стоїть відкрита — <strong>виробництво зупиняється.</strong> HR перевантажений. Директор хоче гарантію результату."</div>
+      <div class="aud-pain">"Вакансія стоїть відкрита — <strong>виробництво зупиняється.</strong> HR перевантажений. Директор хоче гарантію."</div>
     </div>
-    <div class="aud-card b2c">
+    <div class="aud b2c">
       <div class="aud-badge">B2C — кандидати</div>
       <div class="aud-title">Монтажники, інженери, ветерани</div>
-      <div class="aud-sub">Рішення швидке. Головний бар'єр — недовіра до агенції і невизначеність умов.</div>
       <div class="aud-segs">
-        <div class="aud-seg">
-          <div class="aud-seg-title">Пріоритет 1 — Робітничі спеціалісти</div>
-          <div class="aud-seg-text">Монтажники, пайщики, оператори. Найбільший оборот. Ключові фактори: зарплата цифрою, графік, бронювання.</div>
-        </div>
-        <div class="aud-seg">
-          <div class="aud-seg-title">Пріоритет 2 — Інженерно-технічні</div>
-          <div class="aud-seg-text">Інженери, технологи, конструктори. Найвища маржа. Важливі: зміст проєкту, технології, стабільність.</div>
-        </div>
-        <div class="aud-seg">
-          <div class="aud-seg-title">Пріоритет 3 — Ветерани</div>
-          <div class="aud-seg-text">Унікальна ніша. Засновники RELINK мають досвід служби — природна довіра. Потрібна повага без пафосу.</div>
-        </div>
+        <div class="aud-seg"><div class="aud-seg-t">Пріоритет 1 — Робітничі спеціалісти</div><div class="aud-seg-d">Монтажники, пайщики, оператори. Найбільший оборот. Ключове: зарплата, графік, бронювання.</div></div>
+        <div class="aud-seg"><div class="aud-seg-t">Пріоритет 2 — Інженерно-технічні</div><div class="aud-seg-d">Інженери, технологи, конструктори. Найвища маржа. Важливі: проєкт, технології, стабільність.</div></div>
+        <div class="aud-seg"><div class="aud-seg-t">Пріоритет 3 — Ветерани</div><div class="aud-seg-d">Засновники RELINK мають досвід служби — природна довіра. Потрібна повага без пафосу.</div></div>
       </div>
-      <div class="aud-pain">"<strong>Де знайти роботу де мій досвід — перевага,</strong> а не знак питання? Де не буде хаосу, нерелевантних дзвінків і порожніх обіцянок?"</div>
+      <div class="aud-pain">"Де знайти роботу де <strong>мій досвід — перевага,</strong> а не знак питання? Де не буде порожніх обіцянок?"</div>
     </div>
   </div>
 </section>
 
-<!-- 03 PHASES -->
-<section id="phases" class="dark-sec">
-  <div class="sec-label">03 · Стратегія</div>
-  <h2 class="sec-title">Три фази:<br>доказ → інвестиція → масштаб</h2>
-  <div class="phases-timeline">
-    <div class="phase-card active-phase">
-      <div class="ph-num">1</div>
+<!-- 03 LINKEDIN -->
+<section id="linkedin" class="white-sec">
+  <div class="lbl">03 · LinkedIn стратегія</div>
+  <h2 class="stitle">Три рівні присутності в LinkedIn</h2>
+  <p class="ssub">LinkedIn — основний B2B-канал де є і HR-директори, і власники бізнесів. Потрібно три взаємопов'язані елементи.</p>
+  <div class="li-grid">
+    <div class="li-card">
+      <div class="li-num">01</div>
+      <div class="li-title">Сторінка компанії RELINK</div>
+      <div class="li-desc">Безкоштовна корпоративна сторінка. Без неї RELINK як організація не існує в LinkedIn. Будь-який HR-директор що перевіряє агенцію — шукає саме корпоративну сторінку.</div>
+      <div class="li-flow">
+        <div class="li-step">Створення сторінки з логотипом, описом і спеціалізацією — 1 день</div>
+        <div class="li-step">Публікація вакансій від імені компанії — постійно</div>
+        <div class="li-step">Кейси і новини агенції — 2 рази на тиждень</div>
+        <div class="li-step">Посилання на сайт і Telegram-канал</div>
+      </div>
+    </div>
+    <div class="li-card accent">
+      <div class="li-num">02</div>
+      <div class="li-title">Особисті профілі засновників</div>
+      <div class="li-desc">Андрій Машков і Дмитро Політіко — реальні люди з досвідом. Особистий профіль конвертує краще за корпоративну сторінку бо B2B-клієнти довіряють людям а не логотипам.</div>
+      <div class="li-flow">
+        <div class="li-step">Ми готуємо тексти постів і погоджуємо з засновниками</div>
+        <div class="li-step">Засновники публікують самі або дають тимчасовий доступ</div>
+        <div class="li-step">2–3 пости на тиждень: кейс з цифрами, інсайт з ринку, вакансія</div>
+        <div class="li-step">Персональний outreach: 10–15 повідомлень/тиждень потенційним клієнтам</div>
+      </div>
+    </div>
+    <div class="li-card">
+      <div class="li-num">03</div>
+      <div class="li-title">Профіль CEO — Олени</div>
+      <div class="li-desc">Олена як найманий директор з 20+ роками HR-досвіду — додатковий голос авторитету. Її експертні пости підсилюють довіру до агенції серед HR-спільноти.</div>
+      <div class="li-flow">
+        <div class="li-step">Ми готуємо тексти, Олена публікує</div>
+        <div class="li-step">1–2 пости на тиждень: HR-інсайти, поради кандидатам</div>
+        <div class="li-step">Відповіді на коментарі і взаємодія зі спільнотою</div>
+        <div class="li-step">З фази 3 — платне просування найкращих постів</div>
+      </div>
+    </div>
+  </div>
+  <div class="insight">
+    <div class="insight-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5C800" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+    <div class="insight-text">Важливо: <strong>ми готуємо весь контент — тексти, структуру, хештеги.</strong> Засновники і Олена витрачають 5–10 хвилин на публікацію або передають доступ. Ніякого "напишіть самі щось цікаве" — тільки готовий матеріал на погодження.</div>
+  </div>
+</section>
+
+<!-- 04 CANDIDATE BASE -->
+<section id="candidates" class="dark-sec">
+  <div class="lbl">04 · База кандидатів</div>
+  <h2 class="stitle">Як будуємо базу кандидатів</h2>
+  <p class="ssub">RELINK вже має акаунти на роботних сайтах. Завдання — зробити з них системний потік, а не разові відгуки.</p>
+
+  <div class="funnel-grid">
+    <div class="funnel-channel">
+      <div class="fc-head">
+        <div class="fc-title">Work.ua / Robota.ua</div>
+        <div class="fc-phase ph1-badge">Фаза 1 — є зараз</div>
+      </div>
+      <div class="fc-nums">
+        <div class="fc-num-box"><div class="fc-n">15–40</div><div class="fc-nl">відгуків / вакансія</div></div>
+        <div class="fc-num-box"><div class="fc-n">3–5</div><div class="fc-nl">релевантних з них</div></div>
+      </div>
+      <div class="fc-why">Середня безкоштовна вакансія на Work.ua збирає 15–40 відгуків за 2 тижні. Після первинного скринінгу 10–20% є релевантними. Платне підняття вакансії збільшує відгуки в 2–3 рази.</div>
+    </div>
+    <div class="funnel-channel">
+      <div class="fc-head">
+        <div class="fc-title">Telegram-канал RELINK</div>
+        <div class="fc-phase ph1-badge">Фаза 1 — запустити</div>
+      </div>
+      <div class="fc-nums">
+        <div class="fc-num-box"><div class="fc-n">50–200</div><div class="fc-nl">підписників місяць 1–2</div></div>
+        <div class="fc-num-box"><div class="fc-n">5–15%</div><div class="fc-nl">конверсія в відгук</div></div>
+      </div>
+      <div class="fc-why">Крос-постинг 1 вакансії у 10 Facebook-груп по 5–20К учасників: навіть 0.5% переходів = 25–100 людей на канал. За місяць 15–20 вакансій → 50–200 підписників органічно.</div>
+    </div>
+    <div class="funnel-channel">
+      <div class="fc-head">
+        <div class="fc-title">LinkedIn — інженерні ролі</div>
+        <div class="fc-phase ph1-badge">Фаза 1 — точково</div>
+      </div>
+      <div class="fc-nums">
+        <div class="fc-num-box"><div class="fc-n">10–20</div><div class="fc-nl">повідомлень / тиждень</div></div>
+        <div class="fc-num-box"><div class="fc-n">20–30%</div><div class="fc-nl">відповідей</div></div>
+      </div>
+      <div class="fc-why">Персональний outreach до інженерів і технологів у LinkedIn. Середній response rate для нішевих вакансій з конкретним описом проєкту — 20–30% при правильно написаному першому повідомленні.</div>
+    </div>
+    <div class="funnel-channel">
+      <div class="fc-head">
+        <div class="fc-title">Work.ua платні + Telegram реклама</div>
+        <div class="fc-phase ph2-badge">Фаза 2 — платно</div>
+      </div>
+      <div class="fc-nums">
+        <div class="fc-num-box"><div class="fc-n">2–3×</div><div class="fc-nl">більше відгуків</div></div>
+        <div class="fc-num-box"><div class="fc-n">+200</div><div class="fc-nl">підписників TG/міс</div></div>
+      </div>
+      <div class="fc-why">Підняті оголошення на Work.ua збільшують відгуки в 2–3 рази. Рекламний пост у Telegram-каналі на 5–10К підписників дає 50–150 нових підписників RELINK-каналу.</div>
+    </div>
+    <div class="funnel-channel">
+      <div class="fc-head">
+        <div class="fc-title">Ветеранські спільноти</div>
+        <div class="fc-phase ph1-badge">Фаза 1 — точково</div>
+      </div>
+      <div class="fc-nums">
+        <div class="fc-num-box"><div class="fc-n">окрема</div><div class="fc-nl">ніша</div></div>
+        <div class="fc-num-box"><div class="fc-n">висока</div><div class="fc-nl">лояльність</div></div>
+      </div>
+      <div class="fc-why">Засновники RELINK мають досвід служби — це природна довіра. Facebook-групи ветеранів, Veteran Hub, Telegram-спільноти. Конверсія вища ніж у загальних групах через релевантність.</div>
+    </div>
+    <div class="funnel-channel">
+      <div class="fc-head">
+        <div class="fc-title">Meta таргет — кандидати</div>
+        <div class="fc-phase ph3-badge">Фаза 3 — масштаб</div>
+      </div>
+      <div class="fc-nums">
+        <div class="fc-num-box"><div class="fc-n">4 000</div><div class="fc-nl">грн / місяць</div></div>
+        <div class="fc-num-box"><div class="fc-n">300–500</div><div class="fc-nl">нових охоплених</div></div>
+      </div>
+      <div class="fc-why">Таргет на робітничу аудиторію за інтересами (виробництво, зварювання, монтаж) і геолокацією. Запускати після того як канал має 300+ підписників і є живі відгуки кандидатів.</div>
+    </div>
+  </div>
+
+  <div class="funnel-total">
+    <div class="ft-item">
+      <div class="ft-n">30–80</div>
+      <div class="ft-l">Нових кандидатів<br>у базу / міс · Фаза 1</div>
+      <div class="ft-note">Тільки органіка: Work.ua + крос-постинг + LinkedIn outreach</div>
+    </div>
+    <div class="ft-item">
+      <div class="ft-n">80–200</div>
+      <div class="ft-l">Нових кандидатів<br>у базу / міс · Фаза 2</div>
+      <div class="ft-note">+ платне підняття вакансій + Telegram реклама</div>
+    </div>
+    <div class="ft-item">
+      <div class="ft-n">200–400</div>
+      <div class="ft-l">Нових кандидатів<br>у базу / міс · Фаза 3</div>
+      <div class="ft-note">+ Meta таргет + SEO органіка сайту</div>
+    </div>
+    <div class="ft-item">
+      <div class="ft-n">CRM</div>
+      <div class="ft-l">База зберігається<br>і реактивується</div>
+      <div class="ft-note">Кандидат що не підійшов зараз — може підійти на наступну вакансію</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PHASES -->
+<section id="phases" class="dark-sec" style="padding-top:32px">
+  <div class="lbl">05 · Три фази</div>
+  <h2 class="stitle">Що і коли отримуємо</h2>
+  <p class="ssub">Кожна фаза має конкретний набір дій, продуктів і обґрунтування очікуваних результатів.</p>
+  <div class="phases">
+    <div class="ph current">
+      <div class="ph-bg-n">1</div>
       <div class="ph-period">Місяці 1–2</div>
       <div class="ph-name">Фаза 1<br>Фундамент</div>
       <div class="ph-budget">0 грн <span>/ місяць</span></div>
-      <ul class="ph-items">
-        <li>Сайт + SEO-база + Google профіль</li>
-        <li>Telegram-канал: 4–5 постів/тиждень</li>
-        <li>Крос-постинг вакансій у групи</li>
-        <li>LinkedIn-пости засновників з кейсами</li>
-        <li>Особистий outreach: 10–15 повідомлень/тиждень</li>
-        <li>Фіксація кожного ліда і джерела</li>
-      </ul>
-      <div class="ph-result">
-        <div class="ph-result-label">Результат до кінця фази</div>
-        <div class="ph-result-items">1–3 B2B заявки · 50–200 підписників TG<br>Перші 3–5 кейсів із цифрами</div>
+      <div class="ph-deliverables">
+        <div class="ph-del-title">Що робимо</div>
+        <div class="ph-del-item">Запуск сайту і реєстрація в Google Search Console</div>
+        <div class="ph-del-item">Створення сторінки RELINK у LinkedIn</div>
+        <div class="ph-del-item">Запуск Telegram-каналу: 5–7 постів у день 1</div>
+        <div class="ph-del-item">Крос-постинг кожної вакансії у 10+ груп</div>
+        <div class="ph-del-item">Підготовка постів для засновників і Олени у LinkedIn</div>
+        <div class="ph-del-item">LinkedIn outreach: 10–15 повідомлень / тиждень</div>
+        <div class="ph-del-item">Фіксація кожного ліда і джерела в таблиці</div>
       </div>
+      <div class="ph-result">
+        <div class="ph-res-lbl">Що маємо наприкінці</div>
+        <div class="ph-res-val">
+          <strong>Сайт</strong> — живий, проіндексований Google<br>
+          <strong>LinkedIn</strong> — сторінка компанії + активні профілі<br>
+          <strong>Telegram</strong> — 50–200 підписників<br>
+          <strong>База кандидатів</strong> — 60–160 нових контактів<br>
+          <strong>Ліди B2B</strong> — 1–3 заявки органічно<br>
+          <strong>Кейси</strong> — 3–5 описаних і розміщених на сайті
+        </div>
+      </div>
+      <div class="ph-why">Чому такі цифри: 15 вакансій × 10 груп × 0.5% конверсія = ~75 підписників тільки від крос-постингу. Work.ua дає ще 15–40 відгуків / вакансія = ще 30–80 кандидатів у базу.</div>
     </div>
-    <div class="phase-card">
-      <div class="ph-num">2</div>
+    <div class="ph">
+      <div class="ph-bg-n">2</div>
       <div class="ph-period">Місяці 3–4</div>
       <div class="ph-name">Фаза 2<br>Доказ</div>
       <div class="ph-budget">10 000 грн <span>/ місяць</span></div>
-      <ul class="ph-items">
-        <li>Google Search Ads — 4 000 грн</li>
-        <li>Meta Retargeting — 2 000 грн</li>
-        <li>Work.ua платні оголошення — 2 500 грн</li>
-        <li>Telegram реклама в каналах — 1 500 грн</li>
-        <li>Фіксація вартості ліда по кожному каналу</li>
-        <li>Збір реальних відгуків від клієнтів</li>
-      </ul>
-      <div class="ph-result">
-        <div class="ph-result-label">Результат до кінця фази</div>
-        <div class="ph-result-items">5–10 B2B заявок · 1–3 нових клієнти<br>300–500 підписників · Дані по каналах</div>
+      <div class="ph-deliverables">
+        <div class="ph-del-title">Що робимо</div>
+        <div class="ph-del-item">Google Search Ads: 4 000 грн на пошукові запити</div>
+        <div class="ph-del-item">Meta Retargeting: 2 000 грн — дожим відвідувачів сайту</div>
+        <div class="ph-del-item">Work.ua платні оголошення: 2 500 грн</div>
+        <div class="ph-del-item">Telegram реклама в суміжних каналах: 1 500 грн</div>
+        <div class="ph-del-item">1 SEO-стаття на місяць для сайту</div>
+        <div class="ph-del-item">Щомісячний звіт: ліди, джерела, вартість ліда</div>
       </div>
+      <div class="ph-result">
+        <div class="ph-res-lbl">Що маємо наприкінці</div>
+        <div class="ph-res-val">
+          <strong>B2B заявки</strong> — 5–10 на місяць<br>
+          <strong>Нові клієнти</strong> — 1–3 підписаних договори<br>
+          <strong>Telegram</strong> — 300–500 підписників<br>
+          <strong>База кандидатів</strong> — +160–400 нових контактів<br>
+          <strong>Дані</strong> — вартість ліда по кожному каналу<br>
+          <strong>Google</strong> — перші органічні позиції
+        </div>
+      </div>
+      <div class="ph-why">Google Ads при бюджеті 4К: CPC ~35 грн = ~115 кліків/міс. Конверсія B2B-сайту 2–4% = 2–5 заявок. Meta retargeting на теплу аудиторію дає ще 1–3. Разом 3–8 заявок при конверсії 30% в клієнта = 1–2 нових клієнти.</div>
     </div>
-    <div class="phase-card">
-      <div class="ph-num">3</div>
+    <div class="ph">
+      <div class="ph-bg-n">3</div>
       <div class="ph-period">Місяць 5+</div>
       <div class="ph-name">Фаза 3<br>Масштаб</div>
       <div class="ph-budget">22 000 грн <span>/ місяць</span></div>
-      <ul class="ph-items">
-        <li>Google Ads розширення — 8 000 грн</li>
-        <li>LinkedIn Ads (B2B) — ~$150</li>
-        <li>Meta B2C (кандидати) — 4 000 грн</li>
-        <li>Work.ua + Telegram — 4 000 грн</li>
-        <li>SEO-статті: 1–2/місяць</li>
-        <li>Масштабувати лише те що спрацювало у фазі 2</li>
-      </ul>
-      <div class="ph-result">
-        <div class="ph-result-label">Результат до кінця фази</div>
-        <div class="ph-result-items">10–20 B2B заявок/міс · 3–5 клієнти/міс<br>1000+ підписників · Органічний трафік</div>
+      <div class="ph-deliverables">
+        <div class="ph-del-title">Що робимо</div>
+        <div class="ph-del-item">Google Ads розширення: 8 000 грн, більше ключів</div>
+        <div class="ph-del-item">LinkedIn Ads на HR-директорів: ~$150</div>
+        <div class="ph-del-item">Meta B2C (кандидати): 4 000 грн</div>
+        <div class="ph-del-item">Work.ua + Telegram реклама: 4 000 грн</div>
+        <div class="ph-del-item">2 SEO-статті на місяць — органіка починає давати трафік</div>
+        <div class="ph-del-item">Масштабуємо ТІЛЬКИ канали що показали результат у фазі 2</div>
       </div>
+      <div class="ph-result">
+        <div class="ph-res-lbl">Що маємо наприкінці</div>
+        <div class="ph-res-val">
+          <strong>B2B заявки</strong> — 10–20 на місяць<br>
+          <strong>Нові клієнти</strong> — 3–5 на місяць<br>
+          <strong>Telegram</strong> — 1 000+ підписників<br>
+          <strong>База кандидатів</strong> — 200–400 нових / міс<br>
+          <strong>Органіка сайту</strong> — 500–1 500 відвідувачів / міс<br>
+          <strong>ROI реклами</strong> — на основі реальних даних фази 2
+        </div>
+      </div>
+      <div class="ph-why">LinkedIn Ads при $150 і таргеті на HR-директорів Defense / виробництво: охоплення ~3 000 цільових людей на місяць. Навіть 0.3% конверсія = 9 кліків від суперцільової аудиторії.</div>
     </div>
   </div>
 </section>
 
-<!-- 04 CHANNELS B2B -->
-<section id="channels-b2b">
-  <div class="sec-label">04 · Канали B2B</div>
-  <h2 class="sec-title">Як залучаємо<br>клієнтів</h2>
-  <div class="separator"></div>
+<!-- 06 CHANNELS -->
+<section id="channels" class="white-sec">
+  <div class="lbl">06 · Канали</div>
+  <h2 class="stitle">Де і як просуваємось</h2>
+  <p class="ssub">Зелений — безкоштовно з фази 1. Жовтий — платно з фази 2. Синій — масштаб у фазі 3.</p>
   <div class="ch-grid">
-    <div class="ch-card">
-      <div class="ch-badge b2b-badge">Фаза 1 · Безкоштовно</div>
-      <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-      <div class="ch-title">LinkedIn — особисті акаунти</div>
-      <div class="ch-desc">Кейси з цифрами від Олени / Андрія. Найсильніший безкоштовний B2B-канал — реальна людина з реальним досвідом.</div>
-      <div class="ch-action">2–3 пости/тиждень · Кейс → інсайт → CTA на сайт</div>
-      <div class="ch-budget">0 грн / час команди</div>
-    </div>
-    <div class="ch-card highlight">
-      <div class="ch-badge">Фаза 1 · Ключовий</div>
-      <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5C800" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
-      <div class="ch-title">LinkedIn Outreach</div>
-      <div class="ch-desc">Моніторинг компаній що шукають кандидатів 30+ днів → персональне повідомлення з конкретним меседжем. Не шаблон.</div>
-      <div class="ch-action"10–15 персональних повідомлень/тиждень · Від імені Олени або Андрія</div>
-      <div class="ch-budget">0 грн / найвища конверсія</div>
-    </div>
-    <div class="ch-card">
-      <div class="ch-badge free-badge">Фаза 1 · Безкоштовно</div>
-      <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg></div>
+    <div class="ch">
+      <div class="ch-badge free-b">Фаза 1 · Безкоштовно</div>
       <div class="ch-title">Сайт + SEO</div>
-      <div class="ch-desc">Клієнт гуглить RELINK після рекомендації або перед дзвінком. Сайт — вітрина довіри. Кейси, відгуки, чіткий CTA.</div>
-      <div class="ch-action">Google Search Console · Google Business Profile · Технічне SEO вже налаштовано</div>
-      <div class="ch-budget">0 грн / вже готово</div>
+      <div class="ch-desc">Клієнт гуглить RELINK після рекомендації. Сайт — вітрина довіри. Кейси, відгуки, чіткий CTA вже готові.</div>
+      <div class="ch-action">Google Search Console · Google Business Profile · Технічне SEO налаштовано</div>
+      <div class="ch-bud">0 грн / вже готово</div>
     </div>
-    <div class="ch-card">
-      <div class="ch-badge b2b-badge">Фаза 2 · Платно</div>
-      <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+    <div class="ch dark">
+      <div class="ch-badge">Фаза 1 · Ключовий</div>
+      <div class="ch-title">LinkedIn Outreach</div>
+      <div class="ch-desc">Моніторинг компаній що шукають 30+ днів → персональне повідомлення від засновника. Не шаблон — конкретний меседж з розумінням болю.</div>
+      <div class="ch-action">10–15 повідомлень/тиждень · Response rate 20–30%</div>
+      <div class="ch-bud">0 грн / найвища конверсія</div>
+    </div>
+    <div class="ch">
+      <div class="ch-badge free-b">Фаза 1 · Безкоштовно</div>
+      <div class="ch-title">Telegram-канал</div>
+      <div class="ch-desc">4–5 постів/тиждень: вакансії з деталями, корисний контент, кейси. Крос-постинг у 10+ груп щодня.</div>
+      <div class="ch-action">Запустити в день 1 з 5–7 постами одразу</div>
+      <div class="ch-bud">0 грн / зростає органічно</div>
+    </div>
+    <div class="ch">
+      <div class="ch-badge paid-b">Фаза 2 · Платно</div>
       <div class="ch-title">Google Search Ads</div>
-      <div class="ch-desc">Найгарячіші ліди — людина сама шукає рекрутингову агенцію прямо зараз. Ключі: підбір персоналу, рекрутинг виробництво.</div>
-      <div class="ch-action">80–120 кліків / міс → 2–5 заявок</div>
-      <div class="ch-budget">4 000 грн / місяць</div>
+      <div class="ch-desc">Найгарячіші ліди — людина сама шукає рекрутингову агенцію прямо зараз. CPC ~35 грн = 115 кліків/міс.</div>
+      <div class="ch-action">Ключі: підбір персоналу, рекрутинг виробництво, знайти інженера</div>
+      <div class="ch-bud">4 000 грн / місяць</div>
     </div>
-    <div class="ch-card">
-      <div class="ch-badge b2b-badge">Фаза 2 · Платно</div>
-      <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></div>
+    <div class="ch">
+      <div class="ch-badge paid-b">Фаза 2 · Платно</div>
       <div class="ch-title">Meta Retargeting</div>
-      <div class="ch-desc">Показуємо рекламу тим хто вже був на сайті але не залишив заявку. Найдешевший спосіб дожати теплого клієнта.</div>
+      <div class="ch-desc">Показуємо рекламу тим хто вже був на сайті. Найдешевший спосіб дожати теплого клієнта — він вже знає RELINK.</div>
       <div class="ch-action">Піксель → аудиторія відвідувачів → кейс або гарантія</div>
-      <div class="ch-budget">2 000 грн / місяць</div>
+      <div class="ch-bud">2 000 грн / місяць</div>
     </div>
-    <div class="ch-card">
-      <div class="ch-badge later-badge">Фаза 3</div>
-      <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5568" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+    <div class="ch">
+      <div class="ch-badge" style="background:#E6F1FB;color:#0C447C">Фаза 3</div>
       <div class="ch-title">LinkedIn Ads</div>
       <div class="ch-desc">Таргет точно в посаду: HR-директор, операційний директор у Defense / виробництві. Просування кейсів і постів.</div>
-      <div class="ch-action">Запускати після 3+ опублікованих кейсів</div>
-      <div class="ch-budget">~$150 / місяць</div>
+      <div class="ch-action">Запускати після 3+ опублікованих кейсів з цифрами</div>
+      <div class="ch-bud">~$150 / місяць</div>
     </div>
   </div>
-  <!-- SLOT для скріншота/кейса -->
-  <div class="slot" style="margin-top:24px">
-    <div class="slot-label">↓ Слот для матеріалів клієнта</div>
-    <div class="slot-title">Скріншот LinkedIn-профілю / приклад кейс-посту / відгук клієнта</div>
-  </div>
-</section>
-
-<!-- 05 CHANNELS B2C -->
-<section id="channels-b2c">
-  <div class="sec-label">05 · Канали B2C</div>
-  <h2 class="sec-title">Як залучаємо<br>кандидатів</h2>
-  <div class="separator"></div>
-  <div class="b2c-grid">
-    <div class="b2c-seg">
-      <div class="b2c-seg-title">Робітничі спеціалісти</div>
-      <div class="b2c-seg-sub">Монтажники, пайщики, оператори, складський персонал</div>
-      <div class="b2c-channels">
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Facebook-групи "Робота"</div><div class="b2c-ch-desc">Крос-постинг кожної вакансії у 5–10 груп. Безкоштовно, 20 хв/день</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Telegram-канал RELINK</div><div class="b2c-ch-desc">Вакансії з повними деталями: зарплата, графік, бронювання</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Work.ua / Robota.ua</div><div class="b2c-ch-desc">Безкоштовні + платні підняті оголошення (2 500 грн/міс з фази 2)</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Meta таргет (фаза 3)</div><div class="b2c-ch-desc">Таргет за інтересами і геолокацією. 4 000 грн/міс</div></div></div>
-      </div>
-    </div>
-    <div class="b2c-seg">
-      <div class="b2c-seg-title">Інженерно-технічні</div>
-      <div class="b2c-seg-sub">Інженери, технологи, конструктори, сервісні спеціалісти</div>
-      <div class="b2c-channels">
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">LinkedIn персональний outreach</div><div class="b2c-ch-desc">Конкретний меседж від рекрутера з описом проєкту і зони відповідальності</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">DOU / профільні Telegram-чати</div><div class="b2c-ch-desc">Інженерні спільноти, RadioElectronics UA, технічні групи</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Work.ua / Robota.ua детальні оголошення</div><div class="b2c-ch-desc">Акцент на проєкт, стек, зону відповідальності — не лише вимоги</div></div></div>
-      </div>
-    </div>
-    <div class="b2c-seg">
-      <div class="b2c-seg-title">Ветерани</div>
-      <div class="b2c-seg-sub">Демобілізовані або ті хто планує повернення до цивільного</div>
-      <div class="b2c-channels">
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Telegram-спільноти ветеранів</div><div class="b2c-ch-desc">Без пафосу. Конкретні вакансії де цінуються навички служби</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Facebook-групи "Армія і робота"</div><div class="b2c-ch-desc">Veteran Hub, "Ти як?", ветеранські організації</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Партнерства з ветеранськими організаціями</div><div class="b2c-ch-desc">Взаємний обмін аудиторією. Засновники RELINK — природна довіра</div></div></div>
-      </div>
-    </div>
-    <div class="b2c-seg">
-      <div class="b2c-seg-title">Офісний / Middle+</div>
-      <div class="b2c-seg-sub">Бухгалтери, менеджери продажів, керівники відділів</div>
-      <div class="b2c-channels">
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Work.ua / Robota.ua</div><div class="b2c-ch-desc">Стандартні канали з детальним описом ролі та умов</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">LinkedIn outreach для Middle+</div><div class="b2c-ch-desc">Персоналізований контакт з описом ролі, компанії і компенсації</div></div></div>
-        <div class="b2c-ch"><div class="b2c-ch-dot"></div><div class="b2c-ch-body"><div class="b2c-ch-name">Telegram-канал RELINK</div><div class="b2c-ch-desc">Окремі добірки офісних вакансій для різних сегментів</div></div></div>
-      </div>
-    </div>
-  </div>
-  <div class="trust-factors">
-    <div class="tf-title">6 факторів довіри кандидата</div>
-    <div class="tf-grid">
-      <div class="tf-item"><div class="tf-name">Зарплата цифрою</div><div class="tf-desc">Конкретна сума або вилка в кожній вакансії. "Від 20К" без верху — ігнорують</div></div>
-      <div class="tf-item"><div class="tf-name">Швидка відповідь</div><div class="tf-desc">Відповідь протягом кількох годин. Затримка = кандидат пішов до іншого</div></div>
-      <div class="tf-item"><div class="tf-name">Безкоштовність</div><div class="tf-desc">"Послуга безкоштовна для кандидата" — явно у кожному пості і на сайті</div></div>
-      <div class="tf-item"><div class="tf-name">Прозорий процес</div><div class="tf-desc">Закріплений пост "6 кроків підбору через RELINK" у Telegram-каналі</div></div>
-      <div class="tf-item"><div class="tf-name">Бронювання</div><div class="tf-desc">Якщо є — у заголовок вакансії. Топ-фактор для чоловіків 20–45 зараз</div></div>
-      <div class="tf-item"><div class="tf-name">Відгуки кандидатів</div><div class="tf-desc">Короткі цитати від тих хто вже знайшов роботу. Анонімно якщо хоче</div></div>
-    </div>
+  <div class="slot">
+    <p>↓ Слот для матеріалів</p>
+    <p>Скріншот LinkedIn-сторінки RELINK / приклад кейс-посту / перший відгук клієнта</p>
   </div>
 </section>
 
-<!-- 06 BUDGET -->
+<!-- 07 BUDGET -->
 <section id="budget" class="yellow-sec">
-  <div class="sec-label">06 · Бюджет</div>
-  <h2 class="sec-title">Зведений план<br>витрат по фазах</h2>
-  <div class="budget-cards">
+  <div class="lbl">07 · Бюджет</div>
+  <h2 class="stitle">Витрати по фазах</h2>
+  <p class="ssub" style="color:rgba(11,23,36,.6)">Один новий клієнт = 25–50К чеку. Весь бюджет фази 2 окупається з першої угоди.</p>
+  <div class="bud-cards">
     <div class="bc">
-      <div class="bc-phase">Фаза 1 · Місяці 1–2</div>
+      <div class="bc-ph">Фаза 1 · Місяці 1–2</div>
       <div class="bc-total">0 грн</div>
       <div class="bc-usd">Тільки час команди</div>
       <div class="bc-rows">
-        <div class="bc-row"><span>B2B: LinkedIn + outreach + сайт</span><span>0</span></div>
+        <div class="bc-row"><span>B2B: LinkedIn + сайт + outreach</span><span>0</span></div>
         <div class="bc-row"><span>B2C: Telegram + крос-постинг</span><span>0</span></div>
-        <div class="bc-row"><span>SEO-база + Google профіль</span><span>0</span></div>
         <div class="bc-row bc-sep"><span>Разом / місяць</span><span>0 грн</span></div>
       </div>
-      <div class="bc-result">Ціль: зафіксувати перші ліди і звідки вони прийшли. Запустити канал без витрат.</div>
+      <div class="bc-exp">Ціль: зафіксувати перші ліди. Запустити всі безкоштовні канали.</div>
     </div>
     <div class="bc main">
-      <div class="bc-phase">Фаза 2 · Місяці 3–4 · Рекомендовано</div>
+      <div class="bc-ph">Фаза 2 · Місяці 3–4 · Старт реклами</div>
       <div class="bc-total">10 000 грн</div>
       <div class="bc-usd">≈ $250 / місяць</div>
       <div class="bc-rows">
@@ -710,107 +707,29 @@ section { min-height: 100vh; padding: 72px 64px; display: flex; flex-direction: 
         <div class="bc-row"><span>Telegram реклама (B2C)</span><span>1 500</span></div>
         <div class="bc-row bc-sep"><span>Разом / місяць</span><span>10 000 грн</span></div>
       </div>
-      <div class="bc-result">Окупається з 1 нового клієнта (чек 25–50К). Збираємо дані для фази 3.</div>
+      <div class="bc-exp">Окупається з 1 нового клієнта. Збираємо дані по каналах.</div>
     </div>
     <div class="bc">
-      <div class="bc-phase">Фаза 3 · Місяць 5+</div>
+      <div class="bc-ph">Фаза 3 · Місяць 5+</div>
       <div class="bc-total">~22 000 грн</div>
       <div class="bc-usd">≈ $550 / місяць</div>
       <div class="bc-rows">
         <div class="bc-row"><span>Google Ads розширення</span><span>8 000</span></div>
         <div class="bc-row"><span>LinkedIn Ads (B2B)</span><span>~6 000</span></div>
-        <div class="bc-row"><span>Meta B2C (кандидати)</span><span>4 000</span></div>
-        <div class="bc-row"><span>Work.ua + Telegram</span><span>4 000</span></div>
+        <div class="bc-row"><span>Meta B2C + Telegram</span><span>5 500</span></div>
+        <div class="bc-row"><span>Work.ua + інше</span><span>2 500</span></div>
         <div class="bc-row bc-sep"><span>Разом / місяць</span><span>~22 000 грн</span></div>
       </div>
-      <div class="bc-result">Масштабуємо лише канали що показали результат у фазі 2.</div>
+      <div class="bc-exp">Масштабуємо тільки те що спрацювало у фазі 2.</div>
     </div>
-  </div>
-  <div class="budget-rule">
-    <div class="br-icon">!</div>
-    <div class="br-text">Головне правило: <strong>не збільшувати бюджет поки немає даних.</strong> Після фази 2 видно який канал дав найдешевшого ліда — туди йдуть додаткові гроші. Решта або залишається або вимикається. Один новий клієнт = 25–50К чеку. <strong>Весь бюджет фази 2 окупається з першої угоди.</strong></div>
   </div>
 </section>
 
-<!-- 07 TELEGRAM -->
-<section id="telegram">
-  <div class="sec-label">07 · Telegram</div>
-  <h2 class="sec-title">Контент-стратегія<br>Telegram-каналу</h2>
-  <div class="separator"></div>
-  <div class="tg-grid">
-    <div>
-      <p style="font-size:13px;color:var(--dark);margin-bottom:16px;font-weight:500">Формула контенту (70/20/10)</p>
-      <div class="tg-mix">
-        <div class="tg-mix-item">
-          <div class="tg-mix-bar tg-vac">70% — Вакансії</div>
-          <div class="tg-mix-bar tg-tip">20% — Поради</div>
-          <div class="tg-mix-bar tg-case">10%</div>
-        </div>
-      </div>
-      <div class="tg-legend">
-        <div class="tg-leg"><div class="tg-leg-dot" style="background:var(--b2b)"></div>70% — Вакансії з повними деталями (зарплата, графік, бронювання)</div>
-        <div class="tg-leg"><div class="tg-leg-dot" style="background:var(--b2c)"></div>20% — Корисний контент (поради, зарплатний зріз, FAQ)</div>
-        <div class="tg-leg"><div class="tg-leg-dot" style="background:var(--yellow-dk)"></div>10% — Кейси і відгуки кандидатів що знайшли роботу</div>
-      </div>
-      <div style="margin-top:24px;background:var(--navy);padding:20px">
-        <p style="font-size:12px;font-weight:600;color:var(--white);margin-bottom:10px;font-family:var(--fh);text-transform:uppercase;letter-spacing:.03em">Шаблон вакансійного посту</p>
-        <p style="font-size:12px;color:var(--muted);line-height:1.7;font-family:monospace">ПОСАДА — ЗАРПЛАТА грн / МІСТО<br>Графік: ... / Оформлення: офіційне<br>Бронювання: є / немає<br><br>Що робити: [2–3 пункти]<br>Що потрібно: [мін. вимоги]<br><br>Послуга для кандидата — безкоштовна.<br>Написати: [контакт рекрутера]</p>
-      </div>
-    </div>
-    <div>
-      <p style="font-size:13px;color:var(--dark);margin-bottom:12px;font-weight:500">Контент-план по тижнях (місяць 1)</p>
-      <div class="tg-weeks">
-        <div class="tg-week">
-          <div class="tw-header"><span class="tw-name">Тиждень 1</span><span class="tw-focus">Запуск і знайомство</span></div>
-          <div class="tw-posts">
-            <div class="tw-post t">Хто ми — пост</div>
-            <div class="tw-post v">Вакансія робітнича</div>
-            <div class="tw-post t">5 питань на співбесіді</div>
-            <div class="tw-post v">Вакансія інженерна</div>
-          </div>
-        </div>
-        <div class="tg-week">
-          <div class="tw-header"><span class="tw-name">Тиждень 2</span><span class="tw-focus">Довіра і процес</span></div>
-          <div class="tw-posts">
-            <div class="tw-post v">Вакансія склад/логістика</div>
-            <div class="tw-post t">6 кроків підбору</div>
-            <div class="tw-post vet">Вакансії для ветеранів</div>
-            <div class="tw-post v">Вакансія тижня</div>
-          </div>
-        </div>
-        <div class="tg-week">
-          <div class="tw-header"><span class="tw-name">Тиждень 3</span><span class="tw-focus">Ринок і перший кейс</span></div>
-          <div class="tw-posts">
-            <div class="tw-post v">Вакансія технічна</div>
-            <div class="tw-post t">Зарплатний зріз ринку</div>
-            <div class="tw-post v">Вакансія офісна</div>
-            <div class="tw-post c">Кейс з цифрами</div>
-            <div class="tw-post v">Вакансія з бронюванням</div>
-          </div>
-        </div>
-        <div class="tg-week">
-          <div class="tw-header"><span class="tw-name">Тиждень 4</span><span class="tw-focus">Закриття місяця</span></div>
-          <div class="tw-posts">
-            <div class="tw-post v">ТЕРМІНОВО — вакансія</div>
-            <div class="tw-post t">Що таке гарантія заміни</div>
-            <div class="tw-post vet">Гайд: перша цивільна співбесіда</div>
-            <div class="tw-post c">Підсумки місяця</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="slot" style="margin-top:24px">
-    <div class="slot-label">↓ Слот для матеріалів клієнта</div>
-    <div class="slot-title">Скріншот Telegram-каналу / приклад поста / статистика підписників</div>
-  </div>
-</section>
-
-<!-- 08 RESULTS -->
-<section id="results" class="dark-sec">
-  <div class="sec-label">08 · Результати</div>
-  <h2 class="sec-title">Очікувані KPI<br>по фазах</h2>
-  <table class="results-table">
+<!-- 08 KPI -->
+<section id="kpi" class="dark-sec">
+  <div class="lbl">08 · KPI і обґрунтування</div>
+  <h2 class="stitle">Звідки беруться цифри</h2>
+  <table class="kpi-table">
     <thead>
       <tr>
         <th>Метрика</th>
@@ -822,39 +741,33 @@ section { min-height: 100vh; padding: 72px 64px; display: flex; flex-direction: 
     <tbody>
       <tr>
         <td>B2B заявки / міс</td>
-        <td><span class="kpi-val">1–3</span><span class="kpi-label">органіка і нетворк</span></td>
-        <td><span class="kpi-val">5–10</span><span class="kpi-label">органіка + платно</span></td>
-        <td><span class="kpi-val">10–20</span><span class="kpi-label">всі канали</span></td>
+        <td><span class="kv">1–3</span><span class="kl">органіка і нетворк</span><span class="kw">10–15 outreach-повідомлень/тиж × 20–30% response rate × 10% в заявку</span></td>
+        <td><span class="kv">5–10</span><span class="kl">органіка + платно</span><span class="kw">115 кліків Google × 3% конверсія + Meta retargeting + органіка</span></td>
+        <td><span class="kv">10–20</span><span class="kl">всі канали</span><span class="kw">Подвоєння Google бюджету + LinkedIn Ads + SEO органіка</span></td>
       </tr>
       <tr>
         <td>Нових B2B-клієнтів</td>
-        <td><span class="kpi-val">0–2</span><span class="kpi-label">перші угоди</span></td>
-        <td><span class="kpi-val">1–3</span><span class="kpi-label">підтверджений результат</span></td>
-        <td><span class="kpi-val">3–5/міс</span><span class="kpi-label">стабільний потік</span></td>
+        <td><span class="kv">0–2</span><span class="kl">перші угоди</span><span class="kw">30% конверсія заявки в договір при правильно сформульованій КП</span></td>
+        <td><span class="kv">1–3</span><span class="kl">підтверджений результат</span><span class="kw">5–10 заявок × 20–30% закриття = 1–3 клієнти</span></td>
+        <td><span class="kv">3–5/міс</span><span class="kl">стабільний потік</span><span class="kw">Накопичений ефект SEO + реклама + рекомендації від перших клієнтів</span></td>
       </tr>
       <tr>
-        <td>Telegram-підписники</td>
-        <td><span class="kpi-val">50–200</span><span class="kpi-label">крос-постинг</span></td>
-        <td><span class="kpi-val">300–500</span><span class="kpi-label">+ платна реклама</span></td>
-        <td><span class="kpi-val">1 000+</span><span class="kpi-label">стабільне зростання</span></td>
+        <td>Telegram підписники</td>
+        <td><span class="kv">50–200</span><span class="kl">органіка</span><span class="kw">15 вакансій × 10 груп × 0.5% CTR = 75 підписників органічно</span></td>
+        <td><span class="kv">300–500</span><span class="kl">органіка + реклама</span><span class="kw">+ рекламний пост у 2–3 суміжних каналах = +100–300 підписників</span></td>
+        <td><span class="kv">1 000+</span><span class="kl">стабільне зростання</span><span class="kw">Meta таргет + репости + органічне зростання від відгуків</span></td>
       </tr>
       <tr>
-        <td>Органічний трафік / міс</td>
-        <td><span class="kpi-val">50–150</span><span class="kpi-label">SEO-база</span></td>
-        <td><span class="kpi-val">200–400</span><span class="kpi-label">+ контент</span></td>
-        <td><span class="kpi-val">800–1500</span><span class="kpi-label">SEO-статті</span></td>
+        <td>Кандидатів у базу / міс</td>
+        <td><span class="kv">60–160</span><span class="kl">Work.ua + крос-постинг</span><span class="kw">Work.ua: 4 вакансії × 15–40 відгуків = 60–160 контактів для бази</span></td>
+        <td><span class="kv">160–400</span><span class="kl">+ платні канали</span><span class="kw">Платне підняття збільшує відгуки в 2–3× + Telegram реклама додає підписників</span></td>
+        <td><span class="kv">200–400</span><span class="kl">всі канали</span><span class="kw">+ Meta таргет на кандидатів + органіка сайту по запитах "робота монтажник"</span></td>
       </tr>
       <tr>
-        <td>Бюджет / місяць</td>
-        <td><span class="kpi-val">0 грн</span><span class="kpi-label">тільки час</span></td>
-        <td><span class="kpi-val">10 000 грн</span><span class="kpi-label">≈ $250</span></td>
-        <td><span class="kpi-val">~22 000 грн</span><span class="kpi-label">≈ $550</span></td>
-      </tr>
-      <tr>
-        <td>Очікуваний ROI</td>
-        <td><span class="kpi-val">∞</span><span class="kpi-label">без витрат</span></td>
-        <td><span class="kpi-val">10×+</span><span class="kpi-label">1 клієнт = 25–50К чек</span></td>
-        <td><span class="kpi-val">стабільний</span><span class="kpi-label">на основі даних фази 2</span></td>
+        <td>Органічний трафік сайту</td>
+        <td><span class="kv">50–150</span><span class="kl">Google індексація</span><span class="kw">Новий сайт індексується Google за 4–8 тижнів. Перший трафік від брендових запитів.</span></td>
+        <td><span class="kv">200–400</span><span class="kl">+ перша SEO-стаття</span><span class="kw">1 SEO-стаття під популярний запит дає 50–200 відвідувачів через 4–8 тижнів</span></td>
+        <td><span class="kv">500–1500</span><span class="kl">накопичений ефект</span><span class="kw">2–3 статті з хорошими позиціями дають стабільний органічний потік</span></td>
       </tr>
     </tbody>
   </table>
@@ -862,136 +775,60 @@ section { min-height: 100vh; padding: 72px 64px; display: flex; flex-direction: 
 
 <!-- 09 NEXT STEPS -->
 <section id="next">
-  <div class="sec-label">09 · План дій</div>
-  <h2 class="sec-title">Наступні кроки —<br>конкретно і по порядку</h2>
-  <div class="separator"></div>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">01</div>
-      <div class="step-body">
-        <div class="step-title">Запустити Telegram-канал</div>
-        <div class="step-text">Опублікувати 5–7 постів одразу: знайомство, 3–4 вакансії з деталями, 1 корисний пост. Канал виглядає живим з першого дня.</div>
-        <div class="step-when">День 1 · Безкоштовно</div>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">02</div>
-      <div class="step-body">
-        <div class="step-title">Google Search Console + Business</div>
-        <div class="step-text">Зареєструвати сайт і компанію. Без цього Google не знає що RELINK існує. 30 хвилин один раз.</div>
-        <div class="step-when">День 1 · 30 хвилин</div>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">03</div>
-      <div class="step-body">
-        <div class="step-title">Крос-постинг кожної вакансії</div>
-        <div class="step-text">Кожна нова вакансія публікується у 5–10 Facebook-груп і Telegram-чатів "Робота". Перші підписники і трафік без бюджету.</div>
-        <div class="step-when">Щодня · 20 хвилин</div>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">04</div>
-      <div class="step-body">
-        <div class="step-title">LinkedIn outreach від засновників</div>
-        <div class="step-text">Моніторинг компаній з вакансіями 30+ днів → 10–15 персональних повідомлень на тиждень. Не шаблон — конкретний меседж.</div>
-        <div class="step-when">Тиждень 1 · 2–3 год/тиждень</div>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">05</div>
-      <div class="step-body">
-        <div class="step-title">Зафіксувати перші кейси</div>
-        <div class="step-text">Кожна закрита вакансія = кейс на сайт і в LinkedIn. Роль, строк, результат. Мінімум 3 кейси до запуску платної реклами.</div>
-        <div class="step-when">Місяці 1–2 · Постійно</div>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">06</div>
-      <div class="step-body">
-        <div class="step-title">Запустити платну рекламу (фаза 2)</div>
-        <div class="step-text">Google Ads + Meta Retargeting + Work.ua + Telegram реклама. Тільки після появи кейсів і відгуків на сайті.</div>
-        <div class="step-when">Місяць 3 · 10 000 грн/міс</div>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">07</div>
-      <div class="step-body">
-        <div class="step-title">Зібрати дані і масштабувати</div>
-        <div class="step-text">Вартість ліда по кожному каналу → збільшувати бюджет лише там де є підтверджений результат. Решта — без змін або вимикається.</div>
-        <div class="step-when">Місяць 5 · На основі даних</div>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">08</div>
-      <div class="step-body">
-        <div class="step-title">SEO-статті і органічний трафік</div>
-        <div class="step-text">1–2 статті на місяць під пошукові запити цільової аудиторії. Починати писати зараз — результат через 3–6 місяців.</div>
-        <div class="step-when">Місяць 3+ · Безкоштовно</div>
-      </div>
-    </div>
-  </div>
-  <!-- SLOT для матеріалів -->
-  <div class="slot" style="margin-top:24px">
-    <div class="slot-label">↓ Слот для матеріалів клієнта</div>
-    <div class="slot-title">Реальний графік запуску / відповідальні / дедлайни</div>
+  <div class="lbl">09 · Наступні кроки</div>
+  <h2 class="stitle">Конкретно і по порядку</h2>
+  <div class="sep"></div>
+  <div class="steps">
+    <div class="step"><div class="step-n">01</div><div><div class="step-t">Створити LinkedIn-сторінку RELINK</div><div class="step-d">Логотип, опис, спеціалізація. Без цього компанія не існує в LinkedIn для B2B-клієнтів.</div><div class="step-w">День 1 · 30 хвилин · Безкоштовно</div></div></div>
+    <div class="step"><div class="step-n">02</div><div><div class="step-t">Запустити Telegram-канал</div><div class="step-d">5–7 постів одразу: знайомство, 3–4 вакансії з деталями, 1 корисний пост. Виглядає живим з першого дня.</div><div class="step-w">День 1 · 3 години · Безкоштовно</div></div></div>
+    <div class="step"><div class="step-n">03</div><div><div class="step-t">Google Search Console + Business</div><div class="step-d">Зареєструвати сайт і компанію в Google. Без цього Google не знає що RELINK існує.</div><div class="step-w">День 1 · 30 хвилин · Безкоштовно</div></div></div>
+    <div class="step"><div class="step-n">04</div><div><div class="step-t">Крос-постинг кожної вакансії</div><div class="step-d">Кожна нова вакансія публікується у 10+ Facebook-груп і Telegram-чатів. Перші підписники без бюджету.</div><div class="step-w">Щодня · 20 хвилин · Безкоштовно</div></div></div>
+    <div class="step"><div class="step-n">05</div><div><div class="step-t">LinkedIn outreach від засновників</div><div class="step-d">Ми готуємо тексти. Андрій або Дмитро надсилають 10–15 персональних повідомлень на тиждень компаніям з відкритими вакансіями 30+ днів.</div><div class="step-w">Тиждень 1 · 2–3 год/тиждень</div></div></div>
+    <div class="step"><div class="step-n">06</div><div><div class="step-t">Зафіксувати перші 3–5 кейсів</div><div class="step-d">Кожна закрита вакансія = кейс на сайт і LinkedIn. Роль, строк, результат у цифрах. Без кейсів платна реклама не конвертує.</div><div class="step-w">Місяці 1–2 · Постійно</div></div></div>
+    <div class="step"><div class="step-n">07</div><div><div class="step-t">Запустити платну рекламу</div><div class="step-d">Google Ads + Meta Retargeting + Work.ua + Telegram реклама. Тільки після появи кейсів і відгуків.</div><div class="step-w">Місяць 3 · 10 000 грн/міс</div></div></div>
+    <div class="step"><div class="step-n">08</div><div><div class="step-t">Аналіз і масштабування</div><div class="step-d">Вартість ліда по кожному каналу → збільшувати бюджет тільки там де підтверджений результат.</div><div class="step-w">Місяць 5 · На основі даних</div></div></div>
   </div>
 </section>
 
 <!-- CTA -->
-<section id="contact-cta" class="yellow-sec">
+<section class="yellow-sec" style="min-height:auto;padding:64px 56px">
   <div class="cta-inner">
-    <h2 class="cta-title">Готові обговорити<br>наступний крок?</h2>
-    <p class="cta-sub">Зв'яжіться з нами — розповімо як це працює конкретно для вашого бізнесу.</p>
-    <a href="tel:+380506434533" class="cta-btn">+38 050 643 45 33</a>
-    <div style="margin-top:16px;font-size:13px;color:rgba(11,23,36,.5)">Re_link@ukr.net · re-link.com.ua</div>
+    <h2>Готові почати?</h2>
+    <p>Зв'яжіться зручним способом — відповімо протягом одного робочого дня</p>
+    <a href="tel:+380969533401" class="cta-btn">+38 096 953 34 01</a>
+    <div style="margin-top:14px;font-size:12px;color:rgba(11,23,36,.4)">WhatsApp / Telegram · dim4eek@gmail.com · re-link.com.ua</div>
   </div>
 </section>
 
 </main>
 
 <div class="share-bar">
-  <div class="share-btn" onclick="window.print()" title="Друк / PDF">
-    <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  <div class="share-btn" onclick="window.print()" title="Зберегти PDF">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B9AB0" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
   </div>
 </div>
 
 <script>
-// Mobile nav
-function toggleNav() {
-  document.getElementById('nav').classList.toggle('open');
-  document.getElementById('mob-overlay').classList.toggle('open');
-}
-function closeNav() {
-  document.getElementById('nav').classList.remove('open');
-  document.getElementById('mob-overlay').classList.remove('open');
-}
-// Close nav on link click
-document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', closeNav);
+const prog=document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  const sc=document.documentElement.scrollTop;
+  const sh=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(sc/sh*100)+'%';
 });
-
-// Progress bar
-const prog = document.getElementById('progress');
-window.addEventListener('scroll', () => {
-  const sc = document.documentElement.scrollTop;
-  const sh = document.documentElement.scrollHeight - window.innerHeight;
-  prog.style.width = (sc / sh * 100) + '%';
-});
-
-// Active nav
-const sections = document.querySelectorAll('section[id]');
-const links = document.querySelectorAll('.nav-links a');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      links.forEach(l => l.classList.remove('active'));
-      const a = document.querySelector('.nav-links a[href="#' + e.target.id + '"]');
-      if (a) a.classList.add('active');
+const sections=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nav-links a');
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
+      if(a)a.classList.add('active');
     }
   });
-}, { threshold: 0.4 });
-sections.forEach(s => obs.observe(s));
+},{threshold:0.4}).observe&&sections.forEach(s=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');if(a)a.classList.add('active');}});},{threshold:0.3}).observe(s));
+function toggleNav(){document.getElementById('nav').classList.toggle('open');document.getElementById('mob-ov').classList.toggle('open');}
+function closeNav(){document.getElementById('nav').classList.remove('open');document.getElementById('mob-ov').classList.remove('open');}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',closeNav));
 </script>
 </body>
 </html>
