@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Комерційна пропозиція — Маркетинговий супровід RELINK</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0B1724; --navy2: #132035;
+  --yellow: #F5C800; --yellow2: #D4AC00;
+  --white: #FFFFFF; --off: #F4F6F9; --gray: #E8EBF0;
+  --muted: #8B9AB0; --dark: #4A5568; --green: #2D7D46;
+  --fh: 'Oswald', sans-serif; --fb: 'IBM Plex Sans', sans-serif;
+}
+@media print {
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .no-print { display: none; }
+  section { page-break-inside: avoid; }
+}
+body { font-family: var(--fb); background: var(--white); color: var(--navy); line-height: 1.6; max-width: 860px; margin: 0 auto; padding: 48px 40px; font-size: 14px; }
+
+/* HEADER */
+.doc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; padding-bottom: 24px; border-bottom: 3px solid var(--yellow); }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-box { width: 44px; height: 44px; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-weight: 700; font-size: 15px; color: var(--navy); }
+.logo-text { font-family: var(--fh); font-size: 22px; font-weight: 600; color: var(--navy); letter-spacing: .06em; }
+.doc-meta { text-align: right; }
+.doc-meta-title { font-family: var(--fh); font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.doc-meta-date { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* TITLE */
+.doc-title { margin-bottom: 40px; }
+.doc-title h1 { font-family: var(--fh); font-size: 32px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .02em; line-height: 1.1; margin-bottom: 12px; }
+.doc-title p { font-size: 15px; color: var(--dark); line-height: 1.65; max-width: 620px; font-weight: 300; }
+
+/* CONTEXT BOX */
+.context-box { background: var(--navy); padding: 24px 28px; margin-bottom: 40px; display: flex; gap: 20px; align-items: flex-start; }
+.context-icon { width: 40px; height: 40px; background: rgba(245,200,0,.12); border: 1px solid rgba(245,200,0,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.context-text { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.65; font-style: italic; }
+.context-text strong { color: var(--yellow); font-style: normal; font-weight: 500; }
+
+/* SECTION */
+.sec { margin-bottom: 40px; }
+.sec-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--yellow2); margin-bottom: 8px; }
+.sec-title { font-family: var(--fh); font-size: 20px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .02em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--gray); }
+
+/* PACKAGE CARDS */
+.packages { display: flex; flex-direction: column; gap: 2px; background: var(--gray); margin-bottom: 32px; }
+
+.package { background: var(--white); }
+.pkg-header { background: var(--navy); padding: 20px 28px; display: flex; justify-content: space-between; align-items: flex-start; }
+.pkg-header.once { background: var(--navy2); border-left: 4px solid var(--yellow); }
+.pkg-header.monthly { background: var(--navy); border-left: 4px solid #378ADD; }
+.pkg-name { }
+.pkg-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 4px; }
+.pkg-title { font-family: var(--fh); font-size: 18px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: .03em; }
+.pkg-price-block { text-align: right; }
+.pkg-price { font-family: var(--fh); font-size: 28px; font-weight: 700; color: var(--yellow); line-height: 1; }
+.pkg-price-note { font-size: 11px; color: rgba(255,255,255,.4); margin-top: 4px; }
+.pkg-body { padding: 24px 28px; }
+.pkg-desc { font-size: 14px; color: var(--dark); line-height: 1.65; margin-bottom: 20px; font-style: italic; border-left: 3px solid var(--yellow); padding-left: 14px; }
+.pkg-features { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.pkg-feature { display: flex; gap: 10px; align-items: flex-start; }
+.pkg-feature-check { width: 18px; height: 18px; background: var(--navy); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.pkg-feature-check svg { width: 10px; height: 10px; }
+.pkg-feature-text { }
+.pkg-feature-title { font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
+.pkg-feature-desc { font-size: 11px; color: var(--dark); line-height: 1.4; }
+
+/* MARKET TABLE */
+.market-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+.market-table th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 8px 12px; background: var(--off); border-bottom: 2px solid var(--gray); }
+.market-table td { padding: 10px 12px; border-bottom: 1px solid var(--gray); font-size: 13px; color: var(--navy); vertical-align: top; line-height: 1.45; }
+.market-table tr:last-child td { border-bottom: none; }
+.market-table td:first-child { color: var(--dark); }
+.market-table td.price { font-weight: 500; color: var(--dark); white-space: nowrap; }
+.market-table td.total-row { font-weight: 600; color: var(--navy); background: var(--off); }
+.market-table td.our-price { font-weight: 700; color: var(--green); font-size: 14px; }
+.market-table tr.highlight td { background: rgba(245,200,0,.05); }
+.saving-badge { display: inline-block; background: rgba(45,125,70,.1); color: var(--green); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 3px; margin-left: 8px; }
+
+/* TIMELINE */
+.timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--gray); margin-bottom: 24px; }
+.tl-item { background: var(--white); padding: 20px; }
+.tl-item.active { background: var(--navy); }
+.tl-phase { font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.tl-item.active .tl-phase { color: rgba(245,200,0,.5); }
+.tl-price { font-family: var(--fh); font-size: 22px; font-weight: 700; color: var(--yellow); margin-bottom: 4px; }
+.tl-desc { font-size: 12px; color: var(--dark); line-height: 1.5; }
+.tl-item.active .tl-desc { color: var(--muted); }
+
+/* WHAT YOU GET */
+.deliverables { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.del { background: var(--off); padding: 14px 16px; border-left: 3px solid var(--yellow); }
+.del-title { font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+.del-text { font-size: 11px; color: var(--dark); line-height: 1.5; }
+
+/* INFO BOX */
+.info-box { background: var(--off); border: 1px solid var(--gray); padding: 20px 24px; margin-top: 16px; }
+.info-box-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+.info-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.info-list li { font-size: 13px; color: var(--dark); display: flex; gap: 10px; line-height: 1.5; }
+.info-list li::before { content: '→'; color: var(--muted); flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+
+/* GUARANTEE */
+.guarantee { background: var(--navy); padding: 24px 28px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; margin-top: 32px; }
+.guarantee-icon { font-family: var(--fh); font-size: 32px; font-weight: 700; color: var(--yellow); line-height: 1; }
+.guarantee-text { }
+.guarantee-title { font-family: var(--fh); font-size: 16px; font-weight: 600; color: var(--white); text-transform: uppercase; margin-bottom: 8px; }
+.guarantee-desc { font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.65; }
+
+/* CONTACTS */
+.contacts { background: var(--yellow); padding: 28px; text-align: center; margin-top: 40px; }
+.contacts-title { font-family: var(--fh); font-size: 20px; font-weight: 700; color: var(--navy); text-transform: uppercase; margin-bottom: 8px; }
+.contacts-sub { font-size: 14px; color: rgba(11,23,36,.6); margin-bottom: 20px; }
+.contacts-grid { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.contact-item { font-size: 13px; font-weight: 500; color: var(--navy); }
+.contact-label { font-size: 10px; color: rgba(11,23,36,.5); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+
+/* FOOTER */
+.doc-footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--gray); display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+
+/* PRINT BTN */
+.print-btn { position: fixed; bottom: 24px; right: 24px; background: var(--navy); color: var(--yellow); border: none; padding: 12px 20px; font-family: var(--fb); font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.print-btn:hover { background: var(--navy2); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div class="logo">
+    <div class="logo-box">RE</div>
+    <span class="logo-text">RELINK</span>
+  </div>
+  <div class="doc-meta">
+    <div class="doc-meta-title">Комерційна пропозиція</div>
+    <div class="doc-meta-date">Маркетинговий супровід · Травень 2026</div>
+  </div>
+</div>
+
+<!-- TITLE -->
+<div class="doc-title">
+  <h1>Маркетинговий супровід<br>рекрутингової агенції RELINK</h1>
+  <p>Комплексний маркетинговий супровід від запуску сайту до стабільного потоку B2B-клієнтів і B2C-кандидатів. Один підрядник замість команди з чотирьох спеціалістів — за прозорою фіксованою вартістю.</p>
+</div>
+
+<!-- CONTEXT -->
+<div class="context-box">
+  <div class="context-icon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5C800" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+  </div>
+  <div class="context-text">
+    Для порівняння: <strong>найм чотирьох окремих спеціалістів</strong> (веб-розробник, маркетолог, контент-менеджер, SEO-спеціаліст) коштував би RELINK <strong>від 120 000 до 150 000 грн на місяць</strong> за ринковими ставками 2026 року. Цей пакет закриває весь цей функціонал за значно нижчою вартістю — з фіксованим результатом і прозорою звітністю.
+  </div>
+</div>
+
+<!-- MARKET COMPARISON -->
+<div class="sec">
+  <div class="sec-label">Ринкове обґрунтування</div>
+  <div class="sec-title">Що це коштує на ринку</div>
+  <p style="font-size:13px;color:var(--dark);margin-bottom:16px;line-height:1.65;">Дані з актуальних джерел: Work.ua, Indeed Україна, дослідження ринку праці, травень 2026.</p>
+
+  <table class="market-table">
+    <thead>
+      <tr>
+        <th>Спеціаліст</th>
+        <th>Що робить</th>
+        <th>Ринкова ставка / міс</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Веб-розробник</td>
+        <td>Розробка та підтримка сайту, технічні зміни</td>
+        <td class="price">35 000–40 000 грн</td>
+      </tr>
+      <tr>
+        <td>Маркетолог</td>
+        <td>Стратегія, аналітика, рекламні кампанії</td>
+        <td class="price">40 000–50 000 грн</td>
+      </tr>
+      <tr>
+        <td>Контент-менеджер</td>
+        <td>Ведення соцмереж, написання текстів і статей</td>
+        <td class="price">23 000–30 000 грн</td>
+      </tr>
+      <tr>
+        <td>SEO-спеціаліст</td>
+        <td>Технічна оптимізація, просування в пошуку</td>
+        <td class="price">30 000–35 000 грн</td>
+      </tr>
+      <tr class="highlight">
+        <td class="total-row">Разом (4 спеціалісти в штаті)</td>
+        <td class="total-row">Повний маркетинговий функціонал</td>
+        <td class="total-row">128 000–155 000 грн/міс</td>
+      </tr>
+      <tr class="highlight">
+        <td class="our-price">Маркетинговий супровід RELINK</td>
+        <td class="our-price">Весь той самий функціонал</td>
+        <td class="our-price">40 000 грн/міс <span class="saving-badge">економія 70%+</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PACKAGES -->
+<div class="sec">
+  <div class="sec-label">Структура послуг</div>
+  <div class="sec-title">Що входить у пакет</div>
+
+  <div class="packages">
+
+    <!-- PACKAGE 1: SITE -->
+    <div class="package">
+      <div class="pkg-header once">
+        <div class="pkg-name">
+          <div class="pkg-label">Разово · Стартовий пакет</div>
+          <div class="pkg-title">Розробка сайту під ключ</div>
+        </div>
+        <div class="pkg-price-block">
+          <div class="pkg-price">50 000 грн</div>
+          <div class="pkg-price-note">одноразова оплата</div>
+        </div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-desc">Повноцінний корпоративний сайт з нуля: від структури і дизайну до SEO-оптимізації та публікації. Готовий до залучення B2B-клієнтів і кандидатів з першого дня.</div>
+        <div class="pkg-features">
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Дизайн і розробка сайту</div>
+              <div class="pkg-feature-desc">Професійний дизайн у фірмових кольорах RELINK. Адаптивна верстка для мобільних і десктопу</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">SEO-оптимізація з нуля</div>
+              <div class="pkg-feature-desc">Мета-теги, структуровані дані, технічне SEO, Open Graph для соцмереж. Google вже бачить сайт</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Контент і структура сторінок</div>
+              <div class="pkg-feature-desc">Написання текстів для всіх розділів: про компанію, послуги, команда, контакти, для кандидатів</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Розділ послуг і цінування</div>
+              <div class="pkg-feature-desc">6 послуг з описом, умовами і цінами. Форма заявки з прив'язкою до контакту</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Google Analytics + Search Console</div>
+              <div class="pkg-feature-desc">Підключення аналітики і реєстрація в Google. Без цього неможливо відстежувати результати</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Публікація і налаштування хостингу</div>
+              <div class="pkg-feature-desc">Допомога з вибором хостингу, публікація сайту, перевірка коректності роботи</div>
+            </div>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="info-box-title">Що не входить у вартість (оплачується окремо замовником)</div>
+          <ul class="info-list">
+            <li>Хостинг і домен: орієнтовно 500–1 500 грн/рік залежно від обраного провайдера</li>
+            <li>Фотографії команди: за наявності — вставляємо безкоштовно; якщо немає — використовуємо нейтральні ілюстрації</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PACKAGE 2: SEO -->
+    <div class="package">
+      <div class="pkg-header monthly" style="border-left-color:#378ADD;">
+        <div class="pkg-name">
+          <div class="pkg-label">Щомісячно · Пакет 1</div>
+          <div class="pkg-title">SEO + підтримка сайту</div>
+        </div>
+        <div class="pkg-price-block">
+          <div class="pkg-price">15 000 грн</div>
+          <div class="pkg-price-note">на місяць</div>
+        </div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-desc">Сайт залишається актуальним, видимим у Google і технічно справним. Жодних затримок при необхідності внести правки або оновити інформацію.</div>
+        <div class="pkg-features">
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Технічна підтримка сайту</div>
+              <div class="pkg-feature-desc">Виправлення помилок, оновлення контенту, додавання нових вакансій і кейсів. До 10 змін на місяць</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">SEO-просування</div>
+              <div class="pkg-feature-desc">Моніторинг позицій у пошуку, технічна оптимізація, робота з ключовими запитами цільової аудиторії</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">1 SEO-стаття на місяць</div>
+              <div class="pkg-feature-desc">Стаття під пошуковий запит цільової аудиторії. Наприклад: "Як знайти монтажника в Україні 2026"</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Щомісячний звіт по сайту</div>
+              <div class="pkg-feature-desc">Трафік, позиції в пошуку, кількість заявок, що змінилось і що плануємо наступного місяця</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Google Search Console + Analytics</div>
+              <div class="pkg-feature-desc">Моніторинг технічних помилок, індексації, поведінки відвідувачів</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Google Business Profile</div>
+              <div class="pkg-feature-desc">Актуальність інформації, відповіді на відгуки, оновлення фото і постів</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PACKAGE 3: CONTENT + MARKETING -->
+    <div class="package">
+      <div class="pkg-header monthly" style="border-left-color:#3B6D11;">
+        <div class="pkg-name">
+          <div class="pkg-label">Щомісячно · Пакет 2</div>
+          <div class="pkg-title">Контент + маркетинг і аналітика</div>
+        </div>
+        <div class="pkg-price-block">
+          <div class="pkg-price">25 000 грн</div>
+          <div class="pkg-price-note">на місяць</div>
+        </div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-desc">Активне залучення клієнтів і кандидатів через соцмережі, рекламу і контент. Щомісячний аналіз результатів і коригування стратегії на основі реальних даних.</div>
+        <div class="pkg-features">
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Ведення Telegram-каналу</div>
+              <div class="pkg-feature-desc">4–5 постів на тиждень: вакансії, корисний контент, кейси. Готовий контент-план на місяць наперед</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">LinkedIn — контент і просування</div>
+              <div class="pkg-feature-desc">2–3 пости на тиждень з кейсами і результатами від імені компанії або засновників</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Facebook — підтримка сторінки</div>
+              <div class="pkg-feature-desc">Вакансії, новини компанії, крос-постинг у тематичні групи для залучення кандидатів</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Налаштування і ведення реклами</div>
+              <div class="pkg-feature-desc">Google Search Ads і Meta (рекламний бюджет оплачується окремо). Налаштування, оптимізація, A/B тести</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Щомісячний маркетинговий аналіз</div>
+              <div class="pkg-feature-desc">Звіт: скільки лідів, звідки прийшли, вартість ліда по каналах, що змінюємо наступного місяця</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Підготовка вакансійних постів</div>
+              <div class="pkg-feature-desc">Адаптація вакансій під кожну платформу. Шаблони для самостійного крос-постингу в групи</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">LinkedIn outreach — шаблони і скрипти</div>
+              <div class="pkg-feature-desc">Готові тексти для персонального виходу на потенційних клієнтів і кандидатів</div>
+            </div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-check"><svg viewBox="0 0 10 10" fill="none" stroke="#F5C800" stroke-width="2"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="pkg-feature-text">
+              <div class="pkg-feature-title">Консультації і стратегічна підтримка</div>
+              <div class="pkg-feature-desc">Відповіді на питання, оперативні правки, адаптація стратегії при зміні пріоритетів</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PRICE SUMMARY -->
+<div class="sec">
+  <div class="sec-label">Вартість</div>
+  <div class="sec-title">Підсумок і умови</div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-phase">Старт · Разово</div>
+      <div class="tl-price">50 000 грн</div>
+      <div class="tl-desc">Розробка сайту під ключ. Оплата при старті проєкту — 50%, решта після публікації</div>
+    </div>
+    <div class="tl-item active">
+      <div class="tl-phase">Місяці 1–2 · Тестовий</div>
+      <div class="tl-price">40 000 грн</div>
+      <div class="tl-desc">SEO + підтримка (15К) + контент і маркетинг (25К). Фіксована вартість без сюрпризів</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Місяць 3+ · Результат</div>
+      <div class="tl-price">50–60 000 грн</div>
+      <div class="tl-desc">Після підтвердження перших результатів: нових клієнтів, зростання трафіку, лідів</div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-title">Рекламний бюджет — окремо від вартості послуг</div>
+    <ul class="info-list">
+      <li>Рекламний бюджет (Google Ads, Meta, Work.ua) оплачується замовником напряму на рекламні платформи — не входить у вартість послуг</li>
+      <li>Рекомендований стартовий бюджет на місяці 1–2: 0 грн (органічне просування). З місяця 3: 8 000–10 000 грн/міс</li>
+      <li>Повна прозорість: всі рекламні кабінети підключаються на акаунт замовника — ви бачите кожну витрачену гривню</li>
+    </ul>
+  </div>
+</div>
+
+<!-- DELIVERABLES -->
+<div class="sec">
+  <div class="sec-label">Що отримує замовник</div>
+  <div class="sec-title">Конкретний результат кожного місяця</div>
+  <div class="deliverables">
+    <div class="del">
+      <div class="del-title">Щомісячний звіт</div>
+      <div class="del-text">Трафік сайту, кількість заявок, ліди по каналах, вартість ліда, позиції в Google, динаміка підписників Telegram</div>
+    </div>
+    <div class="del">
+      <div class="del-title">Готовий контент</div>
+      <div class="del-text">20+ постів для Telegram і соцмереж на місяць. 1 SEO-стаття для сайту. Всі матеріали погоджуються до публікації</div>
+    </div>
+    <div class="del">
+      <div class="del-title">Актуальний сайт</div>
+      <div class="del-text">Нові кейси, вакансії та відгуки вносяться протягом 24 годин після передачі матеріалів</div>
+    </div>
+    <div class="del">
+      <div class="del-title">Налаштована реклама</div>
+      <div class="del-text">Рекламні кампанії запущені, оптимізовані і дають заявки. Щотижневе оновлення ставок і оголошень</div>
+    </div>
+    <div class="del">
+      <div class="del-title">Стратегічний план</div>
+      <div class="del-text">На початку кожного місяця — план дій на наступні 30 днів з пріоритетами і очікуваними результатами</div>
+    </div>
+    <div class="del">
+      <div class="del-title">Прозора комунікація</div>
+      <div class="del-text">Відповідь на питання протягом робочого дня. Всі доступи до рекламних кабінетів і аналітики — у замовника</div>
+    </div>
+  </div>
+</div>
+
+<!-- GUARANTEE -->
+<div class="guarantee">
+  <div class="guarantee-icon">!</div>
+  <div class="guarantee-text">
+    <div class="guarantee-title">Умова переходу на ставку 50 000–60 000 грн</div>
+    <div class="guarantee-desc">Після двох місяців роботи ми разом дивимось на результати: кількість нових лідів, динаміку трафіку, ріст підписників і першу зворотну комунікацію від потенційних клієнтів. Якщо є очевидна позитивна динаміка — переходимо на нову ставку. Якщо результат вас не влаштовує — обговорюємо умови або розходимось без зайвих зобов'язань. Ніяких автоматичних підвищень без вашого погодження.</div>
+  </div>
+</div>
+
+<!-- CONTACTS -->
+<div class="contacts">
+  <div class="contacts-title">Готові обговорити деталі?</div>
+  <div class="contacts-sub">Зв'яжіться зручним способом — відповімо протягом одного робочого дня</div>
+  <div class="contacts-grid">
+    <div class="contact-item">
+      <div class="contact-label">WhatsApp / Telegram</div>
+      +38 096 953 34 01
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Email</div>
+      dim4eek@gmail.com
+    </div>
+    <div class="contact-label" style="margin-top:8px;display:block;width:100%;text-align:center;color:rgba(11,23,36,.4)">re-link.com.ua</div><div class="contact-item" style="margin-top:8px;"><div class="contact-label">Месенджери</div>WhatsApp / Telegram</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span>RELINK · Рекрутингова агенція · Київ</span>
+  <span>Комерційна пропозиція · Травень 2026 · Конфіденційно</span>
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  Зберегти PDF
+</button>
+
+</body>
+</html>
