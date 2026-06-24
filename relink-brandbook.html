@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReLink — Брендбук v1.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --anthracite: #1C2128;
+    --anthracite-mid: #252D38;
+    --anthracite-light: #2E3A47;
+    --indigo: #4361EE;
+    --indigo-dark: #2D47C8;
+    --indigo-glow: rgba(67,97,238,0.12);
+    --copper: #C77D3A;
+    --copper-light: rgba(199,125,58,0.15);
+    --platinum: #E8EDF2;
+    --platinum-dim: #B8C4CF;
+    --white: #FFFFFF;
+    --text-dim: #8A97A6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--anthracite);
+    color: var(--platinum);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(28,33,40,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 48px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--indigo); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--platinum); }
+
+  .nav-tag {
+    font-size: 11px;
+    color: var(--copper);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    min-height: 100vh;
+    padding: 120px 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--copper);
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: var(--platinum-dim);
+    line-height: 1.75;
+    max-width: 680px;
+  }
+
+  .accent { color: var(--indigo); }
+  .copper { color: var(--copper); }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 64px 0;
+  }
+
+  /* ── COVER ── */
+  #cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .cover-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(56px, 7vw, 96px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+
+  .cover-title .re { color: var(--platinum-dim); }
+  .cover-title .link { color: var(--indigo); }
+
+  .cover-sub {
+    font-size: 17px;
+    color: var(--platinum-dim);
+    line-height: 1.6;
+    max-width: 420px;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 0;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .meta-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .meta-value {
+    font-size: 14px;
+    color: var(--platinum);
+    font-weight: 500;
+  }
+
+  /* Logo mark SVG preview */
+  .logo-preview-box {
+    background: var(--anthracite-mid);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .logo-mark-svg {
+    width: 120px;
+    height: 120px;
+  }
+
+  .logo-wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+  .logo-wordmark .re { color: var(--platinum-dim); }
+  .logo-wordmark .link-part { color: var(--indigo); }
+
+  .logo-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--copper);
+  }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 48px;
+  }
+
+  .philosophy-card {
+    background: var(--anthracite-mid);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .philosophy-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--indigo);
+  }
+
+  .philosophy-card.copper-accent::before {
+    background: var(--copper);
+  }
+
+  .card-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    line-height: 1;
+  }
+
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--indigo);
+    margin-bottom: 16px;
+  }
+
+  .philosophy-card.copper-accent .card-title {
+    color: var(--copper);
+  }
+
+  .card-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--platinum-dim);
+    max-width: 100%;
+  }
+
+  .mission-block {
+    background: linear-gradient(135deg, var(--anthracite-mid), var(--anthracite-light));
+    border: 1px solid var(--indigo-glow);
+    border-radius: 12px;
+    padding: 48px;
+    margin-top: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mission-block::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: var(--indigo-glow);
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+
+  .mission-quote {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .mission-quote em {
+    font-style: normal;
+    color: var(--indigo);
+  }
+
+  /* ── VALUES ── */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .value-card {
+    background: var(--anthracite-mid);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 32px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .value-card:hover {
+    border-color: var(--indigo);
+    transform: translateY(-2px);
+  }
+
+  .value-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--indigo-glow);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .value-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .value-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-dim);
+    max-width: 100%;
+  }
+
+  /* ── TOV ── */
+  .tov-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .tov-segment {
+    background: var(--anthracite-mid);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 36px;
+  }
+
+  .segment-badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .badge-b2b { background: var(--indigo-glow); color: var(--indigo); }
+  .badge-hr { background: rgba(199,125,58,0.1); color: var(--copper); }
+  .badge-candidate { background: rgba(255,255,255,0.06); color: var(--platinum-dim); }
+  .badge-veteran { background: rgba(199,125,58,0.15); color: var(--copper); }
+
+  .tov-rules {
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  .tov-rules li {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--platinum-dim);
+    line-height: 1.6;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .tov-rules li:last-child { border-bottom: none; }
+
+  .rule-do { color: #4ADE80; font-size: 12px; font-weight: 600; flex-shrink: 0; margin-top: 3px; }
+  .rule-dont { color: #F87171; font-size: 12px; font-weight: 600; flex-shrink: 0; margin-top: 3px; }
+
+  .example-phrase {
+    background: var(--anthracite-light);
+    border-left: 2px solid var(--indigo);
+    padding: 12px 16px;
+    margin-top: 16px;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    color: var(--platinum);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* ── COLORS ── */
+  .color-palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .color-swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .swatch-color {
+    height: 120px;
+    position: relative;
+  }
+
+  .swatch-primary { background: #1C2128; }
+  .swatch-indigo { background: #4361EE; }
+  .swatch-copper { background: #C77D3A; }
+  .swatch-platinum { background: #E8EDF2; }
+  .swatch-white { background: #FFFFFF; border: 1px solid rgba(255,255,255,0.1); }
+
+  .swatch-info {
+    background: var(--anthracite-mid);
+    padding: 16px;
+  }
+
+  .swatch-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .swatch-codes {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .swatch-code {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .swatch-role {
+    font-size: 11px;
+    color: var(--copper);
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .color-usage {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .usage-block {
+    background: var(--anthracite-mid);
+    border-radius: 12px;
+    padding: 28px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .usage-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+
+  .usage-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .usage-list li {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .usage-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--indigo);
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-showcase {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .type-block {
+    background: var(--anthracite-mid);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 40px;
+  }
+
+  .type-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .type-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--copper);
+  }
+
+  .type-name {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .type-separator {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .type-h1-demo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+
+  .type-h2-demo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--white);
+  }
+
+  .type-h3-demo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .type-body-demo {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--platinum-dim);
+  }
+
+  .type-stat-demo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--indigo);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  .type-stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .type-weights {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+
+  .weight-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .weight-demo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    color: var(--white);
+  }
+
+  .weight-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── LOGO ── */
+  .logo-section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .logo-variant-card {
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .logo-bg-dark {
+    background: var(--anthracite);
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+  }
+
+  .logo-bg-light {
+    background: var(--platinum);
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+  }
+
+  .logo-bg-indigo {
+    background: var(--indigo);
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+  }
+
+  .logo-variant-label {
+    background: var(--anthracite-mid);
+    padding: 12px 20px;
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Wordmark variants */
+  .wm-dark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+
+  .wm-dark .wm-re { color: rgba(255,255,255,0.55); }
+  .wm-dark .wm-link { color: var(--indigo); }
+
+  .wm-light {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--anthracite);
+    letter-spacing: -0.01em;
+  }
+
+  .wm-light .wm-re { color: rgba(28,33,40,0.5); }
+  .wm-light .wm-link { color: var(--indigo-dark); }
+
+  .wm-inv {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+
+  .wm-inv .wm-re { color: rgba(255,255,255,0.65); }
+  .wm-inv .wm-link { color: var(--white); }
+
+  /* Icon version */
+  .icon-only {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--indigo);
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.02em;
+  }
+
+  .forbidden-block {
+    background: rgba(248,113,113,0.05);
+    border: 1px solid rgba(248,113,113,0.15);
+    border-radius: 12px;
+    padding: 28px;
+    margin-top: 32px;
+  }
+
+  .forbidden-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #F87171;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .forbidden-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .forbidden-item {
+    padding: 6px 14px;
+    background: rgba(248,113,113,0.08);
+    border: 1px solid rgba(248,113,113,0.15);
+    border-radius: 6px;
+    font-size: 13px;
+    color: #F87171;
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  /* ── LOGO CONCEPT / AI PROMPTS ── */
+  .prompt-section {
+    margin-top: 48px;
+  }
+
+  .prompt-card {
+    background: var(--anthracite-mid);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 36px;
+    margin-bottom: 24px;
+  }
+
+  .prompt-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .prompt-number {
+    width: 36px;
+    height: 36px;
+    background: var(--indigo-glow);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--indigo);
+  }
+
+  .prompt-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .prompt-subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .prompt-box {
+    background: var(--anthracite);
+    border: 1px solid rgba(67,97,238,0.25);
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--platinum);
+    position: relative;
+    user-select: all;
+  }
+
+  .prompt-box::before {
+    content: 'PROMPT';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--anthracite);
+    padding: 0 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--indigo);
+  }
+
+  .prompt-settings {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .setting-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .setting-chip strong {
+    color: var(--platinum);
+    font-weight: 500;
+  }
+
+  /* ── PROCESS PIPELINE ── */
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 48px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .pipe-step {
+    flex: 1;
+    min-width: 140px;
+    background: var(--anthracite-mid);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pipe-step:first-child {
+    border-left: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px 0 0 12px;
+  }
+
+  .pipe-step:last-child {
+    border-right: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .pipe-step + .pipe-step {
+    border-left: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .pipe-step.active {
+    background: linear-gradient(135deg, var(--anthracite-mid), var(--anthracite-light));
+    border-color: var(--indigo);
+    z-index: 1;
+  }
+
+  .pipe-step.active::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--indigo);
+  }
+
+  .pipe-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+  }
+
+  .pipe-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .pipe-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .pipe-step.active .pipe-num { color: var(--indigo); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+
+  .stat-item {
+    background: var(--anthracite-mid);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .stat-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--indigo);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .stat-unit {
+    font-size: 20px;
+    color: var(--indigo);
+    font-weight: 400;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .footer-logo .re { color: var(--platinum-dim); }
+  .footer-logo .link { color: var(--indigo); }
+
+  .footer-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* ── UTILITIES ── */
+  .mt-32 { margin-top: 32px; }
+  .mt-48 { margin-top: 48px; }
+
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--indigo-glow);
+    color: var(--indigo);
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .tag.copper { background: var(--copper-light); color: var(--copper); }
+
+  .highlight-row {
+    background: var(--anthracite-mid);
+    border: 1px solid rgba(67,97,238,0.2);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .highlight-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .highlight-text {
+    font-size: 14px;
+    color: var(--platinum-dim);
+    line-height: 1.5;
+  }
+
+  .full-width-section {
+    background: var(--anthracite-mid);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 80px 48px;
+    margin: 0;
+  }
+
+  .full-width-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .section, #cover { padding: 100px 24px 60px; }
+    .cover-grid, .philosophy-grid, .tov-grid, .logo-section-grid, .color-usage { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .color-palette { grid-template-columns: repeat(3, 1fr); }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-meta { text-align: center; }
+    .type-h1-demo { font-size: 36px; }
+    .full-width-section { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>Re</span>Link</div>
+  <ul class="nav-links">
+    <li><a href="#philosophy">Філософія</a></li>
+    <li><a href="#tov">ToV</a></li>
+    <li><a href="#colors">Кольори</a></li>
+    <li><a href="#typography">Типографіка</a></li>
+    <li><a href="#logo">Логотип</a></li>
+    <li><a href="#prompts">AI-промпти</a></li>
+  </ul>
+  <div class="nav-tag">Brandbook v1.0</div>
+</nav>
+
+<!-- COVER -->
+<div id="cover">
+  <div class="cover-grid">
+    <div>
+      <div class="cover-eyebrow">Brandbook — Версія 1.0 / 2025</div>
+      <div class="cover-title">
+        <span class="re">Re</span><span class="link">Link</span>
+      </div>
+      <p class="cover-sub">Рекрутингова агенція для Defense / MilTech та виробничих компаній. Інженерна точність у роботі з людьми.</p>
+      <div class="cover-meta">
+        <div class="meta-item">
+          <span class="meta-label">Офіційна назва</span>
+          <span class="meta-value">ReLink</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Юридична назва</span>
+          <span class="meta-value">ТОВ «Ре-Лінк»</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Ніша</span>
+          <span class="meta-value">Defense / MilTech / Виробництво</span>
+        </div>
+      </div>
+    </div>
+    <div class="logo-preview-box">
+      <!-- SVG Logo Mark: two nodes connected by a precise vector -->
+      <svg class="logo-mark-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Connection line -->
+        <line x1="24" y1="60" x2="96" y2="60" stroke="#4361EE" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Left node (employer) -->
+        <circle cx="24" cy="60" r="14" fill="#1C2128" stroke="#4361EE" stroke-width="2.5"/>
+        <circle cx="24" cy="60" r="5" fill="#4361EE"/>
+        <!-- Right node (candidate) -->
+        <circle cx="96" cy="60" r="14" fill="#1C2128" stroke="#4361EE" stroke-width="2.5"/>
+        <circle cx="96" cy="60" r="5" fill="#C77D3A"/>
+        <!-- Arrow direction -->
+        <polyline points="86,54 96,60 86,66" stroke="#C77D3A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Top arc (re-connection metaphor) -->
+        <path d="M 38 60 Q 60 28 82 60" stroke="rgba(67,97,238,0.3)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+      </svg>
+
+      <div class="logo-wordmark"><span class="re">Re</span><span class="link-part">Link</span></div>
+      <div class="logo-tagline">Defense · MilTech · Виробництво</div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number">90<span class="stat-unit">%</span></div>
+      <div class="stat-label">вакансій закривається у визначений термін</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">10–30</div>
+      <div class="stat-label">робочих днів від заявки до фіналіста</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2–3</div>
+      <div class="stat-label">місяці безкоштовної гарантійної заміни</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">100<span class="stat-unit">%</span></div>
+      <div class="stat-label">прозорість: онлайн-доступ до CRM та матеріалів</div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCK 1: PHILOSOPHY -->
+<div class="full-width-section">
+  <div class="full-width-inner">
+    <div class="section-label">Блок 01</div>
+    <h2 id="philosophy">Корпоративна філософія</h2>
+  </div>
+</div>
+
+<div class="section" style="padding-top: 64px; min-height: auto;">
+
+  <div class="mission-block">
+    <div class="section-label">Місія</div>
+    <div class="mission-quote">
+      ReLink — це не посередник між вакансією і резюме.<br>
+      Ми <em>з'єднуємо правильні елементи системи</em> — прозоро, у строк, з гарантією.<br>
+      Поки незакрита посада коштує клієнту грошей і часу, ми вже шукаємо.
+    </div>
+  </div>
+
+  <div class="philosophy-grid">
+    <div class="philosophy-card">
+      <div class="card-number">01</div>
+      <div class="card-title">Позиціонування</div>
+      <p class="card-text">ReLink діє між преміальним Executive Search і масовим підбором. Наші клієнти — компанії, де кожен незаповнений день у вакансії прямо впливає на виробничий процес, продажі або масштабування. Ми не "ще одна агенція". Ми практичний бізнес-партнер, який розуміє специфіку Defense, MilTech та виробничої сфери.</p>
+    </div>
+    <div class="philosophy-card copper-accent">
+      <div class="card-number">02</div>
+      <div class="card-title">Диференціація</div>
+      <p class="card-text">Власний навчальний центр для підготовки робітників. Онлайн-доступ клієнта до CRM і матеріалів відбору в реальному часі. Жорстке зобов'язання щодо термінів: 10–30 днів. Безкоштовна заміна протягом 2–3 місяців без зайвих переговорів. Це не обіцянки — це умови договору.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-label">Цінності бренду</div>
+  <h3>Три константи ReLink</h3>
+
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🎯</div>
+      <div class="value-name">Прозорість</div>
+      <p class="value-desc">Клієнт бачить процес зсередини. Онлайн-доступ до CRM, статуси кандидатів, матеріали відбору — без запитів і очікування. Прозорість — це не перевага, це стандарт.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">⚡</div>
+      <div class="value-name">Швидкість з якістю</div>
+      <p class="value-desc">Дедлайн — це зобов'язання, а не орієнтир. 10–30 днів — реальний термін, прорахований під кожну вакансію. Швидкість не за рахунок якості, а завдяки системному підходу.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🛡</div>
+      <div class="value-name">Гарантія результату</div>
+      <p class="value-desc">Ми несемо відповідальність після закриття вакансії. Безкоштовна заміна протягом гарантійного терміну — конкретний механізм, не маркетинговий хід.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔗</div>
+      <div class="value-name">Системний зв'язок</div>
+      <p class="value-desc">Ми бачимо рекрутинг як з'єднання елементів живої системи: бізнес-процесів, команди, ролей і людей. Точний підбір — це інженерне завдання, яке ми вирішуємо методично.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🤝</div>
+      <div class="value-name">Партнерська позиція</div>
+      <p class="value-desc">Не виконавець, а партнер. Ми розуміємо специфіку Defense і виробництва зсередини. Наші рішення враховують контекст клієнта, а не шаблонні підходи.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">👤</div>
+      <div class="value-name">Людяність без пафосу</div>
+      <p class="value-desc">Ми серйозні, але без канцеляриту. Поважаємо і роботодавця, і кандидата. Ветеранський досвід — актив, а не "особлива категорія". Людина — не ресурс.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCK 2: TOV -->
+<div class="full-width-section" style="margin-top: 0;">
+  <div class="full-width-inner">
+    <div class="section-label">Блок 02</div>
+    <h2 id="tov">Tone of Voice</h2>
+    <p>ReLink спілкується конкретно, надійно і людяно — незалежно від аудиторії. Але кожен сегмент отримує свій акцент.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top: 64px; min-height: auto;">
+
+  <div class="section-label">Три вектори ToV</div>
+
+  <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 32px;">
+    <div style="background: var(--anthracite-mid); border-radius: 12px; padding: 28px; border-top: 2px solid var(--indigo);">
+      <h3 style="margin-bottom: 8px;">Конкретний</h3>
+      <p style="font-size: 14px; max-width: 100%;">Мова цифр, дедлайнів і фактів. Ніяких "найкращих на ринку". Замість "швидко" — "10 днів". Замість "ефективно" — "90% вакансій закрито у строк".</p>
+    </div>
+    <div style="background: var(--anthracite-mid); border-radius: 12px; padding: 28px; border-top: 2px solid var(--copper);">
+      <h3 style="margin-bottom: 8px;">Надійний</h3>
+      <p style="font-size: 14px; max-width: 100%;">Спокійна впевненість партнера. Не "ми намагаємось" — "ми гарантуємо і замінюємо". Тон людини, яка вже бачила подібні ситуації і знає що робити.</p>
+    </div>
+    <div style="background: var(--anthracite-mid); border-radius: 12px; padding: 28px; border-top: 2px solid rgba(255,255,255,0.15);">
+      <h3 style="margin-bottom: 8px;">Людяний</h3>
+      <p style="font-size: 14px; max-width: 100%;">Без важкого корпоративного пафосу. Без слова "команда мрії" і "синергії". З повагою до часу і досвіду співрозмовника — чи то HRD, чи зварювальник.</p>
+    </div>
+  </div>
+
+  <div class="tov-grid">
+
+    <div class="tov-segment">
+      <span class="segment-badge badge-b2b">B2B — Власник / Директор</span>
+      <h3 style="font-size: 16px; margin-bottom: 4px;">Мова результату і ризиків</h3>
+      <ul class="tov-rules">
+        <li><span class="rule-do">✓</span>Говоримо про терміни, конверсії, вартість простою вакансії</li>
+        <li><span class="rule-do">✓</span>Пропонуємо рішення без зайвих питань</li>
+        <li><span class="rule-do">✓</span>Визнаємо обмеження чесно, без перебільшень</li>
+        <li><span class="rule-dont">✗</span>Не використовуємо HR-жаргон без пояснення</li>
+        <li><span class="rule-dont">✗</span>Не хвалимо "унікальний підхід" без доказів</li>
+      </ul>
+      <div class="example-phrase">
+        «Вакансія інженера з ЧПК — 18 робочих днів від бриф-сесії до 3 фіналістів. Гарантійна заміна — 90 днів без доплати.»
+      </div>
+    </div>
+
+    <div class="tov-segment">
+      <span class="segment-badge badge-hr">B2B — HR / HRD</span>
+      <h3 style="font-size: 16px; margin-bottom: 4px;">Мова процесу і партнерства</h3>
+      <ul class="tov-rules">
+        <li><span class="rule-do">✓</span>Розмовляємо на одному рівні — як колеги</li>
+        <li><span class="rule-do">✓</span>Ділимося воронкою, статусами, проміжними результатами</li>
+        <li><span class="rule-do">✓</span>Узгоджуємо критерії на старті, а не переробляємо</li>
+        <li><span class="rule-dont">✗</span>Не "навчаємо" HRD рекрутингу</li>
+        <li><span class="rule-dont">✗</span>Не ховаємо проблемні вакансії — одразу сигналізуємо</li>
+      </ul>
+      <div class="example-phrase">
+        «У нас зараз 4 кандидати на фінальному етапі. Двоє не пройшли технічний скринінг — залишив деталі в CRM. Можемо розширити пошук на Харків?»
+      </div>
+    </div>
+
+    <div class="tov-segment">
+      <span class="segment-badge badge-candidate">B2C — Кандидат (офіс / ІТП)</span>
+      <h3 style="font-size: 16px; margin-bottom: 4px;">Мова конкретної можливості</h3>
+      <ul class="tov-rules">
+        <li><span class="rule-do">✓</span>Чіткий опис: що, де, скільки, умови</li>
+        <li><span class="rule-do">✓</span>Поважаємо час — жодних зайвих етапів без причини</li>
+        <li><span class="rule-do">✓</span>Зворотний зв'язок — завжди, навіть якщо відмова</li>
+        <li><span class="rule-dont">✗</span>Не обіцяємо "кар'єру мрії"</li>
+        <li><span class="rule-dont">✗</span>Не пишемо шаблонних листів зі "шановним кандидатом"</li>
+      </ul>
+      <div class="example-phrase">
+        «Вакансія: конструктор CAD, Київ. Від 35 000 грн. Компанія — виробник тактичного спорядження. Формат: офіс 5 днів. Наступний крок — 30-хвилинний дзвінок з нами, не з клієнтом.»
+      </div>
+    </div>
+
+    <div class="tov-segment">
+      <span class="segment-badge badge-veteran">B2C — Ветеран / Демобілізований</span>
+      <h3 style="font-size: 16px; margin-bottom: 4px;">Мова поваги і конкретики</h3>
+      <ul class="tov-rules">
+        <li><span class="rule-do">✓</span>Військовий досвід — це набір конкретних навичок, які ми перекладаємо на цивільну мову</li>
+        <li><span class="rule-do">✓</span>Не вимагаємо "нічого воєнного" в резюме — самі допомагаємо адаптувати</li>
+        <li><span class="rule-do">✓</span>Пряма комунікація без психологізмів</li>
+        <li><span class="rule-dont">✗</span>Без пафосних "герой серед нас"</li>
+        <li><span class="rule-dont">✗</span>Без зайвої обережності — як із дорослою людиною</li>
+      </ul>
+      <div class="example-phrase">
+        «Ваш досвід логіста в бригаді — це управління ланцюгами постачання під тиском. Ось 3 вакансії операційних менеджерів, де це напряму потрібно.»
+      </div>
+    </div>
+  </div>
+
+  <div class="forbidden-block">
+    <div class="forbidden-title">⛔ Суворе вето — заборонено завжди</div>
+    <ul class="forbidden-list">
+      <li class="forbidden-item">Re-Link</li>
+      <li class="forbidden-item">Релінк</li>
+      <li class="forbidden-item">RELINK</li>
+      <li class="forbidden-item">re link</li>
+      <li class="forbidden-item">найкращі на ринку</li>
+      <li class="forbidden-item">унікальний підхід</li>
+      <li class="forbidden-item">команда мрії</li>
+      <li class="forbidden-item">синергія</li>
+      <li class="forbidden-item">military пафос</li>
+      <li class="forbidden-item">ми намагаємось</li>
+      <li class="forbidden-item">шановний кандидат</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BLOCK 3: COLORS -->
+<div class="full-width-section" style="margin-top: 0;">
+  <div class="full-width-inner">
+    <div class="section-label">Блок 03</div>
+    <h2 id="colors">Фірмова колірна палітра</h2>
+    <p>Концепція «Сталева ніч» — індустріальна серйозність з технологічною точністю. Без банального синього B2B.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top: 64px; min-height: auto;">
+
+  <div class="color-palette">
+    <div class="color-swatch">
+      <div class="swatch-color swatch-primary"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Антрацит</div>
+        <div class="swatch-codes">
+          <div class="swatch-code">HEX #1C2128</div>
+          <div class="swatch-code">RGB 28 / 33 / 40</div>
+          <div class="swatch-code">CMYK 85 70 55 75</div>
+        </div>
+        <div class="swatch-role">Основний / фон</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-color swatch-indigo"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Електричний Індиго</div>
+        <div class="swatch-codes">
+          <div class="swatch-code">HEX #4361EE</div>
+          <div class="swatch-code">RGB 67 / 97 / 238</div>
+          <div class="swatch-code">CMYK 80 59 0 0</div>
+        </div>
+        <div class="swatch-role">Акцент / CTA / логотип</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-color swatch-copper"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Мідь</div>
+        <div class="swatch-codes">
+          <div class="swatch-code">HEX #C77D3A</div>
+          <div class="swatch-code">RGB 199 / 125 / 58</div>
+          <div class="swatch-code">CMYK 15 50 85 5</div>
+        </div>
+        <div class="swatch-role">Допоміжний / теплота</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-color swatch-platinum"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Платина</div>
+        <div class="swatch-codes">
+          <div class="swatch-code">HEX #E8EDF2</div>
+          <div class="swatch-code">RGB 232 / 237 / 242</div>
+          <div class="swatch-code">CMYK 5 2 2 0</div>
+        </div>
+        <div class="swatch-role">Нейтральний / текст</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="swatch-color swatch-white"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Білий</div>
+        <div class="swatch-codes">
+          <div class="swatch-code">HEX #FFFFFF</div>
+          <div class="swatch-code">RGB 255 / 255 / 255</div>
+          <div class="swatch-code">CMYK 0 0 0 0</div>
+        </div>
+        <div class="swatch-role">Заголовки / чисті фони</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-usage">
+    <div class="usage-block">
+      <div class="usage-title">✅ Правила використання</div>
+      <ul class="usage-list">
+        <li>Антрацит — основний фон усіх digital-матеріалів</li>
+        <li>Індиго — кнопки CTA, активні стани, логотип, ключові цифри</li>
+        <li>Мідь — акценти на кандидатській стороні, підписи, теплі деталі</li>
+        <li>Платина — основний текст на темному фоні</li>
+        <li>Білий — заголовки H1–H2, іконки на темних блоках</li>
+        <li>На світлому фоні — антрацит як текст, індиго як акцент</li>
+      </ul>
+    </div>
+    <div class="usage-block">
+      <div class="usage-title">⛔ Заборонено</div>
+      <ul class="usage-list">
+        <li>Мідь як основний колір фону</li>
+        <li>Індиго як фон великих блоків (тільки елементи)</li>
+        <li>Більше двох акцентних кольорів на одному екрані</li>
+        <li>Будь-які відтінки зеленого, фіолетового, рожевого</li>
+        <li>Градієнти між індиго і міддю (конфлікт температур)</li>
+        <li>Текст кольором міді на антрацитовому фоні — лише заголовки/підписи</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCK 4: TYPOGRAPHY -->
+<div class="full-width-section" style="margin-top: 0;">
+  <div class="full-width-inner">
+    <div class="section-label">Блок 04</div>
+    <h2 id="typography">Типографіка</h2>
+    <p>Три шрифти — три ролі. Жодних компромісів між характером і читабельністю.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top: 64px; min-height: auto;">
+  <div class="type-showcase">
+
+    <div class="type-block">
+      <div class="type-meta">
+        <span class="type-role">Заголовки H1–H2</span>
+        <span class="type-separator"></span>
+        <span class="type-name">Space Grotesk — Google Fonts, безкоштовно</span>
+      </div>
+      <div class="type-h1-demo">Ми з'єднуємо.<br>Точно. В строк.</div>
+      <div class="type-weights" style="margin-top: 24px;">
+        <div class="weight-item">
+          <div class="weight-demo" style="font-weight: 300;">Light 300</div>
+          <div class="weight-label">Підписи, дрібний текст</div>
+        </div>
+        <div class="weight-item">
+          <div class="weight-demo" style="font-weight: 400;">Regular 400</div>
+          <div class="weight-label">H3, підзаголовки</div>
+        </div>
+        <div class="weight-item">
+          <div class="weight-demo" style="font-weight: 600;">SemiBold 600</div>
+          <div class="weight-label">H2, назви розділів</div>
+        </div>
+        <div class="weight-item">
+          <div class="weight-demo" style="font-weight: 700;">Bold 700</div>
+          <div class="weight-label">H1, логотип</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-block">
+      <div class="type-meta">
+        <span class="type-role">Основний текст</span>
+        <span class="type-separator"></span>
+        <span class="type-name">Inter — Google Fonts, безкоштовно</span>
+      </div>
+      <div class="type-body-demo">
+        ReLink закриває вакансії у Defense / MilTech та виробничих компаніях — прозоро, з гарантійним супроводом та економією часу клієнта. Від першого бриф-дзвінка до підписаного оффера: 10–30 робочих днів. Онлайн-доступ до CRM на кожному етапі — ви бачите процес зсередини.
+      </div>
+    </div>
+
+    <div class="type-block">
+      <div class="type-meta">
+        <span class="type-role">Цифри / Акценти / Мітки</span>
+        <span class="type-separator"></span>
+        <span class="type-name">Barlow Condensed — Google Fonts, безкоштовно</span>
+      </div>
+      <div style="display: flex; gap: 48px; align-items: flex-end; flex-wrap: wrap;">
+        <div>
+          <div class="type-stat-demo">90%</div>
+          <div class="type-stat-label">вакансій закрито в строк</div>
+        </div>
+        <div>
+          <div class="type-stat-demo" style="color: var(--copper);">30</div>
+          <div class="type-stat-label">днів — максимум</div>
+        </div>
+        <div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--copper); margin-bottom: 8px;">— МІТКИ РОЗДІЛІВ</div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim);">Підписи / Eyebrow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-block" style="background: var(--platinum);">
+      <div class="type-meta">
+        <span class="type-role" style="color: var(--copper);">Ієрархія на світлому фоні</span>
+        <span class="type-separator"></span>
+        <span class="type-name" style="color: #888;">Для КП, бланків, LinkedIn-постів</span>
+      </div>
+      <div style="color: var(--anthracite); font-family: 'Space Grotesk'; font-size: 28px; font-weight: 700; margin-bottom: 8px;">Закриємо вакансію за 18 днів</div>
+      <div style="color: #4361EE; font-family: 'Space Grotesk'; font-size: 16px; font-weight: 600; margin-bottom: 16px;">Або повернемо кошти за прострочені дні — умова договору</div>
+      <div style="color: #4a5568; font-family: 'Inter'; font-size: 14px; line-height: 1.7;">Ми надаємо клієнту онлайн-доступ до CRM та Google Диску зі статусами і матеріалами відбору на кожному етапі роботи. Жодних "тримаємось на зв'язку".</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BLOCK 5: LOGO -->
+<div class="full-width-section" style="margin-top: 0;">
+  <div class="full-width-inner">
+    <div class="section-label">Блок 05</div>
+    <h2 id="logo">Логотип — Концепція та версії</h2>
+    <p>Символіка: два вузли, з'єднані точним вектором. Роботодавець → Кандидат. Завдання → Рішення. Без зайвого.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top: 64px; min-height: auto;">
+
+  <div class="logo-section-grid">
+    <div class="logo-variant-card">
+      <div class="logo-bg-dark">
+        <div style="text-align: center;">
+          <svg width="56" height="56" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 14px;">
+            <line x1="24" y1="60" x2="96" y2="60" stroke="#4361EE" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="24" cy="60" r="14" fill="#1C2128" stroke="#4361EE" stroke-width="2.5"/>
+            <circle cx="24" cy="60" r="5" fill="#4361EE"/>
+            <circle cx="96" cy="60" r="14" fill="#1C2128" stroke="#4361EE" stroke-width="2.5"/>
+            <circle cx="96" cy="60" r="5" fill="#C77D3A"/>
+            <polyline points="86,54 96,60 86,66" stroke="#C77D3A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 38 60 Q 60 28 82 60" stroke="rgba(67,97,238,0.35)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          </svg>
+          <div class="wm-dark"><span class="wm-re">Re</span><span class="wm-link">Link</span></div>
+        </div>
+      </div>
+      <div class="logo-variant-label">Основна версія — темний фон</div>
+    </div>
+
+    <div class="logo-variant-card">
+      <div class="logo-bg-light">
+        <div style="text-align: center;">
+          <svg width="56" height="56" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 14px;">
+            <line x1="24" y1="60" x2="96" y2="60" stroke="#2D47C8" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="24" cy="60" r="14" fill="#E8EDF2" stroke="#2D47C8" stroke-width="2.5"/>
+            <circle cx="24" cy="60" r="5" fill="#2D47C8"/>
+            <circle cx="96" cy="60" r="14" fill="#E8EDF2" stroke="#2D47C8" stroke-width="2.5"/>
+            <circle cx="96" cy="60" r="5" fill="#C77D3A"/>
+            <polyline points="86,54 96,60 86,66" stroke="#C77D3A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 38 60 Q 60 28 82 60" stroke="rgba(45,71,200,0.25)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          </svg>
+          <div class="wm-light"><span class="wm-re">Re</span><span class="wm-link">Link</span></div>
+        </div>
+      </div>
+      <div class="logo-variant-label">Версія для світлого фону</div>
+    </div>
+
+    <div class="logo-variant-card">
+      <div class="logo-bg-indigo">
+        <div style="text-align: center;">
+          <svg width="56" height="56" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 14px;">
+            <line x1="24" y1="60" x2="96" y2="60" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="24" cy="60" r="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.9)" stroke-width="2.5"/>
+            <circle cx="24" cy="60" r="5" fill="#FFFFFF"/>
+            <circle cx="96" cy="60" r="14" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.9)" stroke-width="2.5"/>
+            <circle cx="96" cy="60" r="5" fill="#FFC97D"/>
+            <polyline points="86,54 96,60 86,66" stroke="#FFC97D" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 38 60 Q 60 28 82 60" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          </svg>
+          <div class="wm-inv"><span class="wm-re">Re</span><span class="wm-link">Link</span></div>
+        </div>
+      </div>
+      <div class="logo-variant-label">Інверсія — на кольоровому фоні</div>
+    </div>
+
+    <div class="logo-variant-card">
+      <div class="logo-bg-dark" style="gap: 32px; flex-direction: row; justify-content: center; align-items: center;">
+        <!-- Favicon / Icon -->
+        <div style="text-align: center;">
+          <div class="icon-only">RL</div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 8px; font-family: 'Barlow Condensed'; letter-spacing: 0.1em; text-transform: uppercase;">Фавікон / Іконка</div>
+        </div>
+        <!-- Horizontal compact -->
+        <div style="text-align: center;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <svg width="28" height="28" viewBox="0 0 120 120" fill="none">
+              <line x1="24" y1="60" x2="96" y2="60" stroke="#4361EE" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="24" cy="60" r="14" fill="#1C2128" stroke="#4361EE" stroke-width="2.5"/>
+              <circle cx="24" cy="60" r="5" fill="#4361EE"/>
+              <circle cx="96" cy="60" r="14" fill="#1C2128" stroke="#4361EE" stroke-width="2.5"/>
+              <circle cx="96" cy="60" r="5" fill="#C77D3A"/>
+              <polyline points="86,54 96,60 86,66" stroke="#C77D3A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div style="font-family: 'Space Grotesk'; font-size: 22px; font-weight: 700; color: white;"><span style="color: rgba(255,255,255,0.5)">Re</span><span style="color: #4361EE">Link</span></div>
+          </div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 8px; font-family: 'Barlow Condensed'; letter-spacing: 0.1em; text-transform: uppercase;">Горизонтальна / компактна</div>
+        </div>
+      </div>
+      <div class="logo-variant-label">Спрощені версії</div>
+    </div>
+  </div>
+
+  <!-- Protection zone -->
+  <div class="highlight-row" style="margin-top: 40px;">
+    <div class="highlight-icon">📐</div>
+    <div class="highlight-text">
+      <strong style="color: var(--white);">Охоронна зона логотипа:</strong> мінімальний відступ з усіх сторін — висота літери «R» у wordmark. Мінімальний розмір для web — 120px по ширині. Для друку — 25мм. Нижче цих розмірів — використовувати тільки фавікон-версію.
+    </div>
+  </div>
+
+  <div class="forbidden-block">
+    <div class="forbidden-title">⛔ Неприпустиме використання логотипа</div>
+    <ul class="forbidden-list">
+      <li class="forbidden-item">Розтягування / деформація</li>
+      <li class="forbidden-item">Зміна кольорів</li>
+      <li class="forbidden-item">Накладання на строкатий фон</li>
+      <li class="forbidden-item">Тінь або обведення</li>
+      <li class="forbidden-item">Поворот</li>
+      <li class="forbidden-item">Прозорість менше 100%</li>
+      <li class="forbidden-item">Re-Link через дефіс</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BLOCK 6: AI PROMPTS -->
+<div class="full-width-section" style="margin-top: 0;">
+  <div class="full-width-inner">
+    <div class="section-label">Блок 06</div>
+    <h2 id="prompts">AI-промпти для генерації логотипа</h2>
+    <p>Готові промпти для Ideogram.ai — найкращого інструменту для B2B логотипів. Копіюй, вставляй, тестуй.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top: 64px; min-height: auto;">
+
+  <div class="highlight-row" style="margin-bottom: 40px;">
+    <div class="highlight-icon">💡</div>
+    <div class="highlight-text">
+      <strong style="color: var(--white);">Платформа:</strong> <a href="https://ideogram.ai" target="_blank" style="color: var(--indigo);">ideogram.ai</a> — безкоштовна версія дає 10–25 генерацій/день. Стиль: <strong style="color: var(--white);">Design</strong>. Ratio: <strong style="color: var(--white);">1:1</strong> або <strong style="color: var(--white);">3:1</strong> для горизонтальних варіантів. Після вибору → векторизація на <a href="https://vectorizer.ai" target="_blank" style="color: var(--indigo);">vectorizer.ai</a>
+    </div>
+  </div>
+
+  <div class="prompt-section">
+
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-number">A</div>
+        <div>
+          <div class="prompt-title">Мінімалістичний символ + wordmark</div>
+          <div class="prompt-subtitle">Рекомендований — найближчий до концепції</div>
+        </div>
+      </div>
+      <div class="prompt-box">
+Minimalist B2B logo for "ReLink" recruiting agency. The mark shows two geometric circles connected by a precise horizontal line with a small directional arrow — symbolizing a connection between employer and candidate. Left circle filled with dark navy (#1C2128), right circle accent with copper/amber dot (#C77D3A). Connecting line in electric indigo (#4361EE). Wordmark: "ReLink" in Space Grotesk Bold, "Re" in muted gray-white, "Link" in #4361EE. Clean, technical, no decorative elements. Dark anthracite background (#1C2128). Style: precision engineering, defense-tech, serious B2B. No military symbols, no camouflage, no shields.
+      </div>
+      <div class="prompt-settings">
+        <div class="setting-chip"><strong>Style:</strong> Design</div>
+        <div class="setting-chip"><strong>Ratio:</strong> 1:1 або 3:1</div>
+        <div class="setting-chip"><strong>Magic prompt:</strong> OFF</div>
+        <div class="setting-chip"><strong>Color ref:</strong> можна завантажити палітру</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-number">B</div>
+        <div>
+          <div class="prompt-title">Геометричний монограм R+L</div>
+          <div class="prompt-subtitle">Альтернатива — компактна іконка</div>
+        </div>
+      </div>
+      <div class="prompt-box">
+Geometric monogram logo combining letters R and L into a single unified mark for "ReLink" B2B recruiting company. The letters interlock or overlap in a precise, grid-based composition. Color: primary shape in electric indigo #4361EE, secondary element or counter in copper-amber #C77D3A. Background: dark anthracite #1C2128. Typography below: "ReLink" in clean geometric sans-serif, all lowercase except R and L capitals. Industrial-technical aesthetic. No gradients, no shadows, flat vector. Suitable for favicon and app icon usage.
+      </div>
+      <div class="prompt-settings">
+        <div class="setting-chip"><strong>Style:</strong> Design</div>
+        <div class="setting-chip"><strong>Ratio:</strong> 1:1</div>
+        <div class="setting-chip"><strong>Magic prompt:</strong> OFF</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-number">C</div>
+        <div>
+          <div class="prompt-title">Вектор-стрілка з нодами</div>
+          <div class="prompt-subtitle">Більш абстрактна концепція</div>
+        </div>
+      </div>
+      <div class="prompt-box">
+Logo mark for "ReLink" — a defense and industrial sector recruiting agency. Abstract vector symbol: two nodes (solid circles) connected by a clean horizontal line with directional arrow, reminiscent of a network connection or precision targeting. Monoline style, thin strokes, high contrast. Color: indigo blue #4361EE on near-black #1C2128 background, with a single amber/copper accent point #C77D3A at the destination node. Wordmark: "ReLink" — R and L capitalized, geometric sans-serif typeface, slightly condensed. Negative space is key. Modern, credible, not playful.
+      </div>
+      <div class="prompt-settings">
+        <div class="setting-chip"><strong>Style:</strong> Design</div>
+        <div class="setting-chip"><strong>Ratio:</strong> 3:1</div>
+        <div class="setting-chip"><strong>Magic prompt:</strong> OFF</div>
+      </div>
+    </div>
+
+    <div class="prompt-card">
+      <div class="prompt-header">
+        <div class="prompt-number">D</div>
+        <div>
+          <div class="prompt-title">Промпт для світлої версії</div>
+          <div class="prompt-subtitle">Для КП, бланків, друку</div>
+        </div>
+      </div>
+      <div class="prompt-box">
+Light version logo for "ReLink" recruiting agency for print use. White/platinum background (#E8EDF2 or #FFFFFF). The same geometric connection mark — two nodes linked by precise vector line — in deep indigo #2D47C8. Wordmark "ReLink" in dark anthracite #1C2128, with "Link" part in indigo. Clean, minimal, professional. Suitable for business documents, letterheads, formal proposals. No decorative elements.
+      </div>
+      <div class="prompt-settings">
+        <div class="setting-chip"><strong>Style:</strong> Design</div>
+        <div class="setting-chip"><strong>Ratio:</strong> 3:1</div>
+        <div class="setting-chip"><strong>Background:</strong> White</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pipeline / process -->
+  <hr class="divider">
+  <div class="section-label">Процес роботи ReLink</div>
+  <h3 style="margin-bottom: 8px;">Воронка найму — базова інфографіка</h3>
+  <p style="margin-bottom: 0;">Для використання в КП, на сайті, в LinkedIn-постах</p>
+
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Заявка</div>
+      <div class="pipe-desc">Онлайн або дзвінок. Первинна інформація про вакансію.</div>
+    </div>
+    <div class="pipe-step active">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Бриф-сесія</div>
+      <div class="pipe-desc">30 хв. Профіль, вимоги, терміни, умови гарантії.</div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Пошук</div>
+      <div class="pipe-desc">Активний хедхантинг + база. CRM відкрита клієнту.</div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Скринінг</div>
+      <div class="pipe-desc">Інтерв'ю, перевірка навичок, тестові завдання.</div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Фіналісти</div>
+      <div class="pipe-desc">3–5 кандидатів з детальними профілями. Клієнт обирає.</div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-num">06</div>
+      <div class="pipe-name">Офер і вихід</div>
+      <div class="pipe-desc">Допомога з офером. Контроль виходу на роботу.</div>
+    </div>
+    <div class="pipe-step copper-accent" style="border-top: 2px solid var(--copper);">
+      <div class="pipe-num" style="color: var(--copper);">07</div>
+      <div class="pipe-name">Гарантія</div>
+      <div class="pipe-desc">2–3 місяці безкоштовної заміни за умовами договору.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span class="re">Re</span><span class="link">Link</span></div>
+  <div class="footer-meta">
+    Brandbook v1.0 — Конфіденційний документ<br>
+    ТОВ «Ре-Лінк» · Київ, Україна<br>
+    Розроблено: 2025
+  </div>
+</footer>
+
+</body>
+</html>
