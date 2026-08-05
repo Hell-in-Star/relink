@@ -11,6 +11,9 @@
   Файл НЕ переміщувати, НЕ перейменовувати, URL має працювати завжди.
 - `relink-linkedin-strategy.html` — актуальний робочий документ.
 - Перед будь-яким переміщенням/перейменуванням файлів — перевірити, чи не посилається на них сайт.
+- Робочі посилання для замовника (корінь сайту віддає 404, працюють тільки ці):
+  - Брендбук: https://hell-in-star.github.io/relink/relink-brandbook.html
+  - LinkedIn-стратегія: https://hell-in-star.github.io/relink/relink-linkedin-strategy.html
 
 ## Структура тек
 
