@@ -434,12 +434,21 @@ footer img{height:30px}
 <section id="colors">
   <div class="eyebrow">Розділ 04</div>
   <h2>Кольори</h2>
-  <p class="lead">Чотири кольори, дві теми, вісім токенів. <b>Графіт і світлий міняються ролями</b>: те, що на світлому носії є текстом, на темному стає фоном. Бурштин лишається акцентом в обох темах, але поводиться в них по-різному.</p>
+  <p class="lead">Чотири кольори з фірмовими градієнтами, дві теми, вісім токенів. <b>Графіт і світлий міняються ролями</b>: те, що на світлому носії є текстом, на темному стає фоном. Бурштин лишається акцентом в обох темах, але поводиться в них по-різному.</p>
   <div class="pal">
     <div class="sw"><div class="sw-c" style="background:#DEA102"></div><div class="sw-i"><div class="sw-n">Бурштин</div><span class="sw-h">HEX #DEA102</span><span class="sw-h">RGB 222·161·2</span><span class="sw-h">CMYK 0·28·99·13</span><span class="sw-h">&nbsp;</span><div class="sw-r">Акцент · CTA · лого</div></div></div>
     <div class="sw"><div class="sw-c" style="background:#394050"></div><div class="sw-i"><div class="sw-n">Графіт</div><span class="sw-h">HEX #394050</span><span class="sw-h">RGB 57·64·80</span><span class="sw-h">CMYK 29·20·0·69</span><span class="sw-h">&nbsp;</span><div class="sw-r">Фон темних · текст на світлому</div></div></div>
     <div class="sw"><div class="sw-c" style="background:#707787"></div><div class="sw-i"><div class="sw-n">Сірий</div><span class="sw-h">HEX #707787</span><span class="sw-h">RGB 112·119·135</span><span class="sw-h">CMYK 17·12·0·47</span><span class="sw-h">&nbsp;</span><div class="sw-r">Другорядний текст · тільки світле</div></div></div>
     <div class="sw"><div class="sw-c" style="background:#EBEAE8;border-bottom:1px solid var(--line)"></div><div class="sw-i"><div class="sw-n">Світлий</div><span class="sw-h">HEX #EBEAE8</span><span class="sw-h">RGB 235·234·232</span><span class="sw-h">CMYK 0·0·1·8</span><span class="sw-h">&nbsp;</span><div class="sw-r">Фон світлих · текст на темному</div></div></div>
+  </div>
+
+  <h3 class="sub-h">Фірмові градієнти</h3>
+  <p class="lead">Кожен базовий колір має затверджений градієнт. Кут — 157°, той самий у всіх чотирьох. <b>Великі поверхні</b> (фони, плашки, обкладинка, картки) — градієнт; <b>дрібні елементи</b> (текст, іконки, тонкі лінії) — чистий колір.</p>
+  <div class="pal">
+    <div class="sw"><div class="sw-c" style="background:var(--gr-amber)"></div><div class="sw-i"><div class="sw-n">Бурштиновий</div><span class="sw-h">#DEA102 → #ECC668</span><span class="sw-h">157°</span><span class="sw-h">&nbsp;</span><span class="sw-h">&nbsp;</span><div class="sw-r">Великі поверхні</div></div></div>
+    <div class="sw"><div class="sw-c" style="background:var(--gr-graphite)"></div><div class="sw-i"><div class="sw-n">Графітовий</div><span class="sw-h">#394050 → #C6D7FF</span><span class="sw-h">157°</span><span class="sw-h">&nbsp;</span><span class="sw-h">&nbsp;</span><div class="sw-r">Великі поверхні</div></div></div>
+    <div class="sw"><div class="sw-c" style="background:var(--gr-grey)"></div><div class="sw-i"><div class="sw-n">Світло-сірий</div><span class="sw-h">#707787 → #E0EAFF</span><span class="sw-h">157°</span><span class="sw-h">&nbsp;</span><span class="sw-h">&nbsp;</span><div class="sw-r">Великі поверхні</div></div></div>
+    <div class="sw"><div class="sw-c" style="background:var(--gr-plat);border-bottom:1px solid var(--line)"></div><div class="sw-i"><div class="sw-n">Білий</div><span class="sw-h">#EBEAE8 → #767676</span><span class="sw-h">157°</span><span class="sw-h">&nbsp;</span><span class="sw-h">&nbsp;</span><div class="sw-r">Великі поверхні</div></div></div>
   </div>
 
   <p class="lead" style="margin-top:26px"><b>Службовий шар, поза палітрою.</b> Поверхня карток на світлому — білий #FFFFFF: це папір і обов’язкова плашка під QR. Поверхня карток на темному — графіт, освітлений на 6% (#42495A). Обидва потрібні, щоб поверхня відділялась від фону; фірмовими кольорами вони не є й окремо не використовуються.</p>
@@ -489,14 +498,15 @@ footer img{height:30px}
       <li>Світлий — фон світлих носіїв і основний текст на темних</li>
       <li>Бурштин — лого, CTA, ключові цифри, мітки й слогани на темному</li>
       <li>Бурштинову плашку з графітовим текстом, коли акцент потрібен на світлому</li>
-      <li>Сірий — посади, дати, підписи й службові рядки на світлому фоні</li></ul></div>
+      <li>Сірий — посади, дати, підписи й службові рядки на світлому фоні</li>
+      <li>Градієнт (157°, затверджені стопи) — великі поверхні: фони, плашки, обкладинка, картки</li></ul></div>
     <div class="card"><div class="card-t">Не використовувати</div><ul class="rl no">
       <li>Бурштин як текст на світлому фоні — 1.9:1, зникає</li>
       <li>Сірий на графіті — 2.3:1, зникає</li>
       <li>Бурштин і сірий поруч — 2.0:1 між собою</li>
       <li>Сірий для основного тексту й абзаців у будь-якій темі</li>
       <li>Бурштин як фон великих площин</li>
-      <li>Градієнти, тіні й кольори поза палітрою</li></ul></div>
+      <li>Градієнт на дрібних елементах (текст, іконки, тонкі лінії) і кольори поза палітрою</li></ul></div>
   </div>
 
   <p class="lead" style="margin-top:26px"><b>Чому кольорів чотири.</b> У версії 2.0 палітра мала шість позицій, і два темні кольори з близькими ролями регулярно плутались. Тепер темний один, а глибина набирається поверхнею і прозорістю, а не новими фарбами. Мідь виведена з палітри: її роль міток і слоганів перейшла бурштину на темних носіях і графіту на світлих.</p>
