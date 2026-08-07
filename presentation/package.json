@@ -1,0 +1,12 @@
+{
+  "name": "relink-presentation-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Допоміжні скрипти для рендеру презентації ReLink у PDF",
+  "scripts": {
+    "build-pdf": "node build-pdf.js"
+  },
+  "dependencies": {
+    "playwright": "^1.62.1"
+  }
+}

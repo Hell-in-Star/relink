@@ -26,8 +26,32 @@
   Для задач типу «зроби як це, але за нашим брендом». НЕ джерело правди — правда в `/context`.
 - `/assets` — ZIP-архіви для завантаження.
 - `/docs` — робочі документи (стратегія, КП тощо). `docs/план.md` — трекер проєкту.
-- `/presentation` — презентація компанії (HTML-версія і, згодом, PDF-рендер).
+- `/presentation` — презентація компанії: `relink-presentation.html` (затверджена,
+  джерело правди), `relink-presentation.pdf` (9 сторінок, друкований вигляд),
+  `relink-presentation.pptx` (9 слайдів, редагований — картинкою лише фони,
+  складна графіка слайда 1 і логотипи/іконки, решта редаговані фігури й текст).
+  Перезбірка: `build-pdf.js` (Playwright) і `build-pptx.py` (python-pptx, читає
+  активи з `pptx-assets/`, згенеровані `pptx-assets/render-assets.js`). Деталі
+  архітектури й відомі обмеження — `presentation/pptx-звіт.md`.
 - `/archive` — застарілі файли. Нічого не видаляємо — тільки архівуємо.
+
+## Перезбірка PDF/PPTX презентації після правок HTML
+
+`relink-presentation.html` — джерело правди; PDF і PPTX з нього НЕ генеруються
+автоматично, перезбирати вручну після кожної затвердженої правки HTML:
+
+```
+cd presentation
+npm install                       # один раз (Playwright для build-pdf.js)
+node build-pdf.js                 # -> relink-presentation.pdf
+node pptx-assets/render-assets.js # перегенерувати активи (фони/графіку/іконки)
+python build-pptx.py              # -> relink-presentation.pptx (потрібен python-pptx, Pillow)
+```
+
+Потрібні системні інструменти (встановлюються один раз): Node.js, Python 3,
+`pip install python-pptx pillow`. Для перевірки якості рендеру (не обов'язково
+для щоденної роботи): Poppler (`pdffonts`/`pdftoppm`) і LibreOffice (headless
+рендер pptx→png для звірки з HTML-версією).
 
 ## Бренд (коротко)
 
