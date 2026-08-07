@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReLink — презентація компанії</title>
+<title>ReLink — презентація v2 (чернетка)</title>
 <style>
 @font-face{font-family:'Geologica';src:url('../assets/source/шрифти/geologica/Geologica-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
 @font-face{font-family:'Geologica';src:url('../assets/source/шрифти/geologica/Geologica-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
@@ -35,15 +35,6 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
     radial-gradient(ellipse 105% 80% at 100% 0%, rgba(198,215,255,0.62), transparent 68%),
     var(--bg-light);
 }
-.bg-dark{
-  background:
-    radial-gradient(ellipse 105% 80% at 8% 95%, rgba(222,161,2,0.32), transparent 66%),
-    radial-gradient(ellipse 90% 70% at 92% 5%, rgba(112,119,135,0.60), transparent 66%),
-    var(--bg-dark);
-}
-
-.scheme-light{--text:var(--graphite);--text-dim:var(--grey);--pill-bg:rgba(57,64,80,.06)}
-.scheme-dark{--text:var(--light);--text-dim:var(--dim-dark-bg);--pill-bg:rgba(235,234,232,.08)}
 
 .divider{position:absolute;background:var(--line)}
 .divider-v{width:1px;top:0;bottom:0}
@@ -51,75 +42,52 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
 
 .pill{
   display:inline-flex;align-items:center;
-  border-radius:999px;border:1px solid var(--text-dim);
-  background:var(--pill-bg);color:var(--text-dim);
+  border-radius:999px;border:1px solid var(--grey);
+  background:rgba(57,64,80,.06);color:var(--graphite);
   padding:8px 18px;
   font-family:'Onest',sans-serif;font-weight:400;font-size:13px;
   letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
 }
-.pill-icon{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-right:6px;vertical-align:-2px}
-
-/* мітка вгорі зліва — оновлений стиль (тільки слайди 4, 5, 8) */
-.pill-header{
-  display:inline-flex;align-items:center;
-  border-radius:999px;border:1px solid rgba(222,161,2,.5);
-  background:transparent;color:var(--amber);
-  padding:8px 18px;
-  font-family:'Onest',sans-serif;font-weight:500;font-size:16px;
-  letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
-}
-
-.ladder{color:var(--text)}
-.ladder .l1{font-family:'Geologica',sans-serif;font-weight:500;font-size:62px;line-height:1.05;text-transform:uppercase}
-.ladder .l2{font-family:'Geologica',sans-serif;font-weight:400;font-size:34px;line-height:1.15;text-transform:uppercase;margin-top:4px}
-.h-single{font-family:'Geologica',sans-serif;font-weight:500;font-size:48px;line-height:1.1;text-transform:uppercase;color:var(--text)}
-
-.badge{
-  width:34px;height:34px;border-radius:8px;
-  background:var(--graphite);color:var(--light);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Geologica',sans-serif;font-weight:500;font-size:15px;
-  flex-shrink:0;
-}
-
-.icon-circle{
-  width:64px;height:64px;border-radius:50%;
-  background:#fff;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 2px 10px rgba(57,64,80,.12);
-  flex-shrink:0;
-}
-.icon-circle svg{width:28px;height:28px;stroke:var(--graphite);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-
 .pill-white{background:#fff;border-color:transparent;color:var(--graphite);box-shadow:0 4px 14px rgba(57,64,80,.18);font-weight:500}
+.pill svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-right:8px;flex-shrink:0}
+
+.footer{
+  position:absolute;left:0;right:0;bottom:0;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;border-top:1px solid var(--line);
+  font-family:'Onest',sans-serif;font-size:13px;z-index:30;
+}
+.footer .logo-mark{height:28px;width:auto;display:block;position:relative;z-index:2}
+.footer .page-num{font-family:'Geologica',sans-serif;font-weight:500;color:var(--amber);position:relative;z-index:2}
 .scrim-light{position:absolute;left:0;top:0;bottom:0;background:rgba(255,255,255,.6);z-index:1}
 .scrim-dark{position:absolute;right:0;top:0;bottom:0;background:rgba(57,64,80,.6);z-index:1}
 
-.node{position:absolute;width:64px;text-align:center}
-.node .icon-circle{margin:0 auto}
-.node .pill{margin-top:2px;position:relative;left:50%;transform:translateX(-50%)}
-
-.footer{
-  position:absolute;left:0;right:0;bottom:0;height:52px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 40px;border-top:1px solid var(--line);
-  font-family:'Onest',sans-serif;font-size:13px;
+.icon-circle{
+  width:52px;height:52px;border-radius:50%;
+  background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 10px rgba(57,64,80,.14);
+  flex-shrink:0;
 }
-.footer .logo-mark{height:22px;width:auto;display:block}
-.footer .page-num{font-family:'Geologica',sans-serif;font-weight:500;color:var(--amber)}
+.icon-circle svg{width:22px;height:22px;stroke:var(--graphite);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* ---------- СЛАЙД 1 — обкладинка (перенесено з v2-draft) ---------- */
+/* ======================= СЛАЙД 1 ======================= */
 #slide-1 .top-strip{position:absolute;left:0;top:0;width:72%;height:56px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding-left:32px;z-index:5}
 #slide-1 .top-strip svg{height:22px;width:auto}
+
 #slide-1 .col-left{position:absolute;left:0;top:56px;width:28%;bottom:0}
 #slide-1 .col-right{position:absolute;left:72%;top:0;right:0;bottom:0;background:var(--graphite);overflow:hidden}
+
+/* рамка дуги = точні межі лівої колонки, overflow:hidden фізично не пускає дугу далі */
 #slide-1 .arc-frame{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;z-index:1}
+/* дуга: коло центром за лівим краєм слайда (радіус 820), перерахований так, щоб видимий
+   фрагмент входив зверху-зліва (~y:86) і сягав правого краю рамки (x:358) ще ДО зони заголовка
+   (~y:355, заголовок починається ~371) — розрив ~16px витриманий свідомо. Кружок-іконка ~20% висоти. */
 #slide-1 .arc{position:absolute;border-radius:50%;left:-1120px;top:-32px;width:1640px;height:1640px;border:1px solid rgba(112,119,135,.75)}
 #slide-1 .arc-dash{position:absolute;border-radius:50%;left:-1140px;top:-12px;width:1640px;height:1640px;border:1px dashed rgba(112,119,135,.5)}
 #slide-1 .arc-icon{position:absolute;left:158px;top:133px}
-/* .icon-circle тут менша за глобальну (52px) — переоприділяємо тільки для цього елемента */
-#slide-1 .arc-icon .icon-circle{width:52px;height:52px}
-#slide-1 .arc-icon .icon-circle svg{width:22px;height:22px;stroke-width:1.6}
+
+/* заголовок+пігулки — одна група, прив'язана до нижнього краю (~88% висоти контентної зони) */
 #slide-1 .left-bottom{position:absolute;left:40px;right:24px;bottom:129px}
 #slide-1 .left-heading .r1{font-family:'Geologica',sans-serif;font-weight:500;font-size:44px;line-height:1.1;color:var(--graphite);white-space:nowrap}
 #slide-1 .left-heading .r2{font-family:'Geologica',sans-serif;font-weight:400;font-size:34px;line-height:1.15;color:var(--graphite);margin-top:2px;white-space:nowrap}
@@ -127,12 +95,18 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
 #slide-1 .segments{margin-top:24px;display:flex;align-items:center;gap:8px;white-space:nowrap}
 #slide-1 .seg-pill{border:1px solid var(--amber);border-radius:999px;padding:5px 11px;font-family:'Onest',sans-serif;font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber)}
 #slide-1 .seg-dot{color:var(--amber);font-size:12px}
+
+/* цикл підбору — технічне креслення в центральній колонці */
 #slide-1 .schema{position:absolute;left:0;top:0;width:1280px;height:720px;z-index:2}
 #slide-1 .leader-label{position:absolute;font-family:'Onest',sans-serif;font-weight:400;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--graphite);white-space:nowrap}
+
+/* знак ReLink у центрі кола: тільки дуги + напис, без фону-плашки */
 #slide-1 .center-logo{position:absolute;left:640px;top:313px;transform:translate(-50%,-50%);width:110px;height:110px;z-index:3}
 #slide-1 .center-logo .arc-part{fill:url(#relinkAmberMini)}
 #slide-1 .center-logo .re-part{fill:url(#relinkAmberMini)}
 #slide-1 .center-logo .link-part{fill:#394050}
+#slide-1 .center-logo{filter:none}
+
 #slide-1 .right-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 100% 0%, rgba(222,161,2,.35), transparent 65%)}
 #slide-1 .right-ring{position:absolute;left:1150px;top:180px;width:520px;height:520px;border-radius:50%;border:1px solid rgba(235,234,232,.3)}
 #slide-1 .right-logo{position:absolute;left:44px;top:44px;height:64px}
@@ -141,16 +115,14 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
 #slide-1 .right-bottom .pill-white{margin-top:14px}
 #slide-1 .right-bottom .lines{font-family:'Onest',sans-serif;font-weight:400;font-size:17px;line-height:1.6;color:var(--light);margin-top:18px}
 #slide-1 .right-bottom .lines b{font-family:'Geologica',sans-serif;font-weight:500;font-size:inherit;color:var(--amber)}
-/* слайди 1 і 2 мають вищу панель (56px/28px) за затвердженим дизайном — інші слайди лишаються на 52px/22px */
-#slide-1 .footer,#slide-2 .footer{height:56px}
-#slide-1 .footer .logo-mark,#slide-2 .footer .logo-mark{height:28px;position:relative;z-index:2}
-#slide-1 .footer .page-num,#slide-2 .footer .page-num{position:relative;z-index:2}
 
-/* ---------- СЛАЙД 2 — чому найм критичний (перенесено з v2-draft) ---------- */
+/* ======================= СЛАЙД 2 ======================= */
 #slide-2 .col-left{position:absolute;left:0;top:0;width:26%;bottom:0;padding:80px 36px 0}
 #slide-2 .col-left .r1{font-family:'Geologica',sans-serif;font-weight:500;font-size:48px;line-height:1.08;color:var(--graphite);text-transform:uppercase}
 #slide-2 .col-left .r2{font-family:'Geologica',sans-serif;font-weight:400;font-size:24px;line-height:1.2;color:var(--grey);margin-top:8px}
+
 #slide-2 .div-main{position:absolute;left:26%;width:1px;top:0;bottom:0;background:var(--line)}
+
 #slide-2 .top-zone{
   position:absolute;left:26%;right:0;top:0;height:400px;padding:64px 64px 0;
   background:
@@ -160,8 +132,11 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
 #slide-2 .top-zone p{font-family:'Onest',sans-serif;font-weight:400;font-size:20px;line-height:1.6;color:var(--light);max-width:760px}
 #slide-2 .top-zone .core{font-family:'Onest',sans-serif;font-weight:400;font-size:20px;line-height:1.6;color:var(--light);margin:14px 0}
 #slide-2 .top-zone .task{font-family:'Geologica',sans-serif;font-weight:500;font-size:26px;line-height:1.4;color:var(--amber);margin-top:18px;max-width:760px}
+
 #slide-2 .bottom-zone{position:absolute;left:26%;right:0;top:400px;bottom:0}
 #slide-2 .div-h2{position:absolute;left:26%;right:0;top:400px;height:1px;background:var(--line)}
+
+/* ланцюг наслідків — округлі пігулки без заливки, в один рядок, по центру зони */
 #slide-2 .chain{position:absolute;left:64px;right:64px;top:80px;display:flex;align-items:center;justify-content:center;gap:12px}
 #slide-2 .chain-pill{
   display:inline-flex;align-items:center;border-radius:999px;
@@ -171,81 +146,9 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
   letter-spacing:.04em;text-transform:uppercase;color:var(--graphite);
 }
 #slide-2 .chain-arrow{flex-shrink:0}
+
 #slide-2 .geo-corner{position:absolute;right:64px;bottom:56px;display:flex;align-items:center;gap:8px;font-family:'Onest',sans-serif;font-weight:300;font-size:14px;color:var(--grey)}
 #slide-2 .geo-corner svg{width:16px;height:16px;stroke:var(--amber);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-
-/* ---------- СЛАЙД 3 — цільова аудиторія (не чіпати) ---------- */
-#slide-3 .header{position:absolute;left:80px;top:64px}
-#slide-3 .cols{position:absolute;left:80px;right:80px;top:240px;bottom:52px;display:flex}
-#slide-3 .col{flex:1;padding:0 32px;position:relative}
-#slide-3 .col:first-child{padding-left:0}
-#slide-3 .col-title{font-family:'Geologica',sans-serif;font-weight:500;font-size:22px;text-transform:uppercase;color:var(--amber);margin-top:22px;margin-bottom:14px}
-#slide-3 .col-text{font-family:'Onest',sans-serif;font-weight:300;font-size:15px;line-height:1.6;color:var(--text)}
-
-/* ---------- СЛАЙД 4 — наші послуги (3 колонки) ---------- */
-#slide-4 .header{position:absolute;left:80px;top:64px}
-#slide-4 .cols{position:absolute;left:80px;right:80px;top:220px;bottom:52px;display:flex}
-#slide-4 .col{flex:1;padding:0 32px}
-#slide-4 .col:first-child{padding-left:0}
-#slide-4 .col-title{font-family:'Geologica',sans-serif;font-weight:500;font-size:19px;text-transform:uppercase;color:var(--text);margin-top:22px;margin-bottom:12px}
-#slide-4 .col-text{font-family:'Onest',sans-serif;font-weight:300;font-size:15px;line-height:1.6;color:var(--text-dim)}
-#slide-4 .col-note{font-family:'Geologica',sans-serif;font-weight:500;font-size:18px;color:var(--amber);margin-top:14px}
-
-/* ---------- СЛАЙД 5 — спеціальні формати (горизонтальні смуги) ---------- */
-#slide-5 .header{position:absolute;left:80px;top:64px}
-#slide-5 .band{position:absolute;left:80px;right:80px;height:112px;display:flex;align-items:center;gap:26px;border-top:1px solid rgba(112,119,135,.4)}
-#slide-5 .band-name{font-family:'Geologica',sans-serif;font-weight:500;font-size:28px;color:var(--text);width:340px;flex-shrink:0}
-#slide-5 .band-text{font-family:'Onest',sans-serif;font-weight:300;font-size:17px;line-height:1.4;color:var(--grey)}
-
-/* ---------- СЛАЙД 6 — процес: класичний рекрутинг ---------- */
-#slide-6 .head{position:absolute;left:80px;top:40px;right:80px}
-#slide-6 .head h2{font-family:'Geologica',sans-serif;font-weight:500;font-size:32px;text-transform:uppercase;color:var(--text)}
-#slide-6 .head .rule{height:2px;background:var(--amber);margin:14px 0 16px}
-#slide-6 .head p{font-family:'Onest',sans-serif;font-weight:300;font-size:16px;line-height:1.5;color:var(--text)}
-#slide-6 .head p b{color:var(--amber);font-weight:400}
-#slide-6 .grid8{position:absolute;left:80px;right:80px;top:167px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,190px);gap:20px}
-#slide-6 .s-card{background:rgba(235,234,232,.06);border-radius:12px;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
-#slide-6 .s-card .row{display:flex;align-items:flex-start;justify-content:space-between}
-#slide-6 .s-card svg{width:40px;height:40px;stroke:var(--amber);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-#slide-6 .s-card .n{font-family:'Geologica',sans-serif;font-weight:500;font-size:44px;color:var(--amber);line-height:1}
-#slide-6 .s-card .name{font-family:'Onest',sans-serif;font-weight:400;font-size:17px;line-height:1.3;color:var(--text);text-align:center;hyphens:none}
-#slide-6 .wide-card{position:absolute;left:80px;right:80px;top:591px;background:rgba(235,234,232,.06);border-bottom:2px solid var(--amber);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px 40px}
-#slide-6 .wide-card p{font-family:'Onest',sans-serif;font-weight:400;font-size:19px;line-height:1.3;color:var(--text)}
-
-/* ---------- СЛАЙД 7 — додаткові сервіси (не чіпати) ---------- */
-#slide-7 .header{position:absolute;left:80px;top:64px}
-#slide-7 .right-panel{position:absolute;right:0;top:220px;bottom:52px;width:50%;background:var(--graphite)}
-#slide-7 .left-col{position:absolute;left:80px;top:260px;width:460px}
-#slide-7 .right-col{position:absolute;left:calc(50% + 56px);top:260px;width:460px}
-#slide-7 .check-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
-#slide-7 .check-item svg{width:20px;height:20px;flex-shrink:0;margin-top:1px;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
-#slide-7 .check-item span{font-family:'Onest',sans-serif;font-weight:300;font-size:15px;line-height:1.4}
-#slide-7 .left-col .check-item svg{stroke:var(--graphite)}
-#slide-7 .left-col .check-item span{color:var(--graphite)}
-#slide-7 .right-col .check-item svg{stroke:var(--light)}
-#slide-7 .right-col .check-item span{color:var(--light)}
-#slide-7 .pill-on-dark{border-color:var(--light);color:var(--light);background:rgba(235,234,232,.1)}
-
-/* ---------- СЛАЙД 8 — наші переваги (статистика + пологa дуга) ---------- */
-#slide-8 .header{position:absolute;left:80px;top:64px}
-#slide-8 .stats{position:absolute;left:80px;right:80px;top:190px;height:100px;display:flex}
-#slide-8 .stat{flex:1;text-align:center;position:relative}
-#slide-8 .stat+.stat::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--line)}
-#slide-8 .stat .num{font-family:'Geologica',sans-serif;font-weight:500;font-size:52px;color:var(--amber);line-height:1}
-#slide-8 .stat .cap{font-family:'Onest',sans-serif;font-weight:300;font-size:16px;color:var(--text-dim);margin-top:8px}
-#slide-8 .arc-path{position:absolute;left:0;top:0;width:1280px;height:720px;pointer-events:none}
-#slide-8 .node{width:64px}
-#slide-8 .node .cap{font-family:'Onest',sans-serif;font-weight:300;font-size:13px;line-height:1.35;color:var(--text-dim);margin-top:10px;width:150px;position:relative;left:50%;transform:translateX(-50%)}
-#slide-8 .node .cap b{display:block;font-family:'Geologica',sans-serif;font-weight:500;font-size:15px;color:var(--text);margin-bottom:3px;text-transform:none}
-
-/* ---------- СЛАЙД 9 — контакти (не чіпати) ---------- */
-#slide-9 .left-zone{position:absolute;left:0;top:0;bottom:0;width:55%;display:flex;align-items:center;padding-left:80px}
-#slide-9 .ladder-big .l1{font-size:96px}
-#slide-9 .ladder-big .l2{font-size:52px}
-#slide-9 .right-zone{position:absolute;left:55%;top:0;right:0;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:0 60px}
-#slide-9 .contact-card{border:1px dashed var(--text-dim);border-radius:14px;padding:26px 30px}
-#slide-9 .contact-card .field{font-family:'Geologica',sans-serif;font-weight:500;font-size:24px;color:var(--text);margin-top:16px}
-#slide-9 .contact-card .field:first-of-type{margin-top:18px}
 </style>
 </head>
 <body>
@@ -288,15 +191,20 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
     <path d="M679.621 144.674V25.7979H697.782V96.1329L729.977 62.9466H751.44L722.548 94.2342L755.65 144.674H733.939L709.339 106.039L697.782 117.762V144.674H679.621Z"/>
   </g>
 </symbol>
+<symbol id="relink-mark" viewBox="0 -10 203 228">
+  <path d="M77.4925 2.1791C129.276 -6.81349 158.019 13.1463 186.59 41.4781L196.168 35.6765L200.302 90.2576L158.02 61.0536L166.229 54.8825C139.41 31.2174 110.342 16.7962 74.5362 22.2548C36.9424 27.9862 11.5479 51.0991 2.74154e-05 88.6979C6.98955 46.0478 38.8982 8.88126 77.4925 2.1791Z"/>
+  <path d="M125.507 205.821C73.7238 214.814 44.9805 194.854 16.4102 166.522L6.8321 172.324L0 119.302L44.9805 146.946L36.771 153.118C63.5905 176.783 92.6576 191.204 128.464 185.745C166.058 180.014 191.452 156.901 203 119.302C196.01 161.952 164.102 199.119 125.507 205.821Z"/>
+</symbol>
 </defs>
 </svg>
 
-<!-- СЛАЙД 1 — обкладинка (перенесено з v2-draft, затверджено) -->
+<!-- ================= СЛАЙД 1 — обкладинка ================= -->
 <div class="slide-outer"><div class="slide bg-light" id="slide-1">
 
   <div class="top-strip"><svg viewBox="0 -10 766 228"><use href="#logo-dark"/></svg></div>
 
   <div class="col-left">
+    <!-- рамка рівно по лівій колонці, overflow:hidden — дуга фізично не може вийти за її межі -->
     <div class="arc-frame">
       <div class="arc"></div>
       <div class="arc-dash"></div>
@@ -316,13 +224,20 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
     </div>
   </div>
 
+  <!-- коло з 4 дуг, розриви 18°, вузли-маркери на розривах — координати повного полотна.
+       Центр (640,313), радіус 186 (було 155, +20%). -->
   <svg class="schema" viewBox="0 0 1280 720">
+      <!-- дуги: right(324→36), bottom(54→126), left(144→216), top(234→306) -->
       <path d="M 790.5,203.6 A 186,186 0 0 1 790.5,422.4" fill="none" stroke="#394050" stroke-opacity="0.85" stroke-width="2"/>
       <path d="M 749.3,463.5 A 186,186 0 0 1 530.7,463.5" fill="none" stroke="#394050" stroke-opacity="0.85" stroke-width="2"/>
       <path d="M 489.5,422.4 A 186,186 0 0 1 489.5,203.6" fill="none" stroke="#394050" stroke-opacity="0.85" stroke-width="2"/>
       <path d="M 530.7,162.5 A 186,186 0 0 1 749.3,162.5" fill="none" stroke="#394050" stroke-opacity="0.85" stroke-width="2"/>
+
+      <!-- напрямні стрілки-кутики на верхній і нижній дугах (протилежні), 8px, stroke 2px -->
       <polyline points="632,119 641,127 632,135" fill="none" stroke="#394050" stroke-width="2"/>
       <polyline points="648,491 639,499 648,507" fill="none" stroke="#394050" stroke-width="2"/>
+
+      <!-- 4 вузли-маркери на розривах: кружок 10px + тонке кільце -->
       <circle cx="508.5" cy="181.5" r="16" fill="none" stroke="#DEA102" stroke-opacity="0.4" stroke-width="1"/>
       <circle cx="508.5" cy="181.5" r="5" fill="#DEA102"/>
       <circle cx="771.5" cy="181.5" r="16" fill="none" stroke="#DEA102" stroke-opacity="0.4" stroke-width="1"/>
@@ -331,6 +246,8 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
       <circle cx="508.5" cy="444.5" r="5" fill="#DEA102"/>
       <circle cx="771.5" cy="444.5" r="16" fill="none" stroke="#DEA102" stroke-opacity="0.4" stroke-width="1"/>
       <circle cx="771.5" cy="444.5" r="5" fill="#DEA102"/>
+
+      <!-- виноски: короткий відрізок 45° + горизонтальна поличка ~110px, stroke 1.5px -->
       <polyline points="508.5,181.5 474.5,147.5 364.5,147.5" fill="none" stroke="#394050" stroke-width="1.5"/>
       <polyline points="771.5,181.5 805.5,147.5 915.5,147.5" fill="none" stroke="#394050" stroke-width="1.5"/>
       <polyline points="508.5,444.5 474.5,478.5 364.5,478.5" fill="none" stroke="#394050" stroke-width="1.5"/>
@@ -342,6 +259,9 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
     <div class="leader-label" style="left:364px;top:487px">Офісні</div>
     <div class="leader-label" style="right:365px;top:487px;text-align:right">Управлінські</div>
 
+    <!-- знак ReLink у центрі кола: тільки дуги-стрілки і напис, з avatar-dark-square.svg,
+         фон-плашка не перенесена. Re — бурштиновий градієнт, Link — графіт (за завданням,
+         кольори інвертовано відносно вихідника, який зроблений під темний фон). -->
     <svg class="center-logo" viewBox="0 0 1000 1000">
       <g transform="translate(-40.00,0) translate(-238.588,-520.402) scale(0.608643,0.591366)">
         <g transform="translate(0.000000,3456.000000) scale(0.100000,-0.100000)">
@@ -374,11 +294,11 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
     <div class="scrim-light" style="width:72%"></div>
     <div class="scrim-dark" style="width:28%"></div>
     <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-dark"/></svg>
-    <span class="page-num">1 / 9</span>
+    <span class="page-num">1 / 2 (чернетка)</span>
   </div>
 </div></div>
 
-<!-- СЛАЙД 2 — чому найм критичний (перенесено з v2-draft, затверджено) -->
+<!-- ================= СЛАЙД 2 — чому найм критичний ================= -->
 <div class="slide-outer"><div class="slide bg-light" id="slide-2">
 
   <div class="col-left">
@@ -411,258 +331,9 @@ body{font-family:'Onest',sans-serif;scroll-snap-type:y mandatory;overflow-x:hidd
   </div>
 
   <div class="footer">
+    <div class="scrim-light" style="width:100%"></div>
     <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-dark"/></svg>
-    <span class="page-num">2 / 9</span>
-  </div>
-</div></div>
-
-<!-- СЛАЙД 3 — цільова аудиторія (темний) — НЕ ЧІПАТИ -->
-<div class="slide-outer"><div class="slide bg-dark scheme-dark" id="slide-3">
-  <div class="header">
-    <div class="pill">Цільова аудиторія</div>
-    <div class="h-single" style="margin-top:18px">З ким працюємо</div>
-  </div>
-
-  <div class="divider divider-v" style="left:calc(80px + (1280px - 160px)/3);top:240px;bottom:52px"></div>
-  <div class="divider divider-v" style="left:calc(80px + 2*(1280px - 160px)/3);top:240px;bottom:52px"></div>
-
-  <div class="cols">
-    <div class="col">
-      <div class="icon-circle">
-        <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="3" y1="13" x2="21" y2="13"/></svg>
-      </div>
-      <div class="col-title">B2B — клієнти</div>
-      <div class="col-text">Керівники HR/HRD та власники або директори компаній сектору Defense (розмір 50–500 осіб) та МСБ у виробничих, логістичних і технічних сферах (розмір 30–200 осіб).</div>
-    </div>
-    <div class="col">
-      <div class="icon-circle">
-        <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0-3.3 2.2-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><circle cx="17.5" cy="9" r="2.1"/><path d="M15.3 20c0-2.3 1.1-4 3.2-4.4"/></svg>
-      </div>
-      <div class="col-title">B2C — кандидати</div>
-      <div class="col-text">Робітничі спеціальності (монтажники, комплектувальники), інженерно-технічні фахівці, офісний та управлінський персонал, ветерани з військовим досвідом.</div>
-    </div>
-    <div class="col">
-      <div class="icon-circle">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 6 21l6-3 6 3-2.5-8.5"/></svg>
-      </div>
-      <div class="col-title">Ветеранам</div>
-      <div class="col-text">Допомагаємо ветеранам та ветеранкам знайти роботу, де поважають ваш досвід, відповідальність та навички. Безкоштовно, конфіденційно, крок за кроком.</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-light"/></svg>
-    <span></span>
-    <span class="page-num">3 / 9</span>
-  </div>
-</div></div>
-
-<!-- СЛАЙД 4 — наші послуги (світлий, 3 колонки) -->
-<div class="slide-outer"><div class="slide bg-light scheme-light" id="slide-4">
-  <div class="header">
-    <div class="pill-header">Послуги</div>
-    <div class="h-single" style="margin-top:18px">Наші послуги</div>
-  </div>
-
-  <div class="divider divider-v" style="left:calc(80px + (1280px - 160px)/3);top:220px;bottom:52px"></div>
-  <div class="divider divider-v" style="left:calc(80px + 2*(1280px - 160px)/3);top:220px;bottom:52px"></div>
-
-  <div class="cols">
-    <div class="col">
-      <div class="icon-circle">
-        <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="3" y1="13" x2="21" y2="13"/></svg>
-      </div>
-      <div class="col-title">Класичний рекрутинг</div>
-      <div class="col-text">Офісні, комерційні та управлінські вакансії. Беремо процес підбору на себе — від уточнення вакансії до виходу кандидата на роботу.</div>
-    </div>
-    <div class="col">
-      <div class="icon-circle">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M21 12h-3M6 12H3M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1M18.4 18.4l-2.1-2.1M7.7 7.7 5.6 5.6"/></svg>
-      </div>
-      <div class="col-title">Складний інженерно-технічний підбір</div>
-      <div class="col-text">Для позицій, де мало резюме і важливий профіль.</div>
-    </div>
-    <div class="col">
-      <div class="icon-circle">
-        <svg viewBox="0 0 24 24"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-      </div>
-      <div class="col-title">Спеціальні формати співпраці</div>
-      <div class="col-text">Масовий підбір, навчальний центр, зовнішній HR-партнер, терміновий підбір.</div>
-      <div class="col-note">Детальніше — далі</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-dark"/></svg>
-    <span></span>
-    <span class="page-num">4 / 9</span>
-  </div>
-</div></div>
-
-<!-- СЛАЙД 5 — спеціальні формати співпраці (світлий, смуги) -->
-<div class="slide-outer"><div class="slide bg-light scheme-light" id="slide-5">
-  <div class="header">
-    <div class="pill-header">Формати співпраці</div>
-    <div class="h-single" style="margin-top:18px">Спеціальні формати співпраці</div>
-  </div>
-
-  <div class="band" style="top:216px">
-    <div class="icon-circle" style="width:56px;height:56px"><svg viewBox="0 0 24 24" style="width:24px;height:24px"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0-3.3 2.2-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><circle cx="17.5" cy="9" r="2.1"/><path d="M15.3 20c0-2.3 1.1-4 3.2-4.4"/></svg></div>
-    <div class="band-name">Масовий підбір</div>
-    <div class="band-text">При масштабуванні команди.</div>
-  </div>
-  <div class="band" style="top:328px">
-    <div class="icon-circle" style="width:56px;height:56px"><svg viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M4 4h9a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-2a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h3z"/></svg></div>
-    <div class="band-name">Власний навчальний центр</div>
-    <div class="band-text">Підготовка робітничого персоналу.</div>
-  </div>
-  <div class="band" style="top:440px">
-    <div class="icon-circle" style="width:56px;height:56px"><svg viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
-    <div class="band-name">Зовнішній HR-партнер</div>
-    <div class="band-text">Для компаній з постійною потребою в наймі.</div>
-  </div>
-  <div class="band" style="top:552px;border-bottom:1px solid rgba(112,119,135,.4)">
-    <div class="icon-circle" style="width:56px;height:56px"><svg viewBox="0 0 24 24" style="width:24px;height:24px"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-    <div class="band-name">Терміновий підбір</div>
-    <div class="band-text">Коли вакансія горить, до 21 дня від заявки до оферу.</div>
-  </div>
-
-  <div class="footer">
-    <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-dark"/></svg>
-    <span></span>
-    <span class="page-num">5 / 9</span>
-  </div>
-</div></div>
-
-<!-- СЛАЙД 6 — класичний рекрутинг: воронка (темний) -->
-<div class="slide-outer"><div class="slide bg-dark scheme-dark" id="slide-6">
-  <div class="head">
-    <h2>Класичний рекрутинг</h2>
-    <div class="rule"></div>
-    <p><b>Швидко, прозоро та з гарантією.</b> Офісні, комерційні та управлінські вакансії.</p>
-    <p>Беремо процес підбору на себе — від уточнення вакансії до виходу кандидата.</p>
-  </div>
-
-  <div class="grid8">
-    <div class="s-card"><div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span class="n">01</span></div><div class="name">Заявка</div></div>
-    <div class="s-card"><div class="row"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg><span class="n">02</span></div><div class="name">Бриф</div></div>
-    <div class="s-card"><div class="row"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><line x1="20" y1="20" x2="14.5" y2="14.5"/></svg><span class="n">03</span></div><div class="name">Пошук і первинний відбір</div></div>
-    <div class="s-card"><div class="row"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.35 0-2.6-.3-3.7-.85L3 21l1.85-5.55A8.47 8.47 0 0 1 3.5 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/></svg><span class="n">04</span></div><div class="name">Інтерв'ю / скринінг</div></div>
-    <div class="s-card"><div class="row"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c0-3.3 2.2-5.5 5.5-5.5s5.5 2.2 5.5 5.5"/><circle cx="17.5" cy="9" r="2.1"/><path d="M15.3 20c0-2.3 1.1-4 3.2-4.4"/></svg><span class="n">05</span></div><div class="name">Фіналісти для клієнта</div></div>
-    <div class="s-card"><div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span class="n">06</span></div><div class="name">Співбесіда</div></div>
-    <div class="s-card"><div class="row"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="m9 13 2 2 4-4"/></svg><span class="n">07</span></div><div class="name">Вихід кандидата</div></div>
-    <div class="s-card"><div class="row"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/></svg><span class="n">08</span></div><div class="name">Гарантійний супровід</div></div>
-  </div>
-
-  <div class="wide-card">
-    <p>Ви витрачаєте час лише на співбесіди з кандидатами, які вже пройшли наш відбір.</p>
-  </div>
-
-  <div class="footer">
-    <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-light"/></svg>
-    <span></span>
-    <span class="page-num">6 / 9</span>
-  </div>
-</div></div>
-
-<!-- СЛАЙД 7 — додаткові сервіси (світлий, розріз) — НЕ ЧІПАТИ -->
-<div class="slide-outer"><div class="slide bg-light scheme-light" id="slide-7">
-  <div class="right-panel"></div>
-  <div class="divider divider-v" style="left:50%;top:220px;bottom:52px"></div>
-
-  <div class="header">
-    <div class="pill">Додаткові сервіси</div>
-    <div class="h-single" style="margin-top:18px;max-width:900px">Додаткові сервіси за бажанням замовника</div>
-  </div>
-
-  <div class="left-col">
-    <div class="pill" style="margin-bottom:22px">Безкоштовні</div>
-    <div class="check-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Організація поліграфу</span></div>
-    <div class="check-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Перевірка рекомендацій</span></div>
-    <div class="check-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Допомога з підготовкою Job Offer</span></div>
-    <div class="check-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Аудит вакансії або оферу без запуску підбору</span></div>
-  </div>
-
-  <div class="right-col">
-    <div class="pill pill-on-dark" style="margin-bottom:22px">Платні</div>
-    <div class="check-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Психологічне тестування</span></div>
-    <div class="check-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>Організація конкурсу або асесменту</span></div>
-  </div>
-
-  <div class="footer">
-    <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-dark"/></svg>
-    <span></span>
-    <span class="page-num">7 / 9</span>
-  </div>
-</div></div>
-
-<!-- СЛАЙД 8 — наші переваги (світлий, статистика + пологa дуга) -->
-<div class="slide-outer"><div class="slide bg-light scheme-light" id="slide-8">
-  <div class="header">
-    <div class="pill-header">Переваги</div>
-    <div class="h-single" style="margin-top:18px">Наші переваги</div>
-  </div>
-
-  <div class="stats">
-    <div class="stat"><div class="num">90%</div><div class="cap">вакансій закриваються у погоджений термін</div></div>
-    <div class="stat"><div class="num">10 000+</div><div class="cap">власна база кандидатів</div></div>
-    <div class="stat"><div class="num">87%</div><div class="cap">кандидатів проходять гарантійний термін</div></div>
-  </div>
-
-  <svg class="arc-path"><path d="M200,432 Q640,340 1080,432" fill="none" stroke="rgba(112,119,135,.4)" stroke-width="1" stroke-dasharray="4 6"/></svg>
-
-  <div class="node" style="left:168px;top:400px">
-    <div class="icon-circle"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
-    <div class="cap"><b>Складні вакансії</b>Досвід закриття інженерно-технічних, технологічних і нестандартних позицій.</div>
-  </div>
-  <div class="node" style="left:468px;top:370px">
-    <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
-    <div class="cap"><b>Швидкий масовий підбір</b>Досвід швидкого закриття вакансій маспідбору.</div>
-  </div>
-  <div class="node" style="left:748px;top:370px">
-    <div class="icon-circle"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
-    <div class="cap"><b>Власна база кандидатів</b>Напрацьована під галузь.</div>
-  </div>
-  <div class="node" style="left:1048px;top:400px">
-    <div class="icon-circle"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg></div>
-    <div class="cap"><b>Доступ до CRM</b>Замовник бачить процес підбору в нашій системі.</div>
-  </div>
-
-  <div class="footer">
-    <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-dark"/></svg>
-    <span></span>
-    <span class="page-num">8 / 9</span>
-  </div>
-</div></div>
-
-<!-- СЛАЙД 9 — контакти (темний) — НЕ ЧІПАТИ -->
-<div class="slide-outer"><div class="slide bg-dark scheme-dark" id="slide-9">
-  <div class="divider divider-v" style="left:55%"></div>
-
-  <div class="left-zone">
-    <div class="ladder ladder-big">
-      <div class="l1">Готові</div>
-      <div class="l2">почати?</div>
-    </div>
-  </div>
-
-  <div class="right-zone">
-    <div class="contact-card">
-      <div class="pill">Співпраця</div>
-      <div class="field">[Ім'я контактної особи]</div>
-      <div class="field">[Телефон]</div>
-      <div class="field">[E-mail]</div>
-    </div>
-    <div class="contact-card">
-      <div class="pill">LinkedIn</div>
-      <div class="field">[Посилання]</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <svg class="logo-mark" viewBox="0 -10 766 228"><use href="#logo-light"/></svg>
-    <span></span>
-    <span class="page-num">9 / 9</span>
+    <span class="page-num">2 / 2 (чернетка)</span>
   </div>
 </div></div>
 
