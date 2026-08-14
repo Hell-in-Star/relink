@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMM-стратегія ReLink · LinkedIn, Facebook, Threads, Instagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+:root{
+  --amber:#DEA102; --amber-dk:#8A6400; --amber-dim:rgba(222,161,2,.14);
+  --graphite:#394050; --grey:#707787; --plat:#EBEAE8;
+  --bg:#EBEAE8; --card:#FFFFFF; --soft:#F4F3F1;
+  --text:#394050; --text2:#4E5566; --dim:#707787;
+  --line:rgba(57,64,80,.14);
+  --shadow:0 1px 3px rgba(57,64,80,.06),0 6px 20px rgba(57,64,80,.05);
+  --gr-amber:linear-gradient(157deg,#DEA102,#ECC668);
+  --gr-graphite:linear-gradient(157deg,#394050,#C6D7FF);
+  --gr-grey:linear-gradient(157deg,#707787,#E0EAFF);
+  --net-fb:#DEA102; --net-ig:#707787; --net-th:#394050; --net-li:#C6D7FF;
+}
+body{background:var(--bg);color:var(--text);font-family:'Onest',sans-serif;font-size:16px;line-height:1.65}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--graphite);box-shadow:var(--shadow)}
+nav .navwrap{max-width:1000px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;height:56px}
+.brandmark{height:22px;width:auto;flex-shrink:0;margin-right:14px}
+.navtab{font-family:'Geologica',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#B7BCC7;background:transparent;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.navtab:hover{color:var(--plat)}
+.navtab.active{color:var(--graphite);background:var(--amber)}
+
+/* HERO (Огляд і LinkedIn) */
+.hero{background:var(--gr-graphite);color:var(--plat);padding:52px 0 40px}
+.hero .kicker{font-family:'Geologica',sans-serif;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.hero h1{font-family:'Geologica',sans-serif;font-weight:700;font-size:clamp(30px,5vw,44px);line-height:1.12;margin-bottom:12px}
+.hero .sub{font-size:16.5px;color:#DCE0EA;max-width:640px;margin-bottom:18px}
+.hero .meta{font-family:'Geologica',sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#A8AEBD}
+.hero .meta b{color:var(--amber);font-weight:600}
+
+/* TAB PANELS */
+.tab-panel{padding-bottom:60px}
+.net-head{padding:44px 0 8px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.net-eyebrow{width:100%;font-family:'Geologica',sans-serif;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+h1{font-family:'Geologica',sans-serif;font-weight:700;font-size:clamp(26px,4vw,36px)}
+.badge{font-family:'Geologica',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:5px 12px;border-radius:20px;background:var(--soft);color:var(--text2);border:1px solid var(--line)}
+.badge.ok{background:var(--amber-dim);color:var(--amber-dk);border-color:transparent}
+.badge.pending{background:rgba(112,119,135,.16);color:var(--graphite);border-color:transparent}
+
+/* CONTENT (з mdToHtml, і нативний вміст LinkedIn) */
+.net-content h2{font-family:'Geologica',sans-serif;font-weight:700;font-size:clamp(22px,3vw,27px);line-height:1.22;padding-bottom:8px;border-bottom:3px solid var(--amber);margin:36px 0 16px}
+.net-content h2:first-child{margin-top:8px}
+.net-content h3{font-family:'Geologica',sans-serif;font-weight:700;font-size:18px;margin:24px 0 10px}
+.net-content h4{font-family:'Geologica',sans-serif;font-weight:600;font-size:15.5px;margin:18px 0 8px;color:var(--text2)}
+.net-content p{margin-bottom:13px;font-size:15.5px}
+.net-content ul,.net-content ol{margin:0 0 14px 22px}
+.net-content li{margin-bottom:7px;font-size:15.5px}
+.net-content strong,.net-content b{font-weight:600;color:var(--graphite)}
+.net-content em,.net-content i{color:var(--text2)}
+.net-content code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--soft);border-radius:4px;padding:1px 6px}
+.net-content a{color:var(--amber-dk)}
+.net-content hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+.net-content td.num{font-family:'Geologica',sans-serif;font-weight:600;white-space:nowrap}
+.doc-meta{background:var(--soft);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;color:var(--text2);margin-bottom:18px}
+.doc-meta code{background:var(--card)}
+.note{color:var(--dim);font-size:13.5px;margin:6px 0 14px}
+
+/* компоненти, перенесені разом з LinkedIn-стратегією (та сама верстка, перескіновано під v4.0) */
+.li-native .part-label{font-family:'Geologica',sans-serif;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:40px 0 4px}
+.li-native section{padding:44px 0 8px;border-top:1px solid var(--line)}
+.li-native .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-bottom:14px}
+.li-native .callout{background:var(--gr-amber);color:var(--graphite);border-radius:10px;padding:16px 20px;margin:18px 0}
+.li-native .callout .big{font-family:'Geologica',sans-serif;font-weight:700;font-size:19px;margin-bottom:3px}
+.li-native .callout p{margin:0}
+.li-native .honesty{background:var(--card);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:14px 18px;margin:18px 0;font-size:15px}
+.li-native .gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:14px 0 20px}
+.li-native .gloss div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:13.5px}
+.li-native .gloss b{display:block;font-weight:600;margin-bottom:2px}
+.li-native .phase{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--amber);border-radius:0 10px 10px 0;padding:18px 22px;margin-bottom:14px}
+.li-native .phase .ph-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:8px}
+.li-native .phase .ph-num{font-family:'Geologica',sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--graphite);border-radius:4px;padding:3px 10px}
+.li-native .phase .ph-title{font-family:'Geologica',sans-serif;font-weight:700;font-size:18px}
+.li-native .phase .ph-time{font-family:'Geologica',sans-serif;font-size:13px;color:var(--dim);letter-spacing:.05em}
+.li-native .phase p{font-size:15px;margin-bottom:8px}
+.li-native .phase .ph-kpi{font-size:14px;background:var(--soft);border-radius:6px;padding:10px 14px;margin-top:10px}
+.li-native .kpi-line{font-family:'Geologica',sans-serif;font-size:13px;letter-spacing:.03em;background:var(--soft);border-radius:6px;padding:10px 14px;margin-top:12px;color:var(--graphite)}
+.li-native .kpi-line b{color:var(--amber-dk);font-weight:600}
+.li-native details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.li-native details summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;align-items:baseline;gap:12px}
+.li-native details summary::-webkit-details-marker{display:none}
+.li-native details summary .tag{font-family:'Geologica',sans-serif;font-size:12px;letter-spacing:.06em;color:var(--graphite);background:var(--amber);border-radius:4px;padding:2px 8px;white-space:nowrap}
+.li-native details summary .t{font-weight:600;font-size:15.5px;flex:1}
+.li-native details summary .chev{color:var(--dim);transition:transform .2s}
+.li-native details[open] summary .chev{transform:rotate(90deg)}
+.li-native details .body{padding:2px 20px 18px;border-top:1px solid var(--line)}
+.li-native details .body p,.li-native details .body ul,.li-native details .body ol{font-size:15px}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;margin:14px 0 20px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px}
+th{font-family:'Geologica',sans-serif;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-align:left;background:var(--graphite);color:var(--plat);padding:9px 11px}
+td{padding:9px 11px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#F7F6F4}
+
+/* DETAILS / ACCORDION (дослідження мереж) */
+details.research{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:24px 0;overflow:hidden}
+details.research summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;align-items:baseline;gap:12px}
+details.research summary::-webkit-details-marker{display:none}
+details.research summary .tag{font-family:'Geologica',sans-serif;font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--graphite);background:var(--amber);border-radius:4px;padding:3px 9px;white-space:nowrap}
+details.research summary .t{font-weight:600;font-size:15px;flex:1}
+details.research summary .chev{color:var(--dim);transition:transform .2s}
+details.research[open] summary .chev{transform:rotate(90deg)}
+.research-body{padding:4px 20px 22px;border-top:1px solid var(--line)}
+
+/* DOWNLOAD BUTTON */
+.dl-row{margin:28px 0 8px}
+.dl-btn{display:inline-flex;align-items:center;gap:9px;font-family:'Onest',sans-serif;font-size:14px;font-weight:500;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:11px 18px}
+.dl-btn:hover{border-color:var(--amber);color:var(--amber-dk)}
+.dl-btn.pri{background:var(--amber);border-color:var(--amber);color:var(--graphite);font-weight:600}
+.dl-btn.pri:hover{background:var(--amber-dk);color:#fff}
+
+/* CALENDAR */
+.cal-block{margin:44px 0 12px}
+.cal-block h2{font-family:'Geologica',sans-serif;font-weight:700;font-size:24px;padding-bottom:8px;border-bottom:3px solid var(--amber);margin-bottom:6px}
+.cal-legend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 16px}
+.cal-tag{font-family:'Geologica',sans-serif;font-size:11px;font-weight:600;letter-spacing:.03em;padding:4px 10px;border-radius:20px;color:#fff}
+.cal-tag.fb{background:var(--net-fb);color:var(--graphite)}
+.cal-tag.ig{background:var(--net-ig)}
+.cal-tag.th{background:var(--net-th)}
+.cal-tag.li{background:var(--net-li);color:var(--graphite)}
+.cal-tag.sprint{background:var(--graphite);color:var(--plat)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.cal-dow{font-family:'Geologica',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-align:center;padding-bottom:6px}
+.cal-day{min-height:74px;border-radius:8px;background:var(--soft);padding:6px;display:flex;flex-direction:column;gap:3px}
+.cal-day.out{opacity:.35}
+.cal-day.has-plan{cursor:pointer}
+.cal-day.has-plan:hover{outline:2px solid var(--amber)}
+.cal-day.is-selected{outline:2px solid var(--graphite)}
+.cal-day .d{font-family:'Geologica',sans-serif;font-weight:600;font-size:12.5px}
+.cal-day .chip{font-size:9.5px;font-weight:700;border-radius:5px;padding:1.5px 6px;line-height:1.5;color:#fff;align-self:flex-start}
+.cal-day .chip.fb{background:var(--net-fb);color:var(--graphite)}
+.cal-day .chip.ig{background:var(--net-ig)}
+.cal-day .chip.th{background:var(--net-th)}
+.cal-day .chip.li{background:var(--net-li);color:var(--graphite)}
+.cal-day .chip.sprint{background:var(--graphite);color:var(--amber);align-self:stretch;text-align:center}
+.cal-day .chip.milestone{background:var(--amber);color:var(--graphite);align-self:stretch;text-align:center}
+.cal-detail{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px}
+.cal-detail .cd-date{font-family:'Geologica',sans-serif;font-weight:700;font-size:15px;margin-bottom:8px}
+.cal-detail .cd-item{display:flex;gap:10px;align-items:baseline;margin-bottom:6px;font-size:14.5px}
+.cal-detail .cd-item .chip{flex-shrink:0}
+@media (max-width:640px){
+  .cal-grid{grid-template-columns:repeat(7,1fr);gap:4px;padding:8px}
+  .cal-day{min-height:54px;padding:4px}
+  .cal-day .d{font-size:11px}
+  .cal-day .chip{font-size:8px}
+}
+
+/* CONTENT-PLAN BLOCK */
+.plan-block{margin:44px 0 12px}
+.plan-block h2{font-family:'Geologica',sans-serif;font-weight:700;font-size:24px;padding-bottom:8px;border-bottom:3px solid var(--amber);margin-bottom:6px}
+.plan-block .net-content h1{display:none} /* h1 файлу дублює заголовок блоку вище — ховаємо */
+.plan-block .net-content h2{font-size:19px;margin-top:26px}
+
+/* FOOTER */
+footer{background:var(--graphite);color:#A8AEBD;margin-top:20px;padding:26px 0;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+footer b{color:var(--amber)}
+</style>
+</head>
+<body>
+
+<nav><div class="navwrap">
+  <svg class="brandmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 -10 766 228" width="766" height="228" role="img" aria-label="ReLink">
+  <title>ReLink</title>
+  <defs>
+    <linearGradient id="relinkAmber" gradientUnits="userSpaceOnUse"
+                    x1="460" y1="214" x2="256.2" y2="-149.4">
+      <stop offset="0" stop-color="#EBA900"/>
+      <stop offset="1" stop-color="#ECD393"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#relinkAmber)">
+    <path d="M77.4925 2.1791C129.276 -6.81349 158.019 13.1463 186.59 41.4781L196.168 35.6765L200.302 90.2576L158.02 61.0536L166.229 54.8825C139.41 31.2174 110.342 16.7962 74.5362 22.2548C36.9424 27.9862 11.5479 51.0991 2.74154e-05 88.6979C6.98955 46.0478 38.8982 8.88126 77.4925 2.1791Z"/>
+    <path d="M125.507 205.821C73.7238 214.814 44.9805 194.854 16.4102 166.522L6.8321 172.324L0 119.302L44.9805 146.946L36.771 153.118C63.5905 176.783 92.6576 191.204 128.464 185.745C166.058 180.014 191.452 156.901 203 119.302C196.01 161.952 164.102 199.119 125.507 205.821Z"/>
+    <path d="M243.143 144.674V29.0996H286.812C294.847 29.0996 301.781 30.503 307.615 33.3098C313.503 36.0616 318.044 39.9966 321.236 45.1149C324.483 50.2331 326.106 56.3145 326.106 63.359C326.106 69.0827 324.868 74.1459 322.391 78.5488C319.97 82.9516 316.558 86.5839 312.155 89.4457C307.752 92.2525 302.662 94.1513 296.883 95.1419L331.72 144.674H309.348L277.401 98.0312H261.634V144.674H243.143ZM261.634 82.6764H283.758C291.242 82.6764 297.048 81.0804 301.176 77.8883C305.358 74.6963 307.45 70.1284 307.45 64.1846C307.45 58.0757 305.578 53.3151 301.836 49.9029C298.149 46.4907 292.563 44.7847 285.078 44.7847H261.634V82.6764Z"/>
+    <path d="M387.699 147.15C378.894 147.15 371.162 145.361 364.503 141.784C357.843 138.152 352.643 133.089 348.9 126.594C345.213 120.1 343.37 112.561 343.37 103.975C343.37 97.701 344.443 91.9223 346.589 86.6389C348.735 81.3005 351.762 76.6775 355.67 72.77C359.577 68.8625 364.145 65.8356 369.373 63.6892C374.656 61.5428 380.407 60.4697 386.626 60.4697C393.395 60.4697 399.421 61.6804 404.705 64.102C409.988 66.4685 414.363 69.7981 417.83 74.0909C421.352 78.3836 423.829 83.4193 425.26 89.198C426.746 94.9217 426.993 101.141 426.003 107.855H360.788C360.678 112.753 361.751 117.046 364.007 120.733C366.264 124.366 369.483 127.2 373.666 129.236C377.903 131.272 382.884 132.291 388.607 132.291C393.23 132.291 397.688 131.603 401.981 130.227C406.328 128.796 410.263 126.705 413.785 123.953L420.802 136.996C418.161 139.143 414.969 140.986 411.226 142.527C407.484 144.013 403.577 145.141 399.504 145.912C395.432 146.737 391.497 147.15 387.699 147.15ZM361.861 94.4814H408.172C408.007 88.3175 406.026 83.4744 402.228 79.9521C398.486 76.4299 393.148 74.6687 386.213 74.6687C379.499 74.6687 373.913 76.4299 369.456 79.9521C365.053 83.4744 362.521 88.3175 361.861 94.4814Z"/>
+  </g>
+  <g fill="#FFFFFF">
+    <path d="M447.262 144.674V29.0996H465.753V127.668H516.109V144.674H447.262Z"/>
+    <path d="M534.791 144.792V63.8184H552.785V144.792H534.791Z"/>
+    <rect x="534.729" y="29.4502" width="18.264" height="21.1862"/>
+    <path d="M578.045 144.674V62.9463H596.206V73.348C599.618 68.78 603.581 65.5055 608.093 63.5242C612.606 61.4879 617.284 60.4697 622.127 60.4697C629.612 60.4697 635.803 61.9557 640.701 64.9276C645.599 67.8995 649.231 71.7244 651.598 76.4024C654.019 81.0804 655.23 85.896 655.23 90.8492V144.674H637.069V96.4628C637.069 90.629 635.308 85.951 631.785 82.4288C628.318 78.9065 623.475 77.1454 617.257 77.1454C613.184 77.1454 609.552 78.0535 606.36 79.8697C603.223 81.6858 600.746 84.2174 598.93 87.4645C597.114 90.6565 596.206 94.3989 596.206 98.6917V144.674H578.045Z"/>
+    <path d="M679.621 144.674V25.7979H697.782V96.1329L729.977 62.9466H751.44L722.548 94.2342L755.65 144.674H733.939L709.339 106.039L697.782 117.762V144.674H679.621Z"/>
+  </g>
+</svg>
+
+  <button class="navtab active" id="navtab-oglyad" data-tab="oglyad">Огляд</button>
+  <button class="navtab" id="navtab-linkedin" data-tab="linkedin">LinkedIn</button>
+  <button class="navtab" id="navtab-facebook" data-tab="facebook">Facebook</button>
+  <button class="navtab" id="navtab-threads" data-tab="threads">Threads</button>
+  <button class="navtab" id="navtab-instagram" data-tab="instagram">Instagram</button>
+</div></nav>
+
+
+<section class="tab-panel" id="tab-oglyad" role="tabpanel" aria-labelledby="navtab-oglyad">
+  <header class="hero">
+    <div class="wrap">
+      <div class="kicker">SMM ReLink · Defence · Production</div>
+      <h1>SMM-стратегія ReLink</h1>
+      <p class="sub">Присутність агенції в соцмережах на квартал 23 серпня — 31 грудня 2026: LinkedIn, Facebook, Threads, Instagram. Один документ, п'ять вкладок.</p>
+      <span class="badge pending">на погодженні</span>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="net-content">
+      <h2>Огляд — зведена стратегія SMM ReLink</h2>
+<hr>
+<h3>Позиціонування</h3>
+<p>ReLink — рекрутингова агенція для Defense/MilTech і виробничого сектору. У соцмережах говоримо як практики, що знають обидві сторони найму, без канцеляриту і без спекуляції на складних темах.</p>
+<h3>Логіка кварталу одним абзацом</h3>
+<p>LinkedIn лишається робочим каналом пошуку замовників за вже затвердженою стратегією — тут змін немає. Facebook, Instagram і Threads запускаються з нуля. Пріоритет усюди, крім LinkedIn (де це було так із самого початку) — пошук замовників (B2B); кандидатський трек (B2C) вмикається з першим замовленням. Три нові мережі працюють з одного рекламного кабінету Meta, тому це не три окремі запуски, а один запуск з трьома вітринами.</p>
+<h3>Покроковий план: 23 серпня – 31 грудня 2026</h3>
+<h4>Спринт активу — 23.08–05.09</h4>
+<div class="table-wrap"><table><thead><tr><th>Дні</th><th>Дата</th><th>Дія</th><th>Мережі</th></tr></thead><tbody><tr><td>1–3</td><td>23–25.08</td><td>Доступи, Business Manager, рекламний кабінет</td><td>FB, IG, Threads</td></tr><tr><td>4–7</td><td>26–29.08</td><td>Оформлення сторінок за брендом; контент-план вересня погоджується із замовником</td><td>усі</td></tr><tr><td>8–11</td><td>30.08–02.09</td><td>Публікація стартового контенту; збірка рекламної кампанії</td><td>FB, IG, Threads</td></tr><tr><td>12–14</td><td>03–05.09</td><td>Тестовий лід через форму; фінальна перевірка перед запуском</td><td>FB</td></tr></tbody></table></div>
+<h4>Запуск і вересень</h4>
+<div class="table-wrap"><table><thead><tr><th>Дата</th><th>Дія</th><th>Мережі</th></tr></thead><tbody><tr><td>07.09</td><td>Запуск рекламної кампанії (Lead Ads, B2B)</td><td>FB, з плейсментами в IG і Threads</td></tr><tr><td>до 30.09</td><td>Стартовий місяць текстів виходить за графіком (16 постів)</td><td>Threads</td></tr><tr><td>30.09</td><td>Перший щомісячний звіт замовнику</td><td>усі</td></tr></tbody></table></div>
+<p>LinkedIn у цей період працює за діючою стратегією без змін у ритмі.</p>
+<h4>Жовтень–листопад — оптимізація</h4>
+<ul><li>Ретаргетинг на аудиторію, що вже взаємодіяла з рекламою і сторінками.</li><li>Перші контракти з вересневих лідів.</li><li>Facebook: 2–3 якісні розмови із замовниками на місяць.</li><li>Instagram: стабільний темп 2–3 одиниці на тиждень, профіль оформлений і живий.</li><li>Threads: ритм 3–5 постів на тиждень; рубрика реальних історій з підбору вмикається, щойно з'являється фактура від команди.</li><li>Щомісячні звіти й погодження контент-плану на наступний місяць — за тим самим циклом.</li></ul>
+<h4>Грудень — підсумок кварталу</h4>
+<ul><li>Статистика за весь період: ціна ліда → ціна розмови → контракти.</li><li>Пропозиція бюджетної моделі на наступний період — на основі фактичних цифр.</li><li>Рішення про масштабування Instagram і Threads за підсумками.</li></ul>
+<h3>Зведені KPI</h3>
+<div class="table-wrap"><table><thead><tr><th>Показник</th><th>Спринт (23.08–05.09)</th><th>Вересень (з 07.09)</th><th>Жовтень–листопад</th><th>Грудень</th></tr></thead><tbody><tr><td>Facebook: рекламний бюджет</td><td>0 грн</td><td>~3,5–4,5 тис. грн (24 дні кампанії)</td><td>3–4 тис. грн/міс</td><td>4–5 тис. грн/міс</td></tr><tr><td>Facebook: результат</td><td>актив готовий</td><td>перші ліди, відома ціна ліда</td><td>2–3 розмови/міс, перший контракт</td><td>статистика кварталу</td></tr><tr><td>Instagram</td><td>сторінка оформлена</td><td>живе з рекламою</td><td>2–3 публікації/тиждень</td><td>якість профілю, приріст</td></tr><tr><td>Threads</td><td>акаунт запущено</td><td>16 постів вересня, участь у розмовах щодня</td><td>3–5 постів/тиждень</td><td>динаміка охоплення</td></tr><tr><td>LinkedIn</td><td>за діючою стратегією</td><td>за діючою стратегією</td><td>за діючою стратегією</td><td>за діючою стратегією</td></tr><tr><td>Звітність</td><td>—</td><td>30.09 — перший звіт</td><td>щомісяця</td><td>підсумковий звіт кварталу</td></tr></tbody></table></div>
+<h3>Календар публікацій (тижнева сітка)</h3>
+<p>Спільна сітка для трьох нових мереж, діє з жовтня (LinkedIn — за своїм графіком):</p>
+<div class="table-wrap"><table><thead><tr><th>День</th><th>Facebook</th><th>Instagram</th><th>Threads</th></tr></thead><tbody><tr><td>Понеділок</td><td>Експертний пост</td><td>—</td><td>1 текст</td></tr><tr><td>Вівторок</td><td>—</td><td>Адаптація з ФБ</td><td>1 текст</td></tr><tr><td>Середа</td><td>Кейс / кухня агенції</td><td>—</td><td>1 текст</td></tr><tr><td>Четвер</td><td>—</td><td>Reels / Stories</td><td>1 текст</td></tr><tr><td>П'ятниця</td><td>Цифра болю ринку / оффер</td><td>—</td><td>1 текст</td></tr><tr><td>Гнучко</td><td>Reels</td><td>—</td><td>—</td></tr></tbody></table></div>
+<p>На сайті цей блок реалізується інтерактивним календарем місяця, а не таблицею.</p>
+<h3>Що показує кожна вкладка мережі</h3>
+<p>Огляд дає план і цифри. Вкладки LinkedIn, Facebook, Threads, Instagram містять повне дослідження (завантажується окремо) і розгорнуту стратегію: рубрики контенту, правила безпеки, відкриті питання.</p>
+    </div>
+    
+<div class="cal-block">
+  <h2>Візуальний календар: 23 серпня – 30 вересня 2026</h2>
+  <p class="note">Клітинки днів: спринт активу (23.08–29.08 — інфраструктура, без публікацій), дата запуску реклами (07.09), перший звіт (30.09). З 30.08 мітки — фактичні теми з контент-плану нижче (наведи або клікни на день); Пн/Ср/Чт LinkedIn — за діючою стратегією, з 07.09.</p>
+  <div class="cal-legend">
+    <span class="cal-tag fb">Facebook</span>
+    <span class="cal-tag ig">Instagram</span>
+    <span class="cal-tag th">Threads</span>
+    <span class="cal-tag li">LinkedIn</span>
+    <span class="cal-tag sprint">Спринт / віха</span>
+  </div>
+  <div id="calendar" class="cal-grid" aria-label="Календар 23 серпня – 30 вересня 2026"></div>
+  <div id="cal-detail" class="cal-detail" hidden></div>
+</div>
+    
+<div class="plan-block">
+  <h2>Контент-план: спринт + вересень</h2>
+  <div class="net-content">
+    <h2>Контент-план: спринт + вересень 2026 (30.08 – 28.09)</h2>
+<h3>Принципи місяця</h3>
+<ul><li>Пріоритет — B2B: кожен тиждень має кейс або експертизу, і кожні два тижні — оффер.</li><li>Кейси публікуються тільки з реальною фактурою. Збір фактури від Олени — задача спринту; якщо кейс не зібрано до дати публікації, вмикається резервна тема того ж слота (позначена нижче).</li><li>Threads іде за стартовим місяцем зі своєї стратегії (пости вже написані й затверджуються в складі цього плану).</li><li>LinkedIn — за діючою стратегією; теми тижня синхронізуються з B2B-темами Facebook (кейс, експертиза) в адаптованому вигляді, не дубляжем.</li><li>Дати нижче — орієнтир для календаря; операційні статуси живуть у Google-таблиці.</li></ul>
+<p>Позначення матеріалів: <strong>текст+картинка</strong> — пост із шаблонною графікою (Canva); <strong>карусель</strong> — серія шаблонних слайдів; <strong>Reels (шаблон)</strong> — відео з шаблону (текст/цифри в русі, сток); <strong>Reels (кадри)</strong> — відео з живих кадрів команди; <strong>Stories</strong> — вертикальні історії; <strong>текст</strong> — чистий текстовий пост (Threads).</p>
+<hr>
+<h3>Спринт: 23.08 – 05.09</h3>
+<p>Публікації починаються 30.08 (дні 1–7 спринту — інфраструктура і погодження цього плану).</p>
+<div class="table-wrap"><table><thead><tr><th>Дата</th><th>Мережа</th><th>Тема</th><th>Матеріал</th></tr></thead><tbody><tr><td>30.08</td><td>Facebook</td><td>Пост-представлення: хто такі ReLink — спеціалізація Defense/MilTech і виробництво, цифри 90% / 10 000+ / 87%</td><td>текст+картинка</td></tr><tr><td>30.08</td><td>Instagram</td><td>Представлення: хто ми, для кого, цифри (адаптація поста ФБ)</td><td>карусель</td></tr><tr><td>31.08</td><td>Facebook</td><td>Експертний від Олени: «Скільки насправді коштує незакрита вакансія» (вакансія → простій → втрачені контракти)</td><td>текст+картинка</td></tr><tr><td>01.09</td><td>Threads</td><td>Пост 1: заявка голосу («Рекрутингова агенція заводить тредс…»)</td><td>текст</td></tr><tr><td>01.09</td><td>Instagram</td><td>67% оборонних виробництв шукають інженерів-конструкторів</td><td>Reels (шаблон)</td></tr><tr><td>02.09</td><td>Facebook</td><td>Цифра болю ринку: 67% шукають конструкторів, 48% — електронників; вакансії висять місяцями</td><td>текст+картинка</td></tr><tr><td>02.09</td><td>Threads</td><td>Пост 2: «два монологи, які не чують один одного»</td><td>текст</td></tr><tr><td>03.09</td><td>Facebook</td><td>Кухня агенції: як влаштований підбір — етапи, гарантійний супровід (87% проходять гарантійний строк)</td><td>текст+картинка</td></tr><tr><td>04.09</td><td>Threads</td><td>Пост 3: зарплатна прозорість (🟡)</td><td>текст</td></tr><tr><td>04.09</td><td>Instagram</td><td>Кухня агенції: кадри процесу (якщо зібрані; інакше — шаблонна адаптація поста)</td><td>Stories</td></tr><tr><td>05.09</td><td>Facebook</td><td>Оффер-пост: «Опишіть вакансію — за 48 годин 3 релевантні резюме з бази. Безкоштовно»</td><td>текст+картинка</td></tr><tr><td>05.09</td><td>Instagram</td><td>Оффер (адаптація)</td><td>картинка + Stories з лінк-стікером</td></tr></tbody></table></div>
+<p>LinkedIn у спринт: 2 пости за діючою стратегією — адаптація представлення (для B2B-аудиторії) і експертного поста Олени. Матеріал: текст+картинка.</p>
+<hr>
+<h3>Тиждень 1: 08–14.09 (кампанія запущена 07.09)</h3>
+<p>Тема тижня: чому вакансії не закриваються.</p>
+<div class="table-wrap"><table><thead><tr><th>День</th><th>Мережа</th><th>Тема</th><th>Матеріал</th></tr></thead><tbody><tr><td>Пн 08.09</td><td>Facebook</td><td>Експертний: «Вакансія висить третій місяць — розбір типових причин»</td><td>текст+картинка</td></tr><tr><td>Пн 08.09</td><td>Threads</td><td>Пост 4: «поки в стрічці "роботи немає", у цехах — вільні верстати»</td><td>текст</td></tr><tr><td>Вт 09.09</td><td>Instagram</td><td>Причини незакритих вакансій — по слайду на причину (адаптація експертного)</td><td>карусель</td></tr><tr><td>Ср 10.09</td><td>Facebook</td><td>Кейс №1 (фактура від Олени; резерв: кухня — «що відбувається після заявки: перші 48 годин»)</td><td>текст+картинка</td></tr><tr><td>Ср 10.09</td><td>Threads</td><td>Пост 5: «Токар. 80 000 грн. Бронювання. Вакансія висить третій місяць»</td><td>текст</td></tr><tr><td>Чт 11.09</td><td>Instagram</td><td>Цифра: 30% технічних вакансій відкриті 2+ місяці</td><td>Reels (шаблон)</td></tr><tr><td>Пт 12.09</td><td>Facebook</td><td>Цифра: 30% технічних вакансій відкриті понад 2 місяці — що це коштує виробництву</td><td>текст+картинка</td></tr><tr><td>Пт 12.09</td><td>Threads</td><td>Пост 6: ейджизм у вакансіях (🟡)</td><td>текст</td></tr><tr><td>Сб 13.09</td><td>Threads</td><td>Пост 7: «перше питання кандидата — не зарплата, а бронювання»</td><td>текст</td></tr><tr><td>Гнучко</td><td>Facebook</td><td>Цифра тижня в русі</td><td>Reels (шаблон)</td></tr></tbody></table></div>
+<p>LinkedIn: кейс/кухня тижня в адаптації + експертний пост Олени. Матеріал: текст+картинка.</p>
+<h3>Тиждень 2: 15–21.09</h3>
+<p>Тема тижня: бронювання і стабільність.</p>
+<div class="table-wrap"><table><thead><tr><th>День</th><th>Мережа</th><th>Тема</th><th>Матеріал</th></tr></thead><tbody><tr><td>Пн 15.09</td><td>Facebook</td><td>Експертний: «Бронювання як інструмент утримання персоналу — що має знати роботодавець»</td><td>текст+картинка</td></tr><tr><td>Пн 15.09</td><td>Threads</td><td>Пост 8: госінг після оферу — обидві правди (🟡)</td><td>текст</td></tr><tr><td>Вт 16.09</td><td>Instagram</td><td>Бронювання простими словами: що, кому, як</td><td>карусель</td></tr><tr><td>Ср 17.09</td><td>Facebook</td><td>Кухня: метчинг і «підбір по ДНК» — як ми зіставляємо кандидата і компанію</td><td>текст+картинка</td></tr><tr><td>Ср 17.09</td><td>Threads</td><td>Пост 9: «слово "завод" досі лякає» (🟡)</td><td>текст</td></tr><tr><td>Чт 18.09</td><td>Instagram</td><td>Живі кадри команди (резерв: шаблонний — «зарплати виробництва 2026»)</td><td>Reels (кадри)</td></tr><tr><td>Пт 19.09</td><td>Facebook</td><td>Оффер-пост №2 (той самий оффер, інший кут: «вакансія висить? покажемо, хто є в базі»)</td><td>текст+картинка</td></tr><tr><td>Пт 19.09</td><td>Threads</td><td>Пост 10: «незакрита вакансія — не HR-проблема, виробнича»</td><td>текст</td></tr><tr><td>Сб 20.09</td><td>Threads</td><td>Пост 11: «непопулярна думка: зарплатою конкурувати можете» (🟡)</td><td>текст</td></tr><tr><td>Гнучко</td><td>Facebook</td><td>Живі кадри або шаблонний</td><td>Reels</td></tr></tbody></table></div>
+<p>LinkedIn: адаптація експертного про бронювання (сильна B2B-тема) + метчинг. Матеріал: текст+картинка.</p>
+<h3>Тиждень 3: 22–28.09</h3>
+<p>Тема тижня: люди, яких «немає» — і де вони є.</p>
+<div class="table-wrap"><table><thead><tr><th>День</th><th>Мережа</th><th>Тема</th><th>Матеріал</th></tr></thead><tbody><tr><td>Пн 22.09</td><td>Facebook</td><td>Експертний: «Пасивні кандидати: 70% ринку, яких немає на джоб-бордах — як їх шукати»</td><td>текст+картинка</td></tr><tr><td>Пн 22.09</td><td>Threads</td><td>Пост 12: «"Обов'язки: все потроху"» — гумор</td><td>текст</td></tr><tr><td>Вт 23.09</td><td>Instagram</td><td>5 помилок технічної співбесіди (очима рекрутера)</td><td>карусель</td></tr><tr><td>Ср 24.09</td><td>Facebook</td><td>Кейс №2 (фактура; резерв: цифра — зарплати ОПК до 120 тис. грн і чому вакансії все одно відкриті)</td><td>текст+картинка</td></tr><tr><td>Ср 24.09</td><td>Threads</td><td>Пост 13: ветерани з FPV-досвідом — за них уже конкурують іноземні рекрутери (🟡)</td><td>текст</td></tr><tr><td>Чт 25.09</td><td>Instagram</td><td>Ветеранська тема: цифри і теза, без облич</td><td>Reels (шаблон)</td></tr><tr><td>Пт 26.09</td><td>Facebook</td><td>Ветеранський трек: перехід зі служби у виробництво — можливості, які не всі бачать</td><td>текст+картинка</td></tr><tr><td>Пт 26.09</td><td>Threads</td><td>Пост 14: «ідеальний метч, який не відбудеться» — місток до агенції</td><td>текст</td></tr><tr><td>Сб 27.09</td><td>Threads</td><td>Пост 15: «бюджет на печиво є, на +10к токарю — ні» (🟡)</td><td>текст</td></tr><tr><td>Нд 28.09</td><td>Threads</td><td>Пост 16: підсумок місяця в тредс («далі буде більше. І незручніше»)</td><td>текст</td></tr><tr><td>Гнучко</td><td>Facebook</td><td>Шаблонний</td><td>Reels (шаблон)</td></tr></tbody></table></div>
+<p>LinkedIn: пасивні кандидати (тема близька B2B-аудиторії) + ветеранський трек. Матеріал: текст+картинка.</p>
+<hr>
+<h3>Поза сіткою публікацій</h3>
+<ul><li>30.09 — перший щомісячний звіт замовнику (Робота / Реклама). Не публікація — внутрішня віха.</li><li>~20–25.09 — ревізія і погодження плану на наступний період (з 29.09).</li></ul>
+  </div>
+</div>
+    <div class="dl-row">
+      <a class="dl-btn pri" href="smm/pdf/smm-doslidzhennya-zvedene.pdf" download>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 12.5v1a1 1 0 001 1h10a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Завантажити зведене дослідження (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-linkedin" role="tabpanel" aria-labelledby="navtab-linkedin" hidden>
+  <div class="net-content li-native">
+    <header class="hero" id="top"><div class="wrap">
+  <div class="kicker">Defence · Production · Sales · Back office</div>
+  <h1>LinkedIn-стратегія ReLink:<br>залучення B2B-клієнтів</h1>
+  <p class="sub">Стратегія, операційний план і система контролю для побудови потоку замовників на рекрутинг через LinkedIn. Робочий інструмент для керівника і команди.</p>
+  <div class="meta">Версія 1.0 · Липень 2026 · Горизонт <b>6 місяців</b> · Конфіденційно</div>
+</div></header>
+
+<!-- ================= PART I ================= -->
+<section id="strategy"><div class="wrap">
+  <div class="part-label">Частина І</div>
+  <h2>Стратегія: що і навіщо</h2>
+
+  <h3>1.1. Мета і цільові результати</h3>
+  <p>Стратегія будує в LinkedIn систему залучення замовників на рекрутинг. Вибір каналу обґрунтований дослідженням (окремий документ): близько 80% B2B-лідів із соцмереж генерує саме LinkedIn, в Україні платформа має 6,3 млн акаунтів зі стабільним зростанням, а ніша Defence/виробництво в українському LinkedIn майже вільна — конкуренти-агенції зосереджені на IT.</p>
+
+  <div class="table-wrap"><table>
+    <tr><th>Показник</th><th>Місяці 1–3</th><th>Місяці 4–6</th></tr>
+    <tr><td>Підписані договори</td><td class="num">1–3</td><td class="num">3–5</td></tr>
+    <tr><td>Бриф-зустрічі з потенційними клієнтами</td><td class="num">5–8</td><td class="num">10–15</td></tr>
+    <tr><td>Предметні діалоги з цільовою аудиторією</td><td class="num">15–25</td><td class="num">30–45</td></tr>
+    <tr><td>Цільова мережа CEO (накопичувально)</td><td class="num">400+</td><td class="num">800+</td></tr>
+    <tr><td>Вхідні звернення без нашого першого кроку</td><td class="num">0–2</td><td class="num">3–6</td></tr>
+  </table></div>
+
+  <div class="callout"><div class="big">Економіка мети</div><p>Середній чек одного контракту на підбір покриває всі витрати часу і грошей на стратегію багаторазово. Навіть нижня межа — один договір за перші три місяці — виводить канал у плюс.</p></div>
+
+  <h3>1.2. Ролі: хто що робить</h3>
+
+  <div class="card"><b>Олена (CEO) — головна сцена.</b>
+  <p>Її профіль — основний носій контенту і обличчя ReLink: пости з персональних профілів отримують у 8 разів більше уваги, ніж зі сторінок компаній. Робота: 2–3 пости на тиждень за готовими драфтами (20–30 хв на пост), відповіді на коментарі, 10–15 запитів на з'єднання в день до цільової аудиторії, коментарі під чужими постами, проведення бриф-зустрічей. Бюджет часу: <b>3–4 год/тиждень</b>.</p></div>
+
+  <div class="card"><b>B2B-менеджер — за лаштунками.</b>
+  <p>Перетворює увагу на контракти. Веде теплий аутріч (перші повідомлення людям, які відреагували на пости — від імені Олени, за погодженими скриптами; стандартна практика для перших осіб), ситуаційний аутріч по моніторингу вакансій зі свого профілю, трекер лідів, щотижневі зрізи метрик. Дозрілі діалоги передає Олені на зустріч. Бюджет часу: <b>4–5 год/тиждень</b>.</p></div>
+
+  <div class="card"><b>Рекрутери (4–5) — підсилювачі.</b>
+  <p>Змістовні коментарі під постами Олени і сторінки в першу годину після публікації (розтягнуто в часі, за заготовленими наборами — тимчасова механіка на період розгону) плюс один власний пост на тиждень за драфтами. Побічний ефект: живі профілі рекрутерів підвищують відгук кандидатів. Бюджет: <b>~1 год/тиждень</b> кожен.</p></div>
+
+  <div class="card"><b>Сторінка компанії — вітрина.</b>
+  <p>Підтверджує серйозність, коли потенційний клієнт перевіряє, хто ми. 1–2 пости на тиждень: адаптації найкращих постів Олени, вакансії, послуги. Створюється з нуля у форматі <code>/company/</code>: поточний профіль-«людина» порушує правила LinkedIn і підлягає блокуванню, тому жодна активність на ньому не запускається — спочатку виправляємо архітектуру, потім вмикаємо розгін.</p></div>
+
+  <div class="card"><b>Маркетинг — виробництво.</b>
+  <p>Драфти постів, брендовані візуали, PDF-каруселі, контент-план, дослідження трендів, місячні звіти. Команда отримує все готовим і додає живу фактуру та власне звучання.</p></div>
+
+  <h3>1.3. Дві воронки залучення</h3>
+
+  <div class="card"><b>Воронка 1 — вхідна, через контент.</b>
+  <p>Пост → реакція від цільової аудиторії → персональне повідомлення без продажу в лоб → діалог → бриф-зустріч → комерційна пропозиція → договір. Розганяється повільно, зате накопичує: мережа й охоплення ростуть щомісяця, з часом канал генерує вхідні звернення сам.</p></div>
+
+  <div class="card"><b>Воронка 2 — вихідна, ситуаційна.</b>
+  <p>Щотижневий моніторинг вакансій, що висять 30+ днів або публікуються повторно (Work.ua, Robota.ua, LinkedIn Jobs, DOU) → фільтр якості → вихід на людину, яка приймає рішення, з повідомленням під ситуацію: «бачимо, шукаєте [посада] другий місяць — працюємо з такими ролями». Це найтепліший тип клієнта: біль уже усвідомлений. Дає перші діалоги вже на 2–3 тижні, не чекаючи розгону контенту. Обсяг: 5–10 якісних контактів на тиждень. Повна інструкція — у <a href="#app-a">Додатку А</a>.</p></div>
+
+  <h3>1.4. Фази і строки</h3>
+
+  <div class="phase"><div class="ph-head"><span class="ph-num">Фаза 0</span><span class="ph-title">Фундамент</span><span class="ph-time">Тижні 1–2</span></div>
+  <p>Створення сторінки компанії за брендбуком. Профілі Олени, B2B-менеджера і рекрутерів: фото, банери, заголовки-цінність, розділ «Про мене» як міні-КП — тексти пишуться з нуля. Інтерв'ю з Оленою для калібрування голосу (30 хв). Аудит 52 контактів старого профілю, запрошення релевантних на нову сторінку, старий профіль перейменовується або архівується. Налаштування моніторингу вакансій і трекера.</p>
+  <div class="ph-kpi"><b>Результат фази:</b> архітектура готова до активності, ризик блокування закритий.</div></div>
+
+  <div class="phase"><div class="ph-head"><span class="ph-num">Фаза 1</span><span class="ph-title">Розгін</span><span class="ph-time">Тижні 3–6</span></div>
+  <p>Старт контент-ритму за календарем. Олена нарощує мережу (10–15 з'єднань/день). B2B-менеджер запускає воронку 2 — перші ситуаційні діалоги очікуються вже тут. Калібрування голосу Олени на перших 5–10 постах.</p>
+  <div class="ph-kpi"><b>KPI фази:</b> 120+ нових цільових контактів · 8–12 постів опубліковано · 4–8 розпочатих діалогів · перші реакції від цільової аудиторії.</div></div>
+
+  <div class="phase"><div class="ph-head"><span class="ph-num">Фаза 2</span><span class="ph-title">Конверсія</span><span class="ph-time">Тижні 5–10</span></div>
+  <p>Вмикається теплий аутріч по реакціях (воронка 1). Підключення Sales Navigator — платного розширеного пошуку LinkedIn (~$100/міс) для системного відбору цільових людей. Перші бриф-зустрічі та комерційні пропозиції.</p>
+  <div class="ph-kpi"><b>KPI фази:</b> 10–15 діалогів сумарно · 3–5 бриф-зустрічей · 2–4 КП · перший договір — реалістично на тижнях 8–12.</div></div>
+
+  <div class="phase"><div class="ph-head"><span class="ph-num">Фаза 3</span><span class="ph-title">Кейси і масштаб</span><span class="ph-time">Місяць 3+</span></div>
+  <p>Публікація погоджених кейсів з цифрами — найсильніша рубрика вмикається, коли є дозволи клієнтів. Лід-магніт: зарплатний огляд по виробництву/Defence у PDF (його завантажують ті, хто готується наймати) — збір контактів. Рішення про рекламу — тільки тут і тільки під лід-магніт чи кейс, за метриками. Автоматизація моніторингу вакансій.</p>
+  <div class="ph-kpi"><b>KPI фази:</b> вихід на планові показники місяців 4–6 з таблиці 1.1.</div></div>
+</div></section>
+
+<!-- ================= PART II ================= -->
+<section id="ops"><div class="wrap">
+  <div class="part-label">Частина ІІ</div>
+  <h2>Операційний план: хто, що, коли, чим</h2>
+
+  <h3>2.1. Словничок термінів</h3>
+  <div class="gloss">
+    <div><b>ЦА / ICP</b>Цільова аудиторія / профіль ідеального клієнта: хто саме нам потрібен (галузь, розмір, посада).</div>
+    <div><b>ЛПР</b>Особа, яка приймає рішення: власник, директор, HR-директор — той, хто вирішує, наймати агенцію чи ні.</div>
+    <div><b>Аутріч</b>Перше повідомлення людині, яка нас не знає. Теплий — коли є привід (реакція на пост, зависла вакансія); холодний — без приводу (ми його не робимо).</div>
+    <div><b>Фоллоу-ап</b>Повторне нагадування, якщо людина не відповіла на перше повідомлення. У нас — максимум один, через 5–7 днів.</div>
+    <div><b>Конект</b>Запит на з'єднання у LinkedIn. Прийнятий конект = людина в мережі 1-го кола, бачить пости, їй можна писати безкоштовно.</div>
+    <div><b>Лід</b>Потенційний клієнт, з яким почалась взаємодія (реакція, діалог, заявка).</div>
+    <div><b>Бриф-зустріч</b>Перша робоча зустріч із потенційним клієнтом: розбираємо вакансію і потреби.</div>
+    <div><b>КП</b>Комерційна пропозиція: документ з умовами співпраці.</div>
+    <div><b>Охоплення</b>Скільки людей побачило пост. <b>Залучення</b> — скільки відреагувало (лайки, коментарі).</div>
+    <div><b>Sales Navigator</b>Платний розширений пошук LinkedIn: фільтри по посадах, галузях, розмірах компаній (~$100/міс).</div>
+    <div><b>Лід-магніт</b>Корисний матеріал (наприклад, зарплатний огляд), який людина отримує в обмін на контакт.</div>
+    <div><b>Трекер</b>Google-таблиця, де живуть усі ліди, задачі й метрики. Єдине джерело правди.</div>
+  </div>
+
+  <h3>2.2. Разові задачі — Фаза 0</h3>
+  <div class="table-wrap"><table>
+    <tr><th>#</th><th>Задача</th><th>Хто</th><th>Строк</th><th>Результат</th></tr>
+    <tr><td class="num">0.1</td><td>Створити сторінку компанії, оформити за брендбуком</td><td>Маркетинг + Дмитро</td><td class="num">Т1</td><td>Сторінка live</td></tr>
+    <tr><td class="num">0.2</td><td>Тексти й оформлення профілів: Олена, B2B-менеджер, рекрутери</td><td>Маркетинг → команда</td><td class="num">Т1–Т2</td><td>6–7 профілів готові</td></tr>
+    <tr><td class="num">0.3</td><td>Інтерв'ю голосу з Оленою (30 хв)</td><td>Дмитро + Олена</td><td class="num">Т1</td><td>Паспорт голосу для контенту</td></tr>
+    <tr><td class="num">0.4</td><td>Аудит 52 контактів старого профілю, запрошення релевантних</td><td>B2B-менеджер</td><td class="num">Т2</td><td>Старий профіль знешкоджений</td></tr>
+    <tr><td class="num">0.5</td><td>Список 100 цільових компаній за ICP</td><td>B2B-менеджер</td><td class="num">Т2</td><td>База для мережі й аутрічу</td></tr>
+    <tr><td class="num">0.6</td><td>Налаштувати моніторинг вакансій і трекер</td><td>B2B-менеджер</td><td class="num">Т2</td><td>Джерела працюють самі</td></tr>
+  </table></div>
+
+  <h3>2.3. Матриця регулярних задач</h3>
+  <p class="note">Кожна задача нижче розгортається у повну інструкцію — клікни на рядок у розділі 2.4. Сумарне навантаження: Олена ~3,5 год/тиждень, B2B-менеджер ~4,5 год, кожен рекрутер ~1 год.</p>
+  <div class="table-wrap"><table>
+    <tr><th>#</th><th>Задача</th><th>Хто</th><th>Ритм</th><th>Час</th><th>KPI</th></tr>
+    <tr><td class="num">Р1</td><td>Пости Олени</td><td>Олена</td><td>2–3/тижд, вт+чт</td><td class="num">30 хв/пост</td><td>8–12 постів/міс</td></tr>
+    <tr><td class="num">Р2</td><td>Пости рекрутерів</td><td>Рекрутери</td><td>1/тижд кожен</td><td class="num">30 хв</td><td>4–5/тижд сумарно</td></tr>
+    <tr><td class="num">Р3</td><td>Пости сторінки компанії</td><td>Маркетинг</td><td>1–2/тижд, ср</td><td class="num">—</td><td>100% за календарем</td></tr>
+    <tr><td class="num">Р4</td><td>Коментарі команди в першу годину</td><td>Рекрутери</td><td>Під кожен пост</td><td class="num">10 хв</td><td>3–4 змістовні/пост</td></tr>
+    <tr><td class="num">Р5</td><td>Відповіді автора на коментарі</td><td>Олена</td><td>Щодня</td><td class="num">15 хв/день</td><td>100% коментарів</td></tr>
+    <tr><td class="num">Р6</td><td>Список профілів на з'єднання</td><td>B2B-менеджер</td><td>Пн</td><td class="num">40 хв</td><td>50–70/тижд</td></tr>
+    <tr><td class="num">Р7</td><td>Відправка запитів на з'єднання</td><td>Олена</td><td>Щодня</td><td class="num">10–15 хв</td><td>10–15/день, прийнято ≥30%</td></tr>
+    <tr><td class="num">Р8</td><td>Коментарі Олени під постами ЦА</td><td>Олена</td><td>Пт</td><td class="num">20 хв</td><td>3–5/тижд</td></tr>
+    <tr><td class="num">Р9</td><td>Моніторинг вакансій: прохід + фільтр</td><td>B2B-менеджер</td><td>Пн</td><td class="num">1,5 год</td><td>5–10 цілей/тижд</td></tr>
+    <tr><td class="num">Р10</td><td>Ситуаційний аутріч (воронка 2)</td><td>B2B-менеджер</td><td>Вт–чт</td><td class="num">25 хв/день</td><td>5–10 повідомлень/тижд</td></tr>
+    <tr><td class="num">Р11</td><td>Теплий аутріч по реакціях (воронка 1)</td><td>B2B-менеджер</td><td>Щодня, з Фази 2</td><td class="num">20 хв/день</td><td>100% реакцій ЦА ≤48 год</td></tr>
+    <tr><td class="num">Р12</td><td>Фоллоу-апи</td><td>B2B-менеджер</td><td>Щодня</td><td class="num">10 хв</td><td>1 нагадування, не більше</td></tr>
+    <tr><td class="num">Р13</td><td>Тижневий зріз метрик</td><td>B2B-менеджер</td><td>Пт</td><td class="num">15 хв</td><td>Рядок без пропусків</td></tr>
+    <tr><td class="num">Р14</td><td>Місячний звіт замовнику</td><td>Маркетинг</td><td>1-ше число</td><td class="num">1 год</td><td>1 стор. за шаблоном</td></tr>
+    <tr><td class="num">Р15</td><td>Швидка перевірка трендів</td><td>Маркетинг</td><td>Щомісяця</td><td class="num">20 хв</td><td>Резюме в чат</td></tr>
+    <tr><td class="num">Р16</td><td>Повне дослідження трендів</td><td>Маркетинг</td><td>Щокварталу</td><td class="num">2 год</td><td>Оновлений документ</td></tr>
+  </table></div>
+
+  <h3 id="instructions">2.4. Детальні інструкції по задачах</h3>
+
+  <details><summary><span class="tag">Р1–Р3</span><span class="t">Виробництво і публікація постів</span><span class="chev">›</span></summary><div class="body">
+  <p><b>Навіщо.</b> Контент — паливо воронки 1 і основа репутації. Алгоритм LinkedIn 2026 аналізує зміст постів семантично (розуміє текст, а не рахує хештеги) і показує їх людям, які цікавляться темою. Сталість теми = алгоритм сам знаходить нашу аудиторію.</p>
+  <p><b>Виробничий цикл поста:</b></p>
+  <ol>
+    <li>Маркетинг дає драфт + візуал за контент-календарем (за 2–3 дні до публікації).</li>
+    <li>Автор (Олена / рекрутер) додає один реальний факт зі своєї практики і правки «під себе» — 20–30 хв. Без живої фактури пост не публікується: саме вона відрізняє експертизу від води і для алгоритму, і для читача.</li>
+    <li>Пост ставиться у вбудований планувальник LinkedIn на свій слот (вівторок–четвер, робочі години, пік 8–9 та 14–15; між постами одного автора — мінімум 24 години).</li>
+    <li>Після публікації: команда коментує в першу годину (Р4), автор відповідає на коментарі (Р5).</li>
+  </ol>
+  <p><b>Слоти тижня:</b> вт — експертний пост Олени (найсильніший слот) · ср — сторінка компанії · чт — другий пост Олени · пости рекрутерів — вт–чт за графіком черги, не всі в один день · пт — без публікацій (день коментарів і аутрічу).</p>
+  <p><b>П'ять рубрик</b> (чергуються так, щоб за 2 тижні пройшли всі): кейси з цифрами · біль клієнта · ринкова аналітика · ветеранський найм · процес зсередини. Анатомія поста і правила «що заходить / що заборонено» — у <a href="#app-v">Додатку В</a>.</p>
+  <div class="kpi-line"><b>KPI:</b> Олена 8–12 постів/міс · рекрутери 4–5/тижд сумарно · сторінка 100% за календарем · контроль — тижневий зріз і місячний звіт.</div>
+  </div></details>
+
+  <details><summary><span class="tag">Р4–Р5</span><span class="t">Коментарі: команда і автор</span><span class="chev">›</span></summary><div class="body">
+  <p><b>Навіщо.</b> Перші 60–90 хвилин після публікації алгоритм тестує пост на невеликій вибірці — і за результатом вирішує, показувати його ширше чи ні. Коментарі важать у ~15 разів більше за лайки, а гілки обговорень — найсильніший сигнал. Коментарі команди допомагають пройти цей тест.</p>
+  <p><b>Правила для команди (Р4):</b></p>
+  <ul>
+    <li>3–4 коментарі під постом, <b>розтягнуто протягом години</b> — не всі в перші п'ять хвилин.</li>
+    <li>Кожен коментар змістовний: питання по темі, доповнення з власної практики, міні-кейс у два речення. Заборонено: «🔥», «круто», однакові фрази у різних людей — це патерн накрутки, який алгоритм розпізнає і знецінює.</li>
+    <li>Набори коментарів під кожен пост маркетинг готує заздалегідь разом з драфтом — рекрутер адаптує під себе, не копіює дослівно.</li>
+    <li>Це тимчасова механіка на період розгону: коли мережа Олени виросте і реакції ЦА стануть стабільними, командну підтримку зменшуємо.</li>
+  </ul>
+  <p><b>Правила для автора (Р5):</b> відповісти на кожен коментар, бажано протягом кількох годин. Відповідь — не «дякую», а продовження розмови: уточнення, зустрічне питання, деталь. Кожна гілка множить охоплення поста.</p>
+  <div class="kpi-line"><b>KPI:</b> 3–4 змістовні коментарі команди/пост · 100% коментарів отримали відповідь автора · контроль — вибіркова перевірка щомісяця.</div>
+  </div></details>
+
+  <details><summary><span class="tag">Р6–Р7</span><span class="t">Нарощування цільової мережі Олени</span><span class="chev">›</span></summary><div class="body">
+  <p><b>Навіщо стратегічно.</b> У LinkedIn пости показуються насамперед мережі автора. Мережа Олени = аудиторія її постів. Тест «золотої години» алгоритм проводить на вибірці з мережі — якщо мережа складається з HR-директорів і власників, пост тестується на потенційних клієнтах, а не випадкових людях. Контактам 1-го кола можна писати безкоштовно і без обмежень. Кожен конект — це +1 до охоплення, +1 до якості тесту постів і +1 потенційний співрозмовник. Мережа — актив, який працює на всі інші частини стратегії.</p>
+  <p><b>Розподіл праці.</b> Відбирає не Олена. Щопонеділка B2B-менеджер готує список на тиждень (50–70 профілів) у вкладці «Мережа» трекера: ім'я / посада / компанія / посилання. Олена щодня за 10–15 хвилин відправляє 10–15 запитів зі списку: клік — Connect — далі.</p>
+  <p><b>Як B2B-менеджер відбирає:</b></p>
+  <ol>
+    <li>Пошук LinkedIn → вкладка People → локація «Ukraine» + посади по черзі окремими пошуками: HR Director, HRD, Head of HR, HR Business Partner, Директор з персоналу, CEO, Founder, Операційний директор.</li>
+    <li>Фільтр «2nd degree» (знайомі знайомих) — таким запити приймають у 2–3 рази частіше, ніж повністю холодним контактам.</li>
+    <li>Другий маршрут — від компаній: список 100 цільових компаній (задача 0.5) → сторінка компанії → вкладка People → виловлюємо ЛПР. Цей маршрут точніший, бо гарантує галузь.</li>
+    <li>У список не потрапляють: рекрутери інших агенцій, студенти, профілі без посади, іноземці без зв'язку з Україною.</li>
+  </ol>
+  <p><b>Захист від повторів — три рубежі:</b> LinkedIn сам показує статус Pending і не дає надіслати запит двічі · у вкладці «Мережа» кожен запит має дату і статус (відправлено / прийнято / ігнор), перед внесенням нових список звіряється по посиланнях · раз на 3 тижні запити без відповіді 21+ день відкликаються (Manage invitations → Withdraw) — це звільняє ліміт.</p>
+  <p><b>Ліміти і безпека.</b> LinkedIn дозволяє ~100–200 запитів на тиждень прогрітому акаунту. Старт обережний: тиждень 1 — по 5–8/день, з тижня 2 — 10–15/день. Жодних сторонніх сервісів авторозсилки — це найшвидший шлях до блокування, все руками. Якщо частка прийнятих падає нижче ~25% — список став нецільовим або запити виглядають спамно; розбираємо на тижневому зрізі.</p>
+  <div class="kpi-line"><b>KPI:</b> 50–70 запитів/тижд · прийнято ≥30% · приріст 20–30 цільових контактів/тижд · контроль — тижневий зріз.</div>
+  </div></details>
+
+  <details><summary><span class="tag">Р8</span><span class="t">Коментарі Олени під постами цільової аудиторії</span><span class="chev">›</span></summary><div class="body">
+  <p><b>Навіщо.</b> Змістовний коментар під постом HR-директора чи власника показує Олену його аудиторії (яка складається з таких самих ЛПР) і будує впізнаваність без власного поста. Це найдешевший спосіб розширити видимість за межі своєї мережі.</p>
+  <p><b>Як.</b> У п'ятницю (день без публікацій) Олена 20 хвилин гортає стрічку і залишає 3–5 коментарів під постами людей з ЦА: власна думка, досвід, уточнення — 2–4 речення. Не «чудовий пост!», не згадування ReLink, не посилання. Просто експертна присутність.</p>
+  <p><b>Де брати пости:</b> стрічка (алгоритм сам підкидає активних людей з мережі) + пошук по темах «найм», «вакансії», «HR» з фільтром Posts за тиждень.</p>
+  <div class="kpi-line"><b>KPI:</b> 3–5 коментарів/тижд · контроль — місячний звіт (приріст переглядів профілю).</div>
+  </div></details>
+
+  <details><summary><span class="tag">Р9–Р10</span><span class="t">Моніторинг вакансій і ситуаційний аутріч (воронка 2)</span><span class="chev">›</span></summary><div class="body">
+  <p><b>Навіщо.</b> Компанія, у якої вакансія висить понад місяць або публікується повторно, має усвідомлений біль прямо зараз. Наше повідомлення для неї — не спам, а влучна пропозиція допомоги в потрібний момент. Це найшвидша воронка: перші діалоги на 2–3 тижні роботи.</p>
+  <p><b>Коротко:</b> щопонеділка B2B-менеджер проходить підписки на вакансії (1–1,5 год), виловлює два сигнали — вакансія 30+ днів і повторна публікація, — фільтрує по трьох питаннях (компанія в ICP? роль наша? офер живий?) і у вт–чт виходить на ЛПР відфільтрованих компаній: конект без продажу → пауза 1–2 дні → персоналізоване повідомлення під ситуацію → максимум один фоллоу-ап через 5–7 днів.</p>
+  <p>Повна покрокова інструкція — налаштування підписок, механіка проходу, критерії фільтра, скелети повідомлень — у <a href="#app-a">Додатку А</a>. Після 3–4 тижнів ручної роботи процес частково автоматизується (окремий внутрішній проект на наявній інфраструктурі).</p>
+  <div class="kpi-line"><b>KPI:</b> 5–10 якісних цілей/тижд · 5–10 перших повідомлень/тижд · контроль — тижневий зріз, окремий рядок воронки 2.</div>
+  </div></details>
+
+  <details><summary><span class="tag">Р11</span><span class="t">Теплий аутріч по реакціях (воронка 1)</span><span class="chev">›</span></summary><div class="body">
+  <p><b>Навіщо.</b> Людина, яка лайкнула чи прокоментувала пост, уже нас помітила — повідомлення їй виглядає природним продовженням, а не вторгненням. Контакт із тим, хто взаємодіяв з контентом, конвертується у рази краще за холодний.</p>
+  <p><b>Як.</b> Щодня (з Фази 2) B2B-менеджер переглядає реакції під постами Олени, відбирає людей з ЦА (посада + компанія по профілю) і протягом 48 годин пише від імені Олени — з її профілю, за скриптом-скелетом:</p>
+  <p><i>«Дякую за реакцію на пост про [тема]. Бачу, ви з [галузь/роль] — цікаво, як у вас із [проблема з поста]?»</i></p>
+  <p>Далі — жива розмова без продажу: питання, досвід, користь. Мета діалогу — не продати в лоб, а дійти до моменту, коли пропозиція бриф-зустрічі звучить природно. Дозрілий діалог передається Олені особисто (вона попереджена і бачить історію листування).</p>
+  <p><b>Правила:</b> реакція відпрацьовується протягом 48 годин, поки тепла · одна людина — один перший меседж, без нав'язування · вся історія фіксується у трекері (контакт / джерело / статус / наступний крок).</p>
+  <div class="kpi-line"><b>KPI:</b> 100% реакцій від ЦА відпрацьовано ≤48 год · конверсія реакція→діалог ≥25% · контроль — тижневий зріз.</div>
+  </div></details>
+
+  <details><summary><span class="tag">Р12</span><span class="t">Фоллоу-апи (повторні нагадування)</span><span class="chev">›</span></summary><div class="body">
+  <p><b>Правило одного дотику.</b> Якщо на перше повідомлення тиша — через 5–7 днів одне коротке нагадування: <i>«Розумію, що зараз може бути не на часі — лишаю контакт, якщо пошук затягнеться»</i>. Після другої тиші — статус «мовчання» у трекері, компанію не чіпаємо 2–3 місяці (потім можливий новий привід: кейс, зміна на ринку, нова вакансія в них). Третіх-четвертих нагадувань не існує: вони палять репутацію і профіль.</p>
+  <div class="kpi-line"><b>KPI:</b> 100% діалогів без відповіді отримали рівно один фоллоу-ап · контроль — трекер.</div>
+  </div></details>
+
+  <details><summary><span class="tag">Р13–Р16</span><span class="t">Метрики, звіти, тренди</span><span class="chev">›</span></summary><div class="body">
+  <p><b>Принцип:</b> цифри збираються один раз унизу і піднімаються нагору без повторної роботи. Рівень 0 — B2B-менеджер фіксує кожен діалог/зустріч/КП у трекері в момент події (~5 хв/день). Рівень 1 — щоп'ятниці один рядок тижневого зрізу (15 хв). Рівень 2 — місячний звіт замовнику на одну сторінку (маркетинг, 1-ше число). Рівень 3 — квартальний зріз із ROI. Шаблони обох звітів з поясненням кожного поля — у <a href="#app-b">Додатку Б</a>.</p>
+  <p><b>Тренди:</b> щомісяця швидка перевірка змін алгоритму і форматів (результат — 3–5 рядків у чат: «змін немає» або «з'явилось X, коригуємо Y»); щокварталу — повне дослідження з оновленням документа-підґрунтя; позаплановий тригер — великі зміни платформи.</p>
+  <div class="kpi-line"><b>KPI:</b> нуль пропущених тижневих зрізів · звіт до 3-го числа кожного місяця.</div>
+  </div></details>
+
+  <h3>2.5. Контент-календар: перші 4 тижні</h3>
+  <p class="note">Далі календар складається щомісяця як робочий процес — теми коригуються за метриками. Дати — від старту Фази 1.</p>
+  <div class="table-wrap"><table>
+    <tr><th>День</th><th>Автор</th><th>Рубрика</th><th>Тема (робоча)</th><th>Формат</th></tr>
+    <tr><td class="num">Т1 · Вт</td><td>Олена</td><td>Біль клієнта</td><td>Скільки коштує місяць простою вакансії технолога — розрахунок</td><td>Текст + картка з цифрою</td></tr>
+    <tr><td class="num">Т1 · Ср</td><td>Сторінка</td><td>Представлення</td><td>Хто ми і чому Defence/виробництво — наша спеціалізація</td><td>Текст + банер</td></tr>
+    <tr><td class="num">Т1 · Чт</td><td>Олена</td><td>Процес</td><td>Що відбувається на бриф-сесії і чому без неї пошук сліпий</td><td>Текст</td></tr>
+    <tr><td class="num">Т1 · Чт</td><td>Рекрутер 1</td><td>Команда</td><td>День рекрутера в цифрах</td><td>Текст</td></tr>
+    <tr><td class="num">Т2 · Вт</td><td>Олена</td><td>Аналітика</td><td>Зарплатні вилки робітничих спеціальностей: що змінилось за пів року</td><td>Карусель 5–6 слайдів</td></tr>
+    <tr><td class="num">Т2 · Ср</td><td>Сторінка</td><td>Послуга</td><td>Гарантійна заміна: як працює і що покриває</td><td>Текст + картка</td></tr>
+    <tr><td class="num">Т2 · Чт</td><td>Олена</td><td>Ветерани</td><td>Як читати військовий досвід у резюме: 3 приклади перекладу навичок</td><td>Текст</td></tr>
+    <tr><td class="num">Т2 · Чт</td><td>Рекрутер 2</td><td>Команда</td><td>Питання, яке я ставлю кожному кандидату — і чому</td><td>Текст</td></tr>
+    <tr><td class="num">Т3 · Вт</td><td>Олена</td><td>Біль клієнта</td><td>Чому «шукаємо самі» виходить дорожче за агенцію: чесна математика</td><td>Текст + картка</td></tr>
+    <tr><td class="num">Т3 · Ср</td><td>Сторінка</td><td>Вакансія</td><td>Пріоритетна вакансія тижня з детальним описом</td><td>LinkedIn Jobs + пост</td></tr>
+    <tr><td class="num">Т3 · Чт</td><td>Олена</td><td>Процес</td><td>Прозорість через CRM: що бачить клієнт у кабінеті</td><td>Текст + скріншот-картка</td></tr>
+    <tr><td class="num">Т3 · Чт</td><td>Рекрутер 3</td><td>Команда</td><td>Найдивніша відмова кандидата цього місяця (анонімно) і що вона каже про ринок</td><td>Текст</td></tr>
+    <tr><td class="num">Т4 · Вт</td><td>Олена</td><td>Аналітика</td><td>Дефіцитні спеціальності виробництва: топ-5 і чому їх нема на ринку</td><td>Карусель</td></tr>
+    <tr><td class="num">Т4 · Ср</td><td>Сторінка</td><td>Адаптація</td><td>Найкращий пост Олени місяця — версія від компанії</td><td>Текст</td></tr>
+    <tr><td class="num">Т4 · Чт</td><td>Олена</td><td>Ветерани</td><td>Ветеран у цивільній команді: що насправді важливо роботодавцю</td><td>Текст</td></tr>
+    <tr><td class="num">Т4 · Чт</td><td>Рекрутер 4</td><td>Команда</td><td>Як я відрізняю реальний досвід від написаного в резюме</td><td>Текст</td></tr>
+  </table></div>
+  <p class="note">Щоп'ятниці — без публікацій: коментарі Олени під постами ЦА (Р8) і аутріч. Рекрутери входять у ритм по черзі з тижня 1 по 4.</p>
+</div></section>
+
+<!-- ================= PART III ================= -->
+<section id="control"><div class="wrap">
+  <div class="part-label">Частина ІІІ</div>
+  <h2>Контроль: цілі, точки, ескалація</h2>
+
+  <h3>3.1. Цілі по місяцях (кумулятивно)</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Показник</th><th>М1</th><th>М2</th><th>М3</th><th>М4</th><th>М6</th></tr>
+    <tr><td>Мережа Олени (цільові контакти)</td><td class="num">120</td><td class="num">270</td><td class="num">400</td><td class="num">550</td><td class="num">800</td></tr>
+    <tr><td>Діалоги розпочаті</td><td class="num">4–6</td><td class="num">12–16</td><td class="num">20–25</td><td class="num">30–35</td><td class="num">45–60</td></tr>
+    <tr><td>Бриф-зустрічі</td><td class="num">0–1</td><td class="num">2–4</td><td class="num">5–8</td><td class="num">8–11</td><td class="num">15–20</td></tr>
+    <tr><td>КП відправлені</td><td class="num">0</td><td class="num">2–3</td><td class="num">4–6</td><td class="num">7–9</td><td class="num">12–16</td></tr>
+    <tr><td>Договори</td><td class="num">0</td><td class="num">0–1</td><td class="num">1–3</td><td class="num">2–4</td><td class="num">4–8</td></tr>
+  </table></div>
+
+  <div class="honesty"><b>Чесна рамка очікувань.</b> У місяцях 1–2 нулі внизу воронки (КП, договори) — норма, закладена у фази. Предиктори майбутніх контрактів у цей період — верхні метрики: мережа, реакції ЦА, діалоги. Панікувати на першому місяці через відсутність договорів — помилка читання воронки.</div>
+
+  <h3>3.2. Точки контролю</h3>
+  <div class="card">
+  <p><b>Щоп'ятниці</b> — тижневий зріз: веде B2B-менеджер, переглядає Дмитро. Шість цифр + коментар, 15 хвилин.</p>
+  <p><b>Щомісяця, 1-ше число</b> — звіт на одну сторінку: динаміка, воронка з конверсіями, топ/анти-топ контенту, порівняння двох воронок, корекція на наступний місяць. Розглядають Дмитро + Олена.</p>
+  <p><b>Щокварталу</b> — ревізія: динаміка за 3 місяці, ROI (вкладені час і гроші проти вартості підписаних контрактів), рішення по Sales Navigator, рекламі, автоматизації.</p>
+  </div>
+
+  <h3>3.3. Правила ескалації</h3>
+  <div class="card">
+  <ul>
+    <li><b>Два тижні поспіль без нових діалогів</b> → розбір воронки, не чекаючи місячного звіту: де обрив — контент, мережа чи аутріч.</li>
+    <li><b>Частка прийнятих конектів &lt;25%</b> → перегляд критеріїв списку і тексту профілю Олени.</li>
+    <li><b>Конверсія зустріч→договір = 0 при 5+ зустрічах</b> → розбір КП і ціноутворення разом з Оленою.</li>
+    <li><b>Провальний тиждень команди</b> (нема часу) → мінімальний режим утримання: 1 пост Олени + 1 пост сторінки, аутріч не зупиняється ніколи.</li>
+  </ul>
+  </div>
+
+  <h3>3.4. Ресурси і бюджет</h3>
+  <div class="card">
+  <p><b>Час на тиждень:</b> Олена 3–4 год · B2B-менеджер 4–5 год · рекрутери по ~1 год · маркетинг 2–3 год. Разом ~15 год командного часу на канал, який має принести 4–8 контрактів за пів року.</p>
+  <p><b>Гроші:</b> місяці 1–2 — 0 грн, чиста органіка. З місяця 2–3 — Sales Navigator ~$100/міс, один профіль. Реклама — не раніше місяця 4, тільки під лід-магніт або сильний кейс, рішення за метриками. Автоматизація моніторингу — внутрішній проект, зовнішніх витрат нуль.</p>
+  </div>
+
+  <h3>3.5. Ризики і запобіжники</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Ризик</th><th>Запобіжник</th></tr>
+    <tr><td>Блокування старого профілю-«компанії»</td><td>Фаза 0: активність тільки після виправлення архітектури</td></tr>
+    <tr><td>Алгоритм розпізнає штучність коментарів команди</td><td>Змістовність, розтяжка в часі, тимчасовість механіки</td></tr>
+    <tr><td>Контент виглядає шаблонно-згенерованим</td><td>Жива фактура в кожному пості + калібрування голосу Олени</td></tr>
+    <tr><td>Показ зміщується на нецільову аудиторію</td><td>Паралельне зростання цільової мережі Олени + семантика тем</td></tr>
+    <tr><td>Команда вигорає від ритму</td><td>Реалістична сітка + мінімальний режим утримання на провальні тижні</td></tr>
+  </table></div>
+
+  <h3>3.6. Що потрібно від замовника для старту</h3>
+  <div class="card"><ul>
+    <li>Підтвердження людей у ролях: B2B-менеджер, склад рекрутерів.</li>
+    <li>30 хвилин Олени на інтерв'ю для калібрування голосу.</li>
+    <li>Загальні цифри агенції для профілів: закриті вакансії, активні клієнти, середні терміни.</li>
+    <li>Погодження 2–3 кейсів з клієнтами (потрібно до Фази 3, старт не блокує).</li>
+    <li>Рішення про єдине написання ніші в усіх профілях.</li>
+  </ul></div>
+</div></section>
+
+<!-- ================= APPENDIX A ================= -->
+<section id="app-a"><div class="wrap">
+  <div class="part-label">Додаток А</div>
+  <h2>Операційна інструкція: моніторинг вакансій 30+ днів</h2>
+  <p>Виконавець — B2B-менеджер. Мета — щотижня отримувати 5–10 компаній з усвідомленим болем найму і виходити на них з влучною пропозицією.</p>
+
+  <h3>Крок 1. Разове налаштування (~1 година)</h3>
+  <div class="card">
+  <p><b>Work.ua і Robota.ua.</b> Заходимо на сайт як шукач роботи (так, саме так — нам потрібно бачити вакансії). Пошук вакансій → фільтри: рубрика («Виробництво, робітничі спеціальності», «Інженери, технологи», «Продаж, закупівля», «Фінанси, бухгалтерія») + міста, де працює ReLink. Кожну комбінацію «рубрика + місто» зберігаємо кнопкою підписки на нові вакансії за запитом. Виходить 6–10 збережених запитів. Пошта — окрема робоча скринька, щоб не засмічувати основну.</p>
+  <p><b>LinkedIn Jobs.</b> Вкладка Jobs → пошук по назвах ролей («технолог», «інженер-конструктор», «начальник виробництва», «менеджер з продажу B2B») + Україна → вмикаємо Job Alert.</p>
+  <p><b>DOU.</b> Закладка на jobs.dou.ua з фільтром по категоріях — переглядається вручну, вакансій небагато. <b>Jooble</b> — контрольний агрегатор, підтягує пропущене.</p>
+  <p><b>Трекер, вкладка «Моніторинг».</b> Колонки: дата виявлення / компанія / вакансія / джерело+посилання / дата публікації вакансії / статус вакансії (нова · висить 30+ · повторна публікація) / пройшла фільтр? / ЛПР (ім'я + посилання LinkedIn) / статус контакту (не писали · з'єднались · написали · діалог · зустріч · відмова) / наступний крок і дата.</p>
+  </div>
+
+  <h3>Крок 2. Щотижневий прохід (щопонеділка, 1–1,5 год)</h3>
+  <div class="card">
+  <p>За вихідні накопичуються листи з підписок — тиждень починається з наповненої черги. Відкриваємо листи + проходимо збережені запити на сайтах. На кожній вакансії дивимось дату публікації (Work.ua і Robota.ua показують її в оголошенні; LinkedIn — «posted X days ago»). Ловимо два сигнали:</p>
+  <p><b>Сигнал А — стара вакансія:</b> опублікована 30+ днів тому і досі активна. На Work.ua/Robota.ua сортуємо за датою і гортаємо «з кінця».</p>
+  <p><b>Сигнал Б — повторна публікація:</b> вакансія виглядає свіжою, але компанія+посада вже є в таблиці з минулих тижнів. Тому кожен прохід звіряємо з таблицею. Це найсильніший сигнал: компанія заплатила за повторне розміщення, бо не закрила. Перші 2–3 тижні сигнал Б працює слабко — історії ще немає, база напрацьовується. Це нормально.</p>
+  <p>Усе зловлене вносимо в таблицю механічно, без оцінки.</p>
+  </div>
+
+  <h3>Крок 3. Фільтр якості (той самий понеділок, ~30 хв)</h3>
+  <div class="card">
+  <p>По кожному новому рядку — три питання:</p>
+  <ol>
+    <li><b>Компанія в ICP?</b> Сайт/сторінка компанії: виробництво, Defence-суміжне, логістика, технічний сервіс, дистрибуція; орієнтовно від 30 людей. Аутсорс-агенції, держструктури, явний мікробізнес — «ні».</li>
+    <li><b>Роль наша?</b> Робітничі, інженерно-технічні, продажі, фінанси, офісні, управлінські. Якщо ReLink таку роль сам не закриє — «ні» (компанію лишаємо з поміткою: привід може з'явитись пізніше).</li>
+    <li><b>Офер живий?</b> Порівнюємо зарплату з аналогічними вакансіями поруч у видачі. Адекватний офер + зависла вакансія = ідеальна ціль: проблема в пошуку, ми її вирішуємо. Офер на 30–40% нижче ринку — категорія «мертвий офер»: писати можна, але з заходом «допоможемо відкалібрувати умови», нижчий пріоритет.</li>
+  </ol>
+  <p>На виході з 10–20 зловлених лишається 5–10 цілей на тиждень. Більше не треба: якість персоналізації важливіша за обсяг.</p>
+  </div>
+
+  <h3>Крок 4. Вихід на контакт (вівторок–четвер, 20–30 хв на день)</h3>
+  <div class="card">
+  <ol>
+    <li><b>Знайти ЛПР у LinkedIn.</b> Пошук по назві компанії → вкладка People → HR-директор / HR-менеджер (компанії 50+) або власник / директор (менші). Ім'я і посилання — у таблицю. Якщо ЛПР у LinkedIn немає (буває у виробничих компаній) — помітка; такі підуть через email/телефон пізніше.</li>
+    <li><b>З'єднатись без продажу.</b> Запит на з'єднання — без тексту або з нейтральним: «Вітаю, працюю з наймом у виробничій сфері, буду радий бути в контакті».</li>
+    <li><b>Пауза 1–2 дні</b> після прийняття. За цей час бажано лайкнути або прокоментувати щось у ЛПР — м'яке торкання.</li>
+    <li><b>Ситуаційне повідомлення</b> за скелетом «факт → пропозиція → легкий вихід»: <i>«Добрий день, [ім'я]. Бачу, [компанія] шукає [посада] вже понад місяць — роль з тих, з якими ми в ReLink працюємо регулярно. Якщо внутрішній пошук забуксував, можу розповісти, як ми такі вакансії закриваємо — без зобов'язань. Актуально?»</i> Під кожну категорію ролей — 2–3 варіанти скелета; персоналізація обов'язкова, шаблонний спам людина відчуває миттєво.</li>
+    <li><b>Один фоллоу-ап</b> через 5–7 днів за правилом одного дотику (Р12).</li>
+  </ol>
+  </div>
+
+  <div class="callout"><div class="big">Автоматизація — з місяця 2</div><p>Після 3–4 тижнів ручної роботи, коли критерії відбору стабілізуються: бот на наявній інфраструктурі щодня обходить збережені запити, тримає базу «компанія+посада+дата», сам детектить обидва сигнали і кидає готовий список у таблицю + Telegram. Людині лишаються кроки 3 і 4 — те, що автоматизувати не можна. Окремий внутрішній проект, зовнішніх витрат нуль.</p></div>
+</div></section>
+
+<!-- ================= APPENDIX B ================= -->
+<section id="app-b"><div class="wrap">
+  <div class="part-label">Додаток Б</div>
+  <h2>Шаблони звітності</h2>
+
+  <h3>Б.1. Тижневий зріз (B2B-менеджер, п'ятниця, 15 хв)</h3>
+  <p>Один рядок у вкладці «Тижневі зрізи» трекера. Заповнюється за 15 хвилин, бо всі дані вже у трекері з щоденної фіксації.</p>
+  <div class="table-wrap"><table>
+    <tr><th>Поле</th><th>Що вносимо</th><th>Навіщо</th></tr>
+    <tr><td>Тиждень</td><td>Напр. 27.07–02.08</td><td>—</td></tr>
+    <tr><td>Нові цільові контакти</td><td>Прийняті з'єднання з ЦА у мережі Олени, шт</td><td>Росте аудиторія, якій показуються пости</td></tr>
+    <tr><td>Реакції від ЦА</td><td>Лайки/коментарі саме від HRD, власників, директорів — не загальні</td><td>Сигнал, що контент влучає в тих, кому продаємо</td></tr>
+    <tr><td>Діалоги: теплі</td><td>Розпочаті розмови по реакціях на пости</td><td>Ефективність воронки 1 (контент)</td></tr>
+    <tr><td>Діалоги: ситуаційні</td><td>Розпочаті розмови по моніторингу вакансій</td><td>Ефективність воронки 2 (аутріч)</td></tr>
+    <tr><td>Бриф-зустрічі</td><td>Призначені / проведені</td><td>Головний проміжний KPI</td></tr>
+    <tr><td>КП відправлені</td><td>шт</td><td>Глибина воронки</td></tr>
+    <tr><td>Договори</td><td>шт</td><td>Результат</td></tr>
+    <tr><td>Коментар</td><td>1–2 речення: що вистрілило, що буксує</td><td>Жива пам'ять для місячного звіту</td></tr>
+  </table></div>
+
+  <h3>Б.2. Місячний звіт замовнику (маркетинг, 1-ше число, 1 сторінка)</h3>
+  <div class="card">
+  <p><b>1) Панель цифр.</b> Шість метрик тижневого зрізу за місяць + дельта до минулого місяця (↑↓). <i>Замовник за 10 секунд бачить головне; дельта важливіша за абсолют.</i></p>
+  <p><b>2) Воронка місяця.</b> Реакції ЦА → діалоги → зустрічі → КП → договори, з конверсіями між етапами у відсотках. <i>Показує, ДЕ втрачаємо: конверсія діалог→зустріч 40% і зустріч→договір 0% — дві різні проблеми з різними ліками.</i></p>
+  <p><b>3) Контент місяця.</b> Топ-3 пости за реакціями ЦА (рубрика, охоплення, що спрацювало одним рядком) + анти-топ. <i>Обґрунтовує корекцію контент-плану по цифрах, а не на смак.</i></p>
+  <p><b>4) Порівняння воронок.</b> Скільки діалогів і зустрічей дала воронка 1 проти воронки 2. <i>Через 2–3 місяці покаже, куди перекладати ресурс.</i></p>
+  <p><b>5) Висновок і план.</b> 3–4 речення: головний висновок місяця + що коригуємо наступного. <i>Замовник бачить не просто цифри, а управління на їх основі.</i></p>
+  <p class="note">Постійна примітка у шаблоні: місяці 1–2 — нулі внизу воронки нормальні і закладені у фази; дивимось на верхні метрики — вони предиктори контрактів місяців 2–4.</p>
+  </div>
+</div></section>
+
+<!-- ================= APPENDIX V ================= -->
+<section id="app-v"><div class="wrap">
+  <div class="part-label">Додаток В</div>
+  <h2>Правила контенту</h2>
+
+  <h3>В.1. Анатомія робочого поста</h3>
+  <div class="card">
+  <p><b>Перший рядок — гачок,</b> який видно до кнопки «...see more»: цифра, парадокс або питання болю. <i>«Вакансія технолога у клієнта висіла 4 місяці. Ми закрили за 24 дні. Різниця — в одному рішенні.»</i></p>
+  <p><b>Тіло — на 30–60 секунд читання:</b> короткі абзаци по 1–3 рядки, повітря між ними, конкретика замість прикметників. Час читання — головна метрика алгоритму: пости, які читають 61+ секунд, отримують максимальну дистрибуцію.</p>
+  <p><b>Фінал — одне питання</b> до аудиторії, що провокує змістовну відповідь, а не «так/ні».</p>
+  <p><b>Довжина:</b> 800–1500 знаків для текстового поста.</p>
+  </div>
+
+  <h3>В.2. Що заходить</h3>
+  <div class="card"><ul>
+    <li>Цифри і терміни: «закрили за 24 дні», «3 фіналісти з 47 кандидатів».</li>
+    <li>Історії з розв'язкою: що пішло не так і як виправили.</li>
+    <li>Непопулярні думки, аргументовані досвідом: «чому ми відмовляємо клієнтам з мертвим офером».</li>
+    <li>Зарплатна конкретика — найбільш поширювана тема в HR-LinkedIn.</li>
+    <li>Питання, на які людям хочеться відповісти власним досвідом.</li>
+  </ul></div>
+
+  <h3>В.3. Що заборонено</h3>
+  <div class="card"><ul>
+    <li><b>Зовнішні посилання в тілі поста</b> — мінус ~60% охоплення; «посилання в першому коментарі» з 2026 теж карається. Ключовий зміст — завжди нативно в пості.</li>
+    <li><b>Engagement bait:</b> «ставте +», «коментуйте ТАК» — алгоритм пригнічує.</li>
+    <li><b>Мотиваційна вода і «успішний успіх»</b> — семантичний аналіз розрізняє експертизу і загальні слова.</li>
+    <li><b>Пряме промо частіше 1 поста з 5.</b></li>
+    <li><b>Хештеги пачками</b> — 2–3 максимум, у 2026 вони майже не працюють.</li>
+    <li><b>Ідеально гладкий згенерований стиль без живої фактури</b> — розпізнають і алгоритм, і читачі; у професійному середовищі за це «call out». Захист: мінімум один реальний факт з практики у кожному пості + голос автора.</li>
+  </ul></div>
+
+  <h3>В.4. Візуал без офісу</h3>
+  <div class="card">
+  <p>Команда працює віддалено — це подається як перевага («рекрутери з 4 міст = ширше покриття»), а не ховається. LinkedIn — не Instagram: «живі фото» в B2B — це люди, а не стіни офісу.</p>
+  <ul>
+    <li>Скріншот командного відеодзвінка (за згодою) — раз на місяць-два.</li>
+    <li>Портрети на телефон при денному світлі + фірмова обробка в картки за брендбуком — робиться один раз, використовується постійно.</li>
+    <li>Фото з виїзних подій: зустрічі, ярмарки вакансій, виставки.</li>
+    <li>Чесне робоче місце вдома: «звідси закрито 30 вакансій».</li>
+    <li>Рубрики про команду без фото: «день рекрутера в цифрах», «питання, яке я ставлю кожному кандидату», «найдивніша відмова місяця». Фактура збирається одним питанням у робочий чат щотижня.</li>
+  </ul>
+  <p>Брендовані картки, каруселі й банери виробляє маркетинг за шаблонами брендбука — команда отримує готові файли.</p>
+  </div>
+</div></section>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-facebook" role="tabpanel" aria-labelledby="navtab-facebook" hidden>
+  <div class="wrap">
+    <div class="net-head">
+      <div class="net-eyebrow">Мережа</div>
+      <h1>Facebook</h1>
+      <span class="badge ok">погоджено Дмитром</span>
+    </div>
+
+    <div class="net-content">
+      <h2>Стратегія Facebook — ReLink</h2>
+<hr>
+<h3>1. Рамка і мета</h3>
+<p><strong>Горизонт:</strong> 23 серпня – 31 грудня 2026 (спринт + квартал).</p>
+<p><strong>Мета кварталу:</strong> робоча B2B-машина лідогенерації з доведеною ціною ліда і першими контрактами. За підсумками кварталу — статистика (ціна ліда → ціна розмови → ціна контракту) як основа перегляду бюджетної моделі на наступний період.</p>
+<p><strong>Пріоритет треків:</strong> B2B (пошук замовників) — стартовий; B2C (кандидати) вмикається з першим замовленням. Обґрунтування — розділи 5–6 дослідження.</p>
+<hr>
+<h3>2. Цілі по фазах</h3>
+<div class="table-wrap"><table><thead><tr><th>Фаза</th><th>Період</th><th>Головний результат</th><th>Показники</th></tr></thead><tbody><tr><td>Спринт активу</td><td>23.08–05.09</td><td>Актив готовий до реклами</td><td>Сторінка оформлена; кабінет робочий; 8 постів + 1 Reels опубліковано/заплановано; оффер і прийом ліда затверджені</td></tr><tr><td>Тестовий запуск</td><td>07–30.09</td><td>Відома реальна ціна ліда</td><td>Кампанія працює без зупинок; перші ліди; звіт №1 (30.09)</td></tr><tr><td>Оптимізація</td><td>жовтень–листопад</td><td>Перший контракт з вересневих лідів</td><td>2–3 якісні розмови з замовниками/міс; ретаргетинг запущено; ціна ліда ↓ проти тесту</td></tr><tr><td>Масштабування</td><td>грудень</td><td>Аргументна база кварталу</td><td>Статистика воронки за 3,5 міс; пропозиція бюджетної моделі на наступний період</td></tr></tbody></table></div>
+<p>Цифри розмов — цільові орієнтири, не гарантії: калібруються після тестового місяця (природа B2B-циклу — розділ 9 дослідження).</p>
+<hr>
+<h3>3. Голоси і ролі</h3>
+<div class="table-wrap"><table><thead><tr><th>Голос</th><th>Роль</th><th>Регулярність</th></tr></thead><tbody><tr><td>Сторінка агенції</td><td>Вітрина і соціальний доказ: кейси, цифри, оффери, аналітика</td><td>3 пости + 1 Reels на тиждень</td></tr><tr><td>Олена (керівниця)</td><td>Експертне обличчя: пости від її імені (готуються маркетингом, вона затверджує), сирі кадри для живого шару, поширення ключових постів сторінки особистим профілем</td><td>1 експертний пост/тиждень; кадри — 1 раз/міс; поширення — 2–3/тиждень</td></tr><tr><td>Рекрутери</td><td>На B2B-фазі — підтримка постів коментарями за матрицею прогріву (модель LinkedIn-стратегії); повноцінне ввімкнення (групи, кандидатський контент) — з початком B2C-треку</td><td>За матрицею прогріву</td></tr><tr><td>Адміністратор (Надя)</td><td>Резервний адмін сторінки і рекламного кабінету — правило диверсифікації ризику (розділ 10 дослідження)</td><td>Постійний доступ</td></tr><tr><td>Маркетинг (Дмитро)</td><td>Стратегія, контент-виробництво, кампанії, звітність, перша лінія обробки лідів</td><td>Постійно</td></tr></tbody></table></div>
+<hr>
+<h3>4. Спринт 23.08–05.09: чекліст</h3>
+<p><strong>Дні 1–3 — інфраструктура:</strong></p>
+<ol><li>Доступи до сторінки Facebook; ревізія: назва, username, шапка, опис, кнопка дії — за брендом і єдиним неймінгом з Instagram.</li><li>Business Manager: сторінка + Instagram + рекламний кабінет в одній структурі; платіжний метод; ліміт витрат кабінету (страховка від випадкових витрат).</li><li>Резервні доступи Наді (сторінка + кабінет).</li></ol>
+<p><strong>Дні 4–7 — контент і оффер:</strong></p>
+<ol><li>Контент-план і календар вересня (дати, рубрики, теми, оффер) — на погодження замовнику; правки списком, одним заходом.</li><li>Контент-буфер: 8 стартових постів — 2 кейси закритих вакансій, 2 експертні (від Олени), 2 цифри болю ринку, 1 «кухня агенції», 1 оффер-пост; + 1 Reels. Пачка йде замовнику на погодження після затвердження плану.</li><li>Оффер затверджено з Оленою (робоча гіпотеза: «Опишіть вакансію — за 48 годин 3 релевантні резюме з нашої бази. Безкоштовно»), включно з механікою виконання: хто в агенції готує резюме-підбірку і в який строк.</li><li>Скрипт прийому ліда (розділ 8 цієї стратегії).</li></ol>
+<p><strong>Дні 8–11 — публікація і кампанія:</strong></p>
+<ol><li>Публікація перших 4–5 постів (решта — у планувальник за розкладом).</li><li>Кампанія Lead Ads зібрана: категорія оголошень перевірена (спецкатегорія — розділ 8 дослідження), креативи пройшли defense-фільтр (розділ 10 дослідження), лід-форма з 3–4 полями (компанія, посада/вакансія, телефон/месенджер).</li></ol>
+<p><strong>Дні 12–14 — контроль і запуск:</strong></p>
+<ol><li>Тестовий лід через власну форму: перевірка всього маршруту від кліку до першої відповіді.</li><li>Запуск кампанії 07.09.</li></ol>
+<hr>
+<h3>5. Контент-система</h3>
+<p><strong>Тижнева сітка (3 пости + 1 Reels):</strong></p>
+<div class="table-wrap"><table><thead><tr><th>День</th><th>Слот</th><th>Рубрики (чергуються по тижнях)</th></tr></thead><tbody><tr><td>Понеділок</td><td>Експертний</td><td>Пост від Олени: помилки найму / оцінка технічних кандидатів / бронювання як інструмент утримання / «скільки коштує "самі закриємо"»</td></tr><tr><td>Середа</td><td>Довіра</td><td>Кейс закритої вакансії ↔ кухня агенції (етапи підбору, гарантійний супровід 87%, метчинг)</td></tr><tr><td>П'ятниця</td><td>Дія</td><td>Цифра болю ринку (дефіцит інженерів, 30% вакансій 2+ міс, вартість простою) ↔ оффер-пост</td></tr><tr><td>Гнучкий слот</td><td>Reels</td><td>Живий шар (кадри команди за сценарієм) ↔ шаблонний Reels (цифра/теза в русі)</td></tr></tbody></table></div>
+<p><strong>Виробничий цикл — з двоступеневим погодженням замовником:</strong> (1) контент-план і календар місяця погоджуються замовником заздалегідь, до початку місяця; (2) тексти і креативи готуються пачками раз на два тижні (буфер — базова вимога проєкту) і йдуть замовнику на окреме погодження пачкою, після чого — у планувальник за розкладом. Правки на обох етапах збираються списком і вносяться одним заходом. Тексти постів Олени входять у пачку і затверджуються нею разом із погодженням пачки.</p>
+<p><strong>Правила контенту:</strong> рубрикатор і пропорції (~50% B2B / 30% експертиза / 20% команда) — розділ 7 дослідження; правило свідчення і чекліст креативу — там само; defense-фільтр — розділ 10 дослідження.</p>
+<hr>
+<h3>6. Стартовий оффер</h3>
+<p><strong>Гіпотеза:</strong> «Опишіть вакансію — за 48 годин покажемо 3 релевантні резюме з нашої бази. Безкоштовно.»</p>
+<ul><li><strong>Чому цей:</strong> миттєва демонстрація головного активу (база 10 000+), низький поріг входу для замовника, природний привід для предметної розмови.</li><li><strong>Механіка виконання:</strong> заявка з лід-форми → маркетинг передає B2B-контуру → підбірка з бази → відповідь замовнику в межах 48 годин з пропозицією дзвінка.</li><li><strong>Правило чесності:</strong> якщо релевантних резюме в базі немає — чесно кажемо це і пропонуємо formats пошуку; обіцянка «3 резюме» не виконується штучно нерелевантними профілями.</li><li><strong>Життєвий цикл:</strong> оффер — гіпотеза тестового місяця. Якщо конверсія в розмови слабка — замінюється наступною гіпотезою (напр., «аудит вакансії: чому не закривається» або «зріз зарплат по вашій позиції»), по одній зміні за раз.</li></ul>
+<hr>
+<h3>7. Таргетинг і бюджет</h3>
+<p>За розділом 9 дослідження, без змін:</p>
+<ul><li><strong>Структура на тест:</strong> 1 кампанія Lead Ads → 1 група оголошень (гео виробничих регіонів + бізнес/HR-інтереси) → 2–3 креативи (ротація визначить робочий).</li><li><strong>Бюджетна траєкторія:</strong> з 07.09 — $3–4/день (~3,5–4,5 тис. грн до кінця вересня, 24 дні кампанії) → жовтень–листопад ~3–4 тис. грн/міс (+ ретаргетинг на накопичену engagement-аудиторію) → грудень ~4–5 тис. грн/міс (масштабування робочих зв'язок).</li><li><strong>Правила оптимізації:</strong> рішення — раз на тиждень, не частіше (алгоритму треба час на навчання); змінюється одна змінна за раз (креатив АБО аудиторія АБО оффер); кампанія не зупиняється без причини — перезапуск обнуляє навчання.</li><li><strong>Незмінні межі:</strong> LinkedIn-реклама — 0 грн; реклама вакансій клієнтів — тільки з бюджетів клієнтських проєктів; Pixel і сайтовий ретаргетинг — після запуску сайту.</li></ul>
+<hr>
+<h3>8. Прийом і обробка лідів</h3>
+<ul><li><strong>SLA (норматив відповіді):</strong> перша відповідь ліду — до 1 години в робочий час, до ранку наступного дня — у неробочий. Швидкість першої відповіді кратно впливає на конверсію.</li><li><strong>Скрипт першої відповіді (каркас):</strong> подяка + 1–2 уточнення по вакансії (посада, регіон, терміновість) + фіксація наступного кроку («до [строк] надішлемо підбірку і запропонуємо 15-хвилинний дзвінок»).</li><li><strong>Маршрут ліда:</strong> лід-форма → фіксація в спільній таблиці (дата, джерело, компанія, вакансія, статус, відповідальний) → перша відповідь → передача B2B-контуру → статус оновлюється до результату (розмова / контракт / відмова з причиною).</li><li><strong>Резерв:</strong> ліди ніколи не живуть тільки в рекламному кабінеті — таблиця поза платформою обов'язкова (правило диверсифікації, розділ 10 дослідження).</li></ul>
+<hr>
+<h3>9. Безпека (defense-фільтр)</h3>
+<p>Кожен пост і креатив проходить правила розділу 10 дослідження: професія — не зброя; безпечна лексика («оборонне підприємство», «MilTech-виробник», «інженер БпЛА-напрямку»); жодних зображень озброєнь і «результатів роботи». Ринковий доказ робочості підходу — реклама Persona Germany (свайп-файл, <code>smm/facebook/референси/</code>): військова лексика проходить модерацію при подачі через професію. Резервні доступи і дублювання лідів поза платформою — постійні правила, не разові.</p>
+<hr>
+<h3>10. Звітність</h3>
+<p>Щомісячний звіт замовнику, два окремі блоки:</p>
+<ol><li><strong>Робота:</strong> що зроблено за місяць (контент, процеси, сторінки, домовленості) + план наступного.</li><li><strong>Реклама:</strong> витрачено → покази → ліди → ціна ліда → розмови → статуси. Тільки фактичні цифри кабінету і таблиці лідів.</li></ol>
+<p>Перший звіт — 30 вересня. Роздільна структура дозволяє окремо оцінювати ефективність роботи і ефективність рекламного бюджету.</p>
+<hr>
+<h3>11. Ризики і план Б</h3>
+<div class="table-wrap"><table><thead><tr><th>Ризик</th><th>Дія</th></tr></thead><tbody><tr><td>Доступи до сторінки не відновлюються</td><td>Нова сторінка з правильним неймінгом — день роботи, не блокер спринту</td></tr><tr><td>Модерація відхиляє кампанію/креатив</td><td>Переформулювання за defense-правилами + апеляція; паралельно працюють органіка і Messenger — кампанія ніколи не єдина точка</td></tr><tr><td>Ліди дорогі або нецільові</td><td>Це результат тесту, не провал: заміна однієї змінної за раз (оффер → аудиторія → креатив); чесна цифра у звіті</td></tr><tr><td>Обличчя агенції недоступне для контенту</td><td>Сторінка тримається на кейсах і цифрах; втрата темпу, не зупинка — але з проговореним впливом на B2B-конверсію</td></tr><tr><td>Маркетинг тимчасово офлайн</td><td>Контент-буфер 2 тижні + автопостинг за розкладом + резервний адмін з доступами</td></tr><tr><td>Сторінка потрапляє під обмеження Meta</td><td>Апеляція + продовження роботи через профілі команди і Messenger; ліди в таблиці не втрачаються</td></tr></tbody></table></div>
+<hr>
+<h3>12. Межі стратегії (що свідомо НЕ робимо в цьому кварталі)</h3>
+<ul><li>Реклама в LinkedIn (тільки органіка за LinkedIn-стратегією).</li><li>B2C-кампанії і робота в групах пошуку роботи — до першого замовлення.</li><li>Сайт, Meta Pixel, сайтовий ретаргетинг — до запуску сайту.</li><li>Розширення форматів (лайви, події, довгі відео) — до стабілізації базового конвеєра.</li></ul>
+<hr>
+<h3>13. Відкриті питання</h3>
+<ol><li>Доступи до Facebook-сторінки (Дмитро).</li><li>Фінальне підтвердження Олени: роль обличчя, оффер і механіка його виконання, кадри раз на місяць.</li><li>Розподіл прийому лідів між Дмитром і B2B-менеджером (перша лінія / передача).</li><li>Вибір планувальника публікацій (рішення на етапі запуску).</li></ol>
+    </div>
+
+    <details class="research">
+      <summary><span class="tag">Дослідження</span><span class="t">Повний текст дослідження Facebook</span><span class="chev">›</span></summary>
+      <div class="research-body">
+        <h2>Дослідження: Facebook для ReLink</h2>
+<hr>
+<h3>1. Резюме</h3>
+<p><strong>Професійна оцінка каналу.</strong> Facebook — головний канал доступу до кандидатської аудиторії ReLink, якої фізично немає в LinkedIn: виробничники, інженери старшого віку, робітничі професії, чоловіки 35+, ветерани. Це не «ще одна соцмережа для іміджу» — це канал з власною роллю у воронці: LinkedIn працює на B2B-замовника (компанії-роботодавці), Facebook — на B2C-кандидата (люди, що можуть стати кандидатами). Такий розподіл ролей — природна сила кожної платформи.</p>
+<p><strong>Стартовий пріоритет проєкту</strong> (рішення замовника, серпень 2026): поки немає потоку замовлень — фокус ресурсів на пошук замовників (B2B). Логіка проста: без замовлень немає і вакансій для роботи з кандидатами. Тому обидва треки в дослідженні розкриті повністю — вони вмикаються послідовно: B2B приносить замовлення → замовлення вмикають B2C-машину, для якої Facebook і створений.</p>
+<p>Три головні висновки дослідження:</p>
+<ol><li>Органічне (безкоштовне) охоплення сторінок майже мертве — робочі механіки це групи, Reels (короткі вертикальні відео) і таргетована реклама.</li><li>Реклама, пов'язана з працевлаштуванням, підпадає під Special Ad Category (спецкатегорію реклами Meta) — точний таргетинг обрізаний, тому «таргетингом» стає сам текст і креатив оголошення.</li><li>Оборонна тематика — зона ризику модерації Meta: потрібні правила безпеки контенту з першого дня.</li></ol>
+<hr>
+<h3>2. Аудиторія Facebook в Україні (2026)</h3>
+<p>В Україні 23 млн активних акаунтів у соцмережах — 58,5% населення (DataReportal/Kepios, жовтень 2025), за рік +1,4 млн.</p>
+<p>Екосистема Meta (рекламно-досяжна аудиторія, дані березень–квітень 2026):</p>
+<div class="table-wrap"><table><thead><tr><th>Платформа</th><th>Аудиторія</th></tr></thead><tbody><tr><td>Facebook</td><td>14,7 млн</td></tr><tr><td>Instagram</td><td>13,1 млн</td></tr><tr><td>Threads</td><td>3,3 млн</td></tr><tr><td>Уся Meta</td><td>20,1 млн</td></tr></tbody></table></div>
+<p>Ключові факти:</p>
+<ul><li>Після втрат початку повномасштабного вторгнення Meta останні півтора року росте і повертається до значень 2020-го. Ріст нерівномірний: у прифронтових областях (Херсонська, Запорізька, Миколаївська, Харківська) спад триває; сильне проникнення на заході через міграцію. <strong>Практичний наслідок для гео-таргетингу:</strong> таргетуємо за фактичним місцем перебування людини, а не за «пропискою» в базі.</li><li>Демографія — головний аргумент за Facebook для ReLink: 58% жінок / 42% чоловіків, але <strong>з 35 років українці надають перевагу саме Facebook</strong>; в Instagram після 44–45 років чоловіки стрімко втрачають інтерес до платформи. Портрет і замовника (директор/власник виробництва, HR-директор 40–60), і кандидата (виробничник, інженер 35–60) — це ядро української аудиторії Facebook.</li><li>Для порівняння: у LinkedIn ядро — 25–34 роки (56% користувачів), аудиторія 55+ — менше 2%. Значна частина директорів заводів і виробничих кадрів у LinkedIn відсутня взагалі.</li><li>Контекст ринку: Facebook охоплює 55% українських інтернет-користувачів (третє місце після Google і YouTube); лідер за аудиторією — TikTok (23,1 млн, на 8,4 млн більше за Facebook). TikTok поза скоупом угоди, але тримаємо на радарі для можливого масового підбору молодших робітничих кадрів у майбутньому.</li></ul>
+<hr>
+<h3>3. Алгоритм Facebook 2026: як роздається охоплення</h3>
+<p>Facebook більше не «стрічка друзів» — це AI-рушій рекомендацій (штучний інтелект, що сам вирішує, кому що показати), який поводиться ближче до TikTok. Охоплення залежить більше від якості контенту, ніж від кількості підписників.</p>
+<ul><li><strong>Чотириетапне ранжування:</strong> Inventory → Signals → Predictions → Relevance Score (відбір → сигнали → прогноз → оцінка релевантності). До 50% стрічки — рекомендований контент від акаунтів, на які людина НЕ підписана. З середини 2025 всі відео класифікуються як Reels.</li><li>Meta перебудувала етап відбору контенту в єдину модель SilverTorch; з січня 2026 працює модель UTIS — Meta опитує користувачів прямо в стрічці, наскільки відео відповідає їхнім інтересам (тести: +5,2% до залучення). Наслідок: алгоритм навчився відрізняти «прогорнув» від «справді цікаво» — клікбейт працює дедалі гірше.</li><li><strong>Що винагороджується:</strong> «значущі взаємодії» — коментарі, поширення, розмови (не пасивні лайки); контент, знятий самим автором спеціально для платформи (перезаливи з інших мереж просуваються гірше); відомий кейс — перехід від статичних картинок до нативних коротких відео дав +90% органічного охоплення за 6 тижнів без бюджету.</li><li>Алгоритм читає підписи і транскрипти відео через NLP (розпізнавання тексту) — природне використання пошукових слів у постах («social SEO») допомагає системі зрозуміти, про що сторінка.</li><li><strong>Що карається:</strong> engagement bait — штучні заклики типу «лайкни, якщо згоден».</li></ul>
+<hr>
+<h3>4. Органічне охоплення: сторінка vs група vs Reels</h3>
+<div class="table-wrap"><table><thead><tr><th>Механіка</th><th>Охоплення</th><th>Джерело</th></tr></thead><tbody><tr><td>Пост сторінки</td><td>~1,4–2,2% підписників; медіанний ER (engagement rate — рівень залучення) 0,15%</td><td>Metricool, Socialinsider, Hootsuite</td></tr><tr><td>Пост у групі</td><td>40–50% учасників групи</td><td>PostEverywhere</td></tr><tr><td>Reels</td><td>єдиний формат зі стабільним виходом на непідписників; +67% охоплення проти звичайних постів</td><td>Socialinsider / RecurPost</td></tr></tbody></table></div>
+<ul><li>Охоплення звичайних постів сторінок впало на 41% рік до року; Reels виросло на 13%.</li><li>Групи дають на 30% вище залучення, ніж сторінки; пости в групах — у 3–5 разів вище охоплення, ніж ідентичні пости сторінки. Пости адміністраторів групи мають додатковий буст. Швидкість реакцій у перші 30 хвилин визначає, чи вийде пост за межі групи.</li><li>Короткі Reels до 15 секунд — на 72% вища глибина досмотру.</li><li>40% часу у Facebook — перегляд відео.</li><li>UGC (user-generated content — контент від звичайних людей, не від бренду) органічно працює втричі краще за брендовий. Практично: відео «майстер цеху розповідає про роботу», зняте на телефон, битиме вилизаний брендований ролик.</li></ul>
+<p><strong>Висновок:</strong> сторінка — це вітрина і соціальний доказ, а не канал охоплення. Охоплення живе у групах, Reels і рекламі.</p>
+<hr>
+<h3>5. Facebook для пошуку замовників (B2B) — стартовий пріоритет</h3>
+<p><strong>Головна теза розділу: Facebook не генерує B2B-ліди сам по собі — він їх дозріває.</strong> Формула каналу: LinkedIn і рекомендації знаходять замовника → Facebook дозріває його багаторазовими дешевими торканнями → B2B-менеджер закриває угоду. Спроба зробити з Facebook самостійну машину B2B-продажів провалиться; спроба зробити з нього машину прогріву — спрацює.</p>
+<p><strong>Чесна картина ринку.</strong> LinkedIn дає 80% усіх B2B-лідів (лід — потенційний клієнт, що лишив контакт) серед соцмереж; 89% B2B-маркетологів використовують саме його. Тому Facebook — не заміна LinkedIn, а другий шар воронки. Але шар потужний і дешевий:</p>
+<ul><li>Майже половина осіб, що ухвалюють бізнес-рішення, використовують Facebook для дослідження B2B-питань.</li><li>CPM (ціна за 1000 показів реклами) для B2B-аудиторій у Meta — близько $4 проти $25–60 у LinkedIn. За ті самі гроші — у 6–15 разів більше «торкань» потенційного замовника.</li></ul>
+<p><strong>Чому це особливо працює для нашої ніші.</strong> Наш B2B-замовник — власник/директор виробничого чи оборонного підприємства і його HR-директор (директор з персоналу). Демографічно це люди 40–60 років — ядро українського Facebook. Критичний факт: <strong>для частини наших замовників Facebook — єдина соцмережа, де вони взагалі є.</strong> LinkedIn в Україні — це переважно IT і корпоративний сектор 25–34; директор заводу в Кременчуці з більшою ймовірністю щовечора гортає Facebook, ніж має живий профіль у LinkedIn. Для цього сегмента Facebook — не «другий шар», а єдині двері.</p>
+<p><strong>Як визріває B2B-рішення — і чому прогрів обов'язковий.</strong> Цикл ухвалення B2B-рішення виріс на 22% за три роки; у рішенні бере участь у середньому 6–10 людей. Ніхто не замовляє рекрутинг «з одного поста» — рішення визріває тижнями: директор побачив кейс, за тиждень HR-директор наткнувся на цифру «21 день до оферу», ще за тиждень хтось із них загуглив агенцію і побачив живу сторінку з обличчям керівниці. Кожне торкання дешеве, а разом вони будують те, що закриває угоду в B2B-послугах, — довіру.</p>
+<p><strong>Що саме дозріває замовника (типи контенту, за силою):</strong></p>
+<ol><li><strong>Кейси</strong> — B2B-маркетологи називають їх найефективнішим типом контенту. Наші вже готові в підтверджених цифрах: 90% вакансій у термін, 87% кандидатів проходять гарантійний строк, терміновий підбір за 21 день.</li><li><strong>Відео</strong> — 88% маркетологів кажуть, що відео приносить нові бізнес-можливості; працює на всіх етапах воронки.</li><li><strong>Обличчя</strong> — контент від імені Олени як керівниці: у B2B-послугах купують не в агенції, а в людини, якій повірили.</li><li><strong>Цифри болю ринку</strong> — «30% технічних вакансій відкриті понад 2 місяці» краще за будь-яку рекламу пояснює, навіщо існує ReLink.</li></ol>
+<p><strong>Чотири механіки B2B у Facebook (за пріоритетом запуску):</strong></p>
+<ol><li><strong>Контент-прогрів:</strong> сторінка + особистий профіль Олени (особисті профілі органічно охоплюють більше за сторінки — та сама логіка амбасадорства, що в LinkedIn-стратегії).</li><li><strong>Lead Ads</strong> — реклама з вбудованою формою заявки: замовник лишає контакт, не виходячи з Facebook. Мінімум тертя — критично для зайнятих директорів.</li><li><strong>Messenger як швидкий вхід:</strong> «напишіть нам — порахуємо вартість закриття вашої вакансії». Автовідповідь збирає суть запиту до підключення живої людини.</li><li><strong>Ретаргетинг</strong> — реклама на тих, хто вже був на сайті/сторінці. Потребує Meta Pixel (лічильник відвідувачів) на сайті → вмикається блоком «після запуску сайту».</li></ol>
+<p><strong>Застереження.</strong> До категорії Employment у правилах Meta належать і «послуги агенцій з працевлаштування», а Meta використовує AI, який автоматично позначає рекламу, що мала б бути в спецкатегорії. Тому B2B-креатив формулюємо як бізнес-послугу для роботодавця («закриваємо вакансії виробництв за 21 день»), а не як щось для шукачів роботи — і закладаємо, що частину кампаній автомодерація все одно зажене в спецкатегорію. Це не блокер, а менша точність таргетингу.</p>
+<hr>
+<h3>6. Facebook для пошуку кандидатів (B2C) — природна суперсила каналу</h3>
+<p><strong>Рекомендація дослідження: саме тут Facebook незамінний.</strong> Для B2B у нас є LinkedIn; для кандидатської аудиторії ReLink альтернативи Facebook не існує. Токар, наладчик ЧПУ, інженер-конструктор 45 років, ветеран, майстер цеху — цих людей немає в LinkedIn фізично, а джоб-борди (Work.ua/Robota.ua) бачать лише тих із них, хто вже активно шукає роботу. Facebook — єдиний масовий канал до <strong>пасивних</strong> кандидатів робітничих та інженерних професій: тих, хто «не шукає, але вислухає». А пасивні кандидати — це 70% робочої сили.</p>
+<p><strong>Цифри каналу:</strong></p>
+<ul><li>86% шукачів роботи використовують соцмережі в пошуку; 92% рекрутерів успішно наймали через соцплатформи.</li><li>Більшість blue-collar кандидатів (робітничі професії) недосяжні через LinkedIn — але вони є у Facebook; для локального і робітничого найму Facebook — рекомендований канал у галузевих гайдах.</li></ul>
+<p><strong>Вбудованого сервісу вакансій в Україні немає.</strong> Facebook закрив функцію Jobs поза США й Канадою в лютому 2022, повністю — в лютому 2023. У жовтні 2025 функцію повернули, але тільки в США (в Marketplace, фокус на локальні робітничі вакансії). В Україні рекрутинг у Facebook = сторінка + групи + реклама + Messenger. Якщо Meta розкатає нові Jobs на Європу — це подарунок саме для нашого сегмента, тримаємо на радарі.</p>
+<p><strong>Групи — головна органічна механіка.</strong> В українському Facebook живе розвинена екосистема груп «Робота в [місто]», галузевих і професійних спільнот — охоплення там на порядок вище за сторінку (40–50% учасників проти 1,4–2,2% підписників сторінки). Працювати в групах від імені рекрутерів як живих людей (не сторінки-бренду) — це безкоштовний аналог джоб-борду з соціальним доказом у коментарях.</p>
+<p><strong>Зв'язка з базою.</strong> База ReLink 10 000+ кандидатів — готовий актив для custom-аудиторій (завантаження власної бази в рекламний кабінет): ретаргетинг «сплячих» кандидатів і seed-аудиторії (стартові аудиторії, від яких алгоритм шукає схожих людей).</p>
+<hr>
+<h3>7. Контент і креативи: обраний шлях і правила</h3>
+<p>Підхід до контенту випливає прямо з даних розділу 4: охоплення роздається за якість, нативність і «людськість» контенту, а не за кількість підписників чи вилизаність продакшену. Тому система будується на трьох принципах: конвеєрність (стабільний темп без залежності від натхнення і разових виконавців), автентичність (справжні люди і справжні кейси як головний актив) і бренд-консистентність (єдиний впізнаваний стиль у кожній одиниці контенту).</p>
+<h4>Обраний шлях: три шари виробництва</h4>
+<ol><li><strong>Шаблонний шар (основа, ~80% одиниць контенту).</strong> Один раз створюється і затверджується система фірмових шаблонів (пости, каруселі, обкладинки, рамка для Reels) у брендових кольорах і шрифтах. Далі контент виробляється підстановкою текстів у затверджені шаблони. Чому так: бренд-консистентність гарантується самим шаблоном, а конвеєрна збірка дає стабільний темп публікацій — головну вимогу алгоритму до сторінок, що ростуть.</li><li><strong>Живий шар (найцінніший для довіри).</strong> Сирі кадри від команди (офіс, зустрічі, робочий процес), зняті телефоном за заздалегідь написаним сценарієм і зібрані у фірмовому шаблоні. Навантаження на команду мінімальне: не «знятись у відео», а «надіслати 2–3 короткі кадри» — без відриву від основної роботи. Чому так: контент від живих людей органічно працює втричі краще за брендований (розділ 4), а для бізнесу на довірі справжні обличчя і справжні кейси — головний актив.</li><li><strong>AI-ілюстративний шар (допоміжний).</strong> Згенеровані зображення і відео використовуються лише як ілюстрації без людей — фони, предмети, абстракції, атмосферні кадри. Чому дозволено саме це і не більше — правило нижче.</li></ol>
+<h4>Голоси: хто говорить з аудиторією</h4>
+<p>Модель та сама, що затверджена в LinkedIn-стратегії, — амбасадорська:</p>
+<ul><li><strong>Сторінка агенції</strong> — вітрина і соціальний доказ: кейси, цифри, оффери, аналітика. Той шар, який перевіряє замовник, що прийшов за рекомендацією чи з реклами.</li><li><strong>Олена (керівниця)</strong> — експертне обличчя: у B2B-послугах купують не в агенції, а в людини, якій повірили. Її голос — досвід, позиція, розбори ситуацій найму. Особистий профіль органічно охоплює більше за сторінку — це підсилювач, а не дублер.</li><li><strong>Рекрутери</strong> — живі голоси там, де сторінці не місце: у професійних групах і групах пошуку роботи люди відповідають людям, а не брендам. Пости і коментарі від реальних профілів рекрутерів — головна органічна механіка кандидатського треку.</li></ul>
+<h4>Тематичні напрямки контенту</h4>
+<p><strong>B2B-трек (стартовий пріоритет) — контент, що дозріває замовника:</strong></p>
+<ol><li><strong>Кейси закритих вакансій</strong> — посада, галузь, строк закриття, без розкриття конфіденційного. Найсильніший тип B2B-контенту (розділ 5).</li><li><strong>Біль ринку в цифрах</strong> — дефіцит інженерів, 30% технічних вакансій відкриті 2+ місяці, вартість простою виробництва через незакриту позицію. Контент, що пояснює, навіщо існує ReLink, краще за будь-яку рекламу.</li><li><strong>Експертиза керівниці</strong> — розбори типових помилок найму, скільки насправді коштує «самі якось закриємо», бронювання як інструмент утримання персоналу, як оцінювати кандидата на технічну позицію.</li><li><strong>Кухня агенції</strong> — як влаштований підбір зсередини: етапи, гарантійний супровід (87% кандидатів проходять гарантійний строк), метчинг і «підбір по ДНК». Знімає страх «кота в мішку» перед першим зверненням.</li><li><strong>Оффер-пости</strong> — прямі пропозиції з низьким порогом входу (типу «3 резюме з бази за 48 годин»), що конвертують прогріту аудиторію в розмову.</li></ol>
+<p><strong>B2C-трек (вмикається з появою замовлень) — контент, що приводить кандидатів:</strong></p>
+<ol><li><strong>Вакансії з повною конкретикою</strong> — професія, місто, зарплатна вилка, бронювання, умови. Конкретика тут і чесність, і таргетинг (розділ 8).</li><li><strong>Кар'єрний контент для робітничих та інженерних професій</strong> — резюме без офісного канцеляриту, як говорити про зарплату, що питати на співбесіді на виробництві.</li><li><strong>Бронювання і стабільність</strong> — роз'яснення механізмів простою мовою: головний мотиватор аудиторії за даними ринку (розділ 11).</li><li><strong>Історії працевлаштованих</strong> — справжні, за згодою людей; найпереконливіший формат для пасивних кандидатів «не шукаю, але вислухаю».</li><li><strong>Ветеранський трек</strong> — перехід із служби у виробництво і MilTech: можливості, адаптація, історії. Окрема аудиторія ReLink і демографічне ядро Facebook.</li></ol>
+<p><strong>Наскрізні теми (обидва треки):</strong> життя команди (живий шар), цифри і досягнення агенції, участь у галузевих подіях.</p>
+<p>Орієнтовна пропорція на стартовий квартал: ~50% B2B-теми, ~30% експертиза і довіра, ~20% команда і життя агенції; B2C-теми розгортаються з першими замовленнями. Точний контент-план по тижнях — предмет стратегії, не дослідження.</p>
+<h4>Правило свідчення — головне правило автентичності</h4>
+<p>Кожен елемент креативу або <strong>свідчить</strong> («це ми, наші люди, наші клієнти, наші результати»), або <strong>ілюструє</strong> (передає ідею, настрій, тему). З цього випливає все:</p>
+<ul><li><strong>Все, що свідчить, — тільки справжнє.</strong> Люди в кадрі — тільки реальні люди команди чи клієнтів (за згодою). Кейси — тільки реальні, з підтвердженими цифрами. Фото «нашого офісу» чи «виробництва нашого клієнта» — тільки справжні.</li><li><strong>Все, що ілюструє, — будь-яким інструментом.</strong> Стокове чи згенероване зображення цеху як ілюстрація до тези «в Україні дефіцит інженерів» — нормально: воно працює як декорація, і глядач не сприймає його як доказ. Але підпис і контекст не мають перетворювати ілюстрацію на свідчення: та сама картинка з підписом «виробництво нашого клієнта» — вже обман.</li><li><strong>Заборонено завжди:</strong> згенеровані люди в будь-якій ролі («співробітники», «кандидати», «задоволені клієнти», навіть масовка в цеху на задньому плані); згенеровані «документи», «скріншоти», «відгуки»; цифрові аватари-двійники реальних людей.</li></ul>
+<p><strong>Чому AI-люди — ні, а AI-Reels без людей — так.</strong> Різниця не в інструменті, а в тому, що контент <em>стверджує</em>. Згенерована людина в контенті рекрутингової агенції неминуче читається глядачем як твердження: «це хтось із їхньої команди або їхніх кандидатів» — тобто як свідчення, яке є неправдою. Рекрутинг — бізнес, де кандидат довіряє агенції своє працевлаштування, а замовник — свій найм; викриття одного фейкового обличчя (їх розпізнають дедалі частіше, і платформи маркують AI-контент) знецінює всі справжні кейси поруч із ним. Абстрактний фон чи атмосферний кадр без людей нічого не стверджує про ReLink — це декорація того ж класу, що стокова картинка, якою користуються всі. Коротко: <strong>свідчення мусить бути правдою; декорація мусить бути лише доречною.</strong></p>
+<h4>Чекліст креативу (перевірка кожної одиниці контенту)</h4>
+<ol><li><strong>Бренд:</strong> палітра v4.0 (градієнти на великих поверхнях, чисті кольори на дрібних елементах), фірмові шрифти, правильна версія лого під фон — за брендбуком.</li><li><strong>Текст — конкретний:</strong> цифри, строки, зарплати, назви професій. Це не лише про довіру: в умовах спецкатегорії (розділ 8) сам текст виконує роль таргетингу.</li><li><strong>Social SEO:</strong> природні ключові слова тем («рекрутинг для виробництва», «інженер-конструктор», «бронювання») у підписах — для алгоритмічної категоризації.</li><li><strong>Без engagement bait:</strong> жодних «лайкни, якщо», «постав + у коментарях» — карається алгоритмом.</li><li><strong>Defense-фільтр:</strong> лексика і зображення проходять правила розділу 10 (професія, не зброя).</li><li><strong>Нативність:</strong> контент збирається під Facebook, а не перезаливається з інших мереж з чужими водяними знаками.</li><li><strong>Правило свідчення:</strong> якщо елемент читається як «це ми/наші» — він справжній.</li></ol>
+<h4>Формати за пріоритетом (з даних розділу 4)</h4>
+<p>Короткі Reels до 15 секунд → каруселі та пости сторінки → живі текстові пости від імені реальних людей у групах.</p>
+<hr>
+<h3>8. Платна реклама вакансій: Special Ad Category (спецкатегорія)</h3>
+<p>Найбільше технічне обмеження каналу — знати до запуску першої кампанії.</p>
+<ul><li>Оголошення про роботу (повна/часткова зайнятість, стажування, ярмарки вакансій, послуги рекрутингових агенцій) кваліфікуються як Special Ad Category «Employment».</li><li>Наслідки: вік примусово 18–65+, всі статі, виключення локацій заборонене, детальний таргетинг за інтересами сильно обрізаний, lookalike-аудиторії (схожі аудиторії на основі даних Meta) недоступні.</li><li>Стосується і бустів постів: якщо просувається контент про вакансію — він теж має бути категоризований, інакше відхилення або тихе придушення охоплення.</li><li>Meta використовує AI для автоматичного виявлення неправильно категоризованих оголошень; правила діють вже і в Європі.</li><li>Позитивний рух: з кінця 2025 Advantage+ Audience і Advantage+ Detailed Targeting (автоматична оптимізація аудиторій) стали доступні і в кампаніях спецкатегорії.</li></ul>
+<p><strong>Практичний висновок: коли демографічний таргетинг заборонений — таргетингом стає креатив.</strong> Оголошення «Токар-фрезерувальник на виробниче підприємство, Львів, зарплата від X, офіційне працевлаштування» саме себе відфільтрує: клікнуть релевантні, алгоритм оптимізації підхопить сигнал і докрутить показ схожим людям.</p>
+<hr>
+<h3>9. Таргетинг і бюджет: як просуватись на малих грошах</h3>
+<p>Розділ написаний під головне обмеження проєкту: <strong>рекламний бюджет на старті мінімальний і зростатиме поступово.</strong> Тому тут не «як витрачати», а «як не спалити» — принципи, які дають результат на малих сумах.</p>
+<h4>Принцип одного кабінету</h4>
+<p>Уся платна реклама проєкту живе в одному рекламному кабінеті Meta: одна кампанія автоматично показується у Facebook, Instagram і Threads (плейсменти — місця показу — обираються в одному вікні). Тобто бюджет НЕ ділиться «на кожну мережу окремо» — він один на всю екосистему Meta. <strong>Реклама в LinkedIn на цьому етапі виключена повністю:</strong> CPM (ціна за 1000 показів) там $25–60 проти ~$4 у Meta — на малих бюджетах це спалювання грошей. LinkedIn працює тільки органікою за своєю стратегією.</p>
+<h4>Аудиторії за пріоритетом (B2B-трек)</h4>
+<ol><li><strong>Ретаргетинг взаємодій</strong> — реклама на людей, які вже взаємодіяли зі сторінкою/профілем/Instagram (engagement custom audience). Важливо: ця аудиторія працює БЕЗ Meta Pixel і без сайту — але їй треба звідкись взятись: її накопичує перша ж холодна кампанія і органічний контент. Тому запуск іде в два такти: спершу холодна кампанія (пункти 2–3), з другого місяця — ретаргетинг на накопичене тепло, найдешевшу аудиторію з можливих.</li><li><strong>Інтереси й посади</strong> — власники бізнесу, HR, керівники (наскільки Meta дозволяє в наявних обмеженнях таргетингу).</li><li><strong>Гео виробничих регіонів</strong> — область/місто присутності цільових підприємств.</li><li><strong>Custom-аудиторія з власної бази контактів</strong> (завантаження списку) — коли база замовників/контактів буде оцифрована.</li></ol>
+<p>Для B2C-треку (вмикається із замовленнями): спецкатегорія Employment обрізає таргетинг (розділ 8), тому там працює зв'язка «креатив як таргетинг + custom-аудиторії з бази 10 000+ + автоматична оптимізація Advantage+».</p>
+<h4>Пороги і правила малого бюджету</h4>
+<ul><li><strong>Технічний мінімум Meta</strong> — від ~$1/день на групу оголошень; <strong>практичний робочий мінімум</strong> — $3–5/день на кампанію: менше — алгоритм не встигає вчитись.</li><li><strong>Не розпорошувати.</strong> На малому бюджеті — одна кампанія, одна аудиторія, один меседж за раз. П'ять кампаній по $1/день дадуть нуль; одна за $5/день — дані і результат.</li><li><strong>Спершу актив, потім реклама.</strong> Реклама, що веде на порожню сторінку без контенту і без налаштованого прийому лідів — спалені гроші незалежно від суми. Порядок: сторінка + контент-буфер + воронка прийому → тоді перша гривня в рекламу.</li><li><strong>Буст ≠ кампанія.</strong> Буст поста — інструмент прогріву (дешево підняти охоплення сильного поста на теплу аудиторію). Ліди приносить повноцінна кампанія Lead Ads з кабінету. На старті працюють обидва, у пропорції на користь кампаній.</li></ul>
+<h4>Траєкторія запуску і бюджети (вересень–грудень 2026, курс ~46 грн/$)</h4>
+<p>Запуск реклами прив'язується не до календаря, а до готовності активу — але актив свідомо збирається спринтом, щоб реклама стартувала вже на початку вересня.</p>
+<div class="table-wrap"><table><thead><tr><th>Фаза</th><th>Період</th><th>Рекламний бюджет</th><th>Зміст і мета</th></tr></thead><tbody><tr><td>0. Спринт активу</td><td>23.08–05.09</td><td>0 грн</td><td>Мінімальний життєздатний актив: жива сторінка (шапка, опис, 6–8 стартових постів, обличчя керівниці), Business Manager і рекламний кабінет, стартовий оффер, налагоджений прийом ліда (хто відповідає, за скільки, за яким скриптом). Реклама на порожню сторінку не запускається принципово.</td></tr><tr><td>1. Тестовий запуск</td><td>з 7 вересня</td><td>~3 300–4 400 грн до кінця місяця ($3–4/день, 24 дні)</td><td>Одна кампанія Lead Ads, один оффер, одна аудиторія (гео виробничих регіонів + бізнес/HR-інтереси). Мета: перші ліди, реальна ціна ліда в ніші, накопичення engagement-аудиторії для ретаргетингу.</td></tr><tr><td>2. Оптимізація</td><td>жовтень–листопад</td><td>~3 000–4 000 грн/міс</td><td>Ретаргетинг на накопичену engagement-аудиторію (найтепліша і найдешевша) + оптимізація кампанії за даними тесту. Конверсія вересневих лідів у контракти.</td></tr><tr><td>3. Масштабування</td><td>грудень</td><td>~4 000–5 000 грн/міс</td><td>Масштабування зв'язок, що довели ефективність. Підсумок кварталу: статистика ціни ліда і вартості контракту як основа для перегляду бюджетної моделі на наступний період.</td></tr></tbody></table></div>
+<p><strong>Стартовий оффер — головне рішення спринту.</strong> На малому бюджеті і короткому горизонті результат дає не «знайомство з брендом», а пряма пропозиція з низьким порогом входу. Найсильніший наявний козир — база 10 000+ кандидатів; робоча гіпотеза оффера: «Опишіть вакансію — за 48 годин покажемо 3 релевантні резюме з нашої бази. Безкоштовно». Замовник миттєво бачить цінність, агенція отримує привід для предметної розмови. Формулювання і механіка виконання підлягають узгодженню з керівницею агенції — це обіцянка, яку хтось має виконувати.</p>
+<p><strong>Калібрування результатів — щоб очікування збігалися з природою B2B.</strong> Цикл B2B-угоди в рекрутингу — тижні, тому результати фаз різні за типом: вересень — ліди і перші розмови; жовтень–листопад — контракти з вересневих лідів; грудень — статистика кварталу. Дорогі ліди на тестовій фазі — теж результат: це цифра реальної ціни ліда, без якої неможливо планувати бюджет далі. Головний KPI (показник ефективності) кварталу — вартість якісної розмови з потенційним замовником і конверсія розмов у контракти, а не покази, кліки чи підписники.</p>
+<p><strong>Прозорість — щомісячний звіт двома окремими блоками:</strong> «Робота» (що зроблено: стратегія, контент, сторінки, процеси) і «Реклама» (витрачено → покази → ліди → ціна ліда → розмови). Роздільна звітність дозволяє окремо оцінювати ефективність роботи і ефективність рекламного бюджету — і ухвалювати рішення про кожен на підставі даних.</p>
+<p>Довідково: при CPM ~$4 кожна 1 000 грн бюджету купує ~5–5,5 тис. показів B2B-аудиторії; ціна B2B-ліда в нішевих послугах — сотні гривень (точну цифру покаже тільки тест). Один закритий контракт на підбір окуповує місяці такої реклами.</p>
+<h4>Принцип фінансування — критичний для економіки</h4>
+<p>Розділяються два типи реклами з різних кишень:</p>
+<ol><li><strong>Просування агенції (B2B-прогрів, Lead Ads на замовників)</strong> — з маркетингового бюджету самої агенції.</li><li><strong>Реклама конкретних вакансій клієнтів (B2C-кампанії під підбір)</strong> — з бюджету відповідного клієнтського проєкту: закладається в чек послуги, як це роблять агенції на ринку. Рекламувати вакансії клієнтів коштом власного маркетингового бюджету — пряма дорога до збиткової юніт-економіки.</li></ol>
+<hr>
+<h3>10. Специфіка Defense / MilTech: ризики модерації Meta</h3>
+<p>Для звичайної агенції цього розділу б не було. Для ReLink він обов'язковий.</p>
+<p>Український досвід (системна проблема, задокументована медіа):</p>
+<ul><li>Сторінки отримують рекламні обмеження і потрапляють у «жовту зону»; оскарження через сервісні центри часто безрезультатні; ніхто не розуміє, де точно проходить межа блокування.</li><li>Контент блокується через автоматичні алгоритми, неякісну модерацію і хвилі скарг російських ботів.</li><li>Навіть згадка окремих військових підрозділів у публікації призводила до обмеження видачі сторінки; сторінки військової тематики з десятками тисяч підписників блокувались повністю.</li></ul>
+<p><strong>Правила безпеки (увійдуть у стратегію окремим блоком):</strong></p>
+<ol><li><strong>Показуємо професію, не зброю.</strong> У креативах — люди, верстати, цехи, технології, креслення. Не готові вироби озброєння, не стрільби, не «результати роботи».</li><li><strong>Лексика.</strong> Уникаємо прямих згадок типів озброєнь і формулювань, які автомодерація може прочитати як заклик до насильства. Робочі формулювання: «оборонне підприємство», «MilTech-виробник», «інженер БпЛА-напрямку». Конкретика — на етапі особистого контакту з кандидатом.</li><li><strong>Диверсифікація ризику.</strong> Резервні адміни сторінки, дубльований доступ (Надя), контент-буфер поза платформою. Facebook ніколи не єдина точка збору лідів: трафік ведемо на месенджер/форму/сайт, які контролюємо ми.</li><li><strong>Реклама оборонних вакансій</strong> проходить подвійний фільтр: Special Ad Category + політики Meta щодо military-тематики. Кожен креатив перед запуском перевіряється на «як це прочитає автомодерація».</li></ol>
+<hr>
+<h3>11. Ринок праці: що болить аудиторії (паливо для контенту)</h3>
+<ul><li>74% компаній називають дефіцит кадрів значною проблемою (European Business Association); на початку 2026 в Україні ~1,3 млн заброньованих працівників; бронювання — насамперед спосіб утримати лінійний, технічний та інженерний персонал.</li><li>Найгостріша нестача — технічні спеціальності: 67% компаній шукають інженерів-конструкторів, 48% — інженерів з електроніки. Середній термін закриття технічної вакансії 1–2 місяці; ~30% позицій відкриті понад два місяці.</li><li>Переважна більшість шукачів в оборонці хочуть бронювання; для частини кандидатів це не менш важливий фактор, ніж рівень доходу. Попри зарплати до 120 тис. грн, вакансії в ОПК (оборонно-промисловому комплексі) нерідко відкриті місяцями.</li></ul>
+<p><strong>Для контенту це означає:</strong></p>
+<ul><li>B2B-трек: цифра «30% технічних вакансій відкриті 2+ місяці» — це ринкове підтвердження нашого ланцюжка «Незакрита вакансія → Простій виробництва → Втрачені контракти» (сам ланцюжок досі не підтверджений замовником — відкрите питання в docs/план.md).</li><li>Кандидатський трек: головні гачки — бронювання, стабільність, зарплатна конкретика, «нормальний завод поруч з домом».</li></ul>
+<hr>
+<h3>12. Роль Facebook у воронці ReLink (підсумок під стратегію)</h3>
+<ol><li><strong>Пошук замовників (B2B) — стартовий пріоритет</strong> (бізнес-рішення: без замовлень немає роботи з кандидатами). Механіки: контент-прогрів (сторінка + профіль Олени), Lead Ads, Messenger; ретаргетинг — після запуску сайту. Формула: LinkedIn знаходить → Facebook дозріває → B2B-менеджер закриває.</li><li><strong>Пошук кандидатів (B2C) — природна суперсила каналу</strong>, вмикається з появою потоку замовлень. За силою каналу це трек №1 — Facebook тут незамінний, альтернативи не існує. Механіки: групи, Reels, реклама вакансій (спецкатегорія), Messenger, custom-аудиторії з бази 10 000+.</li><li><strong>Ветерани</strong> — аудиторія 35+ чоловіча, демографічне ядро Facebook; окремий контент-трек у стратегії.</li><li><strong>Синергія з Instagram/Threads</strong> — через спільний Business Manager і крос-постинг; описується в загальній стратегії (<code>smm/стратегія-загальна.md</code>), тут не дублюється.</li></ol>
+<hr>
+<h3>13. Джерела</h3>
+<p><strong>Аудиторія України:</strong></p>
+<ul><li>WebPromoExperts / Нікіта Наконечний («Тверезий Таргетолог»), дані бер.–кві. 2026 — <a href="https://webpromoexperts.net/ua/blog/analitika-ta-statistika-socmerezh-ukrayini-u-2026-roci-globalni-zmini-trendi-ta-strategiyi-dlya-internet-marketologiv/" target="_blank" rel="noopener noreferrer">https://webpromoexperts.net/ua/blog/analitika-ta-statistika-socmerezh-ukrayini-u-2026-roci-globalni-zmini-trendi-ta-strategiyi-dlya-internet-marketologiv/</a></li><li>Громадський Простір (DataReportal/Kepios) — <a href="https://www.prostir.ua/?kb=sotsmerezhi-2026-vazhlyva-statystyka-dlya-komunikatsij-nuo" target="_blank" rel="noopener noreferrer">https://www.prostir.ua/?kb=sotsmerezhi-2026-vazhlyva-statystyka-dlya-komunikatsij-nuo</a></li><li>PTO, топ соцмереж України 2026 — <a href="https://pto.org.ua/trendoglyad/top-6-soczialnyh-merezh-i-platform-v-ukrayini-2025-2026-audytoriya-reklama-prosuvannya/" target="_blank" rel="noopener noreferrer">https://pto.org.ua/trendoglyad/top-6-soczialnyh-merezh-i-platform-v-ukrayini-2025-2026-audytoriya-reklama-prosuvannya/</a></li></ul>
+<p><strong>Алгоритм 2026:</strong></p>
+<ul><li>SocialPilot — <a href="https://www.socialpilot.co/blog/facebook-algorithm" target="_blank" rel="noopener noreferrer">https://www.socialpilot.co/blog/facebook-algorithm</a></li><li>PostEverywhere — <a href="https://posteverywhere.ai/blog/how-the-facebook-algorithm-works" target="_blank" rel="noopener noreferrer">https://posteverywhere.ai/blog/how-the-facebook-algorithm-works</a></li><li>WebTonic — <a href="https://www.webtonic.io/blog/facebook-algorithm" target="_blank" rel="noopener noreferrer">https://www.webtonic.io/blog/facebook-algorithm</a></li><li>Optimise Your Marketing — <a href="https://www.optimiseyourmarketing.co.uk/blog/facebook-algorithm-2026-how-the-ranking-system-actually-works" target="_blank" rel="noopener noreferrer">https://www.optimiseyourmarketing.co.uk/blog/facebook-algorithm-2026-how-the-ranking-system-actually-works</a></li><li>Kolsquare — <a href="https://www.kolsquare.com/en/blog/the-facebook-algorithm-explained" target="_blank" rel="noopener noreferrer">https://www.kolsquare.com/en/blog/the-facebook-algorithm-explained</a></li><li>Cloudix Digital — <a href="https://cloudixdigital.com/a-guide-to-organic-reach-how-the-facebook-algorithm-works-in-2026/" target="_blank" rel="noopener noreferrer">https://cloudixdigital.com/a-guide-to-organic-reach-how-the-facebook-algorithm-works-in-2026/</a></li><li>Social Champ — <a href="https://www.socialchamp.com/blog/facebook-algorithm/" target="_blank" rel="noopener noreferrer">https://www.socialchamp.com/blog/facebook-algorithm/</a></li></ul>
+<p><strong>Бенчмарки охоплення:</strong></p>
+<ul><li>SHNO (збірка Metricool та ін.) — <a href="https://www.shno.co/marketing-statistics/facebook-marketing-statistics" target="_blank" rel="noopener noreferrer">https://www.shno.co/marketing-statistics/facebook-marketing-statistics</a></li><li>Socialinsider — <a href="https://www.socialinsider.io/social-media-benchmarks/facebook" target="_blank" rel="noopener noreferrer">https://www.socialinsider.io/social-media-benchmarks/facebook</a></li><li>PostEverywhere (бенчмарки) — <a href="https://posteverywhere.ai/blog/social-media-engagement-rate-benchmarks" target="_blank" rel="noopener noreferrer">https://posteverywhere.ai/blog/social-media-engagement-rate-benchmarks</a></li><li>Deep Marketing (Hootsuite) — <a href="https://www.deepmarketing.it/en/blog/organic-reach-is-dead-real-numbers-2026" target="_blank" rel="noopener noreferrer">https://www.deepmarketing.it/en/blog/organic-reach-is-dead-real-numbers-2026</a></li><li>AutoFaceless (Reels) — <a href="https://autofaceless.ai/blog/facebook-reels-statistics-2026" target="_blank" rel="noopener noreferrer">https://autofaceless.ai/blog/facebook-reels-statistics-2026</a></li></ul>
+<p><strong>Соціальний рекрутинг:</strong></p>
+<ul><li>nCore HR — <a href="https://www.ncorehr.com/blog/social-recruiting-complete-guide/" target="_blank" rel="noopener noreferrer">https://www.ncorehr.com/blog/social-recruiting-complete-guide/</a></li><li>JuggleHire — <a href="https://jugglehire.com/blog/recruitment-tips/social-media-recruiting-guide" target="_blank" rel="noopener noreferrer">https://jugglehire.com/blog/recruitment-tips/social-media-recruiting-guide</a></li><li>Main Street Recruitment — <a href="https://mainstreetrecruitment.com/insights/facebook-recruitment-ads/" target="_blank" rel="noopener noreferrer">https://mainstreetrecruitment.com/insights/facebook-recruitment-ads/</a></li><li>Recruiter.com — <a href="https://www.recruiter.com/recruiting/social-recruiting-3-trends-making-it-the-status-quo/" target="_blank" rel="noopener noreferrer">https://www.recruiter.com/recruiting/social-recruiting-3-trends-making-it-the-status-quo/</a></li></ul>
+<p><strong>Facebook Jobs (історія функції):</strong></p>
+<ul><li>TechCrunch — <a href="https://techcrunch.com/2025/10/14/facebook-brings-back-job-listings-in-the-us/" target="_blank" rel="noopener noreferrer">https://techcrunch.com/2025/10/14/facebook-brings-back-job-listings-in-the-us/</a></li><li>Job Board Consulting — <a href="https://www.jobboardsecrets.com/2025/10/20/facebook-relaunches-job-marketplace/" target="_blank" rel="noopener noreferrer">https://www.jobboardsecrets.com/2025/10/20/facebook-relaunches-job-marketplace/</a></li></ul>
+<p><strong>Special Ad Category:</strong></p>
+<ul><li>Meta Transparency Center — <a href="https://transparency.meta.com/policies/ad-standards/" target="_blank" rel="noopener noreferrer">https://transparency.meta.com/policies/ad-standards/</a></li><li>Data Axle — <a href="https://www.data-axle.com/resources/blog/meta-special-ad-categories-rules/" target="_blank" rel="noopener noreferrer">https://www.data-axle.com/resources/blog/meta-special-ad-categories-rules/</a></li><li>Well-Oiled Marketing — <a href="https://well-oiledmarketing.com/resources/social-media-advertising/metas-special-ad-categories/" target="_blank" rel="noopener noreferrer">https://well-oiledmarketing.com/resources/social-media-advertising/metas-special-ad-categories/</a></li><li>Digital 24 — <a href="https://www.digitaltwentyfour.com/learn/special-ads-categories/" target="_blank" rel="noopener noreferrer">https://www.digitaltwentyfour.com/learn/special-ads-categories/</a></li><li>Jon Loomer (Advantage+ у спецкатегоріях) — <a href="https://www.jonloomer.com/qvt/special-ad-categories-targeting/" target="_blank" rel="noopener noreferrer">https://www.jonloomer.com/qvt/special-ad-categories-targeting/</a></li><li>Practina — <a href="https://www.practina.com/everything-you-should-know-about-facebook-special-ads/" target="_blank" rel="noopener noreferrer">https://www.practina.com/everything-you-should-know-about-facebook-special-ads/</a></li></ul>
+<p><strong>Модерація Meta в Україні:</strong></p>
+<ul><li>MediaMaker — <a href="https://mediamaker.substack.com/p/meta-facebook-vs-ukrainian-media" target="_blank" rel="noopener noreferrer">https://mediamaker.substack.com/p/meta-facebook-vs-ukrainian-media</a></li><li>Тексти.org.ua — <a href="https://texty.org.ua/articles/104034/facebook-vyznav-pomylkove-blokuvannya-patriotychnoho-zmistu-ale-nichoho-ne-poyasnyv-mozhe-problema-v-alhorytmah/" target="_blank" rel="noopener noreferrer">https://texty.org.ua/articles/104034/facebook-vyznav-pomylkove-blokuvannya-patriotychnoho-zmistu-ale-nichoho-ne-poyasnyv-mozhe-problema-v-alhorytmah/</a></li><li>РБК-Україна — <a href="https://daily.rbc.ua/rus/show/monopoliya-pravdu-chomu-facebok-blokue-novini-1668602339.html" target="_blank" rel="noopener noreferrer">https://daily.rbc.ua/rus/show/monopoliya-pravdu-chomu-facebok-blokue-novini-1668602339.html</a></li><li>The Village Україна — <a href="https://www.village.com.ua/village/business/business-question/331633-chomu-facebook-ta-instagram-blokuyut-dopisi-pro-viynu-vid-ukrainskih-koristuvachiv-i-scho-z-tsim-robiti" target="_blank" rel="noopener noreferrer">https://www.village.com.ua/village/business/business-question/331633-chomu-facebook-ta-instagram-blokuyut-dopisi-pro-viynu-vid-ukrainskih-koristuvachiv-i-scho-z-tsim-robiti</a></li><li>Dyvys.info — <a href="https://dyvys.info/2023/03/04/navishho-facebook-ta-instagram-blokuyut-kontent-pro-zvirstva-rosiyan-v-ukrayini-i-shho-dali/" target="_blank" rel="noopener noreferrer">https://dyvys.info/2023/03/04/navishho-facebook-ta-instagram-blokuyut-kontent-pro-zvirstva-rosiyan-v-ukrayini-i-shho-dali/</a></li></ul>
+<p><strong>Ринок праці / ОПК:</strong></p>
+<ul><li>Фокус — <a href="https://focus.ua/uk/economics/758467-zarplati-do-120-tis-grn-i-bronyuvannya-chomu-opk-ne-mozhe-zakriti-vakansiji" target="_blank" rel="noopener noreferrer">https://focus.ua/uk/economics/758467-zarplati-do-120-tis-grn-i-bronyuvannya-chomu-opk-ne-mozhe-zakriti-vakansiji</a></li><li>The Page — <a href="https://thepage.ua/ua/news/bronyuvannya-pracivnikiv-2026-hto-ta-yak-otrimuye-vidstrochku" target="_blank" rel="noopener noreferrer">https://thepage.ua/ua/news/bronyuvannya-pracivnikiv-2026-hto-ta-yak-otrimuye-vidstrochku</a></li><li>OBOZ.UA — <a href="https://www.obozrevatel.com/ukr/ekonomika-glavnaya/fea/pidvischennya-zarplat-ne-dopomagae-v-kritichnij-dlya-ukraini-galuzi-defitsit-robochih-ruk.htm" target="_blank" rel="noopener noreferrer">https://www.obozrevatel.com/ukr/ekonomika-glavnaya/fea/pidvischennya-zarplat-ne-dopomagae-v-kritichnij-dlya-ukraini-galuzi-defitsit-robochih-ruk.htm</a></li><li>РБК-Україна (зарплати ОПК) — <a href="https://www.rbc.ua/rus/news/zarplati-8000-dolariv-ta-bron-vid-mobilizatsiyi-1779367744.html" target="_blank" rel="noopener noreferrer">https://www.rbc.ua/rus/news/zarplati-8000-dolariv-ta-bron-vid-mobilizatsiyi-1779367744.html</a></li><li>NBnews — <a href="https://nbnews.com.ua/suspilstvo/2026/05/25/robota-v-oboronczi-chomu-nemaye-cherg-na-vakansiyi-kompanij-vpk-v-ukrayini/" target="_blank" rel="noopener noreferrer">https://nbnews.com.ua/suspilstvo/2026/05/25/robota-v-oboronczi-chomu-nemaye-cherg-na-vakansiyi-kompanij-vpk-v-ukrayini/</a></li></ul>
+<p><strong>B2B-лідогенерація:</strong></p>
+<ul><li>Martal — <a href="https://martal.ca/lead-generation-statistics-lb/" target="_blank" rel="noopener noreferrer">https://martal.ca/lead-generation-statistics-lb/</a></li><li>GTM 8020 — <a href="https://www.gtm8020.com/blog/b2b-lead-generation-statistics" target="_blank" rel="noopener noreferrer">https://www.gtm8020.com/blog/b2b-lead-generation-statistics</a></li><li>Involve Digital (Meta для B2B, CPM) — <a href="https://www.involvedigital.com/insights/meta-ads-b2b-lead-generation-strategy" target="_blank" rel="noopener noreferrer">https://www.involvedigital.com/insights/meta-ads-b2b-lead-generation-strategy</a></li><li>Snov.io (контент для B2B) — <a href="https://snov.io/blog/lead-generation-statistics/" target="_blank" rel="noopener noreferrer">https://snov.io/blog/lead-generation-statistics/</a></li><li>Marketing LTB — <a href="https://marketingltb.com/blog/statistics/lead-generation-statistics/" target="_blank" rel="noopener noreferrer">https://marketingltb.com/blog/statistics/lead-generation-statistics/</a></li></ul>
+      </div>
+    </details>
+
+    <div class="dl-row">
+      <a class="dl-btn" href="smm/pdf/facebook-doslidzhennya.pdf" download>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 12.5v1a1 1 0 001 1h10a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Завантажити дослідження Facebook (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-threads" role="tabpanel" aria-labelledby="navtab-threads" hidden>
+  <div class="wrap">
+    <div class="net-head">
+      <div class="net-eyebrow">Мережа</div>
+      <h1>Threads</h1>
+      <span class="badge pending">на погодженні</span>
+    </div>
+
+    <div class="net-content">
+      <h2>Стратегія Threads — ReLink</h2>
+<hr>
+<h3>1. Роль і рамка</h3>
+<p>Threads у кварталі вересень–грудень 2026 — <strong>канал живого голосу агенції</strong>: впізнаваність і довіра в професійному середовищі (HR, молоді керівники, інженери 25–40), з якого приходять рекомендації. Це третій пріоритет після Facebook (машина лідогенерації) та Instagram (вітрина) — але з найдешевшим виробництвом і найшвидшою реакцією на події ринку.</p>
+<p>Чого Threads НЕ обіцяє: прямих лідів. У звітності замовнику йде як шар впізнаваності (обґрунтування — розділ 4 дослідження). Побічні конверсії можливі (профіль → Instagram → Messenger), але не плануються як KPI.</p>
+<hr>
+<h3>2. Цілі кварталу</h3>
+<div class="table-wrap"><table><thead><tr><th>Фаза</th><th>Період</th><th>Результат</th></tr></thead><tbody><tr><td>Запуск</td><td>вересень</td><td>Акаунт створено з <code>re_link.agen</code>, оформлено; стартовий місяць (16 постів з дослідження) виходить за графіком; щоденна участь у чужих розмовах налагоджена</td></tr><tr><td>Розгін</td><td>жовтень–листопад</td><td>Стабільний ритм 3–5 постів/тиждень; перші пости з охопленням, кратним базовому; рубрика «історії з підбору» ввімкнена (за наявності реальної фактури від команди)</td></tr><tr><td>Підсумок</td><td>грудень</td><td>Зрозуміла картина: які теми «летять», приріст підписників і переходів у профіль; рішення про роль Threads у наступному періоді</td></tr></tbody></table></div>
+<p>Цільових цифр підписників на квартал свідомо не ставимо: у reply-driven мережі з механікою «тест → розгін» охоплення рвані, і перший квартал — це калібрування голосу, а не гонка за метрикою. Вимірюємо динаміку, не абсолюти.</p>
+<hr>
+<h3>3. Запуск (входить у спринт 23.08–05.09)</h3>
+<ol><li>Акаунт створюється з Instagram <code>re_link.agen</code> (профіль і зв'язка підтягуються автоматично); біо — той самий голос, що в постах, без корпоспіку.</li><li>Список пошукових запитів для щоденної участі в розмовах (готує маркетинг): робота, вакансія, зарплата, співбесіда, завод, бронювання, рекрутер, HR + поповнюється за спостереженнями.</li><li>Перші 3 пости тижня 1 (тексти — розділ 8 дослідження) виходять до 07.09 — щоб акаунт був живим до запуску реклами (Threads — плейсмент кампаній кабінету Meta).</li><li>Стартовий місяць (16 постів) повністю затверджений замовником у складі контент-плану вересня.</li></ol>
+<hr>
+<h3>4. Ритм ведення</h3>
+<ul><li><strong>Пости:</strong> 3–5 на тиждень; тексти пишуться пачкою у стандартному двотижневому циклі конвеєра. Пости температури 🟡 (гострі) — з окремою позначкою при погодженні замовником; 🔴 не існує як категорія публікацій.</li><li><strong>Участь у розмовах:</strong> 15–20 хв на день, з телефона — відповіді в чужих тредах за списком запитів (перші 2–3 тижні це половина всіх зусиль — головний канал видимості холодного старту). Після запуску скаут-бота (гілка автоматизації) пошук розмов приходить щоранковим Telegram-дайджестом; участь — завжди вручну.</li><li><strong>Відповіді під власними постами:</strong> обов'язкові й швидкі — replies є головною валютою алгоритму, і власна відповідь у треді підживлює розгін.</li><li><strong>Перевикористання:</strong> пост, що «полетів» у Threads — кандидат на повноцінний контент у Facebook/LinkedIn (тестовий майданчик тем працює в обидва боки).</li></ul>
+<hr>
+<h3>5. Правила безпеки</h3>
+<ul><li>Рамка провокації — розділ 7 дослідження, без винятків. Фінальний тест гострого поста: чи готова Олена прочитати його вголос замовнику в очі.</li><li>Defense-правила (професія, не зброя; безпечна лексика) — у повному обсязі, включно з відповідями в чужих тредах: коментар від імені агенції = публікація агенції.</li><li>Анонімізація історій — залізна: жодних упізнаваних компаній і людей.</li><li>Якщо пост спричинив токсичну хвилю: не видаляти панічно і не сперечатись у коментарях; зафіксувати, дати хвилі пройти, розібрати на ревізії місяця. Видалення — лише якщо пост об'єктивно порушив наші ж правила.</li><li>Акаунт (як і всі) — з резервним доступом (Надя).</li></ul>
+<hr>
+<h3>6. Межі кварталу (що свідомо НЕ робимо)</h3>
+<ul><li>Платне просування постів Threads — реклама йде через кампанії кабінету, окремих бюджетів на Threads немає.</li><li>Автоматичні відповіді і масові коментарі — ніколи (автоматизується лише пошук розмов).</li><li>Участь у політичних/мобілізаційних дискусіях — червона зона без винятків.</li><li>Гонитва за вірусністю заради вірусності: пост без зв'язку з наймом/ринком праці не виходить, навіть якщо «точно полетить».</li></ul>
+<hr>
+<h3>7. Відкриті питання</h3>
+<ol><li>Від чийого імені перші особисті пости (Олена особисто чи тільки акаунт-голос) — рішення після першого місяця за її готовністю.</li><li>Збір реальної фактури для рубрики «історії з підбору»: домовитись з Оленою/рекрутерами про канал передачі історій (голосове в Telegram раз на тиждень — достатньо).</li><li>Скаут-бот — строк побудови після запуску акаунта (гілка автоматизації).</li></ol>
+    </div>
+
+    <details class="research">
+      <summary><span class="tag">Дослідження</span><span class="t">Повний текст дослідження Threads</span><span class="chev">›</span></summary>
+      <div class="research-body">
+        <h2>Дослідження: Threads для ReLink</h2>
+<hr>
+<h3>1. Резюме: чи потрібен Threads зараз — так, і ось чому</h3>
+<p><strong>Вердикт: заходити, але в режимі «голос», не «сторінка».</strong> Threads має найкращу економіку входу з чотирьох мереж: це текстова платформа, одиниця контенту — думка на кілька рядків, тому вартість виробництва мінімальна, а швидкість реакції на події ринку — на порядок вища, ніж у візуальних мережах. При цьому:</p>
+<ul><li>Це остання мережа Meta, де органічне охоплення малих акаунтів ще щедре: алгоритм тестує кожен пост на невеликій вибірці і розганяє за реакцією, а не за розміром акаунта — невеликий акаунт може отримати велике охоплення без реклами.</li><li>Аудиторія в Україні — 3,3 млн і росте; глобально Threads уже обігнав X за щоденною мобільною аудиторією (141,5 млн проти 125 млн).</li><li>Реклама в Threads доступна в Україні з січня 2026 через стандартний кабінет Meta — тобто це вже і наш рекламний плейсмент.</li></ul>
+<p><strong>Головне застереження (підтверджене і даними, і власним користувацьким досвідом):</strong> шаблонні корпоративні дописи в Threads мертві — їх прогортують не читаючи. Мережа винагороджує живий авторський голос і карає «бренд-мовлення». Тому Threads для ReLink — це не канал дистрибуції контенту з інших мереж, а окремий жанр: людський голос агенції.</p>
+<hr>
+<h3>2. Що таке Threads у 2026 (коротко)</h3>
+<ul><li>Понад 450 млн активних користувачів на місяць; за щоденною мобільною аудиторією обійшов X у січні 2026.</li><li>Частина екосистеми Meta: акаунт прив'язаний до Instagram (наш — до <code>re_link.agen</code>), алгоритм використовує дані про інтереси з Instagram і Facebook, підписники перетікають між платформами.</li><li>Реклама: доступна в Україні з січня 2026, налаштовується через стандартний кабінет Meta; обсяг реклами Meta поки свідомо тримає низьким — конкуренція за увагу мінімальна.</li><li>Демографія (глобально): ядро 25–34 роки (~29%), далі 18–24 (~20%) і 35–44 (~19%); переважають чоловіки (~58%).</li></ul>
+<p><strong>Хто тут з аудиторій ReLink:</strong> молоді HR-менеджери і рекрутери (професійна Threads-спільнота HR активна), молоді керівники і власники малого бізнесу, інженери й технічні спеціалісти 25–40. Директорів заводів 50+ тут немає — але тут є ті, хто готує їм рішення. Роль у B2B-воронці — непряма: впізнаваність і довіра в професійному середовищі, з якого приходять рекомендації.</p>
+<hr>
+<h3>3. Алгоритм Threads: інша логіка, ніж у Facebook/Instagram</h3>
+<ul><li><strong>Дві стрічки:</strong> «Following» — чиста хронологія без ранжування; «For You» — AI-ранжування, і саме вона за замовчуванням, тому охоплення визначає вона.</li><li><strong>Механіка «тест → розгін»:</strong> пост показується стартовій вибірці (~2–5% підписників + релевантні непідписники), і за реакцією в перші години система вирішує, чи розганяти ширше. Тому навіть малий акаунт може «вистрілити» — і тому ж перший рядок поста критичний: стрічка обрізає текст після першого рядка кнопкою «більше», і співвідношення «розгорнули/прогорнули» — сигнал якості.</li><li><strong>Відповіді (replies) — головна валюта.</strong> Лайк майже нічого не каже алгоритму; відповідь каже все. Пости, що запускають розмову, отримують охоплення; глибина дискусії важить більше за кількість коментарів.</li><li><strong>Engagement bait активно пригнічується:</strong> прямолінійні «а що думаєте ви?», «тегни друга» алгоритм уже відрізняє від справжніх стартерів розмови і карає.</li><li><strong>Оригінальність і credibility:</strong> платформа посилює сигнали достовірності і пріоритезує оригінальний контент; перепости з інших мереж — слабка стратегія.</li><li>Особливості: посилання більше не штрафуються (з 2025 пости з URL навіть отримали більшу вагу — можна вести на кейси/оффер); функція «Dear Algo» дозволяє користувачам напряму просити алгоритм показувати більше/менше певних тем; акаунти мають дашборд Account Status — видно, чи пости придатні до рекомендацій.</li></ul>
+<hr>
+<h3>4. Що працює брендам — і що мертве</h3>
+<p><strong>Мертве:</strong> корпоративний глянець, прес-релізний тон, пости-банери «ми надаємо послуги», будь-яке «мовлення в порожнечу» без участі в розмовах. Brand-only акаунти без впізнаваного людського голосу — найгірший формат для платформи.</p>
+<p><strong>Працює (світові і українські патерни):</strong></p>
+<ul><li><strong>Людський голос замість бренд-мовлення:</strong> розмовний тон, гумор, самоіронія, позиція. Українська специфіка ще радикальніша: головна перевага платформи — повна відмова від «глянцю» на користь людяної, щирої комунікації.</li><li><strong>Біль → рішення</strong> (патерн Slack): пост починається з упізнаваної робочої ситуації, а не з продукту. Для рекрутингу це золота жила: у кожного читача є історія про найм.</li><li><strong>Експертиза через історії, не через лекції:</strong> «короткі думки, гумор і рефлексії залучають більше, ніж суха експертиза».</li><li><strong>B2B через людину:</strong> Threads ефективний для B2B, якщо покупці до 45 і є реальна людина, готова писати власним голосом; найкраще працює для агенцій і консультантів з opinionated-контентом (контентом з позицією). Це буквально опис нашого випадку.</li><li><strong>Участь у чужих розмовах:</strong> відповіді агенції під чужими постами про найм/роботу — повноцінний канал видимості, не другорядний.</li></ul>
+<p><strong>Важливий факт про вимірюваність:</strong> український бізнес чесно визнає, що прямий вплив Threads на продажі виміряти майже неможливо — це якір довіри та емоційного зв'язку, а не машина лідів. Закладаємо це в очікування одразу.</p>
+<hr>
+<h3>5. Українська специфіка: сила і ризик волатильності</h3>
+<p>Український Threads — впливове середовище (кейси, коли резонанс у мережі призводив до реальних наслідків аж до рішень держорганів) з власною культурою: щирість, гострі дискусії, швидкі хвилі уваги. Зворотний бік: «злетіти за день — і стати вигнанцем за пів дня». Тут живе культура рейджбейту (контенту, що навмисно провокує гнів заради охоплень) — і для брендів це міна: хвиля гніву не конвертується в довіру, а скандал прилипає до назви назавжди.</p>
+<p>Висновок для ReLink: провокативність — так, рейджбейт — ніколи. Межа — в розділі 7.</p>
+<hr>
+<h3>6. Роль для ReLink: «голос рекрутингу»</h3>
+<p><strong>Формат:</strong> акаунт бренду (прив'язаний до <code>re_link.agen</code>), який пише як жива людина — «рекрутер за лаштунками галузі». Не прес-служба, а колега, що ділиться спостереженнями. Олена підключається особистими постами, коли готова — але формат не залежить від неї критично.</p>
+<p><strong>Джерело контенту — кухня рекрутингу.</strong> Це наша структурна перевага на Threads: рекрутинг — нескінченне джерело людських історій, а саме вони і є валютою платформи. Рубрики:</p>
+<ol><li><strong>Історії з підбору</strong> (анонімізовані): дивні вимоги вакансій, несподівані повороти співбесід, «кандидат, який здивував». Правило анонімізації — залізне: жодних упізнаваних компаній і людей.</li><li><strong>Спостереження ринку:</strong> «третій місяць шукаємо токаря на 80к — а нам кажуть "у країні нема роботи"», зарплатні парадокси, бронювання очима кандидатів і роботодавців.</li><li><strong>Гарячі питання галузі</strong> (провокація за правилами розділу 7): чому у вакансіях не пишуть зарплату; хто винен, коли кандидат зникає після оферу; «завод» як слово, що досі лякає — і чому дарма.</li><li><strong>Кухня агенції з самоіронією:</strong> чесні будні рекрутера — це олюднює краще за будь-який брендинг.</li><li><strong>Легкі інтеракції:</strong> незавершені твердження, міні-опитування — без прямолінійного бейту.</li></ol>
+<p><strong>Що Threads дає системі:</strong> впізнаваність у професійному середовищі (HR, молоді керівники), трафік у профіль → Instagram → сайт/Messenger, тестовий майданчик тем (пост, що «полетів» у Threads — кандидат на повноцінний контент у FB/LinkedIn), і згодом — рекламний плейсмент.</p>
+<hr>
+<h3>7. Рамка безпечної провокації</h3>
+<p>Принцип: <strong>провокуємо питанням і позицією — ніколи конфліктом і гнівом.</strong> Робоча температура — «гостре питання галузі, яке всі обговорюють на кухні, але не пишуть публічно».</p>
+<p>Дозволено і заохочується:</p>
+<ul><li>Чесна позиція з аргументами там, де ринок лицемірить (зарплатна непрозорість, «шукаємо молодого до 30 з 20 роками досвіду», ейджизм у наймі).</li><li>Самоіронія і визнання власних факапів агенції (без шкоди клієнтам).</li><li>Незручні цифри ринку з питанням «чому так?».</li></ul>
+<p>Червоні зони (не торкаємось ніколи):</p>
+<ul><li>Мобілізаційні дискусії, політика, міжнародні срачі — будь-яка тема, де бренд опиниться поруч з токсичною хвилею.</li><li>Конкретні компанії, конкретні люди, впізнавані ситуації — навіть у позитивному ключі без згоди.</li><li>Зневага до будь-якої зі сторін найму: «тупі кандидати» / «жадібні роботодавці» — ми заробляємо на довірі обох.</li><li>Defense-конкретика — правила з ФБ-дослідження (розділ 10) діють у повному обсязі.</li><li>Рейджбейт у будь-якій формі: якщо очікувана реакція — гнів, пост не виходить.</li></ul>
+<p><strong>Фінальний тест кожного гострого поста:</strong> чи готова Олена прочитати його вголос замовнику в очі. Якщо ні — переписуємо або викидаємо.</p>
+<hr>
+<h3>8. Стартовий місяць: план тем з текстами і поясненнями</h3>
+<p>Приклад першого місяця — 16 постів (по 4 на тиждень) з робочими текстами. Це драфти для калібрування голосу; фінальні версії проходять стандартне погодження. Драматургія місяця: заявка голосу → цифри і болі → гострі питання → синтез і місток до агенції.</p>
+<p><strong>Три принципи стартового плану:</strong></p>
+<ol><li><strong>Стоїмо на трьох ногах, що не потребують інсайду:</strong> публічні цифри ринку (з наших досліджень), позиція, спостереження. <strong>Рубрика «історії з підбору» заморожена до появи реальної фактури від команди</strong> — вигадана «історія зі співбесіди» порушує правило свідчення (розділ 7 ФБ-дослідження), тільки в тексті замість картинки.</li><li><strong>Холодний старт без підписників — це нормально для Threads:</strong> стрічка «For You» роздає пости за темами, а не за підписками (механіка «тест → розгін», розділ 3). Але перші 2–3 тижні половина зусиль іде не на власні пости, а на відповіді в чужих тредах про роботу, найм і зарплати: розумна відповідь під живим постом → покази нікнейма → кліки в профіль → перші підписники. Це головний канал видимості на старті.</li><li><strong>Розмітка температури:</strong> 🟢 безпечний, 🟡 гострий (робоча провокація за рамкою розділу 7), 🔴 — за межею (наведено для калібрування, такі пости не виходять ніколи).</li></ol>
+<h4>Тиждень 1 — заявка голосу</h4>
+<ol><li>🟢 «Рекрутингова агенція заводить тредс. Так, ми бачили, як сюди заходять бренди: "Привіт! Ми — команда професіоналів 🚀". Обіцяємо так не робити. Писатимемо про найм у виробництві й оборонці — те, що бачимо щодня і про що зазвичай мовчать. Без глянцю. Ну, майже.»<br><em>Навіщо: самоіронічна заявка тону; чесно маркує нішу; перший рядок працює гачком.</em></li><li>🟢 «"В країні немає роботи" і "неможливо знайти людей" — ми чуємо ці два речення в один день. Буває — про одне й те саме місто. Ринок праці зараз — два монологи, які не чують один одного. Ми стоїмо посередині і перекладаємо.»<br><em>Навіщо: формулює місію агенції без слова «місія»; запрошує обидві сторони в коментарі.</em></li><li>🟡 «Вакансія без зарплати — це побачення наосліп, де одна сторона знає бюджет. "Ринкова з/п" — не цифра. "Гідна оплата" — не цифра. Кандидат витрачає вечір на резюме, щоб на третьому етапі почути суму, від якої треба було тікати на першому.»<br><em>Навіщо: зарплатна прозорість — вічнозелена дискусія; позиція чітка, але без наїзду на конкретну сторону.</em></li><li>🟢 «67% оборонних виробництв шукають інженерів-конструкторів. Не "шукають дешевих" — просто шукають і не знаходять. Поки в стрічці "роботи немає", у цехах — вільні верстати.»<br><em>Навіщо: перша цифра з дослідження; ламає стереотип; тема безпечна за defense-правилами (професія, не зброя).</em></li></ol>
+<h4>Тиждень 2 — цифри і болі</h4>
+<ol><li>🟢 «Токар. 80 000 грн. Бронювання. Вакансія висить третій місяць. Якщо "завод" для вас — минуле століття, гляньте на зарплати цього.»<br><em>Навіщо: конкретика (професія + сума + бронювання) — та сама механіка «креатив = таргетинг», тільки органічна.</em></li><li>🟡 «"Шукаємо енергійного до 30 з 15 роками досвіду" — це не вакансія, це тест на уважність. Найсмішніше, що ейджизм найупертіший на виробництві — там, де 45+ це саме той, хто вміє.»<br><em>Навіщо: ейджизм — гостра тема з величезною аудиторією 40+; ми на боці нашого ж кандидатського ядра.</em></li><li>🟢 «Питання, яке кандидати ставлять першим — не "яка зарплата". "Чи є бронювання". Ринок праці 2026 одним реченням.»<br><em>Навіщо: короткий, пересилабельний (sends — головна валюта охоплення); фіксує нашу експертизу в реаліях.</em></li><li>🟡 «Кандидат зник після оферу. Роботодавець: "несерйозні пішли люди". Кандидат, якби його спитали: "за два тижні вашої тиші я вирішив, що це ви зникли". Більшість "зникнень" — це гонка, де хтось інший просто відповів швидше.»<br><em>Навіщо: госінг — біль обох сторін; показуємо обидві правди — це наша позиція посередника.</em></li></ol>
+<h4>Тиждень 3 — гострі питання</h4>
+<ol><li>🟡 «Слово "завод" досі лякає сильніше, ніж "офіс без перегляду зарплати три роки". Цей стереотип коштує людям реальних грошей: на виробництві зараз платять більше, ніж пам'ятає той, хто там не був з 2015-го.»<br><em>Навіщо: руйнування головного стереотипу нашої ніші; провокує особисті історії в коментарях.</em></li><li>🟢 «30% технічних вакансій в Україні відкриті понад два місяці. Два місяці простою верстата — це чиїсь зірвані контракти. Незакрита вакансія — не HR-проблема. Виробнича.»<br><em>Навіщо: наш ключовий B2B-меседж (ланцюжок «вакансія → простій → контракти») у форматі тредса.</em></li><li>🟡 «Непопулярна думка: "ми маленькі, не можемо конкурувати зарплатою" — у 8 з 10 випадків неправда. Зарплатою можете. Не можете конкурувати хаосом у процесах — хороший інженер чує його з першої ж співбесіди.»<br><em>Навіщо: «непопулярна думка» — робочий формат Threads; адресовано роботодавцям, м'яко продає експертизу.</em></li><li>🟢 «"Обов'язки: все потроху". Це з реальної вакансії. Досі рахуємо, скільки коштує "все" і в яких одиницях вимірюється "потроху".»<br><em>Навіщо: легкий гумор для розвантаження ритму; без згадки компанії — анонімізація дотримана.</em></li></ol>
+<h4>Тиждень 4 — синтез і місток до агенції</h4>
+<ol><li>🟡 «Ветеран з FPV-досвідом шукає цивільну роботу. Німецькі рекрутери вже таргетують таких хлопців рекламою — бачили на власні очі. Українські виробництва поки вагаються, чи "впишеться в колектив". Поки вагаємось — за наших людей конкурують інші країни.»<br><em>Навіщо: ветеранський трек + реальний ринковий факт (свайп-файл); гострота — у правді, не в наїзді.</em></li><li>🟢 «Виробництву потрібен інженер. Інженеру потрібні бронювання і нормальний графік. Ідеальний метч. Але вони не зустрінуться: він не сидить на джоб-бордах, воно не вміє в соцмережі. Вгадайте, хто стоїть між ними.»<br><em>Навіщо: перший прямий місток до послуги — після трьох тижнів контенту без продажу це зароблене право.</em></li><li>🟡 «Бюджет на печиво в офіс — є. На +10к токарю — "не закладено". Через квартал у звіті: "висока плинність, аналізуємо причини". Та ми вам безкоштовно проаналізуємо.»<br><em>Навіщо: самоіронічний тон + біль роботодавця; фінальна фраза — м'який заклик без "напишіть нам".</em></li><li>🟢 «Місяць у тредс. Головний висновок: історії про найм читають усі, бо вона є в кожного. Далі буде більше. І незручніше.»<br><em>Навіщо: ритуал підсумку олюднює акаунт; «і незручніше» — обіцянка тону, що тримає підписку.</em></li></ol>
+<h4>Для калібрування: та сама тема за межею (🔴 — так не робимо)</h4>
+<ul><li>🔴 «Роботодавці, які не пишуть зарплату — просто хочуть вас обдурити» — тема поста №3, але замість питання-позиції — гнів і наїзд на цілу сторону найму. Це рейджбейт: збере охоплення і спалить довіру B2B-аудиторії, якій ми продаємо.</li><li>🔴 «Поки одні ховаються від повісток, інші спокійно заброньовані на заводах» — тема поста №7, протягнута через мобілізаційний конфлікт. Безумовна червона зона: бренд поруч з токсичною хвилею.</li></ul>
+<p>Різниця формулюється одним реченням: <strong>🟡 запрошує в розмову обидві сторони — 🔴 нацьковує одну на іншу.</strong></p>
+<hr>
+<h3>9. Ресурсний режим</h3>
+<ul><li><strong>Виробництво:</strong> 3–5 коротких постів на тиждень; тексти пишуться пачкою разом з рештою конвеєра (це +30–40 хвилин до двотижневого циклу, бо формат — кілька рядків тексту).</li><li><strong>Присутність:</strong> 15–20 хвилин на день на відповіді в коментарях і участь у чужих розмовах — це не опція, а суть платформи: reply-driven мережа без відповідей не працює. Виконується з телефона у «фонових» проміжках.</li><li><strong>Пошук розмов для участі:</strong> стартово — ручний режим за фіксованим списком пошукових запитів (пошук у Threads працює за ключовими словами і темами); цільово — скаут-бот: офіційний Threads API має endpoint пошуку публічних постів за ключовими словами і тегами з фільтрами дат (ліміт 500 запитів на 7 днів — багатократний запас для щоденного моніторингу за 5–10 ключами). Скрипт на сервері щоранку збирає свіжі релевантні пости і надсилає дайджест з посиланнями в Telegram. Відповіді — завжди вручну: автоматизується пошук розмов, ніколи — участь у них.</li><li><strong>Погодження:</strong> пости Threads входять у стандартне двоступеневе погодження, але гострі пости (розділ 7) — з окремою позначкою для замовника.</li><li><strong>KPI:</strong> охоплення, приріст підписників, переходи в профіль, згадки бренду. Ліди напряму НЕ обіцяються (розділ 4) — Threads у звіті йде як шар впізнаваності.</li><li>Планувальник: офіційний API Threads підтримує відкладений постинг — лягає в той самий інструмент, що FB/IG.</li></ul>
+<hr>
+<h3>10. Джерела</h3>
+<ul><li>Laba (реклама в Threads в Україні з січня 2026, алгоритм, 141,5 млн проти X) — <a href="https://laba.ua/blog/4867-chi-potriben-vashomu-biznesu-threads" target="_blank" rel="noopener noreferrer">https://laba.ua/blog/4867-chi-potriben-vashomu-biznesu-threads</a></li><li>Економічна правда (український бізнес у Threads: довіра, вимірюваність) — <a href="https://epravda.com.ua/biznes/threads-dlya-biznesu-v-ukrajini-potencial-keysi-ta-vpliv-na-loyalnist-822987/" target="_blank" rel="noopener noreferrer">https://epravda.com.ua/biznes/threads-dlya-biznesu-v-ukrajini-potencial-keysi-ta-vpliv-na-loyalnist-822987/</a></li><li>SKVOT (український Threads: культура, рейджбейт, волатильність) — <a href="https://skvot.io/uk/blog/vid-lyubovi-do-nenavisti-odin-post-navishcho-mi-zahodimo-v-threads" target="_blank" rel="noopener noreferrer">https://skvot.io/uk/blog/vid-lyubovi-do-nenavisti-odin-post-navishcho-mi-zahodimo-v-threads</a></li><li>Promodo (українські бренди в Threads) — <a href="https://www.promodo.ua/blog/threads-yak-z-nim-pracyuyut-ukrayinski-biznesi" target="_blank" rel="noopener noreferrer">https://www.promodo.ua/blog/threads-yak-z-nim-pracyuyut-ukrayinski-biznesi</a></li><li>Inweb (алгоритми, охоплення для малих акаунтів) — <a href="https://theinweb.media/yak-vykorystovuvaty-threads-dlya-prosuvannya-biznesu/" target="_blank" rel="noopener noreferrer">https://theinweb.media/yak-vykorystovuvaty-threads-dlya-prosuvannya-biznesu/</a></li><li>Kukurudza (тон і формати в укр. Threads) — <a href="https://kukurudza.com/blog/threads-shho-cze-take/" target="_blank" rel="noopener noreferrer">https://kukurudza.com/blog/threads-shho-cze-take/</a></li><li>Postory (Threads для бізнесу 2026: 450 млн MAU, критерії придатності для B2B) — <a href="https://postory.io/blog/threads-for-business" target="_blank" rel="noopener noreferrer">https://postory.io/blog/threads-for-business</a></li><li>BlackTwist (Threads для B2B) — <a href="https://blacktwist.app/blog/threads-for-b2b" target="_blank" rel="noopener noreferrer">https://blacktwist.app/blog/threads-for-b2b</a></li><li>Optimise Your Marketing (алгоритм: replies проти лайків, придушення бейту) — <a href="https://www.optimiseyourmarketing.co.uk/blog/threads-algorithm-2026-how-the-ranking-system-actually-works" target="_blank" rel="noopener noreferrer">https://www.optimiseyourmarketing.co.uk/blog/threads-algorithm-2026-how-the-ranking-system-actually-works</a></li><li>MomentumHive (механіка тест→розгін, перший рядок) — <a href="https://momentumhive.app/blog/threads-algorithm-2026-how-it-really-works" target="_blank" rel="noopener noreferrer">https://momentumhive.app/blog/threads-algorithm-2026-how-it-really-works</a></li><li>PostEverywhere (лінки, credibility, Account Status) — <a href="https://posteverywhere.ai/blog/how-the-threads-algorithm-works" target="_blank" rel="noopener noreferrer">https://posteverywhere.ai/blog/how-the-threads-algorithm-works</a></li><li>QuickFrame (For You / Following, Dear Algo) — <a href="https://quickframe.com/blog/how-does-the-threads-algorithm-work" target="_blank" rel="noopener noreferrer">https://quickframe.com/blog/how-does-the-threads-algorithm-work</a></li><li>Postory (шість сигналів ранжування) — <a href="https://postory.io/blog/threads-algorithm" target="_blank" rel="noopener noreferrer">https://postory.io/blog/threads-algorithm</a></li><li>The Gain Blog (патерни B2B-брендів: Slack, Grammarly) — <a href="https://blog.gainapp.com/threads-trends/" target="_blank" rel="noopener noreferrer">https://blog.gainapp.com/threads-trends/</a></li><li>Junction Creative (Threads vs LinkedIn для B2B) — <a href="https://junctioncreative.com/2026/07/21/threads-vs-linkedin-which-platform-makes-more-sense-for-b2b-marketing-in-2026/" target="_blank" rel="noopener noreferrer">https://junctioncreative.com/2026/07/21/threads-vs-linkedin-which-platform-makes-more-sense-for-b2b-marketing-in-2026/</a></li><li>Black Pug Studio (демографія Threads) — <a href="https://medium.com/creative-black-pug-studio/6-tactical-threads-marketing-strategies-for-2026-3e42c419ef4d" target="_blank" rel="noopener noreferrer">https://medium.com/creative-black-pug-studio/6-tactical-threads-marketing-strategies-for-2026-3e42c419ef4d</a></li></ul>
+      </div>
+    </details>
+
+    <div class="dl-row">
+      <a class="dl-btn" href="smm/pdf/threads-doslidzhennya.pdf" download>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 12.5v1a1 1 0 001 1h10a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Завантажити дослідження Threads (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-instagram" role="tabpanel" aria-labelledby="navtab-instagram" hidden>
+  <div class="wrap">
+    <div class="net-head">
+      <div class="net-eyebrow">Мережа</div>
+      <h1>Instagram</h1>
+      <span class="badge pending">на погодженні</span>
+    </div>
+
+    <div class="net-content">
+      <h2>Стратегія Instagram — ReLink</h2>
+<hr>
+<h3>1. Роль і рамка</h3>
+<p>Instagram у кварталі вересень–грудень 2026 працює в режимі <strong>«жива вітрина»</strong> — підтримувальна мережа при Facebook-машині. Три задачі:</p>
+<ol><li><strong>Рекламний плейсмент:</strong> сторінка приймає покази кампаній єдиного кабінету Meta з 07.09 — і має виглядати достойно для тих, хто клікне на профіль з реклами.</li><li><strong>Соціальний доказ:</strong> замовник/кандидат, що перевіряє агенцію, бачить живий брендований профіль, а не 3 пости й тишу.</li><li><strong>Задел під employer branding:</strong> акуратне накопичення контенту і аудиторії до рішення про повноцінний B2C-трек (за підсумками кварталу).</li></ol>
+<p>Окремої машини лідогенерації з Instagram у цьому кварталі НЕ будуємо — обґрунтування в дослідженні (демографія: кандидатське ядро 45+ і директори тут відсутні).</p>
+<hr>
+<h3>2. Цілі кварталу</h3>
+<div class="table-wrap"><table><thead><tr><th>Показник</th><th>Ціль</th></tr></thead><tbody><tr><td>Сторінка <code>re_link.agen</code></td><td>Оформлена за брендом, підключена до Business Manager, приймає плейсменти реклами</td></tr><tr><td>Темп публікацій</td><td>2–3 одиниці/тиждень стабільно, без провалів (буфер — 2 тижні)</td></tr><tr><td>Stories</td><td>У кожен день публікації + робочі моменти</td></tr><tr><td>Аудиторія</td><td>Органічний приріст без цільової цифри: якість профілю &gt; гонитва за підписниками</td></tr></tbody></table></div>
+<p>KPI лідів на Instagram окремо не ставиться — ліди атрибутуються кампаніям кабінету (звіт по рекламі спільний, розділ 10 ФБ-стратегії).</p>
+<hr>
+<h3>3. Спринт 23.08–05.09: Instagram-задачі (доповнення до ФБ-чекліста)</h3>
+<ol><li>Доступи до <code>re_link.agen</code>; переведення в бізнес-акаунт (якщо ще ні); підключення до Business Manager у зв'язці зі сторінкою Facebook.</li><li>Оформлення за брендом: аватар (квадратний знак лого), біо (хто ми + для кого + заклик написати), кнопка контакту.</li><li>Хайлайти (закріплені Stories): «Кейси», «Послуги», «Команда»; «Вакансії» — створюється порожнім резервом під B2C.</li><li>Стартовий контент: 4–6 одиниць з ФБ-пачки, адаптованих у формати Instagram (нижче), опубліковані до 07.09.</li><li>Рішення по старій сторінці <code>@reeelink</code> (відкрите питання №2).</li></ol>
+<hr>
+<h3>4. Контент-режим: похідний від Facebook-конвеєра</h3>
+<p><strong>Принцип: адаптація, не дубляж.</strong> Та сама одиниця вихідного матеріалу збирається нативно під формат Instagram — вимога алгоритму про оригінальність (репости і перезаливи караються аж до виключення з рекомендацій).</p>
+<div class="table-wrap"><table><thead><tr><th>Одиниця ФБ-конвеєра</th><th>Формат в Instagram</th></tr></thead><tbody><tr><td>Кейс закритої вакансії</td><td>Карусель (історія в 4–6 слайдів: задача → складність → результат-цифра)</td></tr><tr><td>Експертний пост Олени</td><td>Карусель «розбір» або Reels з тезою текстом на екрані</td></tr><tr><td>Цифра болю ринку</td><td>Reels 15 сек (цифра в русі) або статика-«якір»</td></tr><tr><td>Оффер-пост</td><td>Статика + дубль у Stories з лінк-стікером</td></tr><tr><td>Живі кадри команди</td><td>Reels + сирі моменти в Stories</td></tr></tbody></table></div>
+<p><strong>Правила збірки під платформу</strong> (доповнюють чекліст креативу з розділу 7 ФБ-дослідження):</p>
+<ul><li>Перші 2–3 секунди Reels працюють текстом на екрані — більшість дивиться без звуку.</li><li>Каруселі — головний генератор збережень: практична цінність + заклик «збережи собі» (працює краще за «постав лайк»).</li><li>Підписи — з пошуковими ключовими словами (social SEO), без сміттєвих хештегів.</li><li>Пересилання (sends) — найсильніший сигнал охоплення: контент, яким HR перешле колезі («дивись, це про нас»), цінніший за контент «для лайка».</li></ul>
+<p><strong>Виробництво і погодження:</strong> Instagram-адаптації входять у ту саму пачку раз на два тижні, той самий контент-календар (мережа — колонка таблиці) і те саме двоступеневе погодження замовником. Окремого циклу немає.</p>
+<hr>
+<h3>5. Таргетинг і бюджет</h3>
+<p>Окремого бюджету Instagram НЕ існує: сторінка — плейсмент кампаній єдиного кабінету Meta (траєкторія — розділ 9 ФБ-дослідження, структура кампаній — розділ 7 ФБ-стратегії). Єдина Instagram-специфічна дія: у кабінеті контролювати, щоб креативи коректно відображались у плейсментах Stories/Reels (вертикальні версії з шаблонів).</p>
+<hr>
+<h3>6. Межі (що свідомо НЕ робимо в кварталі)</h3>
+<ul><li>Окремі Instagram-кампанії і окремий контент-план.</li><li>Активний B2C і робота з кандидатською аудиторією — до першого замовлення (як усюди).</li><li>Інфлюенсери, гіви, масфоловінг — ніколи (остання пара — пряма шкода алгоритмічній репутації акаунта).</li><li>Гонитва за трендовими звуками/челенджами поза брендом — не наша роль на цій фазі.</li></ul>
+<hr>
+<h3>7. Відкриті питання</h3>
+<ol><li>Доступи до <code>re_link.agen</code>: хто власник акаунта, чи бізнес-акаунт, зв'язка з Business Manager.</li><li>Стара сторінка <code>@reeelink</code>: рекомендація — закрити або перевести в архівний стан з посиланням на актуальну в біо, щоб не розмивала пошук бренду. Потрібне рішення і доступи.</li><li>Вертикальні версії шаблонів (Stories/Reels 9:16) — включити у вимоги до системи шаблонів на пілоті контент-фабрики (гілка автоматизації).</li></ol>
+    </div>
+
+    <details class="research">
+      <summary><span class="tag">Дослідження</span><span class="t">Повний текст дослідження Instagram</span><span class="chev">›</span></summary>
+      <div class="research-body">
+        <h2>Дослідження: Instagram для ReLink</h2>
+<hr>
+<h3>1. Резюме</h3>
+<p>Instagram для ReLink — <strong>підтримувальна мережа, не окрема машина лідогенерації</strong>. Три її ролі, за вагою:</p>
+<ol><li><strong>Обов'язковий рекламний плейсмент</strong> (місце показу): кампанії з єдиного кабінету Meta крутяться і в Instagram — тому сторінка має бути мінімально живою ще до запуску реклами (це фіксована вимога до спринту).</li><li><strong>Вітрина і соціальний доказ:</strong> замовник і кандидат, які почули про агенцію, перевіряють її «живість» саме тут — мертвий профіль з трьома постами працює проти бренду.</li><li><strong>Довгостроково — employer branding</strong> (бренд роботодавця) на молодшу і жіночу аудиторію, якої немає у Facebook-ядрі.</li></ol>
+<p>Головна відмінність від Facebook — демографія: аудиторія Instagram молодша і жіночіша, чоловіча аудиторія 45+ (ядро кандидатів ReLink) тут практично відсутня. Тому Instagram не конкурує з Facebook за роль, а доповнює його.</p>
+<hr>
+<h3>2. Аудиторія Instagram в Україні: чим відрізняється від Facebook</h3>
+<ul><li>Рекламно-досяжна аудиторія — <strong>13,1 млн</strong> (проти 14,7 млн у Facebook; дані «Тверезого Таргетолога», бер.–кві. 2026).</li><li>Ключова відмінність — вікова і статева структура: ядро Instagram молодше, з перевагою жінок; <strong>чоловіки після 44–45 років стрімко втрачають інтерес до платформи</strong> — діставати чоловічу аудиторію 45+ ефективніше через Facebook. Це прямий наслідок для ReLink: виробничник/інженер 45+ і директор заводу — НЕ мешканці Instagram.</li><li>Хто тут є з аудиторій ReLink: молодші інженери і технічні спеціалісти (25–40), офісні та back-office кандидати, молоді ветерани, HR-менеджери (не директори — виконавці), а також <strong>родинне коло кандидатів</strong>: рішення про зміну роботи чоловіком 40+ часто обговорюється в сім'ї, і жіноча аудиторія Instagram — вторинний канал дотику до цього рішення (робоча гіпотеза, не підтверджена цифрами — перевіряється на практиці).</li></ul>
+<hr>
+<h3>3. Алгоритм Instagram 2026: що інакше, ніж у Facebook</h3>
+<p>Instagram працює на <strong>чотирьох окремих системах ранжування</strong> — Feed (стрічка), Reels, Stories, Explore — і кожна зважує сигнали по-своєму: Reels — час перегляду і пересилання, стрічка — силу зв'язку з акаунтом, Stories — близькість (кого людина постійно дивиться), Explore — швидкість залучення.</p>
+<p>Ключові сигнали 2026 (підтверджені керівником Instagram Адамом Моссері):</p>
+<ul><li><strong>Watch time (час перегляду)</strong> — найважливіший сигнал на всіх поверхнях; для Reels перші 2–3 секунди вирішують, чи піде відео на ширшу аудиторію.</li><li><strong>Sends per reach (пересилання в приватні повідомлення)</strong> — найсильніший сигнал цінності для охоплення: пересилання важить у 3–5 разів більше за лайк. Reels з 1 000 лайків і 50 пересиланнями охопить більше людей, ніж Reels з 5 000 лайків і 0 пересилань.</li><li><strong>Збереження (saves)</strong> — сигнал високої цінності: пост із 50 збереженнями і 100 лайками зазвичай обганяє пост із 500 лайками і 5 збереженнями. Збереження заробляє освітній і практичний контент.</li><li><strong>Оригінальність:</strong> нативний контент отримує на 40–60% більше поширення, ніж репости; акаунти з 10+ репостами за 30 днів повністю виключаються з рекомендацій. Перезаливи з водяними знаками інших платформ караються.</li><li>Хештеги втратили більшість ваги ще наприкінці 2024 — працюють пошукові ключові слова в підписах (social SEO, як і у Facebook).</li><li><strong>Trial Reels</strong> — можливість тестувати Reels на непідписниках до показу власній аудиторії: корисний інструмент безпечних експериментів.</li></ul>
+<hr>
+<h3>4. Формати і бенчмарки: що працює в Instagram</h3>
+<p>Загальний рівень залучення падає: середній ER бізнес-акаунтів — 0,30–0,48% від підписників (мінус ~17% рік до року). Але охоплення перерозподіляється між форматами:</p>
+<div class="table-wrap"><table><thead><tr><th>Формат</th><th>Сильна сторона</th><th>Цифри</th></tr></thead><tbody><tr><td>Reels</td><td>Охоплення і вихід на непідписників</td><td>Найвищий reach rate серед форматів (~30% аудиторії); оптимум 15–30 сек</td></tr><tr><td>Каруселі</td><td>Залучення і збереження</td><td>Топ-формат за ER (0,50% проти 0,48% у Reels); кожне гортання — взаємодія</td></tr><tr><td>Stories</td><td>Утримання наявної аудиторії</td><td>Охоплюють лише 2–9% підписників, але 70% користувачів дивляться Stories щодня — шар стосунків, не зростання</td></tr><tr><td>Статичні пости</td><td>Анонси і «якірний» контент</td><td>ER 0,33%, падає; допоміжна роль</td></tr></tbody></table></div>
+<p>Рекомендований галузевими бенчмарками мікс: ~60% Reels + ~25% каруселей + ~10% статики, зі Stories як щоденним фоновим шаром. Для ReLink на підтримувальній фазі цей мікс масштабується вниз пропорційно (розділ 5).</p>
+<p>Практичні висновки для контенту: більшість Reels дивляться без звуку — перші секунди мають працювати текстом на екрані; освітні каруселі («3 помилки в резюме», «як проходити технічну співбесіду») — головний генератор збережень; заклик «збережи собі» працює краще за «постав лайк».</p>
+<hr>
+<h3>5. Роль у системі ReLink і режим ведення</h3>
+<p><strong>Стартовий режим (вересень–грудень, паралельно з Facebook-кампанією) — «жива вітрина»:</strong></p>
+<ul><li>Контент — похідний від Facebook-конвеєра: ті самі одиниці контенту, адаптовані у формати Instagram (кейс → карусель; цифра болю ринку → Reels/статика; живі кадри → Reels + Stories). Адаптація — не дубляж: креатив збирається нативно під платформу (вимога алгоритму про оригінальність), але з того самого вихідного матеріалу — додаткового виробництва майже нуль.</li><li>Мінімальний темп: 2–3 одиниці на тиждень з конвеєра + Stories у дні публікацій.</li><li>Сторінка <code>re_link.agen</code> оформлюється за брендом у спринті (шапка, хайлайти: «Кейси», «Послуги», «Команда», «Вакансії» — резерв під B2C).</li><li>Профіль обов'язково підключений до Business Manager — і як плейсмент реклами, і для статистики.</li></ul>
+<p><strong>Що Instagram НЕ робить на цій фазі:</strong> окремі кампанії, окремий контент-план, робота з інфлюенсерами, активний B2C (до появи замовлень — як і у Facebook).</p>
+<p><strong>Перспектива (за межами кварталу):</strong> з ввімкненням B2C-треку Instagram стає каналом employer branding для молодших кандидатів і офісних позицій — з власними рубриками. Рішення — за підсумками кварталу.</p>
+<hr>
+<h3>6. Обмеження — спільні з Facebook</h3>
+<p>Без дублювання, тільки перелік з посиланням на <code>smm/facebook/дослідження.md</code>:</p>
+<ul><li>Реклама вакансій — Special Ad Category (розділ 8 ФБ-дослідження); діє на плейсменти Instagram так само.</li><li>Defense-ризики модерації Meta (розділ 10) — правила «професія, не зброя» і безпечної лексики діють у повному обсязі; Instagram-модерація історично навіть чутливіша до візуального контенту.</li><li>Правило свідчення і чекліст креативу (розділ 7) — без змін.</li><li>Таргетинг і бюджет (розділ 9) — окремого бюджету Instagram НЕ існує: це плейсмент кампаній єдиного кабінету.</li></ul>
+<hr>
+<h3>7. Джерела</h3>
+<ul><li>WebPromoExperts / «Тверезий Таргетолог» (аудиторія Meta в Україні, бер.–кві. 2026) — <a href="https://webpromoexperts.net/ua/blog/analitika-ta-statistika-socmerezh-ukrayini-u-2026-roci-globalni-zmini-trendi-ta-strategiyi-dlya-internet-marketologiv/" target="_blank" rel="noopener noreferrer">https://webpromoexperts.net/ua/blog/analitika-ta-statistika-socmerezh-ukrayini-u-2026-roci-globalni-zmini-trendi-ta-strategiyi-dlya-internet-marketologiv/</a></li><li>Hootsuite (алгоритм 2026) — <a href="https://blog.hootsuite.com/instagram-algorithm/" target="_blank" rel="noopener noreferrer">https://blog.hootsuite.com/instagram-algorithm/</a></li><li>Sprout Social (сигнали ранжування, sends per reach) — <a href="https://sproutsocial.com/insights/instagram-algorithm/" target="_blank" rel="noopener noreferrer">https://sproutsocial.com/insights/instagram-algorithm/</a></li><li>Buffer (DM-шери як головний сигнал Reels) — <a href="https://buffer.com/resources/instagram-algorithms/" target="_blank" rel="noopener noreferrer">https://buffer.com/resources/instagram-algorithms/</a></li><li>Clixie (чотири системи ранжування, вага збережень) — <a href="https://www.clixie.ai/blog/instagram-algorithm" target="_blank" rel="noopener noreferrer">https://www.clixie.ai/blog/instagram-algorithm</a></li><li>CreatorFlow (оригінальність, trial reels, зміни 2026) — <a href="https://creatorflow.so/blog/instagram-algorithm-2026/" target="_blank" rel="noopener noreferrer">https://creatorflow.so/blog/instagram-algorithm-2026/</a></li><li>OrangeMonke (сигнали Reels, негативні сигнали) — <a href="https://orangemonke.com/blogs/instagram-algorithm/" target="_blank" rel="noopener noreferrer">https://orangemonke.com/blogs/instagram-algorithm/</a></li><li>Socialinsider (бенчмарки ER за форматами, Q2 2026) — <a href="https://www.socialinsider.io/social-media-benchmarks/instagram" target="_blank" rel="noopener noreferrer">https://www.socialinsider.io/social-media-benchmarks/instagram</a></li><li>CreatorFlow (порівняння п'яти форматів, Stories 70% щодня) — <a href="https://creatorflow.so/blog/instagram-content-formats-guide/" target="_blank" rel="noopener noreferrer">https://creatorflow.so/blog/instagram-content-formats-guide/</a></li><li>Apaya (методології вимірювання ER, каруселі vs Reels) — <a href="https://apaya.com/blog/social-media-benchmarks-instagram" target="_blank" rel="noopener noreferrer">https://apaya.com/blog/social-media-benchmarks-instagram</a></li><li>PostEverywhere (бенчмарки за платформами) — <a href="https://posteverywhere.ai/blog/social-media-engagement-rate-benchmarks" target="_blank" rel="noopener noreferrer">https://posteverywhere.ai/blog/social-media-engagement-rate-benchmarks</a></li><li>InfluenceFlow (довжина Reels, Stories-стікери, CTA) — <a href="https://influenceflow.io/resources/instagram-engagement-rate-benchmark-complete-2026-guide-for-creators-brands/" target="_blank" rel="noopener noreferrer">https://influenceflow.io/resources/instagram-engagement-rate-benchmark-complete-2026-guide-for-creators-brands/</a></li></ul>
+      </div>
+    </details>
+
+    <div class="dl-row">
+      <a class="dl-btn" href="smm/pdf/instagram-doslidzhennya.pdf" download>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 12.5v1a1 1 0 001 1h10a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Завантажити дослідження Instagram (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span><b>Re</b>Link · SMM-стратегія</span>
+  <span>Серпень 2026 · Конфіденційно · Джерела: /smm (дослідження і стратегії по мережах), /context/контент-план.md</span>
+</div></footer>
+
+<script>
+// ---- вкладки ----
+(function(){
+  var tabs = document.querySelectorAll('.navtab');
+  var panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-tab');
+      tabs.forEach(function(b){ b.classList.toggle('active', b === btn); });
+      panels.forEach(function(p){ p.hidden = (p.id !== 'tab-' + id); });
+      window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+    });
+  });
+})();
+
+// ---- календар, синхронізований з контент-планом ----
+(function(){
+  var el = document.getElementById('calendar');
+  var detailEl = document.getElementById('cal-detail');
+  if (!el) return;
+
+  var PLAN = {"2026-08-30":[{"net":"fb","theme":"Пост-представлення: хто такі ReLink — спеціалізація Defense/MilTech і виробництво, цифри 90% / 10 000+ / 87%"},{"net":"ig","theme":"Представлення: хто ми, для кого, цифри (адаптація поста ФБ)"}],"2026-08-31":[{"net":"fb","theme":"Експертний від Олени: «Скільки насправді коштує незакрита вакансія» (вакансія → простій → втрачені контракти)"}],"2026-09-01":[{"net":"th","theme":"Пост 1: заявка голосу («Рекрутингова агенція заводить тредс…»)"},{"net":"ig","theme":"67% оборонних виробництв шукають інженерів-конструкторів"}],"2026-09-02":[{"net":"fb","theme":"Цифра болю ринку: 67% шукають конструкторів, 48% — електронників; вакансії висять місяцями"},{"net":"th","theme":"Пост 2: «два монологи, які не чують один одного»"}],"2026-09-03":[{"net":"fb","theme":"Кухня агенції: як влаштований підбір — етапи, гарантійний супровід (87% проходять гарантійний строк)"}],"2026-09-04":[{"net":"th","theme":"Пост 3: зарплатна прозорість (🟡)"},{"net":"ig","theme":"Кухня агенції: кадри процесу (якщо зібрані; інакше — шаблонна адаптація поста)"}],"2026-09-05":[{"net":"fb","theme":"Оффер-пост: «Опишіть вакансію — за 48 годин 3 релевантні резюме з бази. Безкоштовно»"},{"net":"ig","theme":"Оффер (адаптація)"}],"2026-09-08":[{"net":"fb","theme":"Експертний: «Вакансія висить третій місяць — розбір типових причин»"},{"net":"th","theme":"Пост 4: «поки в стрічці \"роботи немає\", у цехах — вільні верстати»"}],"2026-09-09":[{"net":"ig","theme":"Причини незакритих вакансій — по слайду на причину (адаптація експертного)"}],"2026-09-10":[{"net":"fb","theme":"Кейс №1 (фактура від Олени; резерв: кухня — «що відбувається після заявки: перші 48 годин»)"},{"net":"th","theme":"Пост 5: «Токар. 80 000 грн. Бронювання. Вакансія висить третій місяць»"}],"2026-09-11":[{"net":"ig","theme":"Цифра: 30% технічних вакансій відкриті 2+ місяці"}],"2026-09-12":[{"net":"fb","theme":"Цифра: 30% технічних вакансій відкриті понад 2 місяці — що це коштує виробництву"},{"net":"th","theme":"Пост 6: ейджизм у вакансіях (🟡)"}],"2026-09-13":[{"net":"th","theme":"Пост 7: «перше питання кандидата — не зарплата, а бронювання»"}],"2026-09-15":[{"net":"fb","theme":"Експертний: «Бронювання як інструмент утримання персоналу — що має знати роботодавець»"},{"net":"th","theme":"Пост 8: госінг після оферу — обидві правди (🟡)"}],"2026-09-16":[{"net":"ig","theme":"Бронювання простими словами: що, кому, як"}],"2026-09-17":[{"net":"fb","theme":"Кухня: метчинг і «підбір по ДНК» — як ми зіставляємо кандидата і компанію"},{"net":"th","theme":"Пост 9: «слово \"завод\" досі лякає» (🟡)"}],"2026-09-18":[{"net":"ig","theme":"Живі кадри команди (резерв: шаблонний — «зарплати виробництва 2026»)"}],"2026-09-19":[{"net":"fb","theme":"Оффер-пост №2 (той самий оффер, інший кут: «вакансія висить? покажемо, хто є в базі»)"},{"net":"th","theme":"Пост 10: «незакрита вакансія — не HR-проблема, виробнича»"}],"2026-09-20":[{"net":"th","theme":"Пост 11: «непопулярна думка: зарплатою конкурувати можете» (🟡)"}],"2026-09-22":[{"net":"fb","theme":"Експертний: «Пасивні кандидати: 70% ринку, яких немає на джоб-бордах — як їх шукати»"},{"net":"th","theme":"Пост 12: «\"Обов'язки: все потроху\"» — гумор"}],"2026-09-23":[{"net":"ig","theme":"5 помилок технічної співбесіди (очима рекрутера)"}],"2026-09-24":[{"net":"fb","theme":"Кейс №2 (фактура; резерв: цифра — зарплати ОПК до 120 тис. грн і чому вакансії все одно відкриті)"},{"net":"th","theme":"Пост 13: ветерани з FPV-досвідом — за них уже конкурують іноземні рекрутери (🟡)"}],"2026-09-25":[{"net":"ig","theme":"Ветеранська тема: цифри і теза, без облич"}],"2026-09-26":[{"net":"fb","theme":"Ветеранський трек: перехід зі служби у виробництво — можливості, які не всі бачать"},{"net":"th","theme":"Пост 14: «ідеальний метч, який не відбудеться» — місток до агенції"}],"2026-09-27":[{"net":"th","theme":"Пост 15: «бюджет на печиво є, на +10к токарю — ні» (🟡)"}],"2026-09-28":[{"net":"th","theme":"Пост 16: підсумок місяця в тредс («далі буде більше. І незручніше»)"}]};
+  var NET_NAME = { fb:'Facebook', ig:'Instagram', th:'Threads', li:'LinkedIn' };
+
+  var SPRINT_START = new Date(2026,7,23); // 23 серпня
+  var SPRINT_INFRA_END = new Date(2026,7,29); // 29 серпня — до перших публікацій
+  var LAUNCH = new Date(2026,8,7);  // 7 вересня
+  var REPORT = new Date(2026,8,30); // 30 вересня
+  var RANGE_START = SPRINT_START;
+  var RANGE_END = REPORT;
+
+  function sameDay(a,b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+  function inRange(d,a,b){ return d>=a && d<=b; }
+  function addDays(d,n){ var r=new Date(d); r.setDate(r.getDate()+n); return r; }
+  function mondayOnOrBefore(d){ var dow=(d.getDay()+6)%7; return addDays(d,-dow); }
+  function sundayOnOrAfter(d){ var dow=(d.getDay()+6)%7; return addDays(d,6-dow); }
+  function dateKey(d){ var mm=String(d.getMonth()+1).padStart(2,'0'); var dd=String(d.getDate()).padStart(2,'0'); return d.getFullYear()+'-'+mm+'-'+dd; }
+
+  var monthShort = ['січ','лют','бер','кві','тра','чер','лип','сер','вер','жов','лис','гру'];
+  var dowNames = ['Пн','Вт','Ср','Чт','Пт','Сб','Нд'];
+
+  var gridStart = mondayOnOrBefore(RANGE_START);
+  var gridEnd = sundayOnOrAfter(RANGE_END);
+
+  var cells = [];
+  for (var d = new Date(gridStart); d <= gridEnd; d = addDays(d,1)) {
+    var out = d < RANGE_START || d > RANGE_END;
+    cells.push({ date: new Date(d), out: out });
+  }
+
+  var liWeekday = { 1:'LinkedIn: пост Олени', 3:'LinkedIn: сторінка', 4:'LinkedIn: пост + рекрутер' };
+
+  var html = dowNames.map(function(n){ return '<div class="cal-dow">'+n+'</div>'; }).join('');
+  var itemsByKey = {}; // повний список пунктів дня (з LinkedIn) — джерело і для чипів, і для панелі деталей
+
+  cells.forEach(function(c, idx){
+    var d = c.date;
+    var key = dateKey(d);
+    var chips = '';
+    var items = (!c.out && PLAN[key]) ? PLAN[key].slice() : [];
+    if (!c.out){
+      var dow = (d.getDay()+6)%7+1;
+      if (d >= LAUNCH && liWeekday[dow]) items.push({ net:'li', theme: liWeekday[dow] });
+
+      if (items.length) {
+        var seen = {};
+        items.forEach(function(it){
+          if (seen[it.net]) return;
+          seen[it.net] = true;
+          var count = items.filter(function(x){ return x.net===it.net; }).length;
+          chips += '<span class="chip '+it.net+'" title="'+NET_NAME[it.net]+': '+it.theme.replace(/"/g,'&quot;')+'">'+NET_NAME[it.net]+(count>1?' ('+count+')':'')+'</span>';
+        });
+      } else if (inRange(d, SPRINT_START, SPRINT_INFRA_END)) {
+        chips += '<span class="chip sprint">Спринт активу</span>';
+      }
+      if (sameDay(d, LAUNCH)) chips += '<span class="chip milestone">Запуск реклами</span>';
+      if (sameDay(d, REPORT)) chips += '<span class="chip milestone">Звіт №1</span>';
+    }
+    itemsByKey[key] = items;
+
+    var label = String(d.getDate());
+    if (d.getDate() === 1 || idx === 0) label += ' ' + monthShort[d.getMonth()];
+    var clickable = !c.out && items.length > 0;
+    html += '<div class="cal-day'+(c.out?' out':'')+(clickable?' has-plan':'')+'" data-key="'+key+'" data-clickable="'+(clickable?1:0)+'"><span class="d">'+label+'</span>'+chips+'</div>';
+  });
+
+  el.innerHTML = html;
+
+  function showDetail(key, dayEl){
+    var items = itemsByKey[key] || [];
+    if (!items.length) { detailEl.hidden = true; return; }
+    var d = dayEl.querySelector('.d').textContent;
+    var html = '<div class="cd-date">'+d+'</div>';
+    items.forEach(function(it){
+      html += '<div class="cd-item"><span class="chip '+it.net+'">'+NET_NAME[it.net]+'</span><span>'+it.theme+'</span></div>';
+    });
+    detailEl.innerHTML = html;
+    detailEl.hidden = false;
+    document.querySelectorAll('.cal-day.is-selected').forEach(function(x){ x.classList.remove('is-selected'); });
+    dayEl.classList.add('is-selected');
+  }
+
+  el.querySelectorAll('.cal-day[data-clickable="1"]').forEach(function(dayEl){
+    dayEl.addEventListener('click', function(){ showDetail(dayEl.dataset.key, dayEl); });
+  });
+})();
+</script>
+</body>
+</html>

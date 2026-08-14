@@ -9,11 +9,32 @@
 
 - `relink-brandbook.html` опублікований через **GitHub Pages**, посилання є в замовника.
   Файл НЕ переміщувати, НЕ перейменовувати, URL має працювати завжди.
-- `relink-linkedin-strategy.html` — актуальний робочий документ.
+- `relink-linkedin-strategy.html` — актуальний робочий документ; має нагорі непомітний
+  банер-плашку з посиланням на `relink-smm-strategy.html` (додано 14.08.2026, банер
+  автоматично ховається, коли сторінка відкрита в iframe). Вміст цього файлу також
+  вбудований НАТИВНО (не iframe) у вкладку LinkedIn зведеного документа — правки тексту
+  тут одразу підхопить перезбірка `relink-smm-strategy.html`, окремо нічого дублювати не треба.
+- `relink-smm-strategy.html` — зведений SMM-документ (5 вкладок: Огляд, LinkedIn,
+  Facebook, Threads, Instagram), опублікований через GitHub Pages. Генерується скриптом
+  `smm/build-html.js` з markdown-джерел у `/smm`, `context/контент-план.md` і напряму
+  з `relink-linkedin-strategy.html` (не редагувати сирий HTML руками — правки вносити
+  в джерела і перезбирати). Службові плашки «Статус: ...» з початку кожного md-файлу
+  автоматично прибираються з рендеру (лишаються в самих md — внутрішня розмітка).
+  PDF-кнопки на сторінці ведуть на файли в `smm/pdf/`, які збираються `smm/build-pdf.js`
+  (Playwright, той самий scale-фікс, що в `presentation/build-pdf.js`). Перезбірка обох
+  після правок у `/smm`, `context/контент-план.md` або `relink-linkedin-strategy.html`:
+  ```
+  cd smm
+  node build-html.js   # -> relink-smm-strategy.html (корінь репо)
+  node build-pdf.js    # -> smm/pdf/*.pdf (4 файли)
+  ```
+  Використовує Playwright з `presentation/node_modules` (окремий `npm install` у `/smm`
+  не потрібен).
 - Перед будь-яким переміщенням/перейменуванням файлів — перевірити, чи не посилається на них сайт.
 - Робочі посилання для замовника (корінь сайту віддає 404, працюють тільки ці):
   - Брендбук: https://hell-in-star.github.io/relink/relink-brandbook.html
   - LinkedIn-стратегія: https://hell-in-star.github.io/relink/relink-linkedin-strategy.html
+  - SMM-стратегія: https://hell-in-star.github.io/relink/relink-smm-strategy.html
 
 ## Структура тек
 
@@ -35,7 +56,11 @@
   скрінів реклами конкурентів ніші. LinkedIn: дослідження готове, стратегія
   затверджена (джерело правди — `relink-linkedin-strategy.html` у корені).
   Facebook/Instagram: дослідження і стратегія готові. Threads: дослідження
-  готове, стратегія готова але на погодженні замовником.
+  готове, стратегія готова але на погодженні замовником. Збірні файли —
+  `smm/огляд.md` (вкладка-огляд, на погодженні), `smm/стратегія-загальна.md`,
+  `smm/дослідження-зведене.md` — готові. `smm/lib/md.js` — самописний
+  markdown→HTML конвертер (без npm-залежностей), яким збирається
+  `relink-smm-strategy.html`; деталі перезбірки — розділ вище.
   Рішення по SMM-автоматизації (Canva, планувальник, бот-оркестратор,
   контент-план/календар) — `/context/автоматизація.md`.
 - `/presentation` — презентація компанії: `relink-presentation.html` (затверджена,
