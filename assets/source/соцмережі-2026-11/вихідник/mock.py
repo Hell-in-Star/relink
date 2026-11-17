@@ -42,16 +42,16 @@ def tile(c,k,t):
 ig=f'''<div class="m" style="padding:16px 18px">
 <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;margin-top:30px">
 <img src="{av}" style="width:80px;height:80px;border-radius:50%">
-<div style="width:150px"><div class="nm" style="font-size:16px">re.link</div><div class="sub" style="margin-top:2px">Рекрутинг для Defence і виробництва<br><span class="mut">re-link.com.ua</span></div></div></div>
+<div style="width:150px"><div class="nm" style="font-size:16px">re_link.agen</div><div class="sub" style="margin-top:2px">Рекрутинг для Defence і виробництва<br><span class="mut">re-link.com.ua</span></div></div></div>
 <div class="grid" style="margin-top:12px;width:300px;position:absolute;right:18px;top:16px">{''.join(tile(*x) for x in tiles)}</div></div>'''
 ig=ig  # grid on right side to fit height
 th=f'''<div class="m" style="padding:20px 24px">
-<div style="display:flex;justify-content:space-between;align-items:center"><div><div class="nm">ReLink</div><div class="mut" style="margin-top:2px">re.link</div></div>
+<div style="display:flex;justify-content:space-between;align-items:center"><div><div class="nm">ReLink</div><div class="mut" style="margin-top:2px">re_link.agen</div></div>
 <img src="{av}" style="width:62px;height:62px;border-radius:50%"></div>
 <div class="sub" style="margin-top:10px">Рекрутинг для Defence, виробництва та суміжних сфер · re-link.com.ua</div>
 <div style="border-top:1px solid #ECECEF;margin-top:14px;padding-top:14px;display:flex;gap:12px">
 <img src="{av}" style="width:34px;height:34px;border-radius:50%">
-<div style="flex:1"><div style="font-size:13px"><b style="font-family:G;font-weight:500">re.link</b> <span class="mut">· 2 год</span></div>
+<div style="flex:1"><div style="font-size:13px"><b style="font-family:G;font-weight:500">re_link.agen</b> <span class="mut">· 2 год</span></div>
 <div style="font-size:13.5px;line-height:1.5;margin-top:3px">Кандидат з ідеальним резюме і кандидат, який закриє задачу, — часто різні люди. Розповідаємо, як ми це перевіряємо на першій розмові 👇</div>
 <div class="mut" style="margin-top:8px">♡ 24 &nbsp;&nbsp; 💬 6 &nbsp;&nbsp; ↻ 3</div></div></div></div>'''
 for n,b in [('mock-linkedin',li),('mock-facebook',fb),('mock-instagram',ig),('mock-threads',th)]:
