@@ -1,0 +1,132 @@
+<!doctype html>
+<!-- ReLink, флаєр для клієнтів A5 (148x210 + виліт 3 мм). Сторінка 158x220: обрізати від верхнього лівого кута до 154x216. Див. README. --><html lang="uk"><head><meta charset="utf-8"><style>
+@font-face{font-family:'Geologica';font-weight:400;src:url('../../../шрифти/geologica/Geologica-Regular.ttf')}
+@font-face{font-family:'Geologica';font-weight:500;src:url('../../../шрифти/geologica/Geologica-Medium.ttf')}
+@font-face{font-family:'Onest';font-weight:300;src:url('../../../шрифти/onest/Onest-Light.ttf')}
+@font-face{font-family:'Onest';font-weight:400;src:url('../../../шрифти/onest/Onest-Regular.ttf')}
+@font-face{font-family:'Onest';font-weight:500;src:url('../../../шрифти/onest/Onest-Medium.ttf')}
+@page{size:158mm 220mm;margin:0}
+:root{--amber:#DEA102;--amber2:#ECC668;--text:#EBEAE8;--text2:#C3C6CD;--line:rgba(222,161,2,.55)}
+html,body{margin:0;padding:0;background:#777}
+.page{width:158mm;height:220mm;position:relative;overflow:hidden;page-break-after:always;
+  background:#394050 url('img/bg.png') 0 0/100% 100% no-repeat;font-family:'Onest',sans-serif;color:var(--text)}
+.t{position:absolute;left:3mm;top:3mm;width:148mm;height:210mm}  /* trim box */
+.a{position:absolute}
+.mono{font-family:'Onest';font-weight:400;font-size:5.2pt;letter-spacing:.14em;text-transform:uppercase;color:var(--text);opacity:.75;line-height:1.35}
+.label{font-family:'Geologica';font-weight:500;font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.hl{position:absolute;height:0;border-top:.25mm solid var(--line)}
+.vl{position:absolute;width:0;border-left:.25mm solid var(--line)}
+.tick{position:absolute;width:1.6mm;height:1.6mm;border:.25mm solid var(--amber)}
+/* photo */
+.photo{position:absolute;left:0;top:0;width:154mm;height:104mm;background-size:100% 100%}
+
+.plate{position:absolute;background:rgba(47,53,67,.9);border:.25mm solid var(--line)}
+.plate .c{position:absolute;width:2.4mm;height:2.4mm;border-color:var(--amber);border-style:solid;border-width:0}
+.qrbox{position:absolute;background:#fff;padding:1.6mm;border-radius:1mm}
+.qrbox img{display:block;width:100%;height:100%}
+.ic{width:3.2mm;height:3.2mm;vertical-align:-0.7mm;margin-right:1.4mm}
+</style></head><body>
+
+<!-- ============ FRONT ============ -->
+<div class="page" id="front">
+ <div class="photo" style="background-image:url('img/photo-hi-fade.png')"></div>
+ <div class="t">
+  <!-- logo: variant A, scrim over photo top --><div style="position:absolute;left:-3mm;top:-3mm;width:154mm;height:60mm;background:url('img/scrim.png') 0 0/100% 100% no-repeat"></div><img src="img/relink-horizontal-tagline-on-dark.svg" style="position:absolute;left:7mm;top:8mm;width:64mm"><div class="a mono" style="left:7mm;top:30mm">Sheet_01/02 · A5 · Rev_11.2026</div><div class="a mono" style="right:7mm;top:9mm;text-align:right">Kyiv_UA · Unit_mm</div>
+  <!-- dimension line under photo -->
+  <div class="hl" style="left:7mm;width:134mm;top:84mm;border-color:rgba(235,234,232,.45)"></div>
+  <div class="vl" style="left:7mm;top:82.5mm;height:3mm;border-color:rgba(235,234,232,.6)"></div>
+  <div class="vl" style="left:141mm;top:82.5mm;height:3mm;border-color:rgba(235,234,232,.6)"></div>
+  <div class="a mono" style="left:66mm;top:80.6mm;background:transparent">148.00</div>
+
+  <!-- left column -->
+  <div class="a" style="left:7mm;top:94mm;width:64mm;font-family:'Geologica';font-weight:500;font-size:25pt;line-height:1.08;color:var(--text)">Знаходимо рішення, що&nbsp;працюють</div>
+  <div class="hl" style="left:7mm;width:30mm;top:129mm"></div>
+  <div class="a label" style="left:7mm;top:132.5mm">Напрямки підбору&nbsp;→</div>
+
+  <!-- QR stamp -->
+  <div class="plate" style="left:7mm;top:141mm;width:62mm;height:30mm;background:rgba(47,53,67,.55)">
+    <div class="qrbox" style="left:3mm;top:3mm;width:20.8mm;height:20.8mm"><img src="img/qr.svg"></div>
+    <div class="a" style="left:29mm;top:5mm;font-family:'Geologica';font-weight:500;font-size:10pt;line-height:1.2;width:31mm;color:var(--amber)">Ваша вакансія —<br>наша задача</div>
+    <div class="a" style="left:29mm;top:14.5mm;width:30mm;font-size:7.5pt;line-height:1.35;color:var(--text)">Скануйте, щоб передати підбір нам</div>
+  </div>
+
+  <!-- right column: params -->
+  <div class="vl" style="left:76mm;top:93mm;height:78mm"></div>
+  <div id="params"></div>
+
+  <!-- stats row -->
+  <div class="hl" style="left:7mm;width:134mm;top:175.5mm"></div>
+  <div id="stats"></div>
+  <!-- contacts -->
+  <div class="a" style="left:7mm;right:7mm;top:197.5mm;display:flex;justify-content:space-between;font-size:8pt;color:var(--text)">
+    <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#DEA102" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>re-link.com.ua</span>
+    <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#DEA102" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 6l9 7 9-7"/></svg>o.dabizha@re-link.com.ua</span>
+    <span><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#DEA102" stroke-width="1.8"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>+38 050 607 2898</span>
+  </div>
+ </div>
+</div>
+
+<!-- ============ BACK ============ -->
+<div class="page" id="back">
+ <div class="t">
+  <img src="img/relink-horizontal-tagline-on-dark.svg" style="position:absolute;left:8mm;top:8mm;width:64mm">
+  <div class="a mono" style="right:8mm;top:11mm;text-align:right">Sheet_02/02 · Rev_11.2026</div>
+
+  <div class="a" style="left:8mm;top:33mm;width:132mm;font-family:'Geologica';font-weight:500;font-size:21pt;line-height:1.1">Знаходимо рішення, що працюють</div>
+  <div class="a" style="left:8mm;top:43mm;width:132mm;font-family:'Onest';font-weight:400;font-size:10.5pt;color:var(--amber)">Беремо найм на себе — ви витрачаєте час лише на фіналістів.</div>
+
+  <div class="hl" style="left:8mm;width:132mm;top:50mm"></div>
+  <div class="a label" style="left:8mm;top:53mm">Що закриваємо</div>
+  <div id="services"></div>
+
+  <div class="hl" style="left:8mm;width:132mm;top:98mm"></div>
+  <div class="a label" style="left:8mm;top:101mm">Як працюємо</div>
+  <div id="steps"></div>
+
+  <div class="hl" style="left:8mm;width:132mm;top:126mm"></div>
+  <div class="a label" style="left:8mm;top:129mm">Безкоштовно для клієнта</div>
+  <div id="free"></div>
+  <div class="a" style="left:8mm;top:154.5mm;font-size:8.5pt;color:var(--text2)">Доступ до CRM: ви бачите хід підбору в нашій системі.</div>
+
+  <div class="hl" style="left:8mm;width:132mm;top:161mm"></div>
+  <div class="a" style="left:8mm;top:165mm;width:100mm;font-size:9pt;color:var(--text2)">Незакрита вакансія → простій → втрачені контракти.</div>
+  <div class="a" style="left:8mm;top:170.5mm;width:100mm;font-family:'Geologica';font-weight:500;font-size:16.5pt;line-height:1.1">Ми закриваємо перший пункт.</div>
+  <div class="a" style="left:8mm;top:181mm;font-family:'Geologica';font-weight:500;font-size:9pt;color:var(--amber)">Ольга Дабіжа</div>
+  <div class="a" style="left:8mm;top:186mm;font-size:8pt;line-height:1.45;color:var(--text)">+38 050 607 2898<br>o.dabizha@re-link.com.ua<br>re-link.com.ua</div>
+  <div class="qrbox" style="left:113mm;top:164mm;width:24.8mm;height:24.8mm"><img src="img/qr.svg"></div>
+  <div class="a" style="left:104mm;width:40mm;top:193.5mm;text-align:center;font-size:6.5pt;color:var(--text2)">Скануйте — передайте підбір нам</div>
+  <div class="a" style="left:0;right:0;top:202mm;text-align:center;font-family:'Geologica';font-weight:500;font-size:6.5pt;letter-spacing:.16em;text-transform:uppercase;color:var(--text2)">Defence · Production · Sales · Back office</div>
+ </div>
+</div>
+
+<script>
+const P=[['Defence','Оборонні та MilTech-компанії'],['Production','Виробництво і логістика'],['Sales','Продажі та комерція'],['Back office','Офіс, фінанси, HR, управління']];
+let h='';P.forEach((p,i)=>{const y=95+i*19.2;
+ h+=`<div class="a" style="left:81mm;top:${y}mm;font-family:Geologica;font-weight:500;font-size:9pt;color:var(--amber);letter-spacing:.08em">0${i+1} //</div>
+ <div class="a" style="left:81mm;top:${y+4.2}mm;font-family:Geologica;font-weight:500;font-size:17pt;line-height:1;color:var(--text)">${p[0]}</div>
+ <div class="a" style="left:81mm;top:${y+11}mm;width:58mm;font-size:8pt;line-height:1.3;color:var(--text2)">${p[1]}</div>`;
+ if(i<3)h+=`<div class="hl" style="left:81mm;width:60mm;top:${y+17.6}mm;border-color:rgba(235,234,232,.15)"></div>`;});
+document.getElementById('params').outerHTML=h;
+const ST=[['90%','вакансій у погоджений строк'],['12 000+','кандидатів у власній базі'],['87%','проходять гарантійний термін']];
+h='';ST.forEach((p,i)=>{const x=7+i*46;
+ h+=`<div class="a" style="left:${x}mm;top:178.5mm;font-family:Geologica;font-weight:500;font-size:8pt;color:var(--amber);letter-spacing:.08em">0${i+1} //</div>
+ <div class="a" style="left:${x}mm;top:182.3mm;font-family:Geologica;font-weight:500;font-size:16pt;line-height:1;color:var(--text)">${p[0]}</div>
+ <div class="a" style="left:${x}mm;top:188.6mm;width:41mm;font-size:7pt;line-height:1.25;color:var(--text2)">${p[1]}</div>`;
+ if(i)h+=`<div class="vl" style="left:${x-3}mm;top:178.5mm;height:13mm;border-color:rgba(235,234,232,.15)"></div>`;});
+document.getElementById('stats').outerHTML=h;
+const S=[['Класичний рекрутинг','Офісні, комерційні та управлінські вакансії — від брифу до виходу кандидата'],['Інженерно-технічний підбір','Позиції, де мало резюме і важливий профіль'],['Спецформати','Масовий підбір · власний навчальний центр · HR-партнер · терміновий підбір']];
+h='';S.forEach((s,i)=>{const y=58.5+i*12.6;h+=`<div class="a" style="left:8mm;top:${y}mm;font-family:Geologica;font-weight:500;font-size:13pt;color:var(--amber)">0${i+1}/</div>
+<div class="a" style="left:22mm;top:${y+.4}mm;font-family:Geologica;font-weight:500;font-size:10.5pt;color:var(--text)">${s[0]}</div>
+<div class="a" style="left:22mm;top:${y+5.4}mm;width:118mm;font-size:8pt;line-height:1.3;color:var(--text2)">${s[1]}</div>`});
+document.getElementById('services').outerHTML=h;
+const T=['Заявка','Бриф','Пошук і відбір',"Інтерв'ю",'Фіналісти','Співбесіда','Вихід кандидата','Гарантійний супровід'];
+h='<div class="hl" style="left:16mm;width:116mm;top:112mm;border-color:rgba(195,198,205,.6)"></div>';
+T.forEach((t,i)=>{const x=16+i*116/7;h+=`<div class="a" style="left:${x-1.3}mm;top:110.7mm;width:2.6mm;height:2.6mm;border-radius:50%;background:var(--amber)"></div>
+<div class="a" style="left:${x-6}mm;width:12mm;top:106.6mm;text-align:center;font-family:Geologica;font-weight:500;font-size:6pt;color:var(--amber)">0${i+1}</div>
+<div class="a" style="left:${x-8}mm;width:16mm;top:115.3mm;text-align:center;font-size:6.3pt;line-height:1.2;color:var(--text)">${t}</div>`});
+document.getElementById('steps').outerHTML=h;
+const F=['Організація поліграфу','Перевірка рекомендацій','Допомога з Job Offer','Аудит вакансії чи оферу без підбору'];
+h='';F.forEach((f,i)=>{const x=8+(i%2)*67,y=134+Math.floor(i/2)*9.5;h+=`<div class="a" style="left:${x}mm;top:${y}mm;width:65mm;height:7mm;border:.25mm solid var(--amber);border-radius:3.5mm;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:8pt;color:var(--text)">${f}</div>`});
+document.getElementById('free').outerHTML=h;
+</script>
+</body></html>
